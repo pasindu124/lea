@@ -67,7 +67,7 @@ export default function App() {
     <AppContext.Provider value={{ asOf, meta, user }}>
       <div className="shell">
         <aside className="rail">
-          <div className="brand"><b>Line Engineer Agent</b><span>Sharjah night shift</span></div>
+          <div className="brand"><b>Line Engineer Agent</b><span>Sharjah night shift · live demo</span></div>
           <nav className="nav" aria-label="Main">
             {NAV.map(([id, label]) => (
               <a key={id} href={`#/${id}`} aria-current={(page || 'brief') === id ? 'page' : undefined}>{label}</a>
