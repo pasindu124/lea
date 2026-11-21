@@ -273,3 +273,48 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .amm-tabs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 8px 0 0; }
 .amm-tabs button { border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 3px 12px; font: inherit; font-size: 13px; cursor: pointer; }
 .amm-tabs button.on { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+
+/* ---- shift brief card: one section at a time */
+.panel.ac { border-radius: 12px; box-shadow: 0 1px 2px rgba(15, 30, 45, .06), 0 4px 14px rgba(15, 30, 45, .05); overflow: hidden; }
+.ac-head { padding: 16px 20px; gap: 6px 16px; align-items: center; }
+.ac-head:hover { background: var(--surface-2); }
+.ac-head .reg { font-size: 34px; }
+.ac-stats { display: flex; flex-wrap: wrap; gap: 6px; }
+.ac > .section { border-top: 1px solid var(--line); padding: 14px 20px 0; }
+.seg {
+  display: flex; gap: 4px; padding: 4px; margin: 6px 20px 0; background: var(--surface-2);
+  border: 1px solid var(--line); border-radius: 10px; overflow-x: auto;
+}
+.seg button {
+  flex: 1 0 auto; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 8px 14px; border: 0; border-radius: 7px; background: transparent; cursor: pointer;
+  font-weight: 500; color: var(--ink-soft); white-space: nowrap;
+}
+.seg button:hover { color: var(--ink); background: var(--surface); }
+.seg button[aria-selected='true'] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(15, 30, 45, .15), inset 0 -2px 0 var(--brand); }
+.pane-wrap { padding: 16px 20px 20px; }
+.pane-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 14px; margin-bottom: 12px; }
+.pane-head h3 { font-size: 17px; }
+.ac .item { border-radius: 0 8px 8px 0; padding: 11px 14px; margin-bottom: 10px; }
+.ac .tablewrap { border: 1px solid var(--line); border-radius: 8px; }
+.ac .ai-box { border-radius: 8px; }
+
+/* ---- urgent strip inside the card (stays visible above the tabs) */
+.urgent { margin: 4px 20px 0; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--line-strong); border-left: 6px solid var(--danger); background: var(--danger-bg); display: grid; gap: 6px; }
+.urgent.caution { border-left-color: var(--caution); background: var(--caution-bg); }
+.urgent ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.urgent li { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; }
+.urgent .u-title { font-weight: 500; flex: 1 1 240px; min-width: 0; overflow-wrap: anywhere; }
+.urgent .btn { justify-self: start; }
+.panel.ac { position: relative; }
+
+/* ---- aircraft table */
+.ac-list { border-radius: 12px; overflow: hidden; }
+.ac-table { max-height: 300px; overflow-y: auto; border-top: 1px solid var(--line); }
+.ac-table th { position: sticky; top: 0; z-index: 1; }
+.sortbtn { border: 0; background: none; padding: 0; font-weight: 600; color: inherit; cursor: pointer; }
+.sortbtn:hover { color: var(--ink); }
+.pickrow { cursor: pointer; border-left: 4px solid transparent; }
+.pickrow:hover, .pickrow[aria-selected='true'] { background: var(--brand-soft); }
+.pickrow.danger td:first-child { box-shadow: inset 4px 0 var(--danger); }
+.pickrow.caution td:first-child { box-shadow: inset 4px 0 var(--caution); }
