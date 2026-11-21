@@ -326,3 +326,8 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .view-tabs button { flex: 1 1 0; max-width: 260px; padding: 11px 18px; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); background: var(--surface-2); border: 1px solid var(--line-strong); border-bottom: none; border-radius: 8px 8px 0 0; margin-right: 6px; margin-bottom: -2px; cursor: pointer; }
 .view-tabs button:hover { background: var(--brand-soft); }
 .view-tabs button.on { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+
+/* ---- flight schedule */
+.times { margin: 8px 20px 0; padding: 8px 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; }
+.times b { font-weight: 600; margin-right: 4px; }
+.timing-notes { margin: 6px 0 0 18px; padding: 0; }

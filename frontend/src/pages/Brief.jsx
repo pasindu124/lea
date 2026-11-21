@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { api } from '../api'
 import { useApp } from '../context'
 import AircraftCard from '../AircraftCard'
+import { NoScheduleCallout, NotAtSharjah, OverlapWarning, fmtGround, fmtWhen } from '../Schedule'
 import { Empty, ErrorBox, Guard, Loading, SourceTag, StatusChip, WhyDeferral } from '../ui'
 import { STATUS, deadlineLine, fmtDate, useAsync } from '../util'
 
@@ -68,6 +69,32 @@ function FlagList({ flags }) {
   )
 }
 
+// One line per aircraft: when it is on the ground at Sharjah during the shift.
+function GroundTimes({ aircraft }) {
+  const rows = aircraft.filter((a) => a.schedule?.available && a.schedule.tonight)
+  if (!rows.length) return null
+  const sorted = [...rows].sort((a, b) => (a.schedule.tonight.arrival_time || '').localeCompare(b.schedule.tonight.arrival_time || ''))
+  return (
+    <section className="panel" style={{ marginBottom: 14 }}>
+      <div className="panel-head"><h2>Aircraft and times</h2><span className="chip">{sorted.length} on the ground</span></div>
+      <div className="panel-body">
+        {sorted.map((a) => {
+          const w = a.schedule.tonight
+          return (
+            <div key={a.aircraft_reg} className="row small" style={{ gap: 10, padding: '3px 0' }}>
+              <b className="reg-inline">{a.aircraft_reg}</b>
+              <span>{w.arrival_time ? `Lands ${fmtWhen(w.arrival_time)}` : 'At Sharjah when the schedule starts'}
+                {w.departure_time ? `, leaves ${fmtWhen(w.departure_time)}` : ', no later departure in the schedule'}</span>
+              {w.ground_hours != null && <span className={`chip ${w.tight ? 'caution' : ''}`}>{fmtGround(w.ground_hours)} on the ground</span>}
+              {!w.used_actuals && <span className="muted">planned</span>}
+            </div>
+          )
+        })}
+      </div>
+    </section>
+  )
+}
+
 export default function Brief() {
   const { asOf } = useApp()
   const { data, error, loading, reload } = useAsync(() => api.brief(asOf || null), [asOf])
@@ -87,7 +114,9 @@ export default function Brief() {
             This roster is a placeholder: aircraft were split between engineers automatically for the demo, with the most urgent spread out.
             Planning's real roster replaces it. <a href="#/shift">Change the split</a>.
           </div>
+          <NoScheduleCallout schedule={data.schedule} />
           <Strip flag={data.shift_top_flag} />
+          <NotAtSharjah schedule={data.schedule} />
           <div className="tabs" role="tablist">
             {data.engineers.map((e, i) => (
               <button key={e.name} role="tab" className="tab" aria-selected={tab === i} onClick={() => setTab(i)}>
@@ -102,6 +131,8 @@ export default function Brief() {
               ? <Empty>No aircraft assigned to {data.engineers[tab].name}. Assign some in <a href="#/shift">Shift setup</a>.</Empty>
               : (
                 <>
+                  <OverlapWarning warnings={data.engineers[tab].overlap_warnings} />
+                  <GroundTimes aircraft={data.engineers[tab].aircraft} />
                   <FlagList flags={data.engineers[tab].flags} />
                   <div className="stack">
                     {data.engineers[tab].aircraft.map((a, i) => (

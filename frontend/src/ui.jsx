@@ -16,8 +16,9 @@ export function SourceTag({ source, label }) {
   if (!source) return null
   if (source.url) return <a className="tag" href={source.url} target="_blank" rel="noopener noreferrer">{label || 'Open case'}</a>
   const where = source.row ? `${source.file}, row ${source.row}` : source.file
-  const title = `Source: ${where}${source.wo_number ? `, work order ${source.wo_number}` : ''}`
-  return <span className="tag" title={title}>{label || `WO ${source.wo_number}`}</span>
+  const title = `Source: ${where}${source.wo_number ? `, work order ${source.wo_number}` : ''}${source.flight_no ? `, flight ${source.flight_no}` : ''}`
+  const text = label || (source.wo_number ? `WO ${source.wo_number}` : `${source.flight_no ? `${source.flight_no}, ` : ''}row ${source.row}`)
+  return <span className="tag" title={title}>{text}</span>
 }
 
 // The rule behind a deadline, in plain language.

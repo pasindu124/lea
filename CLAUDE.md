@@ -24,13 +24,13 @@ that cite anything else. Never move a decision into the LLM.
 
 ## Architecture
 React (Vite, JSX) -> FastAPI -> PostgreSQL 16, plus optional OpenAI (`backend/app/ai/client.py`).
-- `backend/app/rules/`    pure functions with tests: deadlines, parts, tools, roster, citations, text
+- `backend/app/rules/`    pure functions with tests: deadlines, parts, tools, roster, ground (flight schedule), citations, text
 - `backend/app/services/` SQL + assembling the brief (psycopg 3, plain SQL, no ORM)
 - `backend/app/routers/api.py` all routes under /api
 - `backend/app/etl/load_data.py` loads the Excel/CSV files (`python -m app.etl.load_data`)
 - `backend/app/config.py` every business rule and ASSUMPTION in one place
 - `frontend/src/` pages in `pages/`, shared card in `AircraftCard.jsx`, tokens in `styles.css`
-Run: see README.md. Tests: `cd backend && python -m pytest` (58 tests, uses its own `lea_test` database).
+Run: see README.md. Tests: `cd backend && python -m pytest` (109 tests, uses its own `lea_test` database).
 Frontend check: `cd frontend && npm run build`.
 
 ## Domain glossary
@@ -62,8 +62,16 @@ Frontend check: `cd frontend && npm run build`.
 - "CAT B/C" is often a structural repair (SRM) damage class, not MEL: 24 of 34 open faults with "CAT" are SRM.
   `rules/deadlines.py` skips a "CAT x" with SRM / allowable-damage words within 200 characters before it.
 - Only 7 of 428 open faults write an MEL item number; 138 are NSI (not on the MEL).
-- Missing from the pack: flight schedule, engineer roster, handover notes, operator MEL (only the Airbus MMEL is there). Roster is auto-split
-  (placeholder), handover notes are derived from the last two days of work-log entries and labelled "Derived".
+- Flights_Export_19Nov-30Nov26 (.xls, sheet "Flight Summary"): 4,646 flights, 19-30 Nov 2026, 75 A6- aircraft (+ AP-, CN-, SU-, HZ-).
+  Only 212 rows have actual times (last: 19 Nov 13:47, 154 of them with ATA); the rest is the planned schedule. 11 rows have no Reg (4 are
+  G9980 technical tests RKT-RKT). 59 of the 60 A6- aircraft with open faults appear (A6-AOV does not; A6-AOT only flies from RKT).
+  Time zone is NOT stated: assumed Sharjah local (`FLIGHT_TIMES_ARE`). Delay-code cells hold line breaks, Diversion has a leading space,
+  Arrival Bay is filled for ~100 flights; delay codes and bays are loaded but unused. Ground time logic: `rules/ground.py`.
+  Check numbers (window 20 Nov 18:00 to 21 Nov 06:00): 54 aircraft with open faults have a paired arrival+departure window there (as in the
+  earlier analysis); with MIN_GROUND_MINUTES=30 A6-ATC (leaves 18:05) drops out, and 3 aircraft whose first flight in the file leaves SHJ
+  (A6-ANQ, A6-AOE, A6-ANM) are added as "arrival not in the schedule", giving 56. The default shift window is 22:00-06:00, which gives fewer.
+- Missing from the pack: engineer roster, handover notes, operator MEL (only the Airbus MMEL is there). Roster is auto-split from ground time
+  (placeholder, rules/ground.balance_by_time; falls back to the plain snake split without a schedule), handover notes are derived from the last two days of work-log entries and labelled "Derived".
 - "As of" date = newest record (20 Nov 2026) unless AS_OF_DATE or the date picker overrides it.
 
 ## Conventions
@@ -88,9 +96,17 @@ category, installed/required, placard, (o)/(m), conditions text, AMM tasks, appl
 -> item / no dispatch), `fleet_msn` (registration -> MSN). `rules/mmel.py`: MSN applicability, item-number finder.
 It is the manufacturer's MASTER list; the operator MEL is not in the pack, so label it "MMEL". Not yet used by the brief.
 
+## Flight schedule (ground time at Sharjah)
+`load_data --only flights` (xlrd for .xls) fills `flights` (every row keeps its Excel row). `rules/ground.py`: `ground_windows`, `on_ground_during`,
+`timing_notes`, `balance_by_time`, `overlap_warnings`; `services/schedule_service.py` builds the `schedule` block of `GET /api/aircraft/{reg}`,
+the `schedule` object of `/api/brief` and `/api/roster` (not-at-Sharjah list, ground window per aircraft, overlap warnings) and
+`brief_service.plan_roster` (strategy `time_balanced` or `snake_fallback`, logged in `roster_auto`). ASSUMPTIONS in `config.py` and the
+Assumptions panel: `FLIGHT_TIMES_ARE`, `LOCAL_UTC_OFFSET_HOURS`, `SHIFT_START/END`, `MIN_GROUND_MINUTES`, `SHORT_GROUND_HOURS`.
+Notes are neutral facts only; never "cannot fly" or "must". Planned times are always labelled planned. Not used on purpose: delay codes, bays.
+
 ## Not built yet (good next steps, in rough order)
 1. AI-assisted reading of deferral wording the rules cannot parse (79 items), as a suggestion with the source quote.
 2. Logbook-entry checker (stretch goal) with CAR-145 / CAR-M citations.
-3. Real roster and flight schedule if the organisers provide them; then replace `rules/roster.py`.
+3. Real roster from Planning; confirm the flight-file time zone and shift hours; real flight times after 19 Nov; meaning of delay codes.
 4. Logins and roles (engineer, shift lead, quality) instead of a typed name.
 5. Docker for the whole app; background refresh of data instead of manual loads.

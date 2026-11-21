@@ -69,7 +69,7 @@ Open **http://localhost:5173**.
 For a single-process demo: run `npm run build` in `frontend`, then open **http://localhost:8000**
 (the Python server serves the built app).
 
-**6. Check it works.** `cd backend && python -m pytest` (58 tests; it creates its own small database `lea_test`).
+**6. Check it works.** `cd backend && python -m pytest` (109 tests; it creates its own small database `lea_test`).
 
 ## The screens
 
@@ -79,7 +79,7 @@ For a single-process demo: run `npm run build` in `frontend`, then open **http:/
 | Aircraft | Any Air Arabia aircraft with open items, most urgent first |
 | Parts finder | Search spare parts. Verdict per part: line store, main store, other owner, unserviceable |
 | Tools | Search tools. Location and calibration status |
-| Shift setup | Choose which aircraft each engineer has. Changes are audited |
+| Shift setup | Choose which aircraft each engineer has, with ground time at Sharjah and the list of urgent aircraft that are away. Changes are audited |
 | Audit log | Searches, AI answers, roster changes, "seen" confirmations |
 
 The top bar shows the date the data is "as of" (the newest record), and lets you change it to see how deadlines move.
@@ -100,14 +100,40 @@ A deadline is calculated only when the record itself states the limit. Otherwise
 The last letter of an item number (the `B` in `36-11-07B`) is a variant, not a category, and is never used.
 The day of discovery is not counted. Statuses: past deadline, due today, due soon (3 days or fewer), in date, check source.
 
+## Flight schedule and ground time
+
+`data/Flights_Export_*.xls` (sheet "Flight Summary") is loaded into the `flights` table (`python -m app.etl.load_data --only flights`;
+the old `.xls` format needs `xlrd`, already in `requirements.txt`). Each flight keeps its Excel row.
+`backend/app/rules/ground.py` (pure, tested) pairs every arrival into Sharjah (SHJ) with the same aircraft's next departure from SHJ.
+It uses actual times (ATA/ATD) when they exist, otherwise the planned ones (STA/STD), and says which. Edge cases are explicit:
+the first flight in the file already leaves SHJ ("arrival not in the schedule": the aircraft is assumed to be there until then),
+the last flight arrives with no later departure, and an arrival followed by a departure from another airport is marked a data gap
+and never guessed (it is not counted as "on the ground").
+
+* **Aircraft and times** line on every aircraft card, ground windows per engineer on the brief, and a "Not at Sharjah tonight" list for
+  aircraft with a deadline today or soon that are away (they are never dropped silently).
+* **Roster.** "Suggest a split" now picks aircraft that are on the ground at SHJ during the shift (at least `MIN_GROUND_MINUTES` inside it)
+  and gives each aircraft to the engineer whose aircraft overlap it least on the ground. It warns when one engineer has two aircraft with a
+  short ground time (under `SHORT_GROUND_HOURS`) at the same time. With no schedule for the shift it falls back to the old split and says so.
+* **Timing notes** next to flagged items are plain facts ("Next departure (22 Nov 08:30) is after the deadline date (20 Nov)"). They never say
+  whether an aircraft can fly. The licensed engineer decides.
+* Delay codes, bays and diversion are loaded but used nowhere (their meaning was not provided).
+* The roster strategy used is written to the audit log (`roster_auto`, field `strategy`: `time_balanced` or `snake_fallback`).
+
+Settings (`.env`, see `.env.example`): `FLIGHT_TIMES_ARE=local|utc`, `LOCAL_UTC_OFFSET_HOURS=4`, `SHIFT_START=22:00`, `SHIFT_END=06:00`,
+`MIN_GROUND_MINUTES=30`, `SHORT_GROUND_HOURS=2`.
+
 ## Assumptions to confirm with Air Arabia
 
 1. **MMEL intervals.** B, C and D as 3, 10 and 120 days is standard practice, but the MMEL page that defines them is not in the data pack.
 2. **Tool calibration.** About 99% of tools show the same expiry date (the export date). It looks like a placeholder, so calibration is shown as "Unverified".
 3. **Parts condition and owner.** Only condition code `US` counts as unserviceable, and the `Owner` column decides ownership.
 4. **Roster.** No roster is in the data. Aircraft are split automatically for the demo.
-5. **Handover notes.** None provided. "Recent work logged" shows work-log entries from the last two days and says it is derived.
-6. **Overdue items.** Many work orders are still open long after their deadline (some by months). They may be records never closed.
+5. **Flight times and shift hours.** The flight file does not say if its times are UTC or Sharjah local time. The app reads them as local, as written
+   (`FLIGHT_TIMES_ARE`). The night shift is taken as 22:00 to 06:00 Sharjah time. Only flights up to 19 Nov 13:47 have actual times; all later
+   times are the planned schedule and are labelled that way. Confirm both with Planning.
+6. **Handover notes.** None provided. "Recent work logged" shows work-log entries from the last two days and says it is derived.
+7. **Overdue items.** Many work orders are still open long after their deadline (some by months). They may be records never closed.
    The app labels them "past deadline" and asks the engineer to confirm the real status.
 
 All of these are single settings in `backend/app/config.py`.
@@ -126,13 +152,13 @@ All of these are single settings in `backend/app/config.py`.
 ## Folder map
 
 ```
-backend/app/rules/      deadlines, parts verdicts, tool status, roster split, citation check (pure, tested)
+backend/app/rules/      deadlines, parts verdicts, tool status, ground time, roster split, citation check (pure, tested)
 backend/app/services/   SQL queries and assembling the brief
 backend/app/routers/    HTTP routes
 backend/app/ai/         OpenAI calls and the guardrail prompts
 backend/app/etl/        data loader
 backend/app/schema.sql  database tables
-backend/tests/          58 tests
+backend/tests/          109 tests
 frontend/src/           React app (pages/, AircraftCard.jsx, styles.css)
 ```
 
@@ -141,4 +167,5 @@ frontend/src/           React app (pages/, AircraftCard.jsx, styles.css)
 * The logbook-entry checker (stretch goal)
 * Logins and roles (engineer, shift lead, quality). Names are typed in and sent with each request.
 * AI help for reading deferral wording that the rules cannot (79 items today have no limit written)
+* Delay and bay data in the schedule (meaning not provided), real flight times beyond 19 Nov, and the operator MEL
 * Docker for the whole app (only PostgreSQL has a compose file)

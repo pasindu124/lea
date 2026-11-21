@@ -33,10 +33,11 @@ PATTERNS = {
     "aviatar": ["*AVIATAR*Faults*.csv"],
     "amm": ["**/SGML/AMM.SGM"],
     "mmel": ["**/XML_N_MMEL_*_mdata.xml"],
+    "flights": ["*Flights*Export*.xls*"],
 }
 TABLES = {"parts": "parts_stock", "tools": "tools", "work_orders": "work_orders",
           "pha": "pha_cases", "aviatar": "aviatar_faults", "amm": "amm_tasks",
-          "mmel": "mmel_items"}
+          "mmel": "mmel_items", "flights": "flights"}
 
 
 def find_files(data_dir: Path, key: str) -> list[Path]:
@@ -166,9 +167,43 @@ def load_aviatar(files: list[Path]) -> int:
     return copy_rows("aviatar_faults", list(out.columns), out)
 
 
+def _one_line(series: pd.Series) -> pd.Series:
+    """Delay-code cells hold line breaks: collapse them into one line."""
+    return series.where(series.notna(), None).map(
+        lambda v: None if v is None else " ; ".join(p.strip() for p in str(v).splitlines() if p.strip()) or None)
+
+
+def load_flights(files: list[Path]) -> int:
+    # the real export is the old .xls format (needs xlrd); a re-saved .xlsx also works
+    engine = "openpyxl" if files[0].suffix.lower() == ".xlsx" else "xlrd"
+    df = pd.read_excel(files[0], sheet_name="Flight Summary", header=0, engine=engine)
+    df.columns = [str(c).strip() for c in df.columns]
+
+    def ts(name: str) -> pd.Series:
+        return pd.to_datetime(df[name], errors="coerce")
+
+    def whole(name: str) -> pd.Series:
+        return pd.to_numeric(df[name], errors="coerce").astype("Int64")
+
+    atd, ata = ts("ATD"), ts("ATA")
+    out = pd.DataFrame({
+        "source_row": df.index + 2,
+        "flight_date": _date(df["Date"]), "airline": _txt(df["Airline"]), "reg": _txt(df["Reg"]),
+        "flight_no": _txt(df["SAI"]), "dep": _txt(df["Dep"]), "arr": _txt(df["Arr"]), "op_type": _txt(df["Op.Type"]),
+        "std": ts("STD"), "atd": atd, "sta": ts("STA"), "ata": ata, "eta": ts("ETA"),
+        "dep_delay_min": whole("Dep DLY"), "arr_delay_min": whole("Arr DLY"), "pax": whole("PAX"),
+        "dep_bay": _txt(df["Departure Bay"]), "arr_bay": _txt(df["Arrival Bay"]),
+        "dep_delay_code": _one_line(df["DLYCODE"]), "arr_delay_code": _one_line(df["DCODE"]),
+        "diversion": _txt(df["Diversion"]),
+        "has_actuals": (atd.notna() | ata.notna()),
+    })
+    return copy_rows("flights", list(out.columns), out)
+
+
 LOADERS: dict[str, Callable[[list[Path]], int]] = {
     "parts": load_parts, "tools": load_tools, "work_orders": load_work_orders,
     "pha": load_pha, "aviatar": load_aviatar, "amm": load_amm, "mmel": load_mmel,
+    "flights": load_flights,
 }
 
 
@@ -183,10 +218,16 @@ def update_meta() -> dict:
     placeholder = tool_rules.detect_placeholder_expiry(expiries)
 
     counts = {t: db.query_one(f"SELECT count(*) AS n FROM {t}")["n"] for t in TABLES.values()}
+    fl = db.query_one("SELECT min(flight_date) AS first_date, max(flight_date) AS last_date, count(*) AS n, "
+                      "greatest(max(atd), max(ata)) AS last_actual FROM flights") or {}
+    schedule = ({"first_date": fl["first_date"].isoformat(), "last_date": fl["last_date"].isoformat(), "flights": fl["n"],
+                 "last_actual": fl["last_actual"].isoformat() if fl["last_actual"] else None}
+                if fl.get("n") else None)
+    db.set_meta("schedule", schedule)
     db.set_meta("as_of_default", as_of.isoformat() if as_of else None)
     db.set_meta("tools_placeholder_expiry", placeholder.isoformat() if placeholder else None)
     db.set_meta("load_summary", {"counts": counts, "loaded_at": time.strftime("%Y-%m-%d %H:%M:%S")})
-    return {"as_of": as_of, "tools_placeholder_expiry": placeholder, "counts": counts}
+    return {"as_of": as_of, "tools_placeholder_expiry": placeholder, "counts": counts, "schedule": schedule}
 
 
 def main() -> None:
@@ -231,6 +272,7 @@ def main() -> None:
     print("\nDone.")
     print(f"  Data as of           : {info['as_of']}")
     print(f"  Tool expiry placeholder: {info['tools_placeholder_expiry']}")
+    print(f"  Flight schedule      : {info['schedule']}")
     print(f"  Row counts           : {info['counts']}")
 
 

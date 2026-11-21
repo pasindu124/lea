@@ -26,6 +26,23 @@ def health():
     return {"status": "ok"}
 
 
+def _times_text() -> str:
+    cov = db.get_meta("schedule")
+    zone = ("Sharjah local time, as written" if config.FLIGHT_TIMES_ARE != "utc"
+            else f"UTC, shown as Sharjah time (+{config.LOCAL_UTC_OFFSET_HOURS:g} h)")
+    h, m = config.SHIFT_START
+    h2, m2 = config.SHIFT_END
+    base = (f"The flight file does not say which time zone it uses. The app reads its times as {zone} "
+            f"(setting FLIGHT_TIMES_ARE). The night shift is taken as {h:02d}:{m:02d} to {h2:02d}:{m2:02d} Sharjah time and an aircraft "
+            f"counts as on the ground during the shift with at least {config.MIN_GROUND_MINUTES} minutes at {config.STATION} inside it.")
+    if not cov:
+        return base + " No flight schedule is loaded."
+    last = cov.get("last_actual")
+    return (base + f" The schedule covers {cov['first_date']} to {cov['last_date']}. "
+            + (f"Only flights up to {last.replace('T', ' ')[:16]} have actual times; later times are the planned schedule."
+               if last else "All times are the planned schedule."))
+
+
 @router.get("/meta")
 def meta(as_of: str | None = None):
     resolved = context.resolve_as_of(as_of)
@@ -36,6 +53,10 @@ def meta(as_of: str | None = None):
         "ai_enabled": ai.enabled(), "ai_model": config.OPENAI_MODEL if ai.enabled() else None,
         "engineers": config.ENGINEERS, "own_operator": config.OWN_OPERATOR,
         "load_summary": db.get_meta("load_summary"),
+        "schedule": {"times_are": config.FLIGHT_TIMES_ARE, "utc_offset_hours": config.LOCAL_UTC_OFFSET_HOURS,
+                     "station": config.STATION, "short_ground_hours": config.SHORT_GROUND_HOURS,
+                     "shift_start": "%02d:%02d" % config.SHIFT_START,
+                     "shift_end": "%02d:%02d" % config.SHIFT_END, **(db.get_meta("schedule") or {"flights": 0})},
         "assumptions": [
             {"id": "mmel", "text": "Deferral categories B, C and D are counted as 3, 10 and 120 calendar days "
                                    "(standard MMEL practice). The MMEL repair-interval page is not in the data pack: confirm it."},
@@ -45,6 +66,7 @@ def meta(as_of: str | None = None):
                                       "Confirm both with Stores."},
             {"id": "roster", "text": "There is no roster in the data. Aircraft are split between engineers automatically, "
                                       "only for the demo."},
+            {"id": "times", "text": _times_text()},
             {"id": "notes", "text": "Handover notes are derived from work-log entries of the last two days. "
                                     "No real handover records were provided."},
         ] + ([{"id": "cutoff", "text": f"Open work orders whose deadline was before {config.CLOSE_DEADLINES_BEFORE} "
@@ -155,15 +177,20 @@ class RosterChange(BaseModel):
 @router.get("/roster")
 def roster(shift_date: str | None = None):
     sd = context.resolve_as_of(shift_date)
-    return {"shift_date": sd, "assignments": brief_service.get_roster(sd), "engineers": config.ENGINEERS}
+    assignments = brief_service.get_roster(sd)
+    return {"shift_date": sd, "assignments": assignments, "engineers": config.ENGINEERS,
+            "schedule": brief_service.schedule_context(sd, sd, assignments)}
 
 
 @router.post("/roster/auto")
 def roster_auto(shift_date: str | None = None, x_user: str | None = Header(None)):
     sd = context.resolve_as_of(shift_date)
-    mapping = brief_service.auto_roster(sd, context.resolve_as_of(shift_date))
-    context.log(_actor(x_user), "roster_auto", {"shift_date": sd, "assignments": mapping})
-    return {"shift_date": sd, "assignments": mapping}
+    plan = brief_service.plan_roster(sd, sd)
+    context.log(_actor(x_user), "roster_auto", {"shift_date": sd, "strategy": plan["strategy"],
+                                                "assignments": plan["assignments"],
+                                                "schedule_available": plan["schedule"]["available"]})
+    return {"shift_date": sd, "assignments": plan["assignments"], "strategy": plan["strategy"],
+            "schedule": brief_service.schedule_context(sd, sd, plan["assignments"])}
 
 
 @router.put("/roster")
@@ -174,7 +201,8 @@ def roster_change(change: RosterChange, x_user: str | None = Header(None)):
     brief_service.set_assignment(sd, reg, (change.engineer or "").strip() or None)
     context.log(_actor(x_user), "roster_change",
                 {"shift_date": sd, "aircraft": reg, "before": before, "after": (change.engineer or None)})
-    return {"shift_date": sd, "assignments": brief_service.get_roster(sd)}
+    assignments = brief_service.get_roster(sd)
+    return {"shift_date": sd, "assignments": assignments, "schedule": brief_service.schedule_context(sd, sd, assignments)}
 
 
 @router.get("/brief")

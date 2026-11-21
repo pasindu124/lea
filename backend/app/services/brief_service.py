@@ -5,8 +5,9 @@ from datetime import date
 from typing import Any
 
 from .. import config, db
+from ..rules import ground
 from ..rules.roster import snake_assign
-from . import aircraft_service, context
+from . import aircraft_service, context, schedule_service
 
 
 def get_roster(shift_date: date) -> dict[str, str]:
@@ -14,21 +15,49 @@ def get_roster(shift_date: date) -> dict[str, str]:
     return {r["aircraft_reg"]: r["engineer"] for r in rows}
 
 
-def auto_roster(shift_date: date, as_of: date, n: int | None = None, engineers: list[str] | None = None) -> dict[str, str]:
+def plan_roster(shift_date: date, as_of: date, n: int | None = None, engineers: list[str] | None = None) -> dict[str, Any]:
+    """Choose tonight's aircraft and split them between engineers, then save the roster.
+
+    With a flight schedule: only aircraft that are on the ground at the station during the shift, and the split
+    avoids giving one engineer several aircraft that need work at the same time. Without one: the old behaviour.
+    """
     engineers = engineers or config.ENGINEERS
     everything = aircraft_service.list_aircraft(as_of)
+    overview = schedule_service.shift_overview(shift_date, everything)
+    if overview["available"]:
+        here = set(overview["on_ground"])
+        pool = [a for a in everything if a["aircraft_reg"] in here]
+        strategy = "time_balanced"
+    else:
+        pool, strategy = everything, "snake_fallback"
     # Aircraft with a deadline today or soon are always on tonight's list, then the highest scores fill the rest.
-    critical = [a for a in everything if a["expires_today"] or a["expires_soon"]]
-    rest = [a for a in everything if a not in critical]
+    critical = [a for a in pool if a["expires_today"] or a["expires_soon"]]
+    rest = [a for a in pool if a not in critical]
     limit = max(n or config.AIRCRAFT_PER_SHIFT, len(critical))
-    ranked = [a["aircraft_reg"] for a in (critical + rest)[:limit]]
-    mapping = snake_assign(ranked, engineers)
+    chosen = (critical + rest)[:limit]
+    if strategy == "time_balanced":
+        mapping = ground.balance_by_time({a["aircraft_reg"]: a["score"] for a in chosen}, overview["_windows"], engineers,
+                                         clip=(overview["shift_start"], overview["shift_end"]))
+    else:
+        mapping = snake_assign([a["aircraft_reg"] for a in chosen], engineers)
     with db.get_pool().connection() as conn:
         conn.execute("DELETE FROM roster WHERE shift_date = %s", (shift_date,))
         for reg, eng in mapping.items():
             conn.execute("INSERT INTO roster (shift_date, aircraft_reg, engineer) VALUES (%s, %s, %s)",
                          (shift_date, reg, eng))
-    return mapping
+    return {"assignments": mapping, "strategy": strategy, "schedule": schedule_service.public(overview)}
+
+
+def auto_roster(shift_date: date, as_of: date, n: int | None = None, engineers: list[str] | None = None) -> dict[str, str]:
+    return plan_roster(shift_date, as_of, n, engineers)["assignments"]
+
+
+def schedule_context(shift_date: date, as_of: date, assignments: dict[str, str]) -> dict[str, Any]:
+    """Schedule facts for the current roster: overview, ground window per aircraft, not-at-Sharjah list, warnings."""
+    overview = schedule_service.public(schedule_service.shift_overview(shift_date, aircraft_service.list_aircraft(as_of)))
+    ground_info = schedule_service.ground_for_roster(shift_date, assignments)
+    overview.pop("on_ground", None)
+    return {**overview, **ground_info}
 
 
 def set_assignment(shift_date: date, reg: str, engineer: str | None) -> None:
@@ -63,7 +92,10 @@ def build_brief(as_of: date, shift_date: date | None = None) -> dict[str, Any]:
     roster = get_roster(shift_date)
     created = False
     if not roster:
-        roster, created = auto_roster(shift_date, as_of), True
+        plan = plan_roster(shift_date, as_of)
+        roster, created = plan["assignments"], True
+        context.log("auto (brief)", "roster_auto", {"shift_date": shift_date, "strategy": plan["strategy"],
+                                                    "assignments": roster, "schedule_available": plan["schedule"]["available"]})
 
     details = {reg: aircraft_service.aircraft_detail(reg, as_of) for reg in roster}
     engineers = []
@@ -95,8 +127,11 @@ def build_brief(as_of: date, shift_date: date | None = None) -> dict[str, Any]:
             for item in a["deferrals"]:
                 item["ack"] = acks.get(item["wo_number"])
 
+    sched = schedule_context(shift_date, as_of, roster)
+    for e in engineers:
+        e["overlap_warnings"] = sched["overlap_warnings"].get(e["name"], [])
     return {"as_of": as_of, "shift_date": shift_date, "roster_is_placeholder": True, "roster_created_now": created,
-            "engineers": engineers, "shift_top_flag": all_flags[0] if all_flags else None,
+            "schedule": sched, "engineers": engineers, "shift_top_flag": all_flags[0] if all_flags else None,
             "shift_counts": {"aircraft": len(roster), "flags": len(all_flags)}}
 
 

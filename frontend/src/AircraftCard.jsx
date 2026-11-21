@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { api } from './api'
 import AmmPanel from './AmmPanel'
 import { useApp } from './context'
+import { TimesLine, TimingNotes } from './Schedule'
 import { SourceTag, StatusChip, WhyDeferral, ErrorBox, Loading } from './ui'
 import { KIND, STATUS, deadlineLine, fmtDate, fmtDateTime, num } from './util'
 
@@ -182,7 +183,7 @@ function AmmHistory({ reg }) {
 }
 
 /* ------------------------------------------------------------------ one fault or deferral */
-export function FaultItem({ item, onChanged }) {
+export function FaultItem({ item, onChanged, notes }) {
   const [panel, setPanel] = useState(null) // 'amm' | 'parts' | 'record' | 'done'
   const [error, setError] = useState(null)
   const d = item.deferral
@@ -209,6 +210,7 @@ export function FaultItem({ item, onChanged }) {
         {d && <> {KIND[d.kind]}. {deadlineLine(d)}</>}
       </div>
       {d && <WhyDeferral item={item} />}
+      <TimingNotes notes={notes} />
       <div className="actions">
         {item.has_amm_ref && <button className="btn small" aria-expanded={panel === 'amm'} onClick={() => toggle('amm')}>Parts used (AMM)</button>}
         <button className="btn small" aria-expanded={panel === 'parts'} onClick={() => toggle('parts')}>Check parts</button>
@@ -288,6 +290,7 @@ export default function AircraftCard({ detail, defaultOpen = false, onChanged })
   const dated = detail.deferrals.filter((i) => i.deferral.expires_on)
   const undated = detail.deferrals.filter((i) => !i.deferral.expires_on)
   const flaggedN = c.expires_today + c.overdue + c.expires_soon
+  const notes = detail.schedule?.notes || {}
 
   // One section is shown at a time. Tone on a tab is status only.
   const sections = [
@@ -327,6 +330,8 @@ export default function AircraftCard({ detail, defaultOpen = false, onChanged })
         <span className="caret">{open ? 'Hide' : 'Show'}</span>
       </button>
 
+      <TimesLine schedule={detail.schedule} />
+
       {open && (
         <>
           <AiSummary reg={detail.aircraft_reg} />
@@ -362,14 +367,14 @@ export default function AircraftCard({ detail, defaultOpen = false, onChanged })
               <Pane title="Deferred items that can wait" hint={`${dated.length} with a calculated deadline, most urgent first.`}>
                 {detail.deferrals.length === 0 && <p className="muted small">No deferred items found in the open work orders.</p>}
                 {detail.deferrals.length > 0 && dated.length === 0 && <p className="muted small">None of the deferred items has a deadline that could be worked out.</p>}
-                {dated.map((i) => <FaultItem key={i.wo_number} item={i} onChanged={onChanged} />)}
+                {dated.map((i) => <FaultItem key={i.wo_number} item={i} onChanged={onChanged} notes={notes[String(i.wo_number)]} />)}
                 {undated.length > 0 && (
                   <details>
                     <summary>{undated.length} deferred item{undated.length === 1 ? '' : 's'} with no calculated date</summary>
                     <p className="muted small" style={{ margin: '6px 0 8px' }}>
                       The record does not give a time limit in days, or the limit is in flight cycles or hours. Check the source for each.
                     </p>
-                    {undated.map((i) => <FaultItem key={i.wo_number} item={i} onChanged={onChanged} />)}
+                    {undated.map((i) => <FaultItem key={i.wo_number} item={i} onChanged={onChanged} notes={notes[String(i.wo_number)]} />)}
                   </details>
                 )}
               </Pane>
@@ -378,7 +383,7 @@ export default function AircraftCard({ detail, defaultOpen = false, onChanged })
             {tab === 'faults' && (
               <Pane title="Other open faults">
                 {detail.other_faults.length === 0 && <p className="muted small">None.</p>}
-                {detail.other_faults.map((i) => <FaultItem key={i.wo_number} item={i} onChanged={onChanged} />)}
+                {detail.other_faults.map((i) => <FaultItem key={i.wo_number} item={i} onChanged={onChanged} notes={notes[String(i.wo_number)]} />)}
               </Pane>
             )}
 

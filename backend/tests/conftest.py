@@ -7,7 +7,7 @@ import pytest
 
 TEST_URL = os.getenv("TEST_DATABASE_URL", "postgresql://lea:lea@localhost:5432/lea_test")
 os.environ["DATABASE_URL"] = TEST_URL            # must happen before the app is imported
-os.environ.pop("OPENAI_API_KEY", None)
+os.environ["OPENAI_API_KEY"] = ""             # empty, not removed: a developer .env must not switch the AI on in tests
 os.environ["AS_OF_DATE"] = ""
 os.environ["CLOSE_DEADLINES_BEFORE"] = ""        # off by default; the cut-off test switches it on
 os.environ["ENGINEERS"] = "Engineer 1,Engineer 2,Engineer 3"
@@ -27,7 +27,7 @@ def database():
     from app import db
     db.reset_pool()
     db.apply_schema()
-    db.execute("TRUNCATE parts_stock, tools, work_orders, aviatar_faults, pha_cases, amm_tasks, amm_task_items, amm_task_notes, audit_log, roster, meta, work_completion RESTART IDENTITY")
+    db.execute("TRUNCATE parts_stock, tools, work_orders, aviatar_faults, pha_cases, amm_tasks, amm_task_items, amm_task_notes, audit_log, roster, meta, work_completion, flights RESTART IDENTITY")
     seed(db)
     yield db
     db.reset_pool()
@@ -86,6 +86,21 @@ def seed(db):
     db.execute("INSERT INTO pha_cases (source_row, max_severity, acreg, ata, title, impact, classification, status, opened, case_link) VALUES "
                "(2,'Alert','A6-AAB',32,'High Brake 1 Temperature','High','Ambiguous','OPEN','2026-11-19 04:00:00','https://example/1'),"
                "(3,'Alert','A6-AAB',32,'Old case','Low','-','COMPLETED','2026-11-01 04:00:00','https://example/2')")
+
+    flights = [  # reg, flight, dep, arr, std, atd, sta, ata   (times as written in the file = Sharjah local)
+        ("A6-AAA", "G9000", "SHJ", "DXB", "2026-11-19 10:00", "2026-11-19 10:05", "2026-11-19 11:00", "2026-11-19 11:02"),
+        ("A6-AAA", "G9001", "DXB", "SHJ", "2026-11-20 17:30", None, "2026-11-20 21:00", None),
+        ("A6-AAA", "G9002", "SHJ", "KTM", "2026-11-21 04:30", None, "2026-11-21 08:30", None),
+        ("A6-AAB", "G9011", "DOH", "SHJ", "2026-11-21 00:10", None, "2026-11-21 02:30", None),
+        ("A6-AAB", "G9012", "SHJ", "ISB", "2026-11-21 04:20", None, "2026-11-21 08:00", None),
+        ("A6-AAC", "G9021", "DXB", "SHJ", "2026-11-21 01:00", None, "2026-11-21 02:40", None),
+        ("A6-AAC", "G9022", "SHJ", "BOM", "2026-11-21 04:00", None, "2026-11-21 08:00", None),
+        ("AP-ZZZ", "9P1", "ISB", "SHJ", "2026-11-20 20:00", None, "2026-11-20 23:00", None),
+    ]
+    for i, f in enumerate(flights, start=2):
+        db.execute("INSERT INTO flights (source_row, flight_date, reg, flight_no, dep, arr, std, atd, sta, ata, has_actuals) "
+                   "VALUES (%s, %s::timestamp::date, %s,%s,%s,%s,%s,%s,%s,%s, %s)",
+                   (i, f[4], f[0], f[1], f[2], f[3], f[4], f[5], f[6], f[7], bool(f[5] or f[7])))
 
     from app.etl import load_data
     load_data.update_meta()

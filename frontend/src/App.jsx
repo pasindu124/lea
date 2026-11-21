@@ -7,6 +7,7 @@ import Brief from './pages/Brief'
 import Parts from './pages/Parts'
 import Shift from './pages/Shift'
 import Tools from './pages/Tools'
+import { fmtWhen } from './Schedule'
 import { fmtDate, useHash } from './util'
 
 const NAV = [
@@ -82,6 +83,12 @@ export default function App() {
                 ? <>Data as of <b>{fmtDate(meta.as_of)}</b> <span className="muted">({meta.as_of_source})</span></>
                 : metaError ? <span style={{ color: 'var(--danger)' }}>{metaError.message}</span> : 'Loading'}
             </span>
+            {meta?.schedule?.flights > 0 && (
+              <span className="muted small" title="The flight file does not say which time zone it uses. Change FLIGHT_TIMES_ARE in .env if Planning says UTC.">
+                Times: {meta.schedule.times_are === 'utc' ? `UTC shown as Sharjah (+${meta.schedule.utc_offset_hours} h)` : 'Sharjah local, as written'}
+                {meta.schedule.last_actual ? ` · last actual flight ${fmtWhen(meta.schedule.last_actual)}` : ''}
+              </span>
+            )}
             <label>Change date <input type="date" value={asOf} onChange={(e) => setAsOf(e.target.value)} aria-label="Change the as-of date" /></label>
             {asOf && <button className="btn quiet small" onClick={() => setAsOf('')}>Use newest data</button>}
             <span className="grow" />

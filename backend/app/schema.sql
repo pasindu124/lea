@@ -149,3 +149,18 @@ CREATE TABLE IF NOT EXISTS fleet_msn (
     aircraft_reg TEXT PRIMARY KEY,           -- A6-ANS
     msn TEXT NOT NULL, model TEXT, source_file TEXT
 );
+
+-- ------------------------------------------------------------ flight schedule
+-- Flights_Export_*.xls, sheet "Flight Summary". Times are stored exactly as written in the file (no time zone):
+-- config.FLIGHT_TIMES_ARE says whether they are Sharjah local time or UTC.
+CREATE TABLE IF NOT EXISTS flights (
+    id BIGSERIAL PRIMARY KEY,
+    source_row INT NOT NULL,                 -- Excel row number in the flights file
+    flight_date DATE, airline TEXT, reg TEXT, flight_no TEXT, dep TEXT, arr TEXT, op_type TEXT,
+    std TIMESTAMP, atd TIMESTAMP, sta TIMESTAMP, ata TIMESTAMP, eta TIMESTAMP,
+    dep_delay_min INT, arr_delay_min INT, pax INT,
+    dep_bay TEXT, arr_bay TEXT,
+    dep_delay_code TEXT, arr_delay_code TEXT, diversion TEXT,   -- loaded only; no rule or screen uses them yet
+    has_actuals BOOLEAN NOT NULL DEFAULT FALSE
+);
+CREATE INDEX IF NOT EXISTS flights_reg_std ON flights (reg, std);

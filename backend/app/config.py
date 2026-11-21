@@ -56,3 +56,30 @@ SOON_DAYS = 3                 # "expires soon" threshold, in days
 # closed in the source system, so the app treats them as closed. Records already closed in the
 # data are not touched. Empty = off. Format YYYY-MM-DD.
 CLOSE_DEADLINES_BEFORE = os.getenv("CLOSE_DEADLINES_BEFORE", "")
+
+# ------------------------------------------------------------- flight schedule
+STATION = os.getenv("STATION", "SHJ")   # the base where the line engineers work
+
+# ASSUMPTION: the file does not say whether its times are UTC or Sharjah local time. Default: local, as written.
+# Set FLIGHT_TIMES_ARE=utc if Planning says the export is in UTC (then LOCAL_UTC_OFFSET_HOURS is added).
+FLIGHT_TIMES_ARE = os.getenv("FLIGHT_TIMES_ARE", "local").strip().lower()
+LOCAL_UTC_OFFSET_HOURS = float(os.getenv("LOCAL_UTC_OFFSET_HOURS", "4"))   # Sharjah = UTC+4
+
+
+def _hhmm(value: str, fallback: str) -> tuple[int, int]:
+    try:
+        h, m = (value or fallback).strip().split(":")
+        return int(h), int(m)
+    except ValueError:
+        h, m = fallback.split(":")
+        return int(h), int(m)
+
+
+# ASSUMPTION: the night shift runs 22:00 to 06:00 Sharjah local time (confirm with Planning).
+SHIFT_START = _hhmm(os.getenv("SHIFT_START", "22:00"), "22:00")
+SHIFT_END = _hhmm(os.getenv("SHIFT_END", "06:00"), "06:00")
+# ASSUMPTION: an aircraft counts as "on the ground during the shift" when it is at the station for at least
+# this many minutes inside the shift window. Shorter overlaps are ignored.
+MIN_GROUND_MINUTES = int(os.getenv("MIN_GROUND_MINUTES", "30"))
+# A ground time under this many hours is shown as tight (amber) and used for the overlap warning.
+SHORT_GROUND_HOURS = float(os.getenv("SHORT_GROUND_HOURS", "2"))

@@ -241,7 +241,9 @@ def aircraft_detail(reg: str, as_of: date) -> dict:
               "expires_today": sum(1 for i in deferrals if i["deferral"]["status"] == "EXPIRES_TODAY"),
               "expires_soon": sum(1 for i in deferrals if i["deferral"]["status"] == "EXPIRES_SOON"),
               "pha_open": len(pha), "closed_by_cutoff": closed_cut}
+    from . import schedule_service  # local import: the schedule is optional and has its own rules
     return {"aircraft_reg": reg, "as_of": as_of, "score": score(items, pha), "counts": counts,
+            "schedule": schedule_service.for_aircraft(reg, as_of, urgent),
             "urgent": urgent, "deferrals": deferrals, "other_faults": others, "pha": pha,
             "aviatar": aviatar_groups(reg, as_of), "notes": recent_notes(reg, as_of)}
 
