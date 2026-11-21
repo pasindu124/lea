@@ -92,7 +92,6 @@ function FullRecord({ woNumber }) {
         <>
           <p><b>Description.</b></p><p className="quote">{rec.wo_description || 'Nothing recorded'}</p>
           <p><b>Work log.</b></p><p className="quote">{rec.wo_actions || 'Nothing recorded'}</p>
-          <p>Source: {rec.source.file}, row {rec.source.row}. State: {rec.wo_state}. Opened {fmtDate(rec.date_opened)}.</p>
         </>
       )}
     </div>
@@ -250,12 +249,13 @@ export default function AircraftCard({ detail, defaultOpen = false, onChanged })
           </div>
 
           <div className="section">
-            <h3>Aircraft messages, {fmtDate(av.window_from)} to {fmtDate(av.window_to)} <span className="chip">{av.total_messages} total</span></h3>
-            {av.groups.length === 0 && <p className="muted small">No high or medium priority messages in this window.</p>}
+            <h3>Aircraft messages (AVIATAR), {fmtDate(av.window_from)} to {fmtDate(av.window_to)} <span className="chip">{av.total_messages} total</span></h3>
+
+            {av.groups.length === 0 && <p className="muted small">No high or medium priority messages from this aircraft in this period.</p>}
             {av.groups.length > 0 && (
               <div className="tablewrap">
                 <table>
-                  <thead><tr><th>Message</th><th>Priority</th><th>ATA</th><th className="num">Times</th><th className="num">Flights</th><th>Last seen</th></tr></thead>
+                  <thead><tr><th>Message from aircraft</th><th>Priority</th><th title="System chapter number">ATA (system)</th><th className="num" title="How many times this message was sent">Times sent</th><th className="num" title="On how many different flights">Flights affected</th><th>Last seen</th></tr></thead>
                   <tbody>
                     {av.groups.map((g) => (
                       <tr key={g.tag}>
@@ -268,7 +268,7 @@ export default function AircraftCard({ detail, defaultOpen = false, onChanged })
                 </table>
               </div>
             )}
-            <p className="muted small" style={{ margin: '6px 0 4px' }}>Repeats are grouped. Source: AVIATAR faults export.</p>
+            <p className="muted small" style={{ margin: '6px 0 4px' }}>Shows the 12 most serious groups. A message is a symptom to check, not a confirmed fault. Read only. Source: AVIATAR faults export.</p>
           </div>
 
           <div className="section">

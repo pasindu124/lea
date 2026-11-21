@@ -33,7 +33,6 @@ export function WhyDeferral({ item }) {
         )}
         {d.is_assumption && <p>The day count for the category is an assumption (standard MMEL practice). Confirm it against the full MMEL.</p>}
         <p className="quote">{d.evidence}</p>
-        <p>Source: {item.source.file}, row {item.source.row}. Found in the work {d.where_found === 'actions' ? 'log' : 'description'}.</p>
       </div>
     </details>
   )
