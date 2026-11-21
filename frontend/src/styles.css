@@ -318,3 +318,11 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .pickrow:hover, .pickrow[aria-selected='true'] { background: var(--brand-soft); }
 .pickrow.danger td:first-child { box-shadow: inset 4px 0 var(--danger); }
 .pickrow.caution td:first-child { box-shadow: inset 4px 0 var(--caution); }
+
+.amm-cell { margin: 0; padding-left: 16px; font-size: 13px; }
+
+/* ---- two big switch tabs inside the Recent work pane */
+.view-tabs { display: flex; gap: 0; margin: 4px 0 14px; border-bottom: 2px solid var(--line-strong); }
+.view-tabs button { flex: 1 1 0; max-width: 260px; padding: 11px 18px; font: inherit; font-size: 15px; font-weight: 600; color: var(--ink); background: var(--surface-2); border: 1px solid var(--line-strong); border-bottom: none; border-radius: 8px 8px 0 0; margin-right: 6px; margin-bottom: -2px; cursor: pointer; }
+.view-tabs button:hover { background: var(--brand-soft); }
+.view-tabs button.on { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }

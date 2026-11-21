@@ -45,3 +45,59 @@ def for_work_order(wo_number: int) -> dict | None:
         t = get_task(ref)
         (tasks if t else unknown).append(t or ref)
     return {"wo_number": wo_number, "tasks": tasks, "not_in_amm": unknown}
+
+
+def history(reg: str, q: str = "", limit: int = 100, offset: int = 0) -> dict:
+    """Past work orders on one aircraft that name an AMM task, newest first.
+
+    `q` matches the work-order text or the AMM task (title, part, tool or material name or number),
+    so the engineer can find earlier jobs on one part. Reference only.
+    """
+    rows = db.query(
+        "SELECT wo_number, wo_type, wo_state, wo_description, wo_actions, date_opened, date_closed, source_row "
+        "FROM work_orders WHERE aircraft_reg = %s AND wo_state <> 'V' "
+        "AND (coalesce(wo_description,'') || ' ' || coalesce(wo_actions,'')) ~ '[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{3}-[0-9]{3}' "
+        "ORDER BY wo_number DESC LIMIT 1500", [reg])
+    needle = q.strip().lower()
+    words = needle.split()
+    cache: dict[str, str] = {}
+
+    def task_text(base: str) -> str:
+        if base not in cache:
+            t = db.query("SELECT title FROM amm_tasks WHERE base_task = %s", [base])
+            items = db.query(
+                "SELECT i.designation, i.ref, i.extra FROM amm_task_items i JOIN amm_tasks t ON t.task_no = i.task_no "
+                "WHERE t.base_task = %s AND i.kind <> 'reference'", [base])
+            cache[base] = " ".join([x["title"] or "" for x in t] +
+                                   [f"{i['designation'] or ''} {i['ref'] or ''} {i['extra'] or ''}" for i in items]).lower()
+        return cache[base]
+
+    summ: dict[str, dict] = {}
+
+    def summary(base: str) -> dict:
+        if base not in summ:
+            t = db.query("SELECT title, function_label FROM amm_tasks WHERE base_task = %s ORDER BY task_no LIMIT 1", [base])
+            items = db.query(
+                "SELECT DISTINCT i.kind, i.designation, i.ref FROM amm_task_items i JOIN amm_tasks t ON t.task_no = i.task_no "
+                "WHERE t.base_task = %s AND i.kind <> 'reference'", [base])
+            def names(kind): return [f"{i['designation']}" + (f" ({i['ref']})" if i["ref"] else "") for i in items if i["kind"] == kind]
+            summ[base] = {"base_task": base, "in_manual": bool(t), "title": t[0]["title"] if t else None,
+                          "function_label": t[0]["function_label"] if t else None,
+                          "parts": names("part"), "tools": names("tool"), "materials": names("consumable")}
+        return summ[base]
+
+    out, total = [], 0
+    for r in rows:
+        text = f"{r['wo_description'] or ''} {r['wo_actions'] or ''}"
+        refs = extract_task_refs(text)
+        hay = text.lower() + " " + " ".join(task_text(b) for b in refs)
+        if words and not all(w in hay for w in words):
+            continue
+        total += 1
+        if offset <= total - 1 < offset + limit:
+            out.append({"wo_number": r["wo_number"], "wo_type": r["wo_type"], "wo_state": r["wo_state"],
+                        "date_opened": r["date_opened"], "date_closed": r["date_closed"],
+                        "text": (r["wo_description"] or "")[:300], "task_refs": refs, "tasks": [summary(b) for b in refs],
+                        "source": {"file": "Maintenance_History.xlsx", "row": r["source_row"],
+                                   "wo_number": r["wo_number"]}})
+    return {"aircraft_reg": reg, "query": q, "total": total, "shown": len(out), "offset": offset, "items": out}

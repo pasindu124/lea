@@ -94,6 +94,12 @@ def aircraft_detail(reg: str, as_of: str | None = None, x_user: str | None = Hea
     return detail
 
 
+@router.get("/aircraft/{reg}/amm-history")
+def aircraft_amm_history(reg: str, q: str = "", limit: int = Query(20, ge=1, le=100), offset: int = Query(0, ge=0)):
+    """Past work orders on this aircraft that used an AMM task, optionally filtered by part, tool or words."""
+    return amm_service.history(reg.upper(), q, limit, offset)
+
+
 @router.get("/workorders/{wo_number}")
 def work_order(wo_number: int):
     row = aircraft_service.work_order_full(wo_number)

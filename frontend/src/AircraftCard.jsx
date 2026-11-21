@@ -107,7 +107,8 @@ function FullRecord({ woNumber }) {
 
 /* ------------------------------------------------------------------ one recent work-log entry */
 function NoteItem({ note: n }) {
-  const [open, setOpen] = useState(false)
+  const [panel, setPanel] = useState(null) // 'amm' | 'record'
+  const toggle = (name) => setPanel(panel === name ? null : name)
   return (
     <div className="item">
       <div className="title">{n.fault || n.text}</div>
@@ -116,13 +117,67 @@ function NoteItem({ note: n }) {
         {fmtDate(n.date)}, {n.wo_type}{n.done_by ? `, marked done by ${n.done_by}` : ''}. <SourceTag source={n.source} />
         {n.wo_state === 'Closed' && !n.done_by && <> <span className="chip">Closed</span></>}
       </div>
-      {n.has_amm_ref && (
-        <div className="actions">
-          <button className="btn small" aria-expanded={open} onClick={() => setOpen(!open)}>AMM details: parts and tools</button>
+      <div className="actions">
+        {n.has_amm_ref && <button className="btn small" aria-expanded={panel === 'amm'} onClick={() => toggle('amm')}>AMM details: parts and tools</button>}
+        <button className="btn small" aria-expanded={panel === 'record'} onClick={() => toggle('record')}>Full record</button>
+      </div>
+      {panel === 'amm' && n.has_amm_ref && <AmmPanel woNumber={n.wo_number} />}
+      {panel === 'record' && <FullRecord woNumber={n.wo_number} />}
+    </div>
+  )
+}
+
+/* ------------------------------------------------------------------ past AMM jobs, as a table */
+const list = (xs) => (xs.length ? <ul className="amm-cell">{xs.map((x, i) => <li key={i}>{x}</li>)}</ul> : <span className="muted small">None listed</span>)
+
+function AmmHistory({ reg }) {
+  const [data, setData] = useState(null)
+  const [error, setError] = useState(null)
+  const [input, setInput] = useState('')
+  const [q, setQ] = useState('')
+  useEffect(() => {
+    let alive = true
+    api.ammHistory(reg, q).then((r) => alive && (setData(r), setError(null)), (e) => alive && setError(e))
+    return () => { alive = false }
+  }, [reg, q])
+  const search = (e) => { e.preventDefault(); setQ(input.trim()) }
+
+  return (
+    <>
+      <form className="searchbar" style={{ margin: '0 0 8px' }} onSubmit={search}>
+        <input className="input grow" placeholder="Search by AMM number, for example 26-23-41" value={input}
+               maxLength={100} onChange={(e) => setInput(e.target.value)} aria-label="Search by AMM number" />
+        <button className="btn small primary" type="submit">Search</button>
+        {q && <button className="btn small" type="button" onClick={() => { setInput(''); setQ('') }}>Clear</button>}
+      </form>
+      <ErrorBox error={error} />
+      {!data && !error && <Loading text="Looking through past work orders" />}
+      {data && data.items.length === 0 && <p className="muted small">{q ? `No past work orders match "${q}".` : 'No past work orders on this aircraft name an AMM task.'}</p>}
+      {data && data.items.length > 0 && (
+        <div className="tablewrap">
+          <table>
+            <thead>
+              <tr><th>Date</th><th>Work order</th><th>AMM task</th><th>Parts to replace</th><th>Tools</th><th>Materials</th><th>Source</th></tr>
+            </thead>
+            <tbody>
+              {data.items.flatMap((h) => (h.tasks.length ? h.tasks : [null]).map((t, i) => (
+                <tr key={`${h.wo_number}-${i}`}>
+                  <td>{fmtDate(h.date_closed || h.date_opened)}<div className="muted small">{h.date_closed ? 'Closed' : 'Open'}</div></td>
+                  <td><b>{h.wo_number}</b><div className="muted small">{h.wo_type}</div><div className="small">{h.text.slice(0, 90)}</div></td>
+                  <td>{t ? <>{t.base_task}<div className="small">{t.in_manual ? `${t.function_label}: ${t.title}` : 'Not in the loaded manual'}</div></> : ''}</td>
+                  <td>{t ? list(t.parts) : ''}</td>
+                  <td>{t ? list(t.tools) : ''}</td>
+                  <td>{t ? list(t.materials) : ''}</td>
+                  <td><SourceTag source={h.source} /></td>
+                </tr>
+              )))}
+            </tbody>
+          </table>
         </div>
       )}
-      {open && n.has_amm_ref && <AmmPanel woNumber={n.wo_number} />}
-    </div>
+      {data && data.total > data.shown && <p className="muted small">Showing the newest {data.shown} of {data.total} jobs. Search by AMM number to narrow them down.</p>}
+      <p className="muted small" style={{ margin: '8px 0 0' }}>Reference only, from the AMM and Maintenance_History. Nothing here is signed or closed.</p>
+    </>
   )
 }
 
@@ -248,6 +303,7 @@ export default function AircraftCard({ detail, defaultOpen = false, onChanged })
     if (sections.some((x) => x.id === saved)) return saved
     return detail.deferrals.length ? 'defer' : detail.other_faults.length ? 'faults' : 'defer'
   })
+  const [workView, setWorkView] = useState('log') // 'log' | 'amm'
   const setTab = (id) => { setTabState(id); localStorage.setItem(storeKey, id) }
   const urgent = detail.deferrals.filter((i) => ['OVERDUE', 'EXPIRES_TODAY', 'EXPIRES_SOON'].includes(i.deferral.status))
   const onKey = (e) => {
@@ -287,9 +343,7 @@ export default function AircraftCard({ detail, defaultOpen = false, onChanged })
                   </li>
                 ))}
               </ul>
-              <button className="btn small" onClick={() => setTab('defer')}>
-                {urgent.length > 3 ? `See all ${urgent.length} under Can wait` : 'See details under Can wait'}
-              </button>
+
             </div>
           )}
 
@@ -298,7 +352,7 @@ export default function AircraftCard({ detail, defaultOpen = false, onChanged })
               <button key={x.id} role="tab" id={`tab-${detail.aircraft_reg}-${x.id}`} aria-selected={tab === x.id}
                       tabIndex={tab === x.id ? 0 : -1} onClick={() => setTab(x.id)}>
                 {x.label}
-                <span className={`chip ${x.tone}`}>{x.count}</span>
+                {x.count !== undefined && <span className={`chip ${x.tone}`}>{x.count}</span>}
               </button>
             ))}
           </div>
@@ -369,9 +423,24 @@ export default function AircraftCard({ detail, defaultOpen = false, onChanged })
             )}
 
             {tab === 'work' && (
-              <Pane title="Recent work logged" hint="Derived: no handover records were provided, so these are work-log entries from the last two days.">
-                {detail.notes.length === 0 && <p className="muted small">No entries in the last two days.</p>}
-                {detail.notes.map((n, i) => <NoteItem key={i} note={n} />)}
+              <Pane title="Recent work" hint="Switch between the last two days of work-log entries and the AMM details of past jobs.">
+                <div className="view-tabs" role="tablist" aria-label="Recent work views">
+                  <button role="tab" aria-selected={workView === 'log'} className={workView === 'log' ? 'on' : ''} onClick={() => setWorkView('log')}>Recent work logged</button>
+                  <button role="tab" aria-selected={workView === 'amm'} className={workView === 'amm' ? 'on' : ''} onClick={() => setWorkView('amm')}>AMM details</button>
+                </div>
+                {workView === 'log' && (
+                  <>
+                    <p className="muted small">Derived: no handover records were provided, so these are work-log entries from the last two days.</p>
+                    {detail.notes.length === 0 && <p className="muted small">No entries in the last two days.</p>}
+                    {detail.notes.map((n, i) => <NoteItem key={i} note={n} />)}
+                  </>
+                )}
+                {workView === 'amm' && (
+                  <>
+                    <p className="muted small">Earlier work orders that name a maintenance manual task, with the parts, tools and materials that task lists.</p>
+                    <AmmHistory reg={detail.aircraft_reg} />
+                  </>
+                )}
               </Pane>
             )}
           </div>
