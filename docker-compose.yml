@@ -1,0 +1,19 @@
+# PostgreSQL for the Line Engineer Agent.   Start:  docker compose up -d     Stop:  docker compose down
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: lea
+      POSTGRES_PASSWORD: lea
+      POSTGRES_DB: lea
+    ports:
+      - "5432:5432"
+    volumes:
+      - lea_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lea -d lea"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+volumes:
+  lea_pgdata:
