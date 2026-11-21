@@ -61,6 +61,95 @@ def _open_fault_rows(reg: str | None = None) -> list[dict]:
     return db.query(sql + " ORDER BY date_opened DESC, wo_number DESC", params)
 
 
+# ------------------------------------------------------ work orders the app treats as closed
+def close_cutoff() -> date | None:
+    """Deadline cut-off from config: open deferrals that expired before it count as closed."""
+    return deadlines._as_date(config.CLOSE_DEADLINES_BEFORE) if config.CLOSE_DEADLINES_BEFORE else None
+
+
+def closed_by_cutoff(item: dict) -> bool:
+    d = item["deferral"]
+    cutoff = close_cutoff()
+    expires = deadlines._as_date(d["expires_on"]) if d else None
+    return bool(cutoff and expires and expires < cutoff)
+
+
+def completions(reg: str | None = None, wo_numbers: list[int] | None = None) -> dict[int, dict]:
+    """Work orders an engineer marked as done in this app, by work-order number."""
+    sql, params = "SELECT * FROM work_completion WHERE true", []
+    if reg:
+        sql += " AND aircraft_reg = %s"
+        params.append(reg)
+    if wo_numbers is not None:
+        sql += " AND wo_number = ANY(%s)"
+        params.append(wo_numbers)
+    return {r["wo_number"]: r for r in db.query(sql, params)}
+
+
+def _still_open(items: list[dict], done: dict[int, dict]) -> tuple[list[dict], int]:
+    """Drop items done in the app or closed by the cut-off. Returns (open items, number closed by cut-off)."""
+    kept, cut = [], 0
+    for i in items:
+        if i["wo_number"] in done:
+            continue
+        if closed_by_cutoff(i):
+            cut += 1
+            continue
+        kept.append(i)
+    return kept, cut
+
+
+def log_entry(on: date, note: str) -> str:
+    """A work-log entry in the same format as the source data: [20-Nov-2026] text."""
+    return f"[{on.strftime('%d-%b-%Y')}] {note}"
+
+
+_CLOSE_SQL = ("UPDATE work_orders SET wo_state = 'Closed', date_closed = %s, "
+              "wo_actions = CASE WHEN coalesce(wo_actions, '') = '' THEN %s ELSE wo_actions || ' | ' || %s END "
+              "WHERE wo_number = %s AND wo_state = 'Open'")
+
+
+def complete_work_order(wo_number: int, note: str, actor: str, on: date) -> dict:
+    """Close the work order row: state Closed, close date, the note appended to its work log."""
+    row = work_order_full(wo_number)
+    entry = log_entry(on, note)
+    with db.get_pool().connection() as conn:          # one transaction: both writes or neither
+        conn.execute(
+            "INSERT INTO work_completion (wo_number, aircraft_reg, completed_by, completed_on, note, prev_state, prev_actions) "
+            "VALUES (%s, %s, %s, %s, %s, %s, %s)",
+            (wo_number, row["aircraft_reg"], actor, on, note, row["wo_state"], row["wo_actions"]))
+        conn.execute(_CLOSE_SQL, (on, entry, entry, wo_number))
+    return completions(wo_numbers=[wo_number])[wo_number]
+
+
+def undo_completion(wo_number: int) -> dict | None:
+    """Put the work order row back as it was before it was marked done."""
+    before = completions(wo_numbers=[wo_number]).get(wo_number)
+    if not before:
+        return None
+    with db.get_pool().connection() as conn:
+        conn.execute("UPDATE work_orders SET wo_state = %s, date_closed = NULL, wo_actions = %s WHERE wo_number = %s",
+                     (before["prev_state"] or "Open", before["prev_actions"], wo_number))
+        conn.execute("DELETE FROM work_completion WHERE wo_number = %s", (wo_number,))
+    return before
+
+
+def reapply_completions() -> int:
+    """After work orders are reloaded from Excel, close again the ones done in this app.
+    A work order the new data already shows as closed is left as the data says."""
+    n = 0
+    for c in completions().values():
+        entry = log_entry(c["completed_on"], c["note"])
+        with db.get_pool().connection() as conn:
+            # Remember the freshly loaded values, so Undo restores what the data says now.
+            conn.execute(
+                "UPDATE work_completion c SET prev_state = w.wo_state, prev_actions = w.wo_actions "
+                "FROM (SELECT wo_state, wo_actions FROM work_orders WHERE wo_number = %s AND wo_state = 'Open' "
+                "ORDER BY id LIMIT 1) w WHERE c.wo_number = %s", (c["wo_number"], c["wo_number"]))
+            n += conn.execute(_CLOSE_SQL, (c["completed_on"], entry, entry, c["wo_number"])).rowcount
+    return n
+
+
 def _sort_key(item: dict) -> tuple:
     d = item["deferral"]
     if not d:
@@ -115,15 +204,22 @@ def recent_notes(reg: str, as_of: date, limit: int = 8) -> list[dict]:
         "WHERE aircraft_reg = %s AND wo_actions IS NOT NULL AND (wo_state = 'Open' OR date_closed >= %s "
         "OR date_opened >= %s) ORDER BY wo_number DESC LIMIT 400",
         (reg, as_of - timedelta(days=2), as_of - timedelta(days=2)))
+    done = completions(reg)
     notes = []
     for r in rows:
+        c = done.get(r["wo_number"])
         for e in deadlines.recent_entries(r["wo_actions"], as_of):
             text = e["text"][:300] + ("…" if len(e["text"]) > 300 else "")
-            notes.append({"date": e["date"], "text": text, "wo_number": r["wo_number"], "wo_type": r["wo_type"],
-                          "has_amm_ref": bool(extract_task_refs(f"{r['wo_description'] or ''} {r['wo_actions'] or ''}")),
-                          "source": {"file": "Maintenance_History.xlsx", "row": r["source_row"],
-                                     "wo_number": r["wo_number"]}})
-    notes.sort(key=lambda n: (n["date"], n["wo_number"]), reverse=True)
+            note = {"date": e["date"], "text": text, "wo_number": r["wo_number"], "wo_type": r["wo_type"],
+                    "wo_state": r["wo_state"],
+                    "has_amm_ref": bool(extract_task_refs(f"{r['wo_description'] or ''} {r['wo_actions'] or ''}")),
+                    "source": {"file": "Maintenance_History.xlsx", "row": r["source_row"], "wo_number": r["wo_number"]}}
+            # The entry this app appended when an engineer marked the work order done.
+            if c and e["text"] == " ".join(c["note"].split()) and e["date"] == c["completed_on"].isoformat():
+                note["done_by"] = c["completed_by"]
+                note["fault"] = _title(r["wo_description"])    # shown as the title, like the open items
+            notes.append(note)
+    notes.sort(key=lambda n: (n["date"], "done_by" in n, n["wo_number"]), reverse=True)
     return notes[:limit]
 
 
@@ -135,7 +231,7 @@ def score(items: list[dict], pha: list[dict]) -> int:
 
 
 def aircraft_detail(reg: str, as_of: date) -> dict:
-    items = [fault_item(r, as_of) for r in _open_fault_rows(reg)]
+    items, closed_cut = _still_open([fault_item(r, as_of) for r in _open_fault_rows(reg)], completions(reg))
     deferrals = sorted([i for i in items if i["deferral"]], key=_sort_key)
     others = [i for i in items if not i["deferral"]]
     pha = pha_cases(reg)
@@ -144,7 +240,7 @@ def aircraft_detail(reg: str, as_of: date) -> dict:
               "overdue": sum(1 for i in deferrals if i["deferral"]["status"] == "OVERDUE"),
               "expires_today": sum(1 for i in deferrals if i["deferral"]["status"] == "EXPIRES_TODAY"),
               "expires_soon": sum(1 for i in deferrals if i["deferral"]["status"] == "EXPIRES_SOON"),
-              "pha_open": len(pha)}
+              "pha_open": len(pha), "closed_by_cutoff": closed_cut}
     return {"aircraft_reg": reg, "as_of": as_of, "score": score(items, pha), "counts": counts,
             "urgent": urgent, "deferrals": deferrals, "other_faults": others, "pha": pha,
             "aviatar": aviatar_groups(reg, as_of), "notes": recent_notes(reg, as_of)}
@@ -153,8 +249,11 @@ def aircraft_detail(reg: str, as_of: date) -> dict:
 def list_aircraft(as_of: date) -> list[dict]:
     """All Air Arabia aircraft with open items: one cheap row each (used for ranking and pickers)."""
     by_reg: dict[str, list[dict]] = {}
+    done = completions()
     for row in _open_fault_rows():
-        by_reg.setdefault(row["aircraft_reg"], []).append(fault_item(row, as_of))
+        item = fault_item(row, as_of)
+        if item["wo_number"] not in done and not closed_by_cutoff(item):
+            by_reg.setdefault(row["aircraft_reg"], []).append(item)
     pha_by_reg: dict[str, list[dict]] = {}
     for p in db.query("SELECT acreg, max_severity, impact FROM pha_cases WHERE status = 'OPEN'"):
         pha_by_reg.setdefault(p["acreg"], []).append(p)
@@ -184,4 +283,10 @@ def work_order_full(wo_number: int) -> dict | None:
         "wo_description, wo_actions, source_row FROM work_orders WHERE wo_number = %s ORDER BY id LIMIT 1", (wo_number,))
     if row:
         row["source"] = {"file": "Maintenance_History.xlsx", "row": row["source_row"], "wo_number": wo_number}
+        row["completion"] = completions(wo_numbers=[wo_number]).get(wo_number)
+        d = deadlines.parse_deferral(row["wo_description"], row["wo_actions"], row["date_opened"])
+        cutoff = close_cutoff()
+        row["closed_by_cutoff"] = bool(row["wo_state"] == "Open" and cutoff and d and d.expires_on
+                                       and d.expires_on < cutoff)
+        row["cutoff_date"] = cutoff
     return row

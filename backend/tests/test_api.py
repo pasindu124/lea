@@ -207,3 +207,53 @@ def test_keywords_use_ai_when_on_and_fall_back_when_it_fails(client, ai_on, monk
 
 def test_keywords_without_ai(client):
     assert client.get("/api/faults/1003/keywords").json()["method"] == "simple"
+
+
+# ------------------------------------------------------- closing work orders
+def test_deadline_cutoff_treats_old_open_items_as_closed(client, monkeypatch):
+    from app import config
+    monkeypatch.setattr(config, "CLOSE_DEADLINES_BEFORE", "2026-11-14")
+    a = client.get("/api/aircraft/A6-AAA", params={"as_of": AS_OF}).json()
+    wos = [d["wo_number"] for d in a["deferrals"]]
+    assert 1002 not in wos and 1001 in wos               # 1002 expired 13 Nov: closed; 1001 is in date
+    assert a["counts"]["closed_by_cutoff"] == 1 and a["counts"]["overdue"] == 0
+    b = client.get("/api/aircraft/A6-AAB", params={"as_of": AS_OF}).json()
+    assert 1003 in [d["wo_number"] for d in b["deferrals"]]   # deadline 20 Nov: after the cut-off, stays open
+    wo = client.get("/api/workorders/1002").json()
+    assert wo["closed_by_cutoff"] is True and wo["wo_state"] == "Open"   # the source data is not changed
+    assert any(x["id"] == "cutoff" for x in client.get("/api/meta").json()["assumptions"])
+
+
+def test_mark_done_closes_item_and_shows_in_recent_work(client):
+    note = "Door seal replaced IAW AMM 52-10-00. Checked OK."
+    assert client.post("/api/workorders/done", json={"wo_number": 1005, "note": note}).status_code == 400  # no name
+    r = client.post("/api/workorders/done", json={"wo_number": 1005, "note": note, "as_of": AS_OF}, headers=H)
+    assert r.status_code == 200 and r.json()["completed_by"] == "tester"
+    a = client.get("/api/aircraft/A6-AAC", params={"as_of": AS_OF}).json()
+    assert 1005 not in [i["wo_number"] for i in a["other_faults"] + a["deferrals"]]
+    assert {"text": note, "done_by": "tester"}.items() <= next(n for n in a["notes"] if n["wo_number"] == 1005).items()
+    wo = client.get("/api/workorders/1005").json()
+    assert wo["completion"]["note"] == note and wo["wo_state"] == "Closed" and wo["date_closed"] == AS_OF
+    assert wo["wo_actions"].endswith(f" | [20-Nov-2026] {note}")              # appended to the row's work log
+    # A data reload brings the Excel row back as Open: the app closes it again.
+    from app import db
+    from app.services.aircraft_service import reapply_completions
+    db.execute("UPDATE work_orders SET wo_state = 'Open', date_closed = NULL, "
+               "wo_actions = '[19-Nov-2026] INSPECTED, SEAL TO BE REPLACED' WHERE wo_number = 1005")
+    assert reapply_completions() == 1 and client.get("/api/workorders/1005").json()["wo_state"] == "Closed"
+    assert "work_done" in [x["action"] for x in client.get("/api/audit?limit=5").json()]
+    assert client.delete("/api/workorders/1005/done", headers=H).json() == {"ok": True}
+    a = client.get("/api/aircraft/A6-AAC", params={"as_of": AS_OF}).json()
+    assert 1005 in [i["wo_number"] for i in a["other_faults"]]
+    wo = client.get("/api/workorders/1005").json()
+    assert (wo["wo_state"], wo["date_closed"], wo["wo_actions"]) == ("Open", None, "[19-Nov-2026] INSPECTED, SEAL TO BE REPLACED")
+    assert client.post("/api/workorders/done", json={"wo_number": 1005, "note": "x" * 5}, headers=H).status_code == 200
+    assert client.post("/api/workorders/done", json={"wo_number": 1005, "note": "again"}, headers=H).status_code == 409
+    client.delete("/api/workorders/1005/done", headers=H)
+    assert "work_done_undo" in [x["action"] for x in client.get("/api/audit?limit=5").json()]
+
+
+def test_mark_done_refuses_closed_or_missing_work_orders(client):
+    assert client.post("/api/workorders/done", json={"wo_number": 1008, "note": "again"}, headers=H).status_code == 409
+    assert client.post("/api/workorders/done", json={"wo_number": 424242, "note": "nope"}, headers=H).status_code == 404
+    assert client.delete("/api/workorders/1001/done", headers=H).status_code == 404

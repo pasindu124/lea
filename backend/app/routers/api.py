@@ -47,7 +47,10 @@ def meta(as_of: str | None = None):
                                       "only for the demo."},
             {"id": "notes", "text": "Handover notes are derived from work-log entries of the last two days. "
                                     "No real handover records were provided."},
-        ],
+        ] + ([{"id": "cutoff", "text": f"Open work orders whose deadline was before {config.CLOSE_DEADLINES_BEFORE} "
+                                       "are treated as closed: the work is assumed done but never closed in the source "
+                                       "system. Records already closed in the data are not changed."}]
+             if config.CLOSE_DEADLINES_BEFORE else []),
     }
 
 
@@ -189,6 +192,42 @@ def flag_ack(body: Ack, x_user: str | None = Header(None)):
         raise HTTPException(404, f"Work order {body.wo_number} not found")
     context.log(_actor(x_user), "ack_flag", {"wo_number": body.wo_number, "note": body.note},
                 [{"file": "Maintenance_History.xlsx", "wo_number": body.wo_number}])
+    return {"ok": True}
+
+
+class Done(BaseModel):
+    wo_number: int
+    note: str = Field(..., min_length=3, max_length=2000)
+    as_of: str | None = None
+
+
+@router.post("/workorders/done")
+def work_order_done(body: Done, x_user: str | None = Header(None)):
+    """An engineer marks an open work order as done, with a work-log note. The source data is not changed:
+    the completion is stored in the app's own table and the work order then counts as closed."""
+    row = aircraft_service.work_order_full(body.wo_number)
+    if not row:
+        raise HTTPException(404, f"Work order {body.wo_number} not found")
+    if row["wo_state"] != "Open":
+        raise HTTPException(409, f"Work order {body.wo_number} is already {row['wo_state']} in the data")
+    actor = _actor(x_user)
+    if actor == "unknown":
+        raise HTTPException(400, "Type your name in the top bar first: completions must show who did the work")
+    on = context.resolve_as_of(body.as_of)
+    done = aircraft_service.complete_work_order(body.wo_number, body.note.strip(), actor, on)
+    context.log(actor, "work_done", {"wo_number": body.wo_number, "aircraft": row["aircraft_reg"],
+                                     "completed_on": on, "note": done["note"]},
+                [{"file": "Maintenance_History.xlsx", "row": row["source_row"], "wo_number": body.wo_number}])
+    return done
+
+
+@router.delete("/workorders/{wo_number}/done")
+def work_order_undo(wo_number: int, x_user: str | None = Header(None)):
+    before = aircraft_service.undo_completion(wo_number)
+    if not before:
+        raise HTTPException(404, f"Work order {wo_number} was not marked as done in this app")
+    context.log(_actor(x_user), "work_done_undo", {"wo_number": wo_number, "removed_note": before["note"],
+                                                   "was_done_by": before["completed_by"]})
     return {"ok": True}
 
 

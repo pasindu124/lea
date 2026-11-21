@@ -77,6 +77,20 @@ CREATE TABLE IF NOT EXISTS roster (
     PRIMARY KEY (shift_date, aircraft_reg)
 );
 
+-- Work orders an engineer marked as done in this app. Marking done also closes the row in
+-- work_orders (state, close date, note appended to the work log). This table keeps who did it and
+-- the row's previous values, so Undo can restore them and a data reload can re-apply the closure.
+CREATE TABLE IF NOT EXISTS work_completion (
+    wo_number BIGINT PRIMARY KEY,
+    aircraft_reg TEXT NOT NULL,
+    completed_by TEXT NOT NULL,
+    completed_on DATE NOT NULL,              -- the shift date ("as of") the work was done on
+    completed_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    note TEXT NOT NULL
+);
+ALTER TABLE work_completion ADD COLUMN IF NOT EXISTS prev_state TEXT;
+ALTER TABLE work_completion ADD COLUMN IF NOT EXISTS prev_actions TEXT;
+
 CREATE TABLE IF NOT EXISTS meta (
     key TEXT PRIMARY KEY,
     value JSONB NOT NULL

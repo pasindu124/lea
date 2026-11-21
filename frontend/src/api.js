@@ -48,6 +48,9 @@ export const api = {
   rosterAuto: (shiftDate) => request(`/roster/auto${qs({ shift_date: shiftDate })}`, { method: 'POST' }),
   rosterSet: (aircraft_reg, engineer, shift_date) =>
     request('/roster', { method: 'PUT', body: JSON.stringify({ aircraft_reg, engineer, shift_date }) }),
+  markDone: (wo_number, note, as_of) =>
+    request('/workorders/done', { method: 'POST', body: JSON.stringify({ wo_number, note, as_of }) }),
+  undoDone: (wo) => request(`/workorders/${wo}/done`, { method: 'DELETE' }),
   ack: (wo_number, note) => request('/flags/ack', { method: 'POST', body: JSON.stringify({ wo_number, note }) }),
   aiAircraft: (aircraft_reg, question, as_of) =>
     request('/ai/aircraft', { method: 'POST', body: JSON.stringify({ aircraft_reg, question, as_of }) }),

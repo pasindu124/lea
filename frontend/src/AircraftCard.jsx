@@ -93,6 +93,12 @@ function FullRecord({ woNumber }) {
         <>
           <p><b>Description.</b></p><p className="quote">{rec.wo_description || 'Nothing recorded'}</p>
           <p><b>Work log.</b></p><p className="quote">{rec.wo_actions || 'Nothing recorded'}</p>
+          <p className="muted small">
+            Source: {rec.source.file}, row {rec.source.row}. State: {rec.wo_state}
+            {rec.date_closed ? `, closed ${fmtDate(rec.date_closed)}` : ''}.
+            {rec.completion && ` Marked as done in this app by ${rec.completion.completed_by} on ${fmtDateTime(rec.completion.completed_at)}; the last work-log entry is their note.`}
+            {rec.closed_by_cutoff && ` Treated as closed: deadline before ${fmtDate(rec.cutoff_date)} (see Assumptions).`}
+          </p>
         </>
       )}
     </div>
@@ -104,8 +110,12 @@ function NoteItem({ note: n }) {
   const [open, setOpen] = useState(false)
   return (
     <div className="item">
-      <div className="title">{n.text}</div>
-      <div className="meta">{fmtDate(n.date)}, {n.wo_type}. <SourceTag source={n.source} /></div>
+      <div className="title">{n.fault || n.text}</div>
+      {n.fault && <div className="meta"><b>Work done:</b> {n.text}</div>}
+      <div className="meta">
+        {fmtDate(n.date)}, {n.wo_type}{n.done_by ? `, marked done by ${n.done_by}` : ''}. <SourceTag source={n.source} />
+        {n.wo_state === 'Closed' && !n.done_by && <> <span className="chip">Closed</span></>}
+      </div>
       {n.has_amm_ref && (
         <div className="actions">
           <button className="btn small" aria-expanded={open} onClick={() => setOpen(!open)}>AMM details: parts and tools</button>
@@ -118,18 +128,18 @@ function NoteItem({ note: n }) {
 
 /* ------------------------------------------------------------------ one fault or deferral */
 export function FaultItem({ item, onChanged }) {
-  const [panel, setPanel] = useState(null) // 'amm' | 'parts' | 'record' | 'seen'
-  const [note, setNote] = useState('')
+  const [panel, setPanel] = useState(null) // 'amm' | 'parts' | 'record' | 'done'
   const [error, setError] = useState(null)
   const d = item.deferral
   const tone = d ? STATUS[d.status].tone : ''
-  const flagged = d && ['OVERDUE', 'EXPIRES_TODAY', 'EXPIRES_SOON'].includes(d.status)
   const toggle = (name) => setPanel(panel === name ? null : name)
 
-  const saveSeen = async () => {
+  const { asOf } = useApp()
+  const [doneNote, setDoneNote] = useState('')
+  const saveDone = async () => {
     try {
-      await api.ack(item.wo_number, note)
-      setPanel(null); setNote(''); onChanged && onChanged()
+      await api.markDone(item.wo_number, doneNote.trim(), asOf || null)
+      setPanel(null); setDoneNote(''); onChanged && onChanged()
     } catch (e) { setError(e) }
   }
 
@@ -143,28 +153,26 @@ export function FaultItem({ item, onChanged }) {
         <SourceTag source={item.source} /> {item.wo_type}, ATA {item.ata || 'not recorded'}, opened {fmtDate(item.date_opened)}.
         {d && <> {KIND[d.kind]}. {deadlineLine(d)}</>}
       </div>
-      {item.ack && <div className="meta"><span className="chip brand">Seen</span> by {item.ack.actor} on {fmtDateTime(item.ack.ts)}{item.ack.note ? `: ${item.ack.note}` : ''}</div>}
       {d && <WhyDeferral item={item} />}
       <div className="actions">
         {item.has_amm_ref && <button className="btn small" aria-expanded={panel === 'amm'} onClick={() => toggle('amm')}>Parts used (AMM)</button>}
         <button className="btn small" aria-expanded={panel === 'parts'} onClick={() => toggle('parts')}>Check parts</button>
         <button className="btn small" aria-expanded={panel === 'record'} onClick={() => toggle('record')}>Full record</button>
-        {flagged && <button className="btn small" aria-expanded={panel === 'seen'} onClick={() => toggle('seen')}>Mark as seen</button>}
+        <button className="btn small" aria-expanded={panel === 'done'} onClick={() => toggle('done')}>Mark as done</button>
       </div>
-      {panel === 'amm' && item.has_amm_ref && <AmmPanel woNumber={item.wo_number} />}
-      {panel === 'parts' && <PartsCheck woNumber={item.wo_number} />}
-      {panel === 'record' && <FullRecord woNumber={item.wo_number} />}
-      {panel === 'seen' && (
+      {panel === 'done' && (
         <div className="why" style={{ marginTop: 8 }}>
-          <p>Record that you have seen this flag. The item stays open: only the licensed engineer can act on it.</p>
-          <div className="searchbar" style={{ margin: '8px 0 0' }}>
-            <input className="input grow" placeholder="Note (optional), for example: checked with MCC" value={note} maxLength={500}
-                   onChange={(e) => setNote(e.target.value)} aria-label="Note" />
-            <button className="btn small primary" onClick={saveSeen}>Save</button>
-          </div>
+          <p>Write what was done, as you would in the work log. The item then closes and the note appears under Recent work.</p>
+          <textarea className="input" rows={3} style={{ width: '100%', margin: '8px 0' }} maxLength={2000} aria-label="Work done"
+                    placeholder="For example: placards #506, #513, #517 installed IAW AMM 11-00-00-400-021-A. Checked OK."
+                    value={doneNote} onChange={(e) => setDoneNote(e.target.value)} />
+          <button className="btn small primary" disabled={doneNote.trim().length < 3} onClick={saveDone}>Save and close</button>
           <ErrorBox error={error} />
         </div>
       )}
+      {panel === 'amm' && item.has_amm_ref && <AmmPanel woNumber={item.wo_number} />}
+      {panel === 'parts' && <PartsCheck woNumber={item.wo_number} />}
+      {panel === 'record' && <FullRecord woNumber={item.wo_number} />}
     </div>
   )
 }
