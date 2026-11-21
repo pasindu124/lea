@@ -9,6 +9,7 @@ TEST_URL = os.getenv("TEST_DATABASE_URL", "postgresql://lea:lea@localhost:5432/l
 os.environ["DATABASE_URL"] = TEST_URL            # must happen before the app is imported
 os.environ.pop("OPENAI_API_KEY", None)
 os.environ["AS_OF_DATE"] = ""
+os.environ["CLOSE_DEADLINES_BEFORE"] = ""        # off by default; the cut-off test switches it on
 os.environ["ENGINEERS"] = "Engineer 1,Engineer 2,Engineer 3"
 
 
@@ -26,7 +27,7 @@ def database():
     from app import db
     db.reset_pool()
     db.apply_schema()
-    db.execute("TRUNCATE parts_stock, tools, work_orders, aviatar_faults, pha_cases, amm_tasks, amm_task_items, amm_task_notes, audit_log, roster, meta RESTART IDENTITY")
+    db.execute("TRUNCATE parts_stock, tools, work_orders, aviatar_faults, pha_cases, amm_tasks, amm_task_items, amm_task_notes, audit_log, roster, meta, work_completion RESTART IDENTITY")
     seed(db)
     yield db
     db.reset_pool()

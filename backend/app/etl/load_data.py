@@ -219,6 +219,9 @@ def main() -> None:
         n = LOADERS[key](files)
         loaded += 1
         print(f"         {n:,} rows in {time.time() - start:.1f}s")
+        if key == "work_orders":
+            from ..services.aircraft_service import reapply_completions
+            print(f"         {reapply_completions():,} work orders closed again (marked done in the app)")
 
     if args.if_empty and not loaded:
         print("\nNothing to load.")

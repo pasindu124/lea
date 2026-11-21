@@ -51,3 +51,8 @@ UNSERVICEABLE_CODES = {"US"}
 # ASSUMPTION still: Air Arabia's own MEL uses the same intervals (the operator MEL is not in the pack).
 CATEGORY_DAYS = {"B": 3, "C": 10, "D": 120}
 SOON_DAYS = 3                 # "expires soon" threshold, in days
+
+# ASSUMPTION: open work orders whose deferral deadline is before this date were done but never
+# closed in the source system, so the app treats them as closed. Records already closed in the
+# data are not touched. Empty = off. Format YYYY-MM-DD.
+CLOSE_DEADLINES_BEFORE = os.getenv("CLOSE_DEADLINES_BEFORE", "")

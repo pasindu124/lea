@@ -5,7 +5,7 @@ import { fmtDateTime, useAsync } from '../util'
 
 const LABEL = {
   parts_search: 'Parts search', tools_search: 'Tools search', aircraft_view: 'Aircraft viewed', brief_view: 'Brief viewed',
-  roster_auto: 'Split suggested', roster_change: 'Roster changed', ack_flag: 'Flag seen', ai_aircraft: 'AI summary', ai_parts: 'AI parts answer',
+  roster_auto: 'Split suggested', roster_change: 'Roster changed', ack_flag: 'Flag seen', work_done: 'Marked as done', work_done_undo: 'Done undone', ai_aircraft: 'AI summary', ai_parts: 'AI parts answer',
 }
 
 const describe = (e) => {
@@ -17,6 +17,8 @@ const describe = (e) => {
     case 'roster_change': return `${d.aircraft}: ${d.before || 'not on shift'} to ${d.after || 'removed'}`
     case 'roster_auto': return `${Object.keys(d.assignments || {}).length} aircraft`
     case 'ack_flag': return `Work order ${d.wo_number}${d.note ? `: ${d.note}` : ''}`
+    case 'work_done': return `Work order ${d.wo_number} (${d.aircraft}) done: ${d.note}`
+    case 'work_done_undo': return `Work order ${d.wo_number}: removed "${d.removed_note}" (by ${d.was_done_by})`
     case 'ai_aircraft': return `${d.aircraft}${d.question ? `: ${d.question}` : ''}. Sources checked: ${d.citations_ok ? 'yes' : 'no'}`
     case 'ai_parts': return `“${d.query}”: ${d.question}. Sources checked: ${d.citations_ok ? 'yes' : 'no'}`
     default: return JSON.stringify(d)

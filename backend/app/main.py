@@ -36,6 +36,18 @@ async def demo_password(request: Request, call_next):
     return await call_next(request)
 
 
+@app.on_event("startup")
+def create_new_tables() -> None:
+    """Create any table added since the last data load (all statements are IF NOT EXISTS; data is untouched)."""
+    from . import db
+    from .services.aircraft_service import reapply_completions
+    try:
+        db.apply_schema()
+        reapply_completions()      # work marked done in the app stays closed after a data reload
+    except OperationalError:
+        pass  # database down: requests will report it
+
+
 @app.exception_handler(OperationalError)
 async def db_down(_: Request, exc: OperationalError):
     return JSONResponse(status_code=503, content={

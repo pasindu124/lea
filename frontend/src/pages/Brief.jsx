@@ -3,13 +3,10 @@ import { api } from '../api'
 import { useApp } from '../context'
 import AircraftCard from '../AircraftCard'
 import { Empty, ErrorBox, Guard, Loading, SourceTag, StatusChip, WhyDeferral } from '../ui'
-import { STATUS, deadlineLine, fmtDate, fmtDateTime, useAsync } from '../util'
+import { STATUS, deadlineLine, fmtDate, useAsync } from '../util'
 
 // The most urgent item of the shift, drawn like a flight strip.
-function Strip({ flag, onChanged }) {
-  const [note, setNote] = useState('')
-  const [open, setOpen] = useState(false)
-  const [error, setError] = useState(null)
+function Strip({ flag }) {
   if (!flag) {
     return (
       <div className="strip calm">
@@ -20,9 +17,6 @@ function Strip({ flag, onChanged }) {
     )
   }
   const tone = STATUS[flag.status].tone
-  const save = async () => {
-    try { await api.ack(flag.wo_number, note); setOpen(false); setNote(''); onChanged() } catch (e) { setError(e) }
-  }
   return (
     <div className={`strip ${tone === 'caution' ? 'caution' : ''}`} role="region" aria-label="Most urgent item">
       <div className="reg">{flag.aircraft_reg}<small>Most urgent item tonight</small></div>
@@ -30,15 +24,11 @@ function Strip({ flag, onChanged }) {
         <h2>{flag.title}</h2>
         <div className="row small muted">
           <SourceTag source={flag.source} /> <StatusChip status={flag.status} />
-          {flag.ack && <span><span className="chip brand">Seen</span> by {flag.ack.actor} on {fmtDateTime(flag.ack.ts)}</span>}
         </div>
       </div>
       <div className="when">
         <b>{flag.status_text}</b>
         <span className="muted small">{flag.expires_on ? `Deadline ${fmtDate(flag.expires_on)}` : ''}</span>
-        <div style={{ marginTop: 8 }}>
-          <button className="btn small" onClick={() => setOpen(!open)} aria-expanded={open}>Mark as seen</button>
-        </div>
       </div>
       <details>
         <summary>Why this is flagged</summary>
@@ -48,16 +38,6 @@ function Strip({ flag, onChanged }) {
           <p>Source: {flag.source.file}, row {flag.source.row}.</p>
         </div>
       </details>
-      {open && (
-        <div className="why" style={{ gridColumn: '1 / -1' }}>
-          <p>Record that you have seen this flag. The item stays open: only the licensed engineer can act on it.</p>
-          <div className="searchbar" style={{ margin: '8px 0 0' }}>
-            <input className="input grow" placeholder="Note (optional)" value={note} maxLength={500} onChange={(e) => setNote(e.target.value)} aria-label="Note" />
-            <button className="btn small primary" onClick={save}>Save</button>
-          </div>
-          <ErrorBox error={error} />
-        </div>
-      )}
     </div>
   )
 }
@@ -79,7 +59,6 @@ function FlagList({ flags }) {
             </div>
             <div className="meta">
               {deadlineLine(f)} <SourceTag source={f.source} />
-              {f.ack && <> <span className="chip brand">Seen</span> by {f.ack.actor}</>}
             </div>
           </div>
         ))}
@@ -108,7 +87,7 @@ export default function Brief() {
             This roster is a placeholder: aircraft were split between engineers automatically for the demo, with the most urgent spread out.
             Planning's real roster replaces it. <a href="#/shift">Change the split</a>.
           </div>
-          <Strip flag={data.shift_top_flag} onChanged={reload} />
+          <Strip flag={data.shift_top_flag} />
           <div className="tabs" role="tablist">
             {data.engineers.map((e, i) => (
               <button key={e.name} role="tab" className="tab" aria-selected={tab === i} onClick={() => setTab(i)}>
