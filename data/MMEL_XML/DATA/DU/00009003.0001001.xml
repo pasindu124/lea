@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00009003.0001001" revdate="2021-11-18T11:41:56"><title>Landing Gear Gravity Extension System</title><procbody lid="N.00009003.0001001.001"><inform layer="1" lid="N.00009003.0001001.002"><para code="00009003.0001001.003" layer="1" lid="N.00009003.0001001.005"><duref product="FCOM" ref="00023362"><linktext>PRO-NOR-SUP-LG_DN FLIGHT WITH GEAR DOWN</linktext></duref> and determine the associated Flight Manual performance penalties
+with the OCTOPUS program.</para><noteproc code="00009003.0001001.004" layer="1" lid="N.00009003.0001001.006"><para layer="1" lid="N.00009003.0001001.007">In the Airbus <abb>EFB</abb> <abb>PERF</abb> takeoff and landing applications, this corresponds
+to the <abb>MEL</abb> item "LANDING GEAR POSITION EXTENDED".
+In the <abb>EFB</abb> <abb>PERF</abb> in-flight application, this
+corresponds to the NON STD <abb>CONF</abb> “<abb>L/G</abb> DISPATCH
+WITH GEAR DOWN”.</para></noteproc></inform></procbody></opsproc>

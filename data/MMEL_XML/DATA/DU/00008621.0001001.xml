@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00008621.0001001" func-code="34-23-04" item-list-nbr="04" revdate="2019-05-22T00:00:00"><title><abb>ISIS</abb> Attitude Indication</title><ditembody nb-installed="1"><dispcond code="00008621.0001001.004" dispcond-id="D06782" dispcond-label="A" lid="N.00008621.0001001.005"><title>Applicable to aircraft fitted with NORTHROP GRUMMAN (LITTON) <abb>ADIRU</abb> except <abb>P/N</abb> 465020-0303-0316 or subsequent,
+having the shelf modified (<abb>Mod</abb> 30650/<abb>SB</abb> 25-1248,
+or <abb>Mod</abb> 30872)</title><normal-dispcond nb-required="1" rectification-interval="-"><remark><requirement lid="N.00008621.0001001.006" req-id="R06783"><para code="00008621.0001001.005" layer="1" lid="N.00008621.0001001.007">Must be operative.</para></requirement></remark></normal-dispcond></dispcond><dispcond code="00008621.0001001.010" dispcond-id="D06820" dispcond-label="B" lid="N.00008621.0001001.015"><title>Applicable to aircraft fitted with NORTHROP GRUMMAN
+(LITTON) <abb>ADIRU</abb> <abb>P/N</abb> 465020-0303-0316 or subsequent,
+having the shelf modified (<abb>Mod</abb> 30650/<abb>SB</abb> 25-1248,
+or <abb>Mod</abb> 30872) or HONEYWELL <abb>ADIRU</abb></title><normal-dispcond nb-required="0" rectification-interval="B"><remark><requirement lid="N.00008621.0001001.002" req-id="R04761"><opsproc-ref><duref product="MMEL" ref="00008943"/></opsproc-ref><qualifiers><qualifier value="CAT1"/><qualifier value="VMC"/></qualifiers><para code="00008621.0001001.002" layer="1" lid="N.00008621.0001001.003">May be
+inoperative provided that the aircraft is operated in
+day <abb>VMC</abb> conditions.</para></requirement></remark></normal-dispcond></dispcond></ditembody></dispatchitem>

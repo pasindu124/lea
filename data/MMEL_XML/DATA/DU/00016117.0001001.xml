@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00016117.0001001" revdate="2021-11-22T16:58:15"><title><ecam-data ecamimportance="A" type="alert"><ecamsys>ENG 1(2)</ecamsys><ecamtitle>REVERSER CTL FAULT</ecamtitle></ecam-data> Alert</title><procbody lid="N.00016117.0001001.001"><inform layer="1" lid="N.00016117.0001001.009"><para code="00016117.0001001.004" layer="1" lid="N.00016117.0001001.010"><duref product="MMEL" ref="00022748"/></para></inform></procbody></opsproc>

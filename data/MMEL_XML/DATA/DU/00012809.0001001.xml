@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012809.0001001" revdate="2011-06-29T21:07:53"><title>Removal of Item</title><descbody code="00012809.0001001.001" lid="N.00012809.0001001.001"><para code="00012809.0001001.002" layer="1" lid="N.00012809.0001001.002">When operating under <abb>MEL</abb>, it is not permitted to remove the item from its place in the aircraft,
+unless the associated dispatch condition clearly authorizes the Operator
+to do it.</para><note code="00012809.0001001.003" layer="1" lid="N.00012809.0001001.003"><para layer="1" lid="N.00012809.0001001.004">The <if-installed>(If Installed)
+symbol</if-installed> does not mean that the Operator
+can remove the item. This symbol indicates that the configuration
+of some aircraft of the Operator's fleet might not include this item. <duref product="MMEL" ref="00012808"/>.</para></note></descbody></description>

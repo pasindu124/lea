@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021880.0001001" revdate="2017-11-21T14:06:49"><title>CDLS Keypad LED</title><procitem layer="1" lid="N.00021880.0001001.001"><title>Procedure to be developed in the operator’s MEL</title><procbody lid="N.00021880.0001001.002"><condition at-any-time="false" code="00021880.0001001.001" direct="false" layer="1" lid="N.00021880.0001001.003" subtitle="false" type="cond"><intro>When the green or red <abb>LED</abb>s is inoperative:</intro><procbody lid="N.00021880.0001001.006"><action layer="1" lid="N.00021880.0001001.007" memory="false"><command code="00021880.0001001.004"><para layer="1" lid="N.00021880.0001001.008">An alternate procedure
+must be established before departure and used in order to remind the
+cabin crew to push the door manually to confirm that the cockpit door
+is locked or unlocked.</para></command></action></procbody></condition></procbody></procitem></opsproc>

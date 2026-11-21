@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00016096.0001001" revdate="2018-11-15T11:12:39"><title>Soft Go-Around Function</title><procitem layer="1" lid="N.00016096.0001001.001"><title>For Go-Around</title><procbody lid="N.00016096.0001001.002"><action layer="1" lid="N.00016096.0001001.006" memory="false"><command code="00016096.0001001.003"><para layer="1" lid="N.00016096.0001001.007">Set and maintain TOGA until
+thrust reduction altitude.</para></command></action></procbody></procitem></opsproc>

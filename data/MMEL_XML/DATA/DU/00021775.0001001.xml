@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021775.0001001" revdate="2017-11-21T13:18:04"><title><if-installed>Supplementary Life Raft</if-installed></title><procitem layer="1" lid="N.00021775.0001001.003"><title>Procedure to be developed in the operator's MEL</title><procbody lid="N.00021775.0001001.004"><inform layer="1" lid="N.00021775.0001001.005"><para code="00021775.0001001.002" layer="1" lid="N.00021775.0001001.006">A procedure must be established
+and used to ensure that all crewmembers are briefed about the missing
+or inoperative supplementary life raft, passenger distribution and
+modified cabin safety procedures.</para></inform></procbody></procitem><procitem layer="1" lid="N.00021775.0001001.007"><title>Flight preparation</title><procitem><title>Calculation of maximum passenger capacity (MPC) tables</title><procbody lid="N.00021775.0001001.011"><inform layer="1" lid="N.00021775.0001001.012"><para code="00021775.0001001.004" layer="1" lid="N.00021775.0001001.013">A procedure must be established
+and used to compute the reduced number of passengers in the cabin.</para></inform></procbody></procitem></procitem></opsproc>

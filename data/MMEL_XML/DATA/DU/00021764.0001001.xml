@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021764.0001001" revdate="2018-08-01T16:27:33"><title><if-installed><abb>SATCOM</abb> Data mode</if-installed> (procedures
+do not require <abb>SATCOM</abb> datalink)</title><procitem layer="1" lid="N.00021764.0001001.001"><title>FLIGHT PREPARATION/LIMITATIONS</title><procbody lid="N.00021764.0001001.007"><condition at-any-time="false" code="00021764.0001001.004" direct="false" layer="1" lid="N.00021764.0001001.008" subtitle="false" type="cond"><intro>Outside <abb>VHF</abb> coverage:  </intro><procbody lid="N.00021764.0001001.009"><inform layer="1" lid="N.00021764.0001001.010"><para code="00021764.0001001.005" layer="1" lid="N.00021764.0001001.011"><abb>ATC</abb> datalink applications
+(<abb>ADS-C</abb>, <abb>CPDLC</abb>, <abb>DCL</abb>, <abb>OCL</abb>, and <abb>D-ATIS</abb>) over <abb>ACARS</abb> are not available. </para><para code="00021764.0001001.008" layer="1" lid="N.00021764.0001001.014">Associated <abb>ATC</abb> datalink Required
+Communication / Surveillance Performance (<abb>RCP</abb> 240 and above
+for <abb>CPDLC</abb> and <abb>RSP</abb> 180 and above for <abb>ADS-C</abb>) capabilities are lost.</para><para code="00021764.0001001.007" layer="1" lid="N.00021764.0001001.013">For more information on aircraft capability on <abb>ATC</abb> datalink
+communication, <duref product="FCOM" ref="00020333"/>.</para></inform></procbody></condition></procbody></procitem></opsproc>

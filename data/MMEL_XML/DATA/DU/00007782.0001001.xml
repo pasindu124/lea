@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00007782.0001001" func-code="31-20-01" item-list-nbr="01" revdate="2019-05-22T00:00:00"><title>Electrical Clock Indicator</title><ditembody nb-installed="1"><dispcond code="00007782.0001001.001" dispcond-id="D01157" dispcond-label="A" lid="N.00007782.0001001.001"><normal-dispcond nb-required="0" rectification-interval="C"><placard/><remark><requirementblock><requirement lid="N.00007782.0001001.004" req-id="R01159"><opsproc-ref><duref product="MMEL" ref="00009031"/></opsproc-ref><qualifiers><qualifier value="NOGO_IF_34-06-07"/><qualifier value="NOGO_IF_31-07-02"/><qualifier value="CREW_OPS"/></qualifiers><para code="00007782.0001001.003" layer="1" lid="N.00007782.0001001.005">May be inoperative provided that:</para></requirement><addrequ lid="N.00007782.0001001.006"><requirement lid="N.00007782.0001001.007" req-id="R01160"><para code="00007782.0001001.004" layer="1" lid="N.00007782.0001001.008">The <abb>UTC</abb> indication
+from the <abb>CFDIU</abb> is operative on the permanent data of the <abb>SD</abb>, and</para></requirement></addrequ><addrequ lid="N.00007782.0001001.009"><requirement lid="N.00007782.0001001.010" req-id="R01161"><para code="00007782.0001001.005" layer="1" lid="N.00007782.0001001.011">A chrono indication is operative on at
+least one <abb>ND</abb>.</para></requirement></addrequ></requirementblock><note code="00007782.0001001.006" layer="1" lid="N.00007782.0001001.012"><para layer="1" lid="N.00007782.0001001.014">The following recommendation
+is only applicable to aircraft equipped with the Electrical Clock
+P/N APE5100-1:</para><para layer="1" lid="N.00007782.0001001.015">During the entire
+month of February, intermittent erroneous indications (wrong, over-range
+or missing digits) of the elapsed time and chronometer functions may
+occur if the clock is in <abb>GPS</abb> mode.</para><para layer="1" lid="N.00007782.0001001.016">In that case, the
+flight crew must set the clock selector to internal (<abb>INT)</abb> mode in order to recover the elapsed time and chronometer functions.
+The clock is considered operative.</para><para layer="1" lid="N.00007782.0001001.017">When the clock is
+in <abb>INT</abb> mode, the flight crew must synchronize the clock
+with the <abb>GPS</abb> at least one time per day to comply with the
+time precision required for <abb>ATC</abb> datalink communication.
+Refer to FCOM/DSC-31-55-20 Operation in Internal Mode.</para></note></remark></normal-dispcond></dispcond></ditembody></dispatchitem>

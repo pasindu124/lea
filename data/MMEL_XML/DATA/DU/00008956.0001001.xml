@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00008956.0001001" revdate="2020-11-16T09:56:38"><title>Lavatory Sign (Return to seat)</title><procitem layer="1" lid="N.00008956.0001001.004"><title>Procedure to be developed in the Operator's <abb>MEL</abb></title><procbody lid="N.00008956.0001001.005"><action layer="1" lid="N.00008956.0001001.006" memory="false"><command code="00008956.0001001.002"><para layer="1" lid="N.00008956.0001001.007">A procedure must be established
+and used to notify the lavatory occupant to return to its seat when
+requested.</para></command></action></procbody></procitem></opsproc>

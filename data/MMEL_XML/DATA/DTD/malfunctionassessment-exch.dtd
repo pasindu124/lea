@@ -1,0 +1,140 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Malfunctionassessment module          -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!-- AIRBUS Reference :                                            -->
+<!--  "-//AIRBUS OPS//DTD MALFUNCTIONASSESSMENT_EXCH-VER10.0//EN"   -->
+<!--  Rev Date      : October 2011                            	   -->
+<!--  Parsed Date   : October 2011                            	   -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- VER 9.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Add "dispatchmessage" value to type attribute of           -->
+<!--    malfunctionassessment element                              -->
+<!-- 2) Increased the version number to 9.0                        -->
+<!-- VER 10.0:                                                     -->
+<!--   Context: global modification                                -->
+<!-- 1) Add malfunctionitem/body structure          			   -->
+<!-- 2) Increased the version number to 10.0                       -->
+<!-- ============================================================  -->
+
+<!-- The following set of declarations may be referred to  using 
+     the public entity as follows:
+     <!DOCTYPE malfunctionassessment PUBLIC
+        "-//AIRBUS OPS//DTD MALFUNCTIONASSESSMENT_EXCH-VER10.0//EN"   [ ]>
+		                                                           -->
+
+<!-- ============================================================= -->
+<!-- ENTITIES                                                      -->
+<!-- ============================================================= -->
+
+<!ENTITY % extensionContent.Grp "">
+<!ENTITY % ftnoteType "">
+<!ENTITY % ops-exch SYSTEM "ops-exch.dtd">
+%ops-exch;
+<!ENTITY % itemType "%fullBasicStructType;">
+
+<!ENTITY % descbodyType "((%fullBasicStructType; | desc-cond | ex-desc-cond | whatif)+)">
+
+<!ENTITY % ecam-exch SYSTEM "ecam-exch.dtd">
+%ecam-exch;
+<!ENTITY % xtitle-exch SYSTEM "xtitle-exch.dtd">
+%xtitle-exch;
+
+<!ENTITY % entryType '(para|unlist|numlist|warning|caution|note|graphref|launcher|equal|desc-cond|ex-desc-cond|row-header|measure)*'>
+
+<!ENTITY % row.att '%linktargetid.AttGrp;'>
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT item (%itemType;)>
+<!ATTLIST item
+	%layer.AttGrp; 
+>
+<!ELEMENT routing (actual | false | cond-routing)>
+<!ATTLIST routing
+	%do.AttGrp; 
+	%linktargetid.AttGrp; 
+>
+<!ELEMENT false EMPTY>
+<!ELEMENT actual EMPTY>
+<!ELEMENT dispatch-assessment (not-applicable | no-dispatch | dispatchitemref | complementary-actions | dablock)>
+<!ATTLIST dispatch-assessment
+	%do.AttGrp; 
+	%linktargetid.AttGrp; 
+>
+<!ELEMENT not-applicable (comment?)>
+<!ELEMENT no-dispatch (comment?)>
+<!ELEMENT ext-action (duref)>
+<!ELEMENT affectedsystem (context-link?)>
+<!ELEMENT dispatchitemref (duref, comment?)>
+<!ELEMENT dablock ((dispatchitemref | complementary-actions)+)>
+<!ATTLIST dablock
+	operator (AND | OR) #REQUIRED
+>
+
+<!ELEMENT condbody (%descbodyType;)>
+
+<!ELEMENT malfunctionitem (title, malfunctionbody)>
+<!ATTLIST malfunctionitem
+	%do.AttGrp;
+	%layer.AttGrp;
+	%context.AttGrp;
+	%linktargetid.AttGrp;
+	%opStand.AttGrp;
+>
+
+<!ELEMENT malfunctionbody %fullBasicStructType;>
+<!ATTLIST malfunctionbody
+	%do.AttGrp;
+	%linktargetid.AttGrp;
+>
+
+<!ELEMENT malfunctionassessment (reason?, xtitle, comment?, malfunctionitem?, assessment+, malfunctionitem?)>
+<!ATTLIST malfunctionassessment
+	type (ecamwarning | ecamcaution | crewobservation | localwarning | efisflag | dispatchmessage) #REQUIRED
+	fault-code CDATA #IMPLIED
+	%duIdent.AttGrp; 
+	%context.AttGrp; 
+>
+<!ELEMENT assessment (routing?, dispatch-assessment)>
+<!ATTLIST assessment
+	%context.AttGrp; 
+	%linktargetid.AttGrp; 
+>
+<!ELEMENT cond-routing (intro, complementary-actions?)>
+<!ATTLIST cond-routing
+	%context.AttGrp; 
+>
+<!ELEMENT complementary-actions ((ext-action | para | command | affectedsystem)+, comment?)>
+<!ELEMENT command %fullBasicStructType;>
+<!ATTLIST command
+	%do.AttGrp; 
+>
+
+<!ELEMENT entry (%entryType;)>
+
+<!ATTLIST title
+	%ecam.AttGrp; 
+>

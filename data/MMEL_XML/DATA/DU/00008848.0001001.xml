@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00008848.0001001" revdate="2018-04-05T16:26:43"><title>Cabin Door Permanently Indicated Closed on the <tech-label type="s-page">DOOR/OXY</tech-label></title><procitem layer="1" lid="N.00008848.0001001.005"><title>General information</title><procbody lid="N.00008848.0001001.006"><inform layer="1" lid="N.00008848.0001001.007"><para code="00008848.0001001.003" layer="1" lid="N.00008848.0001001.012">If cabin
+doors are affected, indications on the <abb>PTP</abb> or the <abb>FAP</abb><if-installed/> may be affected.</para><para code="00008848.0001001.004" layer="1" lid="N.00008848.0001001.013">If cabin doors are affected, the time
+recorded in the <abb>ACARS</abb> movement report may be wrong.</para></inform></procbody></procitem></opsproc>

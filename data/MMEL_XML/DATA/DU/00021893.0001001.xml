@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021893.0001001" revdate="2018-05-17T19:16:57"><title><abb>CDLS</abb> Normal System </title><procitem layer="1" lid="N.00021893.0001001.001"><title>Procedure to be developed in the Operator's MEL</title><procbody lid="N.00021893.0001001.002"><inform layer="1" lid="N.00021893.0001001.003"><para code="00021893.0001001.001" layer="1" lid="N.00021893.0001001.004">Alternate
+procedure must be established and used to secure the cockpit and to
+access to the cockpit in accordance with the Operator’s security policy.</para></inform><inform layer="1" lid="N.00021893.0001001.016"><para code="00021893.0001001.006" layer="1" lid="N.00021893.0001001.019">This alternate procedure may consider the use of any acceptable means
+approved by the National Aviation Authority.</para></inform></procbody></procitem><procitem layer="1" lid="N.00021893.0001001.005"><title>General information</title><procbody lid="N.00021893.0001001.006"><inform layer="1" lid="N.00021893.0001001.008"><para code="00021893.0001001.003" layer="1" lid="N.00021893.0001001.009">Since
+the <abb>CDLS</abb> Normal system is deactivated, the keypad becomes
+inoperative.</para></inform><inform layer="1" lid="N.00021893.0001001.010"><para code="00021893.0001001.004" layer="1" lid="N.00021893.0001001.011">The flight
+crew must brief the cabin crew that the <abb>CDLS</abb> keypad is
+inoperative.</para></inform><inform layer="1" lid="N.00021893.0001001.020"><para code="00021893.0001001.007" layer="1" lid="N.00021893.0001001.021">For a request access to the
+cockpit, use the cabin interphone.</para></inform></procbody></procitem><procitem layer="1" lid="N.00021893.0001001.012"><title>In flight</title><procbody lid="N.00021893.0001001.013"><inform layer="1" lid="N.00021893.0001001.014"><para code="00021893.0001001.005" layer="1" lid="N.00021893.0001001.015">At least
+two crewmembers must be present in the cockpit at all times during
+the flight.</para></inform></procbody></procitem></opsproc>

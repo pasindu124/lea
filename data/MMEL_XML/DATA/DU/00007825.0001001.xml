@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00007825.0001001" func-code="31-05-06" item-list-nbr="06" revdate="2010-03-22T00:00:00"><title>Mach Number Indication on the <abb>PFD</abb></title><ditembody nb-installed="-"><dispcond code="00007825.0001001.001" dispcond-id="D01354" dispcond-label="A" lid="N.00007825.0001001.001"><dispatch-redirection><duref product="MMEL" ref="00008712"/></dispatch-redirection></dispcond></ditembody></dispatchitem>

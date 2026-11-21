@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021662.0001001" revdate="2019-02-06T10:03:20"><title>Cabin Loudspeaker</title><procitem layer="1" lid="N.00021662.0001001.009"><title>Procedure to be developed in the Operator's <abb>MEL</abb></title><procbody lid="N.00021662.0001001.010"><inform layer="1" lid="N.00021662.0001001.011"><para code="00021662.0001001.004" layer="1" lid="N.00021662.0001001.012">Ensure that the passengers occupying
+the affected seats can clearly hear the passenger address announcements.</para><para code="00021662.0001001.005" layer="1" lid="N.00021662.0001001.014">Otherwise, the affected seat must not be occupied and must be placarded
+inoperative. <duref product="MMEL" ref="00008538"/>.</para><noteproc code="00021662.0001001.006" layer="1" lid="N.00021662.0001001.015"><para layer="1" lid="N.00021662.0001001.020">When one loudspeaker adjacent
+to the inoperative loudspeaker is operative, it ensures that passengers
+can hear passenger announcements.</para></noteproc></inform></procbody></procitem></opsproc>

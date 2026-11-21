@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021882.0001001" revdate="2017-11-21T13:47:43"><title>UNLOCK Function of the <tech-label type="sw">COCKPIT DOOR</tech-label></title><procitem layer="1" lid="N.00021882.0001001.001"><title>General Information</title><procbody lid="N.00021882.0001001.002"><action layer="1" lid="N.00021882.0001001.003" memory="false"><command code="00021882.0001001.001"><para layer="1" lid="N.00021882.0001001.004">The flight crew has to manually
+open the door. Therefore, the access to the cockpit should be limited
+to the strict necessary.</para></command></action></procbody></procitem></opsproc>

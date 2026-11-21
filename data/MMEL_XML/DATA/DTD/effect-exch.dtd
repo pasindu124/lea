@@ -1,0 +1,125 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Effect library                        -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!--  Rev Date      : October 2011                                 -->
+<!--  Parsed Date   : October 2011                                 -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) attribute value military is added to type attribute of     -->
+<!--    grp element                                                -->
+<!-- 2) attribute value operational is added to type attribute of  -->
+<!--    grp element                                                -->
+<!-- 3) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Remove pre-crit element in single-appli element            -->
+<!-- 2) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- V9.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 9.0                        -->
+<!-- V10.0                                                         -->
+<!--   Context: global modification                                -->
+<!-- 1) Remove effect@len hardcode                        	       -->
+<!-- 2) Increased the version number to 10.0                       -->
+<!-- ============================================================  -->
+
+<!-- ============================================================= -->
+<!-- ENTITIES                                                      -->
+<!-- ============================================================= -->
+
+<!ENTITY % acranges-exch SYSTEM "acranges-exch.dtd">
+%acranges-exch;
+
+<!ENTITY  % critFull.AttGrp '
+	crit-id CDATA #REQUIRED
+	crit-type CDATA #REQUIRED
+	crit-rev CDATA #IMPLIED
+	crit-origin (true | false) #IMPLIED'
+>
+
+<!ENTITY  % critBase.AttGrp '
+	crit-id CDATA #REQUIRED
+	crit-type CDATA #REQUIRED'
+>
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT  pre-crit (aircraft-range) >
+
+<!ELEMENT  post-crit (%acrangeType;) >
+
+<!ELEMENT  single-appli (post-crit?) >
+<!ATTLIST single-appli 
+	%critFull.AttGrp;
+>
+
+<!ELEMENT  crit-emb (%acrangeType;) >
+
+<!ELEMENT  crit-sch (aircraft-range) >
+
+<!ELEMENT  post-crit-es (crit-emb?, crit-sch?) >
+
+<!ELEMENT  dual-appli (pre-crit?, post-crit-es?) >
+<!ATTLIST dual-appli 
+	%critFull.AttGrp; 
+>
+
+<!ELEMENT crit-list ((dual-appli*), (single-appli*)) >
+
+<!ELEMENT para (#PCDATA)>
+
+<!ELEMENT text-formula (para+) >
+
+<!ELEMENT crit EMPTY >
+<!ATTLIST crit 
+	%critFull.AttGrp; 
+>
+
+<!ELEMENT cond EMPTY >
+<!ATTLIST cond 
+	%critBase.AttGrp; 
+>
+
+<!ELEMENT grp (operator) >
+<!ATTLIST grp 
+	type (abstract|techcontext|techcond|grplv1|grplv2|valid|regulation|client|dismiss|military|operational) #IMPLIED 
+>
+
+<!ELEMENT operator (grp*, (crit+ | cond+)?) >
+<!ATTLIST operator 
+	type (and|or|andnot) #REQUIRED 
+>
+
+<!ELEMENT struct-formula (operator) >
+
+<!ELEMENT formula (text-formula?, struct-formula?) >
+<!ATTLIST formula 
+	type (CCM|ECM|OPE) #REQUIRED 
+>
+
+<!ELEMENT techcond (formula?, crit-list) >
+
+<!ELEMENT opecond (formula) >
+
+<!ELEMENT effect   (aircraft-ranges?, techcond, opecond?) >
+<!ATTLIST effect
+	type (MSN) #REQUIRED
+	len NMTOKEN #REQUIRED
+>

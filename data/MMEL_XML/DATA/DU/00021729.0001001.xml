@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021729.0001001" revdate="2017-11-21T11:37:31"><title><if-installed><abb>EFB</abb> Docking Station</if-installed></title><procitem layer="1" lid="N.00021729.0001001.001"><title>GENERAL INFORMATION</title><procbody lid="N.00021729.0001001.002"><inform layer="1" lid="N.00021729.0001001.003"><para code="00021729.0001001.001" layer="1" lid="N.00021729.0001001.004">The <abb>EFB</abb> is not available
+on the affected side.</para><para code="00021729.0001001.002" layer="1" lid="N.00021729.0001001.005">The onside laptop or any other
+acceptable mitigation means may be used to recover the <abb>EFB</abb> availability.</para></inform></procbody></procitem></opsproc>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00007656.0005001" func-code="23-74-08" item-list-nbr="08" revdate="2010-03-22T00:00:00"><title>Slide Pressure Monitoring on the <abb>FAP</abb></title><ditembody nb-installed="-"><dispcond code="00007656.0005001.002" dispcond-id="D06928" dispcond-label="A" lid="N.00007656.0005001.002"><dispatch-redirection><duref product="MMEL" ref="00008563"/></dispatch-redirection></dispcond></ditembody></dispatchitem>

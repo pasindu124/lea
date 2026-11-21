@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00007787.0002001" func-code="31-30-04" item-list-nbr="04" revdate="2012-07-18T00:00:00"><title>Data Management (<abb>DMU</abb> or <abb>FDIMU</abb> Data Management
+function)</title><ditembody nb-installed="-"><dispcond code="00007787.0002001.001" dispcond-id="D03142" dispcond-label="A" lid="N.00007787.0002001.001"><normal-dispcond nb-required="0" rectification-interval="C"><no-remark/></normal-dispcond></dispcond></ditembody></dispatchitem>

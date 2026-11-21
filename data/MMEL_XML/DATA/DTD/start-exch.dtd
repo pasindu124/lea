@@ -1,0 +1,70 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Start module                          -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!-- AIRBUS Reference :                                            -->
+<!--    "-//AIRBUS OPS//DTD START_EXCH-VER10.0//EN"                 -->
+<!--  Rev Date      : October 2011                                 -->
+<!--  Parsed Date   : October 2011                                 -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) attribute signature is removed from start.AttGrp 	   -->
+<!-- 2) attribute value hashcode is added to start.AttGrp          -->
+<!-- 3) attribute value thesaurus is added to start.AttGrp         -->
+<!-- 4) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- V9.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 9.0                        -->
+<!-- VER 10.0:                                                     -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 10.0                       -->
+<!-- ============================================================  -->
+
+<!-- The following set of declarations may be referred to  using 
+     the public entity as follows:
+     <!DOCTYPE start PUBLIC
+        "-//AIRBUS OPS//DTD START_EXCH-VER10.0//EN"   [ ]>          -->
+
+<!-- ============================================================= -->
+<!-- ENTITIES                                                      -->
+<!-- ============================================================= -->
+
+<!ENTITY % start.AttGrp '
+	nature	(folder|file)	#REQUIRED
+	type	(product|du-content|du-metadata|product-metadata|illustration|extobject|model|conf-data|assoc-files|du-link|hashcode|thesaurus)	#REQUIRED '
+>
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT starter (#PCDATA)>
+<!ATTLIST starter 
+	%start.AttGrp;
+>
+
+<!ELEMENT component-path (#PCDATA)>
+<!ATTLIST component-path 
+		%start.AttGrp;
+>
+
+<!ELEMENT components-path (component-path+)>
+
+<!ELEMENT start (starter,components-path)>

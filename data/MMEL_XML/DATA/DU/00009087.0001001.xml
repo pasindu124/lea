@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00009087.0001001" revdate="2010-03-11T15:35:38"><title>Overpressure Protector in the Vent Surge Tank</title><procitem layer="1" lid="N.00009087.0001001.004"><title>On ground and in flight</title><procbody lid="N.00009087.0001001.005"><action-block lid="N.00009087.0001001.008"><action layer="1" lid="N.00009087.0001001.006" memory="false"><command code="00009087.0001001.002"><para layer="1" lid="N.00009087.0001001.007">Avoid lateral accelerations
+in order to reduce the possibility of fuel spill during taxi and climb
+out. </para></command></action><action layer="1" lid="N.00009087.0001001.009" memory="false"><command code="00009087.0001001.003"><para layer="1" lid="N.00009087.0001001.010">In cruise check that no fuel
+spillage occurred. </para></command></action><action layer="1" lid="N.00009087.0001001.012" memory="false"><command code="00009087.0001001.004"><para layer="1" lid="N.00009087.0001001.013">Check that the <abb>FOB</abb> is sufficient to reach the destination with the adequate
+reserve.</para></command></action></action-block></procbody></procitem></opsproc>

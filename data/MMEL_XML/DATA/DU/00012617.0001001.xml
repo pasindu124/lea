@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012617.0001001" revdate="2010-09-15T00:00:00"><title>Criteria for Dispatch</title><descbody code="00012617.0001001.004" lid="N.00012617.0001001.004"><para code="00012617.0001001.005" layer="1" lid="N.00012617.0001001.005">The decision of the Commander
+of the flight to have inoperative items corrected before the flight
+will take precedence over the provisions contained in the <abb>MEL</abb>. The Commander may request requirements above the minimum listed,
+whenever in his judgment such added equipment is essential to the
+safety of a particular flight under the special condition prevailing
+at the time.  </para><para code="00012617.0001001.006" layer="1" lid="N.00012617.0001001.006">The <abb>MEL</abb> cannot take
+into account all multiple unserviceabilities. Therefore, before dispatching
+an aircraft with multiple <abb>MEL</abb> items inoperative,
+it must be assured that any interface or inter-relationship between
+inoperative items will not result in a degradation in the level of
+safety and/or an undue increase in crew workload. It is particularly
+in this area of multiple discrepancies and especially discrepancies
+in related systems, that good judgment, based on the circumstances
+of the case, including climatic and en-route conditions, must be used.</para></descbody></description>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012620.0001001" revdate="2010-09-15T00:00:00"><title>Repair Interval</title><descbody code="00012620.0001001.020" lid="N.00012620.0001001.020"><para code="00012620.0001001.021" layer="1" lid="N.00012620.0001001.021">Inoperative items, deferred
+in accordance with the <abb>MEL</abb>, must be rectified at or before
+the expiration of the repair interval that is established by the following
+letter designators given in the "Repair Interval" column. </para><equal code="00012620.0001001.022" layer="1" lid="N.00012620.0001001.022" sepchar="DEF" width="25"><equ-l>Repair Interval A</equ-l><equ-r><para layer="1" lid="N.00012620.0001001.023">No standard interval
+is specified, however, items in this category shall be rectified in
+accordance with the dispatch conditions stated in the <abb>MEL</abb>. </para><para layer="1" lid="N.00012620.0001001.024">Where a time period
+is specified in calendar days, it shall start at 00:01 on the calendar
+day following the day of discovery. </para><para layer="1" lid="N.00012620.0001001.025">Where a time period
+is specified in number of flights or flight hours, it shall start
+at the beginning of the first flight following the discovery of the
+failure.</para></equ-r></equal><equal code="00012620.0001001.023" layer="1" lid="N.00012620.0001001.026" sepchar="DEF" width="25"><equ-l>Repair Interval B</equ-l><equ-r><para layer="1" lid="N.00012620.0001001.027">Items in this category
+shall be rectified within three (3) consecutive calendar days, excluding
+the day of discovery. </para><para layer="1" lid="N.00012620.0001001.028">For example, if it
+were recorded at 13:00 on January 26th, the 3-day interval begins
+at 00:01 on January 27th and ends at 23:59 on January 29th.</para></equ-r></equal><equal code="00012620.0001001.024" layer="1" lid="N.00012620.0001001.029" sepchar="DEF" width="25"><equ-l>Repair Interval C</equ-l><equ-r><para layer="1" lid="N.00012620.0001001.030">Items in this category
+shall be rectified within ten (10) consecutive calendar days, excluding
+the day of discovery. </para><para layer="1" lid="N.00012620.0001001.031">For example, if it
+were recorded at 13:00 on January 26th, the 10-day interval begins
+at 00:01 on January 27th and ends at 23:59 on February 5th.</para></equ-r></equal><equal code="00012620.0001001.025" layer="1" lid="N.00012620.0001001.032" sepchar="DEF" width="25"><equ-l>Repair Interval D</equ-l><equ-r><para layer="1" lid="N.00012620.0001001.033">Items
+in this category shall be rectified within one hundred and twenty
+(120) consecutive calendar days, excluding the day of discovery. </para></equ-r></equal></descbody></description>

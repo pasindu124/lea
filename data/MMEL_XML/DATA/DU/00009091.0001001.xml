@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00009091.0001001" revdate="2010-03-11T15:39:44"><title><abb>RH</abb> Wing Transfer Valve (At least one transfer valve
+failed closed)</title><procitem layer="1" lid="N.00009091.0001001.005"><title>Flight preparation/Limitations</title><procbody lid="N.00009091.0001001.006"><inform layer="1" lid="N.00009091.0001001.007"><para code="00009091.0001001.002" layer="1" lid="N.00009091.0001001.008">The fuel
+in the affected outer tank should be considered as not usable
+for the flight planning.</para></inform></procbody></procitem></opsproc>

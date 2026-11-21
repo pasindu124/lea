@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00009015.0002001" revdate="2010-03-11T14:32:38"><title>Fourth Occupant Seat Fifth Strap</title><procitem layer="1" lid="N.00009015.0002001.004"><title>During flight</title><procbody lid="N.00009015.0002001.005"><inform layer="1" lid="N.00009015.0002001.006"><para code="00009015.0002001.002" layer="1" lid="N.00009015.0002001.007">To cope with any potential turbulence
+situation:</para></inform><action layer="1" lid="N.00009015.0002001.008" memory="false"><command code="00009015.0002001.003"><para layer="1" lid="N.00009015.0002001.009">The fourth occupant must tightly
+fasten the operative harness straps.</para></command></action></procbody></procitem></opsproc>

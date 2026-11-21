@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00022208.0001001" revdate="2018-05-17T09:55:01"><title><tech-label type="pb-sw">T.O SURV</tech-label></title><procitem layer="1" lid="N.00022208.0001001.015"><title>Procedure to be developed in the Operator's MEL</title><procbody lid="N.00022208.0001001.016"><inform layer="1" lid="N.00022208.0001001.017"><para code="00022208.0001001.006" layer="1" lid="N.00022208.0001001.018">Alternate
+procedures must be established by each airline in case of known risk
+of spurious alerts.</para></inform></procbody></procitem></opsproc>

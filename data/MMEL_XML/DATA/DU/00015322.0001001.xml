@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00015322.0001001" revdate="2025-05-21T14:04:52"><title><abb>ADS-B</abb> OUT Function (Required for the intended route
+and the subsequent flights are entirely conducted outside of the Single
+European Sky)</title><procitem layer="1" lid="N.00015322.0001001.001"><title>Procedure to be developed in the operator’s MEL</title><procbody lid="N.00015322.0001001.002"><action layer="1" lid="N.00015322.0001001.003" memory="false"><command code="00015322.0001001.001"><para layer="1" lid="N.00015322.0001001.004">Procedure must be established
+to obtain the permission from the Air Navigation Service Provider(s)
+when <abb>ADS-B</abb> OUT Function is required for the intended route.
+Alternate procedure may be established as required by Air Navigation
+Service Provider(s).</para><para layer="1" lid="N.00015322.0001001.005">Operations in the Single European
+Sky are not permitted.</para></command></action></procbody></procitem></opsproc>

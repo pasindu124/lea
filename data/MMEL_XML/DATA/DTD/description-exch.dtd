@@ -1,0 +1,111 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Description module                    -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!-- AIRBUS Reference :                                            -->
+<!--    "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN"           -->
+<!--  Rev Date      : October 2011                                 -->
+<!--  Parsed Date   : October 2011                                 -->
+<!--  Version       : 10.0                                        -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Add operating standards attributes to description,         -->
+<!--    descitem, assumption, example and item elements            -->
+<!-- 2) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- V9.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 9.0                        -->
+<!-- VER 10.0:                                                     -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 10.0                       -->
+<!-- ============================================================  -->
+
+<!-- The following set of declarations may be referred to  using 
+     the public entity as follows:
+     <!DOCTYPE description PUBLIC
+        "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN"   [ ]>    -->
+
+<!-- ============================================================= -->
+<!-- ENTITIES                                                      -->
+<!-- ============================================================= -->
+
+<!ENTITY % extensionContent.Grp '| inline-equation'>
+<!ENTITY % ftnoteType "">
+<!ENTITY % ops-exch SYSTEM "ops-exch.dtd">
+%ops-exch;
+<!ENTITY % equation-exch SYSTEM "equation-exch.dtd">
+%equation-exch;
+<!ENTITY % itemType '(%fullBasicStructType;|equation)'>
+
+<!ENTITY % descbodyType '(%fullBasicStructType;|desc-cond|ex-desc-cond|whatif|equation|example|assumption)+'>
+
+<!ENTITY % entryType '(para|unlist|numlist|warning|caution|note|graphref|launcher|equal|desc-cond|ex-desc-cond|row-header|equation|measure)*'>
+
+<!ENTITY % row.att '%linktargetid.AttGrp;'>
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT item (%itemType;)>
+<!ATTLIST item
+	%layer.AttGrp; 
+	%opStand.AttGrp;
+>
+
+<!ELEMENT condbody (%descbodyType;)>
+<!ELEMENT descbody (%descbodyType;)>
+<!ATTLIST descbody
+	%do.AttGrp; 
+	%linktargetid.AttGrp; 
+>
+
+<!ELEMENT description (reason?, title, (descbody | descitem), descitem*)>
+<!ATTLIST description
+	%duIdent.AttGrp; 
+	%context.AttGrp;
+	%opStand.AttGrp;
+>
+
+<!ELEMENT descitem (title, (descbody | descitem), descitem*)>
+<!ATTLIST descitem
+	%do.AttGrp;
+	%layer.AttGrp;
+	%linktargetid.AttGrp;
+	%context.AttGrp;
+	%opStand.AttGrp;
+>
+
+<!ELEMENT entry (%entryType;)>
+
+<!ELEMENT example ((%interBasicStructType; | equation)+)>
+<!ATTLIST example
+	%do.AttGrp; 
+	%layer.AttGrp; 
+	%linktargetid.AttGrp;
+	%opStand.AttGrp;
+>
+
+<!ELEMENT assumption (%wcnStructType;)+>
+<!ATTLIST assumption
+	%do.AttGrp; 
+	%layer.AttGrp; 
+	%linktargetid.AttGrp; 
+	%opStand.AttGrp;	
+>

@@ -1,0 +1,398 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Ops library                           -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!--  Rev Date      : October 2011                            	   -->
+<!--  Parsed Date   : October 2011                            	   -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) modification of the definition of layer.AttGrp entity      -->
+<!-- 2) attribute type is added to the list attribute of ftnote    -->
+<!--    element                                                    -->
+<!-- 3) Increased the version number to 6.0                        -->
+<!--                                                               -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!--                                                               -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) New ecam-data element in basicContent.Grp group            -->
+<!-- 2) Add ecamsys, ecamtitle and ecamsubtitle elements in        -->
+<!--    ecam-data element                                          -->
+<!-- 3) Add the definition of opStand.Attgrp entity                -->
+<!-- 4) Add the attribute group opStand.AttGrp to table, desc-cond -->
+<!--    ex-desc-cond, unlist, numlist, warning, caution, note      -->
+<!--    whatif, equal, launcher, graphref and para  elements       -->
+<!-- 5) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) ecamsys element is optional in ecam-data element           -->
+<!-- 2) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Add optional abb, f-phase and tech-label elements in       -->
+<!--    if-installed element                                       -->
+<!-- 2) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- VER 9.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Add "other" and "dispatchmessage" to the possible values   -->
+<!--    of the type attribute of ecam-data element                 -->
+<!-- 2) Add rotate attribute to graphmode.AttGrp of graphrefType   -->
+<!-- 3) Add wbd element to measure and table elements              -->
+<!-- 4) Add bound attribute to measure element                     -->
+<!-- 5) Add overline attribute to emph element                     -->
+<!-- 6) Define qualifiers element  						           -->
+<!-- 7) Increased the version number to 9.0                        -->
+<!-- VER 10.0:                                                     -->
+<!--   Context: global modification                                -->
+<!-- 1) Remove light-grey and dark-grey values in emph@color       -->
+<!-- 2) Add attribute emph@bgcolor       						   -->
+<!-- 3) Add new values (page, sm-page, mpage) to tech-label@type   -->
+<!-- 4) Add para possibility at footnotes end 					   -->
+<!-- 5) Increased the version number to 10.0                       -->
+<!-- ============================================================  -->
+
+<!ENTITY % do.AttGrp "
+    code CDATA #REQUIRED">
+<!ENTITY % linktargetid.AttGrp "
+    lid ID #IMPLIED">
+<!ENTITY % id.AttGrp "
+    id ID #REQUIRED">
+<!ENTITY % context.AttGrp "
+	context CDATA #IMPLIED">
+<!ENTITY % layer.AttGrp '
+	layer (1|2|3) #IMPLIED'>
+<!ENTITY % duIdent.AttGrp '
+    code CDATA #REQUIRED
+    revdate CDATA #REQUIRED'>
+<!ENTITY % opStand.AttGrp '
+    op-std (NOS|ROS|MOS|NOS-ROS|ROS-MOS|NOS-ROS-MOS) 	#IMPLIED'>
+<!ENTITY % soextblx-exch SYSTEM "soextblx-exch.dtd">
+%soextblx-exch;
+<!ENTITY % tableType '(wbd?,title?,(tgroup+|graphref),footnotes?)'>
+<!ELEMENT table (%tableType;)>
+<!ENTITY % table.att "
+	frame           (top|bottom|topbot|all|sides|none)      #IMPLIED
+	colsep          %yesorno;                               #IMPLIED
+	rowsep          %yesorno;                               #IMPLIED
+	%tbl.table.att;
+	%bodyatt;">
+<!ATTLIST table
+	%table.att; 
+	%context.AttGrp; 
+	%do.AttGrp; 
+	%linktargetid.AttGrp; 
+	tabstyle CDATA #IMPLIED
+	%layer.AttGrp; 
+	tablewidth CDATA #IMPLIED
+	%opStand.AttGrp;
+>
+<!ELEMENT desc-cond (intro, condbody)>
+<!ATTLIST desc-cond
+	%do.AttGrp; 
+	%layer.AttGrp; 
+	%linktargetid.AttGrp; 
+	%context.AttGrp; 
+	direct (true | false) "false"
+	%opStand.AttGrp;
+>
+<!ELEMENT ex-desc-cond (desc-cond, desc-cond+)>
+<!ATTLIST ex-desc-cond
+	%linktargetid.AttGrp; 
+	%opStand.AttGrp;
+>
+<!ENTITY % graphicSize.AttGrp '
+	formatname CDATA #IMPLIED
+	unit  CDATA "mm"
+	width CDATA #IMPLIED
+	height CDATA #IMPLIED'>
+<!ENTITY % illustrationType '(title?,(sheet+))'>
+<!ENTITY % islsheet.AttGrp '
+	isl-sheet-number CDATA #IMPLIED
+	isl-sheet-revision CDATA #IMPLIED'>
+<!ENTITY % isl.AttGrp '
+	isl-id CDATA #IMPLIED
+	isl-revision CDATA #IMPLIED'>
+<!ELEMENT symbol EMPTY>
+<!ATTLIST symbol
+	href CDATA #REQUIRED
+	%graphicSize.AttGrp; 
+	%do.AttGrp; 
+	%isl.AttGrp; 
+	%islsheet.AttGrp; 
+>
+<!ENTITY % graphrefType '(linktext?,interactive-graphic,unanchored-graphics?)'>
+<!ENTITY % grlayer.AttGrp "
+	%layer.AttGrp;">
+<!ENTITY % sheetType '(fileref,gcompanionref?,gdesc?)'>
+<!ATTLIST sheet
+	grobject-id CDATA #IMPLIED
+	%graphicSize.AttGrp; 
+	%grlayer.AttGrp; 
+	%islsheet.AttGrp; 
+	%id.AttGrp; 
+>
+<!ENTITY % doopt.AttGrp "
+           code CDATA #IMPLIED">
+<!ELEMENT context-link EMPTY>
+<!ATTLIST context-link
+	%context.AttGrp; 
+>
+<!ELEMENT if-installed (#PCDATA | emph | abb | f-phase | tech-label)*>
+<!ELEMENT extapplication (param?, ((linktext?, graphref?)?, alternative))>
+<!ATTLIST extapplication
+	name (Perfo | Mel | LogBook | FlightPlan | NavigationCharts | AirportNavigation | WeatherMaps | ContactManager | ElectronicFlightFolder | Pep) #REQUIRED
+	%do.AttGrp; 
+	%linktargetid.AttGrp; 
+>
+<!ELEMENT perfoapplication (param?, ((linktext?, graphref?)?, alternative))>
+<!ATTLIST perfoapplication
+	%do.AttGrp; 
+	%linktargetid.AttGrp; 
+	%layer.AttGrp; 
+>
+<!ENTITY % extapplication.Grp 'extapplication'>
+<!ENTITY % wcnStructType '((para|unlist|numlist|equal)+|desc-cond)+'>
+<!ENTITY % noteType '(%wcnStructType; | graphref)+'>
+<!ENTITY % listType '(title?,para?,item+)'>
+<!ENTITY % alternativeType '(para|graphref|table)+'>
+<!ELEMENT ein (#PCDATA)>
+<!ATTLIST ein
+	prefix CDATA #IMPLIED
+	circuit CDATA #REQUIRED
+	suffix CDATA #IMPLIED
+	generic (true | false) #IMPLIED
+>
+<!ELEMENT liminaryref (#PCDATA | symbol)*>
+<!ATTLIST liminaryref
+	ref (LEDU | LETR | LOM | AAT) #REQUIRED
+>
+<!ENTITY % basicContent.Grp 'ecam-data|if-installed|tech-label|emph|ein|abb|symbol|f-phase|measure'>
+<!ENTITY % id.AttGrp "
+           id ID #REQUIRED">
+<!ENTITY % emphcontentType '(#PCDATA|emph|if-installed)*'>
+<!ELEMENT fileref EMPTY>
+<!ATTLIST fileref
+	href CDATA #REQUIRED
+>
+<!ELEMENT emph (#PCDATA)>
+<!ATTLIST emph	
+	bold (true | false) "false"
+	italic (true | false) "false"
+	underline (true | false) "false"
+	case (lower | upper) #IMPLIED
+	color (White | Yellow | Green | Cyan | Magenta | Amber | Medium-Gray | Black | Orange | Blue | Red | Violet | Purple | Light-Brown | Brown | Light-Yellow | Light-Green | Light-Red) #IMPLIED
+	sup (true | false) "false"
+	sub (true | false) "false"
+	overline (true | false) #IMPLIED
+	bgcolor (White | Yellow | Green | Cyan | Magenta | Amber | Gray | Blue | Red | Brown) #IMPLIED
+>
+<!ENTITY % graphmode.AttGrp "
+        mode (inline|thumbnail|text) #REQUIRED
+		rotate (clockwise|anticlockwise) #IMPLIED
+        inlinejustification (left|center|right) #IMPLIED
+        thumbnailframe (horizontal|vertical) #IMPLIED">
+<!ENTITY % content.Grp '%basicContent.Grp; %extensionContent.Grp;'>
+<!ENTITY % contentType '(#PCDATA|%content.Grp;)*'>
+<!ENTITY % links.Grp 'duref|refint|liminaryref|context-link'>
+<!ELEMENT duref (linktext?)>
+<!ATTLIST duref
+	ref CDATA #REQUIRED
+	role CDATA #IMPLIED
+	product CDATA #REQUIRED
+>
+<!ELEMENT hatref EMPTY>
+<!ATTLIST hatref
+	href CDATA #REQUIRED
+>
+<!ELEMENT gcompanionref EMPTY>
+<!ATTLIST gcompanionref
+	href CDATA #REQUIRED
+>
+<!ELEMENT refint (#PCDATA | symbol)*>
+<!ATTLIST refint
+	ref IDREF #REQUIRED
+	role CDATA #IMPLIED
+	mode (embed | replace) "replace"
+>
+<!ENTITY % baseContentAndLinksType '%content.Grp; | %links.Grp;'>
+<!ENTITY % contentAndLinksType '(#PCDATA | %baseContentAndLinksType;)*'>
+<!ELEMENT row-header %contentAndLinksType;>
+<!ATTLIST row-header
+	%layer.AttGrp; 
+	%linktargetid.AttGrp; 
+>
+<!ENTITY % titleType '(#PCDATA|%basicContent.Grp;)*'>
+<!ELEMENT title %titleType;>
+<!ENTITY % simpleBasicStructType '(para|unlist|numlist|warning|caution|note)+'>
+<!ENTITY % interBasicStructType '(para|unlist|numlist|equal)+'>
+<!ENTITY % fullBasicStructType '(%simpleBasicStructType;|table|graphref|launcher|equal)+'>
+<!ELEMENT unlist (%listType;)>
+<!ATTLIST unlist
+	bulltype (BULLET | SQUARE | NONE | NDASH) "NDASH"
+	%layer.AttGrp; 
+	%linktargetid.AttGrp; 
+	%do.AttGrp;
+	%opStand.AttGrp;
+>
+<!ELEMENT numlist (%listType;)>
+<!ATTLIST numlist
+	format (AUP | ALP | NNP) "NNP"
+	%layer.AttGrp; 
+	%linktargetid.AttGrp; 
+	%do.AttGrp;
+	%opStand.AttGrp;
+>
+<!ELEMENT equ-l %contentAndLinksType;>
+<!ELEMENT equal (equ-l, equ-r)>
+<!ATTLIST equal
+	width CDATA #REQUIRED
+	sepchar (DEF | EQUAL | DOT | NONE) "DEF"
+	%do.AttGrp; 
+	%linktargetid.AttGrp; 
+	%layer.AttGrp;
+	%opStand.AttGrp;
+>
+<!ELEMENT warning (%wcnStructType;)>
+<!ATTLIST warning
+	%layer.AttGrp; 
+	%linktargetid.AttGrp; 
+	%do.AttGrp;
+	%opStand.AttGrp;
+>
+<!ELEMENT caution (%wcnStructType;)>
+<!ATTLIST caution
+	%layer.AttGrp; 
+	%linktargetid.AttGrp; 
+	%do.AttGrp;
+	%opStand.AttGrp;
+>
+<!ELEMENT note (%noteType;)>
+<!ATTLIST note
+	%layer.AttGrp; 
+	%linktargetid.AttGrp; 
+	%do.AttGrp;
+	%opStand.AttGrp;
+>
+<!ELEMENT intro %contentType;>
+<!ELEMENT if (intro, (%links.Grp;))>
+<!ELEMENT whatif (if+)>
+<!ATTLIST whatif
+	%do.AttGrp; 
+	%linktargetid.AttGrp;
+	%opStand.AttGrp;
+>
+<!ELEMENT alternative (%alternativeType;)>
+<!ELEMENT graphref (%graphrefType;)>
+<!ATTLIST graphref
+	%graphmode.AttGrp; 
+	%linktargetid.AttGrp; 
+	%context.AttGrp;
+	%opStand.AttGrp;
+>
+<!ELEMENT unanchored-graphics (interactive-graphic+)>
+<!ELEMENT interactive-graphic (illustration, hotspot-links?)>
+<!ATTLIST interactive-graphic
+	%linktargetid.AttGrp; 
+>
+<!ELEMENT hotspot-links (sheet-link+)>
+<!ELEMENT sheet-link (hotspotlink+)>
+<!ATTLIST sheet-link
+	sheetref IDREF #REQUIRED
+>
+<!ELEMENT hotspotlink (duref | refint | context-link)>
+<!ATTLIST hotspotlink
+	grobject-id CDATA #REQUIRED
+>
+<!ELEMENT illustration (%illustrationType;)>
+<!ATTLIST illustration
+	%isl.AttGrp; 
+	%do.AttGrp; 
+>
+<!ELEMENT sheet (%sheetType;)>
+<!ELEMENT gdesc (desctext?, listitem?)>
+<!ELEMENT paradesc (#PCDATA | %baseContentAndLinksType; | gritem)*>
+<!ELEMENT desctext (paradesc+)>
+<!ELEMENT listitem (grdescitem+)>
+<!ELEMENT grdescitem (gritem, title?, itembody?)>
+<!ELEMENT gritem %emphcontentType;>
+<!ELEMENT extobject (fileref, linktext, alternative)>
+<!ATTLIST extobject
+	mime-type CDATA #REQUIRED
+	%do.AttGrp; 
+	%linktargetid.AttGrp; 
+	insert-date CDATA #IMPLIED
+>
+<!ELEMENT param (#PCDATA)>
+<!ATTLIST param
+	module (takeoff | landing | in-flight | weightandbalance) #IMPLIED
+>
+<!ELEMENT linktext %contentType;>
+<!ELEMENT reason (para | unlist | numlist)+>
+<!ELEMENT measure (#PCDATA|wbd)*>
+<!ATTLIST measure
+	system CDATA #REQUIRED
+	category CDATA #REQUIRED
+	unit CDATA #REQUIRED
+	show-unit (true | false) "true"
+	bound (upper | lower | upperlower) #IMPLIED
+>
+<!ELEMENT launcher (launchintro?, (extobject | %extapplication.Grp;))>
+<!ATTLIST launcher
+	%layer.AttGrp; 
+	%linktargetid.AttGrp; 
+	%opStand.AttGrp;
+>
+<!ELEMENT launchintro %contentType;>
+<!ELEMENT footnotes (ftnote+, para*)>
+<!ELEMENT tech-label %emphcontentType;>
+<!ATTLIST tech-label
+	type (panel | zone | location | pb | pb-sw | light | sel | sw | lever | rotsel | indicator | keyboard | display | cb | computer | contactor | controller | instrument | side-stick | handwheel | knob | tech-label | callout | l-light | aural-w | page | s-page | sm-page | m-page | announcement | ecamsys | autocallout | hardkey | functionkey | key | handle) #REQUIRED
+	source CDATA #IMPLIED
+>
+
+<!ELEMENT abb %emphcontentType;>
+<!ELEMENT f-phase %emphcontentType;>
+<!ATTLIST f-phase
+	pof CDATA #IMPLIED
+>
+<!ENTITY % paraType '%contentAndLinksType;'>
+<!ELEMENT para %paraType;>
+<!ATTLIST para
+	%doopt.AttGrp; 
+	%linktargetid.AttGrp; 
+	%layer.AttGrp;
+	%opStand.AttGrp;
+>
+<!ELEMENT equ-r (%simpleBasicStructType;)>
+<!ELEMENT itembody (%fullBasicStructType;)>
+<!ELEMENT ftnote (%interBasicStructType;)>
+<!ATTLIST ftnote
+	%do.AttGrp; 
+	%linktargetid.AttGrp; 
+	%ftnoteType; 
+>
+<!ELEMENT comment (%fullBasicStructType;)>
+<!ATTLIST comment
+	%doopt.AttGrp; 
+>
+<!ELEMENT ecam-data (ecamsys?, ecamtitle?, ecamsubtitle?)>
+<!ATTLIST ecam-data
+	type (alert|memo|other|dispatchmessage) #REQUIRED
+	ecamimportance (R|A|G|W|C|M|BK|BU|Y|GY) #IMPLIED
+>
+<!ELEMENT ecamsys (#PCDATA)>
+<!ELEMENT ecamtitle (#PCDATA)>
+<!ELEMENT ecamsubtitle (#PCDATA)>
+
+<!ELEMENT qualifiers (qualifier+)>
+<!ELEMENT qualifier EMPTY>
+<!ATTLIST qualifier
+	 value CDATA #REQUIRED
+>

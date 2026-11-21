@@ -1,0 +1,118 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Product Metadata module               -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!-- AIRBUS Reference :                                            -->
+<!--    "-//AIRBUS OPS//DTD PRODUCTMDATA_EXCH-VER10.0//EN"          -->
+<!--  Rev Date      : October 2010                                 -->
+<!--  Parsed Date   : October 2010                                 -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Transmittal Letter comment from IMS:                       -->
+<!--    element trl-comment is added to productmdata element       -->
+<!-- 2) Add deleted files information for incremental product      -->
+<!--    management: element incremental is added to productmdata   -->
+<!--    element                                                    -->	
+<!-- 3) LOM item effectivity inherits 			           -->	
+<!-- 4) Revisions definition inherits from DUMdata revisions       -->
+<!--    definition                                                 -->
+<!-- 5) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Add optional major-event attribute in productmdata element -->
+<!-- 2) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- VER 9.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 9.0                        -->
+<!-- 2) Add publication-data element definition                    -->
+<!-- 3) Add publication-info element definition            		   -->
+<!-- 4) Add publication-data element to productmdata element	   -->
+<!-- VER 10.0:                                                     -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 10.0                       -->
+<!-- 2) Add doc-usage attribute definition                         -->
+<!-- ============================================================  -->
+
+<!-- The following set of declarations may be referred to  using 
+     the public entity as follows:
+     <!DOCTYPE productmdata PUBLIC
+        "-//AIRBUS OPS//DTD PRODUCTMDATA_EXCH-VER10.0//EN"   [ ]>   -->
+
+<!-- ============================================================= -->
+<!-- ENTITIES                                                      -->
+<!-- ============================================================= -->
+
+<!ENTITY % lom-exch SYSTEM "lom-exch.dtd">
+%lom-exch;
+
+<!ENTITY % aat-exch SYSTEM "aat-exch.dtd">
+%aat-exch;
+
+<!ENTITY % hlType.AttGrp '
+	type (major|minor|metadata|effect|move|del|fleetchanged) #REQUIRED'>
+
+<!ENTITY % revision-exch SYSTEM "revision-exch.dtd">
+%revision-exch;
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT title (#PCDATA)>
+
+<!ELEMENT revisions (mdata-revisions?, content-revisions?)>
+
+<!ELEMENT du-inv-trigger EMPTY>
+<!ATTLIST du-inv-trigger
+	du-inv-code	CDATA	#REQUIRED
+	product CDATA #REQUIRED
+>
+
+<!ELEMENT triggered-du-inv (du-inv-trigger+)>
+<!ATTLIST triggered-du-inv
+	du-inv-code	CDATA	#REQUIRED
+>
+
+<!ELEMENT triggered-du-invs (triggered-du-inv+)>
+
+<!ELEMENT productmdata (incremental?, trl-comment?, lom?, aat?, revisions?, triggered-du-invs?, publication-data?)>
+<!ATTLIST productmdata
+	code	CDATA	#REQUIRED
+	revdate	CDATA	#REQUIRED
+	prev-revdate CDATA	#IMPLIED
+	must-be-approved (true|false) #REQUIRED
+	major-event (true|false) #IMPLIED
+	doc-usage CDATA #IMPLIED
+>
+
+<!ELEMENT publication-data (publication-info+)>
+
+<!ELEMENT publication-info EMPTY>
+<!ATTLIST publication-info
+	sectname CDATA	#REQUIRED
+	path CDATA	#IMPLIED
+	revdate CDATA	#REQUIRED
+>
+
+<!ELEMENT trl-comment (#PCDATA)>
+
+<!ELEMENT incremental (deleted-files?)>
+<!ELEMENT deleted-files (file+)>
+<!ELEMENT file (#PCDATA)>
+<!ATTLIST file
+	type (illustration|extobj) #REQUIRED
+>

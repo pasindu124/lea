@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00015646.0001001" revdate="2014-08-12T18:01:26"><title>APU Fire Detection Loop</title><procitem layer="1" lid="N.00015646.0001001.001"><title>On ground</title><procbody lid="N.00015646.0001001.002"><action layer="1" lid="N.00015646.0001001.003" memory="false"><command code="00015646.0001001.001"><para layer="1" lid="N.00015646.0001001.004">The <abb>APU</abb> fire test
+is made before each <abb>APU</abb> start.</para></command></action></procbody></procitem></opsproc>

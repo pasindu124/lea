@@ -1,0 +1,132 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Companion module                      -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!-- AIRBUS Reference :                                            -->
+<!--    "-//AIRBUS OPS//DTD COMPANION_EXCH-VER10.0//EN"             -->
+<!--  Rev Date      : October 2011                                 -->
+<!--  Parsed Date   : October 2011                                 -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- V9.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 9.0                        -->
+<!-- VER 10.0:                                                     -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 10.0                       -->
+<!-- ============================================================  -->
+
+<!-- The following set of declarations may be referred to  using 
+     the public entity as follows:
+     <!DOCTYPE companion PUBLIC
+        "-//AIRBUS OPS//DTD COMPANION_EXCH-VER10.0//EN"   [ ]>      -->     
+
+
+<!NOTATION cgm PUBLIC 
+  "-//USA-DOD//NOTATION Computer Graphics Metafile//EN"            >
+
+<!NOTATION ccitt4 PUBLIC 
+  "-//USA-DOD//NOTATION CCITT Group4 Facsimile//EN"                >
+
+<!NOTATION png PUBLIC
+  "-//W3C//NOTATION Portable Network Graphics//EN"                 >
+
+<!NOTATION jpeg PUBLIC
+  "+//ISBN 0-7923-9432-1::Graphic Notation//NOTATION Joint
+   Photographic Experts Group Raster//EN"                          >
+
+<!-- =========================================================  -->
+<!--     COMPANION FILE STRUCTURE                               -->
+<!-- =========================================================  -->
+
+<!-- ========================================================   -->
+<!-- The v4sheet element contains one size                      -->
+<!-- element and one optional apslist element.                  -->
+<!-- Attributes:                                                -->
+<!-- "id" stores the ID of the companion data file.             -->
+<!--    CGM file.                                               -->
+<!-- ========================================================   -->
+<!ELEMENT v4sheet (imgsize, apslist?)                             >
+<!ATTLIST v4sheet
+          id              ID                           #REQUIRED>
+
+<!-- ========================================================   -->
+<!-- The image size (imgsize) element contains the Image Area   -->
+<!-- (imgarea) of the graphic (Format).                         -->
+<!-- Attributes:                                                -->
+<!-- "imgarea" is to identify the designation of the format     -->
+<!--  Standard ATA or the OPS format code                       -->
+<!-- "unit" specifies the dimension unit                        -->
+<!-- "imgwid" and "imghgt" give the physical dimension          -->
+<!-- ========================================================   -->
+<!ELEMENT imgsize       EMPTY                                     >
+<!ATTLIST imgsize
+          imgarea         CDATA                        #REQUIRED 
+          unit            (MM|mm)                      "MM"                   
+          imgwid          NMTOKEN                      #REQUIRED 
+          imghgt          NMTOKEN                      #REQUIRED   >
+
+
+<!-- ========================================================   -->
+<!-- The apslist element will contain the APS stored in the     -->
+<!--   file (min=0).                                            -->
+<!-- Attributes:                                                -->
+<!-- "apsnbr" gives the number of APS in the list               -->
+<!-- ========================================================   -->
+<!ELEMENT apslist      (grobject*)                                >
+<!ATTLIST apslist
+          apsnbr          NMTOKEN                      #REQUIRED   >
+
+
+<!-- ========================================================   -->
+<!-- The grobject element describes the different graphical     -->
+<!--    hotspots present in the graphic file.                   -->
+<!-- Attributes:                                                -->
+<!-- "id" attribute stores the unique ID of the hotspot as      -->
+<!-- found in the graphic file                                  -->
+<!-- "refloc" contains a reference to a given grobject          -->
+<!-- "screentip" contains the information displayed when        -->
+<!--    passing on the graphical object                         -->
+<!-- "name" attribute is to identify the type of the hotspot    -->
+<!--    or maybe complete the ID information                    -->
+<!-- "viewcontext" describes the display zone dimension when    -->
+<!--    accessing the hotspot                                   -->
+<!-- "region" contains the list of point needed to draw the     -->
+<!--    region type zone of the hotspot                         -->
+<!-- "regiontype" contains the geometrical description of       -->
+<!--    the zone where the hotspot can be activated             -->
+<!-- "assembly" contains the next higher assembly               -->
+<!-- "bizdesc" Business description of a GROBJECT (graphical    -->
+<!--    object element)                                         -->
+<!-- "behavior" interactive state of the element                -->
+<!-- ========================================================   -->
+<!ELEMENT grobject     (grobject*)                                >
+<!ATTLIST grobject
+          id              ID                           #REQUIRED 
+          refloc          CDATA                        #IMPLIED 
+          screentip       CDATA                        #IMPLIED 
+          name            CDATA                        #REQUIRED 
+          viewcontext     CDATA                        #IMPLIED 
+          region          CDATA                        #IMPLIED 
+          regiontype      CDATA                        #IMPLIED
+          assembly        CDATA                        #IMPLIED
+          bizdesc         CDATA                        #REQUIRED 
+          behavior        CDATA                        #IMPLIED   >

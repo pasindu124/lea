@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021733.0001001" revdate="2017-11-21T11:38:21"><title><if-installed><abb>EFB</abb> Mounting Device</if-installed></title><procitem layer="1" lid="N.00021733.0001001.001"><title>GENERAL INFORMATION</title><procbody lid="N.00021733.0001001.002"><inform layer="1" lid="N.00021733.0001001.003"><para code="00021733.0001001.001" layer="1" lid="N.00021733.0001001.004">Alternate procedures must be
+established and used when the operating procedures required the use
+of the affected <abb>EFB</abb>.</para></inform></procbody></procitem></opsproc>

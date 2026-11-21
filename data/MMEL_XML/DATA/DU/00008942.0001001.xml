@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00008942.0001001" revdate="2010-03-11T15:56:49"><title>Standby Horizon Indicator</title><procitem layer="1" lid="N.00008942.0001001.005"><title>Flight preparation/limitations</title><procbody lid="N.00008942.0001001.006"><limit layer="1" lid="N.00008942.0001001.007"><lit-limit lid="N.00008942.0001001.008">Maximum landing capability is CAT 1.</lit-limit></limit></procbody></procitem></opsproc>

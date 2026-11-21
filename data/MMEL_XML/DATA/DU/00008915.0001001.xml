@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00008915.0001001" revdate="2010-03-18T15:01:35"><title>Galley Oxygen Unit (cabin attendant portable oxygen device
+available near the galley)</title><procitem layer="1" lid="N.00008915.0001001.004"><title>Flight preparation/Limitations</title><procbody lid="N.00008915.0001001.001"><inform layer="1" lid="N.00008915.0001001.002"><para code="00008915.0001001.001" layer="1" lid="N.00008915.0001001.003">Before
+the flight, the flight crew shall brief the cabin crew that the galley
+oxygen unit is inoperative and that the cabin attendant portable oxygen
+device should be used instead.</para></inform></procbody></procitem></opsproc>

@@ -1,0 +1,127 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Revision library	               	   -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!--  Rev Date      : October 2011                            	   -->
+<!--  Parsed Date   : October 2011                            	   -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) element automatic, authoring, hl-del, hl-effect, hl-move,  -->
+<!--    hl-minor, content-elem, attribute, msn, theallvalue,       -->
+<!--    add-del are added                                          -->
+<!-- 2) attribute type is added to elemid, idfrom, idto elements   -->
+<!-- 3) entity revisions-elem-type is added                        -->
+<!-- 4) new definition for msnadd and msndel elements              -->
+<!-- 5) list of attributes of highlight element is cleaned         -->
+<!-- 6) definition for 'parahl' element is simplified according    -->
+<!--    the schema 6.0                                             -->
+<!-- 7) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- VER 9.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Add origin attribute to rev element                        -->
+<!-- 2) Increased the version number to 9.0                        -->
+<!-- 3) Add code attribute to elemeid element                      -->
+<!-- 4) Define hl-rename element                      			   -->
+<!-- 3) Add hl-rename element in automatic element                 -->
+<!-- VER 10.0:                                                     -->
+<!--   Context: global modification                                -->
+<!-- 1) Add hl-dtd element                       				   -->
+<!-- 2) Add product value in idfrom/to@type attribute              -->
+<!-- 3) Increased the version number to 10.0                       -->
+<!-- ============================================================  -->
+
+<!-- ============================================================= -->
+<!-- ENTITIES                                                      -->
+<!-- ============================================================= -->
+
+<!ENTITY % revisions-elem-type 'type (product| psl | group | du-inv | du-sol | anchor) #REQUIRED'>
+
+<!ENTITY % revisionsType '(highlights?, rev-marks)'>
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT hl-ref EMPTY>
+<!ATTLIST hl-ref
+	ref IDREF #REQUIRED
+>
+<!ELEMENT rev (hl-ref*)>
+<!ATTLIST rev
+	chg (R | N | M | H | E | ER | MR) #REQUIRED
+	path CDATA #REQUIRED
+	origin (airbus | operator) "operator"
+	anchor (true | false) #REQUIRED
+>
+<!ELEMENT elemid (#PCDATA)>
+<!ATTLIST elemid
+	%revisions-elem-type;
+	code CDATA #IMPLIED
+>
+<!ELEMENT revdate (#PCDATA)>
+<!ELEMENT idfrom (#PCDATA)>
+<!ATTLIST idfrom
+	%revisions-elem-type; 
+>
+<!ELEMENT idto (#PCDATA)>
+<!ATTLIST idto
+	%revisions-elem-type; 
+>
+<!-- definition for 'parahl' element is simplified according the schema 6.0 -->
+<!ELEMENT parahl (#PCDATA)>
+
+<!ELEMENT item (parahl+)>
+<!ELEMENT unlist (item+)>
+<!ELEMENT highlight (automatic | authoring)>
+<!ATTLIST highlight
+	date CDATA #REQUIRED
+	hl-id ID #REQUIRED
+	unreferenced (true | false) #IMPLIED
+>
+<!ELEMENT automatic (hl-del | hl-effect | hl-move | hl-minor | hl-rename | hl-dtd)>
+<!ELEMENT authoring (parahl | unlist)+>
+<!ATTLIST authoring
+	type (major | minor | metadata) #REQUIRED
+>
+
+<!ELEMENT hl-rename (elemid)>
+<!ATTLIST hl-rename
+	oldcode CDATA #IMPLIED
+	oldtitle CDATA #IMPLIED
+>
+
+
+<!ELEMENT hl-dtd EMPTY>
+<!ELEMENT hl-del ((elemid, revdate?, title?) | attribute+ | content-elem)>
+<!ELEMENT attribute (#PCDATA)>
+<!ELEMENT content-elem EMPTY>
+<!ELEMENT hl-effect (msnadd | msndel | add-del)>
+<!ELEMENT msnadd (msn+ | theallvalue)>
+<!ELEMENT msndel (msn+ | theallvalue)>
+<!ELEMENT msn (#PCDATA)>
+<!ELEMENT theallvalue EMPTY>
+<!ELEMENT add-del (msnadd, msndel)>
+<!ELEMENT hl-move (elemid, idfrom, idto)>
+<!ELEMENT hl-minor EMPTY>
+<!ELEMENT highlights (highlight+)>
+<!ELEMENT rev-marks (rev+)>
+
+<!ELEMENT mdata-revisions (%revisionsType;)>
+<!ELEMENT content-revisions (%revisionsType;)>

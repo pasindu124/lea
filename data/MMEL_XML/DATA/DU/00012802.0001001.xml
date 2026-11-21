@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012802.0001001" revdate="2011-06-29T21:05:29"><title>Foreword</title><descbody code="00012802.0001001.001" lid="N.00012802.0001001.001"><para code="00012802.0001001.002" layer="1" lid="N.00012802.0001001.002">This Master Minimum Equipment List (<abb>MMEL</abb>) is a reference manual published in English. It is approved
+by the European Aviation Safety Agency (<abb>EASA</abb>). This <abb>MMEL</abb> must be used as a reference by the Operator to develop
+its <abb>MEL</abb>.</para><para code="00012802.0001001.003" layer="1" lid="N.00012802.0001001.003">This <abb>MMEL</abb> takes into account the specific configuration of each
+aircraft of the Operator's fleet. The aircraft validity is managed
+at Documentary Unit (DU) level. <duref product="MMEL" ref="00012806"/></para><para code="00012802.0001001.004" layer="1" lid="N.00012802.0001001.004">This <abb>MMEL</abb> is produced in <abb>XML</abb> format and can be published
+in <abb>PDF</abb> format and in electronic format for electronic consultation
+on <abb>EFB</abb>.</para><para code="00012802.0001001.005" layer="1" lid="N.00012802.0001001.005">Airbus
+also proposes a set of tools to create and publish the Operator’s <abb>MEL</abb> based on this <abb>MMEL</abb>.</para></descbody></description>

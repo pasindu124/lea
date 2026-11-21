@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00009059.0001001" revdate="2011-06-28T17:53:43"><title>Windshield Wiper</title><procitem layer="1" lid="N.00009059.0001001.004"><title>Flight preparation/limitations</title><procbody lid="N.00009059.0001001.005"><condition at-any-time="false" code="00009059.0001001.003" direct="false" layer="1" lid="N.00009059.0001001.008" subtitle="false" type="cond"><intro>When the wiper and the rain repellent are inoperative or deactivated
+on the <abb>PF</abb> side:</intro><procbody lid="N.00009059.0001001.009"><limit layer="1" lid="N.00009059.0001001.010"><lit-limit lid="N.00009059.0001001.011">Maximum landing capability is
+CAT 1.</lit-limit></limit></procbody></condition></procbody></procitem></opsproc>

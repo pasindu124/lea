@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00028261.0001001" func-code="23-73-05-03" item-list-nbr="03" revdate="2025-11-19T00:00:00"><title><if-installed>Cabin Crew Station/Galley Loudspeaker</if-installed></title><ditembody nb-installed="-"><dispcond code="00028261.0001001.001" dispcond-id="D13465" dispcond-label="A" lid="N.00028261.0001001.001"><title>Announcements audible</title><normal-dispcond nb-required="-" rectification-interval="C"><remark><requirement lid="N.00028261.0001001.002" req-id="R13466"><opsproc-ref><duref product="MMEL" ref="00028263"/></opsproc-ref><para code="00028261.0001001.002" layer="1" lid="N.00028261.0001001.003">One or
+more may be inoperative provided that cabin crews and passengers announcements
+are checked and clearly heard in the vicinity of the galley or the
+affected cabin crew station.</para></requirement></remark></normal-dispcond></dispcond><dispcond code="00028261.0001001.003" dispcond-id="D13467" dispcond-label="B" lid="N.00028261.0001001.004"><title>Announcements not audible</title><normal-dispcond nb-required="-" rectification-interval="C"><remark><requirement lid="N.00028261.0001001.013" req-id="R13471"><opsproc-ref><duref product="MMEL" ref="00028266"/></opsproc-ref><qualifiers><qualifier value="CREW_OPS"/></qualifiers><para code="00028261.0001001.007" layer="1" lid="N.00028261.0001001.014">One or more may be inoperative provided
+that alternate procedures are established and used to alert the cabin
+crews or the passengers in the vicinity of the galley or the affected
+cabin crew station.</para></requirement></remark></normal-dispcond></dispcond></ditembody></dispatchitem>

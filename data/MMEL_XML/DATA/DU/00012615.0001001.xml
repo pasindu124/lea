@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012615.0001001" revdate="2015-11-03T00:00:00"><title>Introduction to the <abb>MMEL</abb></title><descbody code="00012615.0001001.001" lid="N.00012615.0001001.001"><para code="00012615.0001001.002" layer="1" lid="N.00012615.0001001.002">The <abb>MMEL</abb> (reference STL 11000)
+is developed to improve the aircraft utilization and thereby to provide
+more convenient and economic air transportation for the public. </para><para code="00012615.0001001.003" layer="1" lid="N.00012615.0001001.003">The <abb>MMEL</abb> is a document that lists the system, function,
+or equipment which may be temporarily inoperative, subject to certain
+conditions, while maintaining an acceptable level of safety. It does
+not contain obviously required items such as wings, flaps, and rudders. </para><para code="00012615.0001001.004" layer="1" lid="N.00012615.0001001.004">ALL ITEMS RELATED TO THE AIRWORTHINESS OF THE AIRCRAFT AND NOT INCLUDED
+IN THE <abb>MMEL</abb> ARE AUTOMATICALLY REQUIRED TO BE OPERATIVE
+FOR DISPATCH. </para><para code="00012615.0001001.005" layer="1" lid="N.00012615.0001001.005">Non-safety related equipment
+such as galley equipment and passenger convenience items need not
+be listed. </para><para code="00012615.0001001.006" layer="1" lid="N.00012615.0001001.006">The <abb>MMEL</abb> is the basis for
+the development of individual Operator's <abb>MEL</abb> which take
+into consideration the Operator's particular aircraft equipment configuration
+and operational conditions. In order to maintain an acceptable level
+of safety and reliability, the <abb>MMEL</abb> establishes limitations
+on the duration of and conditions for operation with inoperative
+item.</para></descbody></description>

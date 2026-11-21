@@ -1,0 +1,189 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Dispatchitem module                   -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!-- AIRBUS Reference :                                            -->
+<!--    "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN"          -->
+<!--  Rev Date      : October 2011                            	   -->
+<!--  Parsed Date   : October 2011                            	   -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) list of attributes is changed for taskref element          -->
+<!-- 2) attributes dispcond-id et dispcond-label are added to the  -->
+<!--    attribute list of dispcond element                         -->
+<!-- 3) the airlineproc-ref element is added to                    -->
+<!--    dispatch-redirection, normal-dispcond, requirement elements-->
+<!-- 4) the airlineproc-ref element is added                       -->
+<!-- 5) the special-ops element is added to normal-dispcond        -->
+<!--    elements                                                   -->
+<!-- 6) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) New optional title element in dispcond element : title     -->
+<!--    for exception                                              -->
+<!-- 2) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Remove airlineproc-ref element in dispatch-redirection     -->
+<!--    element                                                    -->
+<!-- 2) Add optional operator attribute in in dispatch-redirection -->
+<!--    element.logical operator values AND/OR                     -->
+<!-- 3) Add no-go element in ditembody element. Alternative to     -->
+<!--    dispcond element. no-go consists of optional para and note -->
+<!--    and code attribute                                         -->
+<!-- 4) Optional choice between sub elements if airlineproc-ref    -->
+<!--    element                                                    -->
+<!-- 5) Optional para and note in no-remark element                -->
+<!-- 6) Remove optional note and duref in addrequ element          -->
+<!-- 7) Add "flight-hour", "flight-day", "hour" values to unit     -->
+<!--    attribute in application-interval element                  -->
+<!-- 8) chap-nbr, sect-nbr, subj-nbr, func and seq attribute are   -->
+<!--    in taskref element. Add optional dm-ident attribute        -->
+<!-- 9) Remove airlineproc-ref element from requirement element    -->
+<!-- 10) Remove limit element from requirement element             -->
+<!-- 11) Remove limit, perf-value and lit-limit elements not used  -->
+<!--     anymore in dispatchitem model see 10)                     -->
+<!-- 12) Remove note element from normal-dispcond element          -->
+<!-- 13) Remove duref element from remark element                  -->
+<!-- 14) Increased the version number to 8.0                       -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- VER 9.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Set duref element mandatory in opsproc-ref element         -->
+<!-- 2) Change maintenance-ref definition                          -->
+<!-- 3) Change airlineproc-ref definition                          -->
+<!-- 4) Remove special-ops from normal-dispcond element and        -->
+<!-- delete special-ops element                                    -->
+<!-- 5) Add qualifier elements to requirement element              -->
+<!-- 6) Increased the version number to 9.0                        -->
+<!-- VER 10.0:                                                     -->
+<!--   Context: global modification                                -->
+<!-- 1) Add as-required-by-regulations@rectification-interval attribute -->
+<!-- 2) Increased the version number to 10.0                       -->
+<!-- ============================================================  -->
+
+<!-- The following set of declarations may be referred to  using 
+     the public entity as follows:
+     <!DOCTYPE dispatchitem PUBLIC
+        "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN"   [ ]>   -->
+<!-- ============================================================= -->
+<!-- ENTITIES                                                      -->
+<!-- ============================================================= -->
+
+<!ENTITY % extensionContent.Grp "">
+<!ENTITY % ftnoteType "">
+<!ENTITY % ops-exch SYSTEM "ops-exch.dtd">
+%ops-exch;
+<!ENTITY % itemType "%fullBasicStructType;">
+<!ELEMENT item (%itemType;)>
+<!ATTLIST item
+	%layer.AttGrp; 
+>
+<!ENTITY % sl-exch SYSTEM "sl-exch.dtd">
+%sl-exch;
+
+<!ENTITY % descbodyType "((%fullBasicStructType; | desc-cond | ex-desc-cond | whatif)+)">
+
+<!ENTITY % func-code.GlobalAttr "
+	func-code	CDATA	#REQUIRED ">
+
+<!ENTITY % entryType '(para|unlist|numlist|warning|caution|note|graphref|launcher|equal|desc-cond|ex-desc-cond|row-header|measure)*'>
+<!ENTITY % row.att '%linktargetid.AttGrp;'>
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT functional-notes (note+)>
+<!ELEMENT ditembody (navigation-acces?, (dispcond+ | no-go))>
+<!ATTLIST ditembody
+	nb-installed CDATA #REQUIRED
+>
+<!ELEMENT navigation-acces ((duref | context-link)+)>
+<!ATTLIST navigation-acces
+	%linktargetid.AttGrp; 
+>
+<!ELEMENT dispcond (title?, (as-required-by-regulation | dispatch-redirection | normal-dispcond))>
+<!ATTLIST dispcond
+	dispcond-id CDATA #REQUIRED
+	dispcond-label CDATA #REQUIRED
+	%do.AttGrp; 
+	%linktargetid.AttGrp; 
+>
+<!ELEMENT as-required-by-regulation (opsproc-ref?, maintenance-ref?, note*)>
+<!ATTLIST as-required-by-regulation
+	rectification-interval (A | B | C | D | -) #IMPLIED
+>
+<!ELEMENT dispatch-redirection ((duref, note?)+)>
+<!ATTLIST dispatch-redirection
+	operator (AND | OR) #IMPLIED
+>
+<!ELEMENT no-go (para?, note*)>
+<!ATTLIST no-go
+	%do.AttGrp;
+>
+<!ELEMENT airlineproc-ref (symbol?, (duref | external-ref | launcher)?)>
+<!ATTLIST airlineproc-ref
+	caption CDATA #REQUIRED
+	emph (yes | no) #IMPLIED
+	color (White | Yellow | Green | Cyan | Magenta | Amber | Light-Gray | Medium-Gray | Dark-Gray | Black | Orange | Blue | Red | Violet | Purple | Light-Brown | Brown | Light-Yellow | Light-Green | Light-Red) #IMPLIED
+>
+<!ELEMENT external-ref (#PCDATA)>
+<!ELEMENT normal-dispcond (placard?, airlineproc-ref*, (no-remark | remark))>
+<!ATTLIST normal-dispcond
+	nb-required CDATA #REQUIRED
+	rectification-interval (A | B | C | D | -) #REQUIRED
+>
+
+<!ELEMENT no-remark (para?, note?)>
+<!ELEMENT requirementblock (requirement, addrequ+)>
+<!ELEMENT addrequ (requirement)>
+<!ATTLIST addrequ
+	%linktargetid.AttGrp; 
+>
+<!ELEMENT placard (duref?)>
+<!ELEMENT maintenance-ref (application-interval?, (taskref+ | duref | external-ref))>
+<!ELEMENT taskref EMPTY>
+<!ATTLIST taskref
+	product CDATA #REQUIRED
+	chap-nbr CDATA #IMPLIED
+	sect-nbr CDATA #IMPLIED
+	subj-nbr CDATA #IMPLIED
+	func CDATA #IMPLIED
+	seq CDATA #IMPLIED
+	dm-ident CDATA #IMPLIED
+>
+<!ELEMENT application-interval EMPTY>
+<!ATTLIST application-interval
+	nbr CDATA #IMPLIED
+	unit (day | flight | flight-hour | flight-day | hour) #IMPLIED
+>
+
+<!ELEMENT condbody (%descbodyType;)>
+<!ELEMENT opsproc-ref (duref)>
+
+<!ELEMENT dispatchitem (reason?, title, functional-notes?, note?, ditembody?)>
+<!ATTLIST dispatchitem
+	%duIdent.AttGrp; 
+	%func-code.GlobalAttr; 
+	item-list-nbr CDATA #REQUIRED
+	%context.AttGrp; 
+>
+<!ELEMENT remark ((requirement | requirementblock), note*)>
+<!ELEMENT requirement (opsproc-ref?, maintenance-ref?, qualifiers?, para, (para | unlist | note)*)>
+<!ATTLIST requirement
+	req-id CDATA #REQUIRED
+	%linktargetid.AttGrp; 
+>
+
+<!ELEMENT entry (%entryType;)>

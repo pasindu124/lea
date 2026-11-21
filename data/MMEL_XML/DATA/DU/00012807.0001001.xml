@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012807.0001001" revdate="2019-05-22T11:21:28"><title>MMEL Revision Management</title><descitem code="00012807.0001001.057" layer="1" lid="N.00012807.0001001.088"><title><abb>MMEL</abb> Revision Cycle</title><descbody code="00012807.0001001.058" lid="N.00012807.0001001.089"><para code="00012807.0001001.015" layer="1" lid="N.00012807.0001001.002">The <abb>MMEL</abb> revision adds, updates,
+or deletes information. The Operator determines the revision cycle.
+For urgent update, Airbus issues an immediate revision regardless
+of the revision cycle.</para></descbody></descitem><descitem code="00012807.0001001.059" layer="1" lid="N.00012807.0001001.090"><title><abb>MMEL</abb> Issue Date</title><descbody code="00012807.0001001.060" lid="N.00012807.0001001.091"><para code="00012807.0001001.016" layer="1" lid="N.00012807.0001001.003">An issue date identifies each <abb>MMEL</abb> revision.</para><unlist bulltype="NDASH" code="00012807.0001001.054" layer="1" lid="N.00012807.0001001.078"><para layer="1" lid="N.00012807.0001001.080">The issue date appears:</para><item layer="1"><para layer="1" lid="N.00012807.0001001.079">In the Transmittal
+Letter for the <abb>PDF</abb> format, and</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.081">In the LIBRARY
+panel of the OPS LIBRARY Browser for the electronic consultation.</para></item></unlist><note code="00012807.0001001.017" layer="1" lid="N.00012807.0001001.004"><para layer="1" lid="N.00012807.0001001.005">The issue date is different
+from the <abb>EASA</abb> approval date. The <abb>EASA</abb> approval
+date appears in the <abb>MMEL</abb> Approval Reference of the <abb>MMEL</abb> Preamble. The applicability date of this <abb>MMEL</abb> is based on the issue date and not on the <abb>EASA</abb> approval
+date (<duref product="MMEL" ref="00010655"/>).</para></note></descbody></descitem><descitem code="00012807.0001001.061" layer="1" lid="N.00012807.0001001.092"><title>MMEL Revision Contents</title><descbody code="00012807.0001001.062" lid="N.00012807.0001001.093"><unlist bulltype="NDASH" code="00012807.0001001.018" layer="1" lid="N.00012807.0001001.006"><para layer="1" lid="N.00012807.0001001.007">Each <abb>MMEL</abb> revision
+contains the following information that is useful to update the <abb>MMEL</abb> and to identify the changes that the revision has inserted:</para><item layer="1"><para layer="1" lid="N.00012807.0001001.008">The Transmittal
+Letter (in <abb>PDF</abb> format only),</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.009">The List of
+Effective Sections/Subsections (<abb>LESS</abb>) (in <abb>PDF</abb> format only),</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.010">The Filling
+Instructions (in <abb>PDF</abb> format only),</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.011">The List of
+Effective Documentary Units (<abb>LEDU</abb>),</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.012">The Summary
+of Highlights (<abb>SOH</abb>).</para></item></unlist><unlist bulltype="NDASH" code="00012807.0001001.019" layer="1" lid="N.00012807.0001001.013"><para layer="1" lid="N.00012807.0001001.014">Each <abb>MMEL</abb> revision
+also contains:</para><item layer="1"><para layer="1" lid="N.00012807.0001001.015">An Aircraft
+Allocation Table (<abb>AAT</abb>),</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.016">A List of Modifications
+(<abb>LOM</abb>).</para></item></unlist><para code="00012807.0001001.093" layer="1" lid="N.00012807.0001001.174">When there is a change within
+a DU, the <abb>MMEL</abb> revision updates the whole subsection that
+contains the DU.</para></descbody></descitem><descitem code="00012807.0001001.020" layer="1" lid="N.00012807.0001001.017"><title>Transmittal Letter</title><descbody code="00012807.0001001.021" lid="N.00012807.0001001.018"><para code="00012807.0001001.022" layer="1" lid="N.00012807.0001001.019">The Transmittal Letter is a way of communication
+between Airbus and the Operators. The Transmittal Letter also specifies
+the issue date of the <abb>MMEL</abb> revision.</para><para code="00012807.0001001.023" layer="1" lid="N.00012807.0001001.020">The Transmittal Letter only exists in
+the <abb>PDF</abb> format.</para></descbody></descitem><descitem code="00012807.0001001.078" layer="1" lid="N.00012807.0001001.141"><title><abb>PDF</abb> Page Header and Footer</title><descbody code="00012807.0001001.079" lid="N.00012807.0001001.142"><unlist bulltype="NDASH" code="00012807.0001001.080" layer="1" lid="N.00012807.0001001.143"><para layer="1" lid="N.00012807.0001001.144">In the <abb>PDF</abb> format,
+the header of the page contains the subsection title whereas the footer
+contains:</para><item layer="1"><para layer="1" lid="N.00012807.0001001.145">The subsection
+identification,</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.146">The subsection
+issue date. The subsection issue date corresponds to the issue date
+of the latest <abb>MMEL</abb> revision that has revised the subsection. </para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.147">The page number
+within this subsection and the total number of pages within this subsection.</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.148">The Table of
+Contents (<abb>TOC</abb>) indexing.</para></item></unlist><para code="00012807.0001001.081" layer="1" lid="N.00012807.0001001.149">This <abb>TOC</abb> indexing uses the <abb>TOC</abb> indexes. Each <abb>TOC</abb> entry has an alphabetical index that identifies this <abb>TOC</abb> entry within its subsection. The manual user can easily find a <abb>TOC</abb> entry content within the manual thanks to this alphabetical
+index and the subsection identification. Both are indicated in the <abb>TOC</abb> and both cross-refer to the <abb>PDF</abb> page footer.</para><unlist bulltype="NDASH" code="00012807.0001001.082" layer="1" lid="N.00012807.0001001.150"><para layer="1" lid="N.00012807.0001001.151">In the <abb>PDF</abb> page footer,
+the <abb>TOC</abb> indexing is of the following type:</para><item layer="1"><equal code="00012807.0001001.083" layer="1" lid="N.00012807.0001001.152" sepchar="DEF" width="12"><equ-l>B</equ-l><equ-r><para layer="1" lid="N.00012807.0001001.153">The <abb>PDF</abb> page contains the whole "B" <abb>TOC</abb> entry content.</para></equ-r></equal></item><item layer="1"><equal code="00012807.0001001.084" layer="1" lid="N.00012807.0001001.154" sepchar="DEF" width="12"><equ-l>B to D</equ-l><equ-r><para layer="1" lid="N.00012807.0001001.155">The <abb>PDF</abb> page contains the whole "B", "C" and "D" <abb>TOC</abb> entries contents.</para></equ-r></equal></item><item layer="1"><equal code="00012807.0001001.085" layer="1" lid="N.00012807.0001001.156" sepchar="DEF" width="12"><equ-l>B→</equ-l><equ-r><para layer="1" lid="N.00012807.0001001.157"> The "B" <abb>TOC</abb> entry content starts on this <abb>PDF</abb> page and continues on the following <abb>PDF</abb> page.</para></equ-r></equal></item><item layer="1"><equal code="00012807.0001001.086" layer="1" lid="N.00012807.0001001.158" sepchar="DEF" width="12"><equ-l>←B</equ-l><equ-r><para layer="1" lid="N.00012807.0001001.159">The "B" <abb>TOC</abb> entry content starts on a previous <abb>PDF</abb> page and finishes on this <abb>PDF</abb> page.</para></equ-r></equal></item><item layer="1"><equal code="00012807.0001001.087" layer="1" lid="N.00012807.0001001.160" sepchar="DEF" width="12"><equ-l>←B→</equ-l><equ-r><para layer="1" lid="N.00012807.0001001.161">The "B" <abb>TOC</abb> entry content starts on a previous <abb>PDF</abb> page and continues on the following <abb>PDF</abb> page.</para></equ-r></equal></item><item layer="1"><equal code="00012807.0001001.090" layer="1" lid="N.00012807.0001001.167" sepchar="DEF" width="12"><equ-l>B to D→</equ-l><equ-r><para layer="1" lid="N.00012807.0001001.168">The <abb>PDF</abb> page contains the whole "B" and "C" <abb>TOC</abb> entries contents but the "D" <abb>TOC</abb> entry content starts
+on this <abb>PDF</abb> page and continues on the following <abb>PDF</abb> page.</para></equ-r></equal></item><item layer="1"><equal code="00012807.0001001.091" layer="1" lid="N.00012807.0001001.169" sepchar="DEF" width="12"><equ-l>←B to D</equ-l><equ-r><para layer="1" lid="N.00012807.0001001.170">The <abb>PDF</abb> page contains the whole "C" and "D" <abb>TOC</abb> entries contents but the "B" <abb>TOC</abb> entry content starts
+on a previous <abb>PDF</abb> page and finishes on this <abb>PDF</abb> page.</para></equ-r></equal></item><item layer="1"><equal code="00012807.0001001.092" layer="1" lid="N.00012807.0001001.172" sepchar="DEF" width="12"><equ-l>←B to D→</equ-l><equ-r><para layer="1" lid="N.00012807.0001001.173">The <abb>PDF</abb> page contains the whole "C" <abb>TOC</abb> entry
+content but the "B" <abb>TOC</abb> entry content starts on a previous <abb>PDF</abb> page and finishes on this <abb>PDF</abb> page and the "D" <abb>TOC</abb> entry content starts on this <abb>PDF</abb> page and continues
+on the following <abb>PDF</abb> page.</para></equ-r></equal></item></unlist><note code="00012807.0001001.088" layer="1" lid="N.00012807.0001001.162"><numlist code="00012807.0001001.089" format="NNP" layer="1" lid="N.00012807.0001001.163"><item layer="1"><para layer="1" lid="N.00012807.0001001.164">The indexes
+follow the alphabetical order: A, B, C, ..., Z, AA, AB, AC, ..., AZ,
+BA, BB,BC, ...</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.165">For each subsection,
+the index starts again from A.</para></item></numlist></note></descbody></descitem><descitem code="00012807.0001001.024" layer="1" lid="N.00012807.0001001.021"><title>List of Effective Sections/Subsections (<abb>LESS</abb>)</title><descbody code="00012807.0001001.025" lid="N.00012807.0001001.022"><para code="00012807.0001001.026" layer="1" lid="N.00012807.0001001.023">The manual is organized by sections and
+subsections (also called <abb>PSL</abb>). The subsections contain
+the DUs.</para><para code="00012807.0001001.027" layer="1" lid="N.00012807.0001001.024">The <abb>LESS</abb> lists all the subsections that constitute this <abb>MMEL</abb>. The <abb>LESS</abb> only exists in the <abb>PDF</abb> format.</para><para code="00012807.0001001.028" layer="1" lid="N.00012807.0001001.025">When there is a change within a DU, the <abb>MMEL</abb> revision updates the whole subsection that contains the
+DU. This subsection gets a new date that corresponds to the issue
+date of the <abb>MMEL</abb> revision.</para><note code="00012807.0001001.029" layer="1" lid="N.00012807.0001001.026"><para layer="1" lid="N.00012807.0001001.027">Each subsection has its own
+date that corresponds to the issue date of the latest <abb>MMEL</abb> revision that has revised the subsection. Therefore subsections
+of a same manual might have different dates.</para></note><unlist bulltype="NDASH" code="00012807.0001001.065" layer="1" lid="N.00012807.0001001.096"><para layer="1" lid="N.00012807.0001001.097">For each subsection, the LESS
+indicates:</para><item layer="1"><para layer="1" lid="N.00012807.0001001.098">The subsection
+identification (also referred to as localization),</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.101">The subsection
+title,</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.099">The subsection
+issue date. The subsection issue date corresponds the issue date of
+the latest <abb>MMEL</abb> revision that has revised the subsection. </para></item><item layer="1"><unlist bulltype="BULLET" code="00012807.0001001.066" layer="1" lid="N.00012807.0001001.104"><para layer="1" lid="N.00012807.0001001.102">The "M" field that may indicate
+the following Evolution Code:</para><item layer="1"><para layer="1" lid="N.00012807.0001001.036">The “E” letter
+indicates only an aircraft validity change of one or several DUs of
+this subsection compared to the previous <abb>MMEL</abb> revision.
+No DU content of this subsection has changed compared to the previous <abb>MMEL</abb> revision.</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.037">The “M” letter
+indicates a subsection that has moved compared to the previous <abb>MMEL</abb> revision.</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.038">The “N” letter
+indicates a new subsection added by this <abb>MMEL</abb> revision.</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.039">The “R” letter
+indicates a revised subsection. The content of one or several DUs
+of this subsection is updated by this <abb>MMEL</abb> revision.</para></item></unlist></item></unlist><para code="00012807.0001001.067" layer="1" lid="N.00012807.0001001.106">Each <abb>PDF</abb> page footer indicates the subsection identification and
+the subsection issue date for cross-reference with the <abb>LESS</abb>. Therefore the manual holder can use the <abb>LESS</abb> to ensure
+that the <abb>MMEL</abb> is up-to-date and that no page is missing.</para></descbody></descitem><descitem code="00012807.0001001.034" layer="1" lid="N.00012807.0001001.041"><title>Filling Instructions</title><descbody code="00012807.0001001.035" lid="N.00012807.0001001.042"><unlist bulltype="NDASH" code="00012807.0001001.056" layer="1" lid="N.00012807.0001001.084"><para layer="1" lid="N.00012807.0001001.086">The Filling Instructions enable
+the manual holder:</para><item layer="1"><para layer="1" lid="N.00012807.0001001.085">To update the
+paper <abb>MMEL</abb> when a new <abb>MMEL</abb> revision is available,
+and</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.087">To quickly identify
+the subsections that the new <abb>MMEL</abb> revision has revised.</para></item></unlist><para code="00012807.0001001.038" layer="1" lid="N.00012807.0001001.045">The Filling
+Instructions notify the manual holder to remove a subsection, to add
+a new subsection or to update an existing subsection. </para><unlist bulltype="NDASH" code="00012807.0001001.068" layer="1" lid="N.00012807.0001001.108"><para layer="1" lid="N.00012807.0001001.110">For each revised subsection,
+the Filling Instructions also indicate:</para><item layer="1"><para layer="1" lid="N.00012807.0001001.109">The subsection
+identification (also referred to as localization),</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.111">The subsection
+title,</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.112">The new issue
+date of the subsection.</para></item></unlist><para code="00012807.0001001.039" layer="1" lid="N.00012807.0001001.046">After
+incorporating the new revision with the Filling Instructions, the
+manual organization must correspond to the <abb>LESS</abb>.</para><para code="00012807.0001001.037" layer="1" lid="N.00012807.0001001.044">The Filling Instructions only exist in
+the <abb>PDF</abb> format.</para><para code="00012807.0001001.069" layer="1" lid="N.00012807.0001001.113">Each <abb>PDF</abb> page footer indicates the subsection identification and
+the subsection issue date for cross-reference with the Filling Instructions.
+Therefore the manual holder can use the Filling Instructions to update
+the paper <abb>MMEL</abb> and to identify the latest revised subsections.</para></descbody></descitem><descitem code="00012807.0001001.040" layer="1" lid="N.00012807.0001001.047"><title>Highlights and Revision Marks</title><descbody code="00012807.0001001.041" lid="N.00012807.0001001.048"><para code="00012807.0001001.042" layer="1" lid="N.00012807.0001001.049">In the <abb>PDF</abb> format, a vertical
+bar in the margin of the DU identifies the modified part. Each vertical
+bar has a numerical index that refers to the associated reason of
+the change in the Summary of Highlights (<abb>SOH</abb>).</para><para code="00012807.0001001.043" layer="1" lid="N.00012807.0001001.050">The <abb>SOH</abb> lists all the changes
+and associated reasons of the change (if necessary) that the revision
+has inserted.</para><para code="00012807.0001001.044" layer="1" lid="N.00012807.0001001.051">In electronic
+consultation, the vertical bar is available by selecting the “REV
+MARKS” option in the INFO drop down list. The user can display the
+associated reason of the change by clicking on the bar.</para></descbody></descitem><descitem code="00012807.0001001.045" layer="1" lid="N.00012807.0001001.052"><title>Aircraft Allocation Table (<abb>AAT</abb>)</title><descbody code="00012807.0001001.046" lid="N.00012807.0001001.053"><unlist bulltype="NDASH" code="00012807.0001001.047" layer="1" lid="N.00012807.0001001.054"><para layer="1" lid="N.00012807.0001001.055">The <abb>AAT</abb> indicates
+the list of aircraft that are taken into account in this <abb>MMEL</abb>. For each aircraft, the <abb>AAT</abb> indicates the following information:</para><item layer="1"><para layer="1" lid="N.00012807.0001001.056">The <abb>MSN</abb> number,</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.057">The Fleet Serial
+Number (<abb>FSN</abb>) of the aircraft as known by Airbus,</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.058">The registration
+number of the aircraft as known by Airbus,</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.059">The aircraft
+model.</para></item></unlist><unlist bulltype="NDASH" code="00012807.0001001.048" layer="1" lid="N.00012807.0001001.060"><para layer="1" lid="N.00012807.0001001.061">The “M” field may indicate the
+following Evolution Code:</para><item layer="1"><para layer="1" lid="N.00012807.0001001.062">The “N” letter
+indicates a new aircraft added by this <abb>MMEL</abb> revision,</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.063">The “R” letter
+indicates a change of the <abb>FSN</abb> or registration number or
+aircraft model.</para></item></unlist></descbody></descitem><descitem code="00012807.0001001.049" layer="1" lid="N.00012807.0001001.064"><title>List of Modifications (<abb>LOM</abb>)</title><descbody code="00012807.0001001.050" lid="N.00012807.0001001.065"><para code="00012807.0001001.051" layer="1" lid="N.00012807.0001001.066">The <abb>LOM</abb> lists the criteria
+(Modification Proposals (<abb>MP</abb>) and Service Bulletins (<abb>SB</abb>)) which the installation on the aircraft affects the <abb>MMEL</abb>.</para><unlist bulltype="NDASH" code="00012807.0001001.052" layer="1" lid="N.00012807.0001001.067"><para layer="1" lid="N.00012807.0001001.068">The <abb>LOM</abb> also indicates:</para><item layer="1"><para layer="1" lid="N.00012807.0001001.069">The title of
+the criteria,</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.070">The date of
+incorporation of the criteria in the <abb>MMEL</abb>,</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.071">The list of
+aircraft that have the criteria,</para></item><item layer="1"><unlist bulltype="BULLET" code="00012807.0001001.053" layer="1" lid="N.00012807.0001001.072"><para layer="1" lid="N.00012807.0001001.073">The “M” field that may indicate
+the following Evolution Code:</para><item layer="1"><para layer="1" lid="N.00012807.0001001.074">The “E” letter
+indicates an aircraft validity change of the criteria. The list of
+aircraft to which the criteria applies has changed compared to the
+previous <abb>MMEL</abb> revision, by addition or deletion of one
+or several aircraft.</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.075">The “N” letter
+indicates new criteria added by this <abb>MMEL</abb> revision,</para></item><item layer="1"><para layer="1" lid="N.00012807.0001001.076">The “R” letter
+indicates a change in the criteria title or associated <abb>SB</abb>.</para></item></unlist></item></unlist></descbody></descitem></description>

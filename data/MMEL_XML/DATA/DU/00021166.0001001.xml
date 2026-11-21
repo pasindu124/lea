@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021166.0001001" revdate="2017-05-03T18:42:42"><title><abb>PHC</abb> (associated probe heating operative)</title><procitem layer="1" lid="N.00021166.0001001.001"><title>DURING COCKPIT PREPARATION</title><procbody lid="N.00021166.0001001.002"><inform layer="1" lid="N.00021166.0001001.003"><para code="00021166.0001001.001" layer="1" lid="N.00021166.0001001.004">Disregard and clear the <tech-label type="ecamsys">ANTI ICE</tech-label> CAPT(F/O)(STBY) PROBES alert associated with the
+CAPT(F/O)(STBY) probe heating, as long as the CAPT(F/O)(STBY) probe
+heating is well checked operative before the flight.</para></inform></procbody></procitem></opsproc>

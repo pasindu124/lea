@@ -1,0 +1,70 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Procshared library	               	   -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!--  Rev Date      : October 2011                                 -->
+<!--  Parsed Date   : October 2011                                 -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Add operating standards attributes to item element         -->
+<!-- 2) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- V9.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 9.0                        -->
+<!-- 2) Add the definition of supplementaryProc.attgrp entity      -->
+<!-- VER 10.0:                                                     -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 10.0                       -->
+<!-- ============================================================  -->
+
+<!-- ============================================================= -->
+<!-- ENTITIES                                                      -->
+<!-- ============================================================= -->
+
+<!ENTITY % descbodyType '(%fullBasicStructType;|desc-cond|ex-desc-cond|whatif)+'>
+
+<!ENTITY % action-exch SYSTEM "action-exch.dtd">
+%action-exch;
+
+<!ENTITY % itemType '(%fullBasicStructType;)'>
+
+<!ENTITY % row.att        '%linktargetid.AttGrp;'>
+
+<!ENTITY % procdescType '(%fullBasicStructType;|whatif)*'>  
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT condbody   (%descbodyType;) >
+
+<!ELEMENT command   (%fullBasicStructType;) >
+<!ATTLIST command
+	%do.AttGrp;
+>
+
+<!ELEMENT item   (%itemType;)>
+<!ATTLIST item
+	%layer.AttGrp; 
+	%opStand.AttGrp;
+>
+
+<!ENTITY % supplementaryProc.AttGrp "
+    supproc-layout (true | false) #IMPLIED">

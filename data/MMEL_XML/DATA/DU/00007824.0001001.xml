@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00007824.0001001" func-code="31-05-05" item-list-nbr="05" revdate="2010-03-22T00:00:00"><title>Actual Airspeed Reference Line and Scale Indications
+on the <abb>PFD</abb></title><ditembody nb-installed="-"><dispcond code="00007824.0001001.001" dispcond-id="D01353" dispcond-label="A" lid="N.00007824.0001001.001"><dispatch-redirection><duref product="MMEL" ref="00008711"/></dispatch-redirection></dispcond></ditembody></dispatchitem>

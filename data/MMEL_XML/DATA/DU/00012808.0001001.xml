@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012808.0001001" revdate="2017-05-03T18:24:56"><title>Optional Equipment <if-installed>(If Installed)</if-installed></title><descbody code="00012808.0001001.001" lid="N.00012808.0001001.001"><para code="00012808.0001001.002" layer="1" lid="N.00012808.0001001.002">The <if-installed>(If Installed) symbol</if-installed> indicates that a paragraph is applicable only if the aircraft has
+the related <abb>MEL</abb> item.</para><para code="00012808.0001001.003" layer="1" lid="N.00012808.0001001.003">When a
+DU title has the <if-installed>(If Installed) symbol</if-installed>, this indicates that the DU might not apply to all the aircraft
+listed in the DU applicability. </para><para code="00012808.0001001.005" layer="1" lid="N.00012808.0001001.008">The management of the <if-installed>(If Installed) symbol</if-installed> in the <abb>MEL</abb> is left
+at Operator's discretion.</para><unlist bulltype="NDASH" code="00012808.0001001.006" layer="1" lid="N.00012808.0001001.009"><para layer="1" lid="N.00012808.0001001.010">The Operator may:</para><item layer="1"><para layer="1" lid="N.00012808.0001001.011">Remove the<if-installed> (If Installed) symbol</if-installed> from the <abb>MEL</abb> if
+the related <abb>MEL</abb> item is fitted on the entire Operator's
+fleet, or</para></item><item layer="1"><para layer="1" lid="N.00012808.0001001.012">Remove the DU
+from the <abb>MEL</abb> if the related <abb>MEL</abb> item is not
+fitted on the entire Operator's fleet.</para></item></unlist><unlist bulltype="NDASH" code="00012808.0001001.004" layer="1" lid="N.00012808.0001001.004"><para layer="1" lid="N.00012808.0001001.005">If the related <abb>MEL</abb> item is only fitted on part of the Operator's fleet or if the
+Operator introduces new aircraft in its fleet with different technical
+configuration: </para><item layer="1"><para layer="1" lid="N.00012808.0001001.006">Keep the<if-installed> (If Installed) symbol</if-installed> in the <abb>MEL</abb>. This
+is the Airbus preferred option to ease <abb>MEL</abb> configuration
+management.</para></item></unlist></descbody></description>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012818.0001001" revdate="2014-08-12T17:51:26"><title>How to Use the <abb>MMEL</abb> Operational Procedures Section?</title><descbody code="00012818.0001001.001" lid="N.00012818.0001001.001"><para code="00012818.0001001.002" layer="1" lid="N.00012818.0001001.002">This section lists the operational procedures
+associated with the <abb>MMEL</abb> items. The dispatch conditions
+may require an operational procedure to permit the dispatch of the
+aircraft.</para><para code="00012818.0001001.003" layer="1" lid="N.00012818.0001001.003">The operational
+procedures are split and organized into specific flight phases. The
+flight crew has to apply the part of the operational procedure related
+to the relevant flight phase.</para><unlist bulltype="NDASH" code="00012818.0001001.008" layer="1" lid="N.00012818.0001001.012"><para layer="1" lid="N.00012818.0001001.014">The operational procedures may
+also have the following parts:</para><item layer="1"><equal code="00012818.0001001.005" layer="1" lid="N.00012818.0001001.005" sepchar="DEF" width="25"><equ-l>General Information</equ-l><equ-r><para layer="1" lid="N.00012818.0001001.006">This part includes all information
+that the pilots must know due to <abb>MMEL</abb> condition.</para></equ-r></equal></item><item layer="1"><equal code="00012818.0001001.006" layer="1" lid="N.00012818.0001001.007" sepchar="DEF" width="25"><equ-l>Flight Preparation/Limitation</equ-l><equ-r><para layer="1" lid="N.00012818.0001001.008">This part groups all the limitations
+due to <abb>MMEL</abb> condition that the pilots must consider for
+the route selection and flight preparation.</para><para layer="1" lid="N.00012818.0001001.017">This part also includes
+aircraft performance penalties that should be used if no performance
+software is available with the current failure case.</para></equ-r></equal></item><item layer="1"><equal code="00012818.0001001.007" layer="1" lid="N.00012818.0001001.009" sepchar="DEF" width="25"><equ-l>Procedure to be developed in the Operator's <abb>MEL</abb></equ-l><equ-r><para layer="1" lid="N.00012818.0001001.010">The Operator
+has to develop its own operational procedure in the <abb>MEL</abb>.</para></equ-r></equal></item></unlist></descbody></description>

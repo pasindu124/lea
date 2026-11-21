@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00009063.0001001" revdate="2021-11-22T16:58:12"><title>Speedbrake Control System (speedbrake control system inoperative)</title><procbody lid="N.00009063.0001001.005"><action layer="1" lid="N.00009063.0001001.006" memory="false"><command code="00009063.0001001.002"><para layer="1" lid="N.00009063.0001001.008"><duref product="MMEL" ref="00022735"/></para></command></action></procbody></opsproc>

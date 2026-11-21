@@ -1,0 +1,229 @@
+<!--  ...................................................... -->
+<!--  ...................................................... -->
+<!--
+	Ops Data
+        Delivery Note
+	Airbus France
+
+	Version	        Author		        Date
+ 	5.0		          TS		          	12/07/2005
+			PCR230:
+			- New prodidStruct.Grp
+      - Replace fleetprodid, msnprodid and envprodid elements by prodidStruct.Grp in custoident
+      - Add emnissue element in emnident content model
+      - New emnissue element
+      - New pkgsubtype element
+			- Add pkgsubtype element in pkgident content model
+      - custotype and custoval elements are now mandatory in fleetprodid
+      - custotype and custoval elements are now mandatory in msnprodid
+      - custoval element is now mandatory in envprodid
+      - add an optional pkgtitle element in workshopinfo
+      - autovalidate element is replaced by needvalid element in cdsprops
+      - autovalidate element is renamed needvalid
+      - msnlist is now optional in custoprops
+      - Add onlyconfsum element in the content model in pvwprops
+      - minstatus element is now optional in pvwprops
+      - Add pkgsubtype optional element in pvwprops
+      - Add pkgvers optional element in pvwprops
+      - Add onlyliminary element in the content model of simuprops
+      - Add markrevisions element in the content model of simuprops
+      - Add msnlist element in the content model of simuprops
+      - New onlyconfsum element
+      - New markrevisions element
+      - New onlyliminary element
+      - new pkgtitle element
+	5.0             JC                26/04/2006
+ 			PCR238:
+ 			  - add doctype declaration
+	5.0             JC                20/07/2006
+ 			PCR254:
+ 			  - remove doctype declaration
+ 	8.2		JC			26/02/2008
+	    PCR240:
+        - new optionnal ac-deliv element in fleetprodid and msnprodid
+        - new optionnal military element in fleetprodid, msnprodid and envprodid
+
+-->
+
+<!-- Main structure describes the delivery -->
+<!ELEMENT deliverynote (identification, workshopinfo, components)>
+<!ATTLIST deliverynote
+	type (custo | cds | emn | package | preview | simulation) #REQUIRED
+>
+<!-- identification is composed according to production type-->
+<!ELEMENT identification (prodcode, tfcode, (cdsident | custoident | emnident | pkgident | simuident | pvwident))>
+<!-- Product code is the DASS_ID field of the IMS order-->
+<!ELEMENT prodcode (#PCDATA)>
+<!-- TF (program) code is the DASS_TF field of the IMS order -->
+<!ELEMENT tfcode (#PCDATA)>
+<!-- CDS identification contain CDS number and revision number -->
+<!ELEMENT cdsident (cdsnumber, cdsrevnum, cdsdate)>
+
+<!-- PCR230 : Replace fleetprodid, msnprodid and envprodid elements by prodidStruct.Grp in custoident -->
+<!ENTITY % prodidStruct.Grp '(fleetprodid | msnprodid | envprodid)' >
+
+<!-- Custo identification is composed according to documentation type-->
+<!-- PCR230 : New prodidStruct.Grp -->
+<!ELEMENT custoident (%prodidStruct.Grp;, revdate)>
+
+<!-- Issue number of the EMN -->
+<!-- PCR230 : New emnissue element-->
+<!ELEMENT emnissue (#PCDATA)>
+
+<!-- EMN identification is composed as an envelope customization -->
+<!-- PCR230 : Add emnissue element in emnident content model -->
+<!ELEMENT emnident (issuerid,envprodid,emnissue,revdate)>
+
+<!-- Package sub-type -->
+<!-- PCR230 : New pkgsubtype element -->
+<!ELEMENT pkgsubtype (#PCDATA)>
+
+<!-- PKG identification is composed with package properties -->
+<!-- PCR230 : Add pkgsubtype element in pkgident content model -->
+<!ELEMENT pkgident (issuerid, pkgtype, pkgsubtype, pkgcode, pkgvers, revdate)>
+
+
+<!-- Preview and simulation identification are composed with issuer properties and production date -->
+<!ELEMENT simuident (issuerid,%prodidStruct.Grp;,revdate)>
+<!ELEMENT pvwident (issuerid, revdate)>
+
+<!-- Fleet documentations are identified using manual code, TF, docid, custo criterion type and value, norm and subnorm -->
+<!-- PCR230 : custotype and custoval elements are now mandatory in fleetprodid-->
+<!-- PCR240 : new optionnal ac-deliv element -->
+<!-- PCR240 : new optionnal military element -->
+<!ELEMENT fleetprodid (docid, opcode, custotype, custoval, norm?, subnorm?, client?, ac-deliv?, military?)>
+
+<!-- MSN documentations are identified using manual code, TF, docid, custo criterion type and value, norm, subnorm and MSN number -->
+<!-- PCR230 : custotype and custoval elements are now mandatory in msnprodid-->
+<!-- PCR240 : new optionnal ac-deliv element -->
+<!-- PCR240 : new optionnal military element -->
+<!ELEMENT msnprodid (docid, opcode, custotype, custoval, norm?, subnorm?, client?, msn, ac-deliv?, military?)>
+
+<!-- Envelope documentations are identified using manual code, TF, custo criterion value, norm -->
+<!-- PCR230 : custoval element is now mandatory in envprodid -->
+<!-- PCR240 : new optionnal military element -->
+<!ELEMENT envprodid (custoval, norm?, military?)>
+
+
+<!-- DOCID code is the CUS_DOCID field of the IMS order -->
+<!ELEMENT docid (#PCDATA)>
+<!-- DOCID operator code is used only if different from DOCID code. It is the CUS_OPCODE field of the IMS order -->
+<!ELEMENT opcode (#PCDATA)>
+<!-- Custo criterion type is the EC_ENVCT field of the IMS order -->
+<!ELEMENT custotype (#PCDATA)>
+<!-- Custo criterion value store Model or Standard value. It is the EC_ENVTV field of the IMS order -->
+<!ELEMENT custoval (#PCDATA)>
+<!-- Norm operational criterion is the OP_NORM field of the IMS order -->
+<!ELEMENT norm (#PCDATA)>
+<!-- Sub Norm operational criterion is the OP_SUB field of the IMS order -->
+<!ELEMENT subnorm (#PCDATA)>
+<!-- Client operational criterion is the OP_CLIENT field of the IMS order -->
+<!ELEMENT client (#PCDATA)>
+<!-- MSN number is the first MSN value of the AC_TMSN field of the IMS order -->
+<!ELEMENT msn (#PCDATA)>
+<!-- Aircraft Delivery production is the AC_DELIV field of the IMS order -->
+<!-- PCR240 : new optionnal ac-deliv element -->
+<!ELEMENT ac-deliv EMPTY>
+<!-- Military production is the TBD field of the AC_TMSN field of the IMS order -->
+<!-- PCR240 : new optionnal military element -->
+<!ELEMENT military EMPTY>
+<!-- Revision date is the REV_DATE field of the IMS order-->
+<!ELEMENT revdate (#PCDATA)>
+<!-- Issuer identification -->
+<!ELEMENT issuerid (#PCDATA)>
+<!-- CDS  Date is the CDS_DATE field of the IMS order-->
+<!ELEMENT cdsdate (#PCDATA)>
+
+<!-- Package title -->
+<!-- PCR230 : new pkgtitle element -->
+<!ELEMENT pkgtitle (#PCDATA)>
+
+<!-- Workshop informations store additionnal data used by data assembly to produce the customized product-->
+<!-- PCR230 : add an optional pkgtitle element in workshopinfo -->
+<!ELEMENT workshopinfo (tfdesc, tflabel, prodtitle , pkgtitle?,(cdsprops | custoprops | pvwprops | simuprops)?)>
+
+<!-- Properties of a CDS production -->
+<!-- PCR230 : autovalidate element is replaced by needvalid element in cdsprops -->
+<!ELEMENT cdsprops (orderkey, msnlist, freeze, extractype, needvalid, confdate)>
+
+<!-- Properties of a Custo production -->
+<!-- PCR230 : msnlist is now optional in custoprops -->
+<!ELEMENT custoprops (orderkey, msnlist?, dociddes, cdsnumber, cdsrevnum, revnum, issue?)>
+
+<!-- Store the Only configuration summary option (Y/N) -->
+<!-- PCR230 : New onlyconfsum element -->
+<!ELEMENT onlyconfsum (#PCDATA)>
+
+<!-- Properties of a Preview production -->
+<!-- PCR230 : Add onlyconfsum element in the content model in pvwprops -->
+<!-- PCR230 : minstatus element is now optional in pvwprops -->
+<!-- PCR230 : Add pkgsubtype optional element in pvwprops -->
+<!-- PCR230 : Add pkgvers optional element in pvwprops -->
+<!ELEMENT pvwprops (minstatus?,dulinked,dulinkedtdu,onlyconfsum,pkgtype?,pkgsubtype?,pkgcode?,pkgvers?)>
+
+<!-- Store the Only liminary option (Y/N) -->
+<!-- PCR230 : New onlyliminary element -->
+<!ELEMENT onlyliminary (#PCDATA)>
+
+<!-- Store the mark revisions option (Y/N) -->
+<!-- PCR230 : New markrevisions element -->
+<!ELEMENT markrevisions (#PCDATA)>
+
+<!-- Properties of a Simulation production -->
+<!-- PCR230 : Add onlyliminary element in the content model of simuprops -->
+<!-- PCR230 : Add markrevisions element in the content model of simuprops -->
+<!-- PCR230 : Add msnlist element in the content model of simuprops -->
+<!ELEMENT simuprops (minstatus,onlyliminary,markrevisions,msnlist?)>
+
+
+<!-- TF description is the AC_TF field of the IMS order -->
+<!ELEMENT tfdesc (#PCDATA)>
+<!-- TF label is the AC_TFL field of the IMS order -->
+<!ELEMENT tflabel (#PCDATA)>
+<!-- Product title  -->
+<!ELEMENT prodtitle (#PCDATA)>
+<!-- Order key field stores the ID of the IMS order from SKS_KEY field of the IMS order -->
+<!ELEMENT orderkey (#PCDATA)>
+<!-- DOCID designation is the CUS_DES field of the IMS order -->
+<!ELEMENT dociddes (#PCDATA)>
+<!-- MSN List stores the MSN entries of the AC_SMSN field of the IMS order-->
+<!ELEMENT msnlist (msn+)>
+<!-- CDS data identify the CDS envelope used as source data for the customized product -->
+<!-- CDS Number is the CDS_NB field of the IMS order, Revision Number is the CDS_REVNB field of the IMS order -->
+<!ELEMENT cdsnumber (#PCDATA)>
+<!ELEMENT cdsrevnum (#PCDATA)>
+<!-- Configuration referential date is the CDS_CONF field of the IMS order updated by CDP during configuration calculation-->
+<!ELEMENT confdate (#PCDATA)>
+<!-- Revision number is the REV_NUM field of the IMS order-->
+<!ELEMENT revnum (#PCDATA)>
+<!-- Original issue date is the REV_ISSUE field of the IMS order-->
+<!ELEMENT issue (#PCDATA)>
+<!-- Store the min DU status value -->
+<!ELEMENT minstatus (#PCDATA)>
+<!-- Store the DU linked option (Y/N) -->
+<!ELEMENT dulinked (#PCDATA)>
+<!-- Store the TDU linked option (Y/N) -->
+<!ELEMENT dulinkedtdu (#PCDATA)>
+<!-- components contains the list of publisheddataset contained in the delivery-->
+<!ELEMENT components (component+)>
+<!-- component contains the folder name of the product e.g. "CUSTO_Fleet_L_FCOM_AFR_A380-800_JAA_XML" -->
+<!ELEMENT component (#PCDATA)>
+<!ATTLIST component
+	format (XML | PDF) #REQUIRED
+>
+
+<!-- Human validation is the REV_TYPE2 field of the IMS order -->
+<!-- PCR230 : autovalidate element is renamed needvalid -->
+<!ELEMENT needvalid (#PCDATA)>
+
+<!ELEMENT envproductid (#PCDATA)>
+
+<!-- Extraction type is the AC_RESTRICT field of the IMS order -->
+<!ELEMENT extractype (#PCDATA)>
+<!ELEMENT freeze (#PCDATA)>
+<!-- Package ID -->
+<!ELEMENT pkgcode (#PCDATA)>
+<!-- Package type -->
+<!ELEMENT pkgtype (#PCDATA)>
+<!-- Package major issue.minor issue -->
+<!ELEMENT pkgvers (#PCDATA)>

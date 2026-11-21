@@ -1,0 +1,39 @@
+<!--  ...................................................... -->
+<!--  ...................................................... -->
+<!--
+	Ops Data
+        Associated File
+	Airbus France
+
+	Version	        Author		        Date
+ 	5.0		          TS			          12/12/2005
+			PCR230:
+			- New Associated Files schema based on DTD
+			- solutionID attribute is renamed solution-code in solution
+	      JC      26/04/2006
+ 			PCR238:
+ 			- add doctype declaration
+-->
+<!--  ...................................................... -->
+<!--  ...................................................... -->
+<!--         Public Identification                           -->
+<!--  ...................................................... -->
+<!--  ...................................................... -->
+<!-- The following set of declarations may be referred to using the public   	-->
+<!-- entity as follows :						     	-->
+<!-- <!DOCTYPE associatedfiles PUBLIC "-//AIRBUS OPS//DTD ASSOCIATEDFILES-VER10.2//EN" "./models/associatedfiles.dtd" []> -->
+<!--  ...................................................... -->
+<!--  ...................................................... -->
+<!-- the associated files table contains 0..n solution with it's associated files -->
+<!ELEMENT associatedfiles (solution*)>
+<!-- a solution is identified using it's ID and contains 0..n associated files. If the solution does not have any associated file, it is not listed in this table -->
+<!-- PCR230 : solutionID attribute is renamed solution-code in solution -->
+<!ELEMENT solution (assocfile+)>
+<!ATTLIST solution
+	solution-code CDATA #REQUIRED
+>
+<!-- an associated file is described using it's file name -->
+<!ELEMENT assocfile EMPTY>
+<!ATTLIST assocfile
+	filename CDATA #REQUIRED
+>

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00007826.0001001" func-code="31-05-07" item-list-nbr="07" revdate="2010-03-22T00:00:00"><title><abb>VMO</abb>/<abb>MMO</abb> Characteristic Speed Indication
+on the <abb>PFD</abb></title><ditembody nb-installed="-"><dispcond code="00007826.0001001.001" dispcond-id="D01355" dispcond-label="A" lid="N.00007826.0001001.001"><dispatch-redirection><duref product="MMEL" ref="00008713"/></dispatch-redirection></dispcond></ditembody></dispatchitem>

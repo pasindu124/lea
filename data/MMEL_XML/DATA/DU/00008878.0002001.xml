@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00008878.0002001" revdate="2024-05-22T17:25:02"><title><abb>APU</abb> Bleed Valve (Deactivated in the closed position)</title><procitem layer="1" lid="N.00008878.0002001.001"><title>GENERAL INFORMATION</title><procbody lid="N.00008878.0002001.002"><inform layer="1" lid="N.00008878.0002001.003"><para code="00008878.0002001.001" layer="1" lid="N.00008878.0002001.004">No <abb>APU</abb> bleed air
+will be available for Main Engine Start (<abb>MES</abb>) or air conditioning. <duref product="FCOM" ref="00020859"/>.</para><para code="00008878.0002001.002" layer="1" lid="N.00008878.0002001.005">On the <tech-label type="s-page">APU</tech-label> and <tech-label type="s-page">BLEED</tech-label>, disregard
+the position of the <abb>APU</abb> bleed air valve.</para></inform></procbody></procitem></opsproc>

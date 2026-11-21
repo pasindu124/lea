@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00008595.0001001" func-code="79-40-01" item-list-nbr="01" revdate="2010-03-22T00:00:00"><title>Fuel Return Valve</title><ditembody nb-installed="-"><dispcond code="00008595.0001001.002" dispcond-id="D00745" dispcond-label="A" lid="N.00008595.0001001.002"><dispatch-redirection><duref product="MMEL" ref="00008653"/></dispatch-redirection></dispcond></ditembody></dispatchitem>

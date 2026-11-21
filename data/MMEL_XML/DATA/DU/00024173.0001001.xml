@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00024173.0001001" revdate="2020-05-13T11:46:54"><title><tech-label type="pb-sw">ROW/ROP</tech-label> (OFF position inoperative)</title><procitem layer="1" lid="N.00024173.0001001.001"><title>PROCEDURE TO BE DEVELOPED IN THE OPERATOR'S MEL</title><procbody lid="N.00024173.0001001.002"><inform layer="1" lid="N.00024173.0001001.003"><para code="00024173.0001001.001" layer="1" lid="N.00024173.0001001.004">Alternate procedures must be
+established by each airline in case of known risk of spurious alerts.</para></inform></procbody></procitem></opsproc>

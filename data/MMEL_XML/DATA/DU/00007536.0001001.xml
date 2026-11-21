@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00007536.0001001" func-code="22-30-01" item-list-nbr="01" revdate="2019-05-22T00:00:00"><title>Autothrust (<abb>A/THR</abb>)</title><ditembody nb-installed="1"><dispcond code="00007536.0001001.001" dispcond-id="D00846" dispcond-label="A" lid="N.00007536.0001001.001"><normal-dispcond nb-required="0" rectification-interval="C"><placard/><remark><requirement lid="N.00007536.0001001.002" req-id="R00847"><opsproc-ref><duref product="MMEL" ref="00008904"/></opsproc-ref><qualifiers><qualifier value="CAT2"/><qualifier value="CREW_OPS"/></qualifiers><para code="00007536.0001001.002" layer="1" lid="N.00007536.0001001.003">May be
+inoperative provided that the autothrust (<abb>A/THR</abb>)
+is disconnected before each flight.</para></requirement></remark></normal-dispcond></dispcond></ditembody></dispatchitem>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012804.0001001" revdate="2026-05-20T17:02:12"><title>MMEL Contents</title><descbody code="00012804.0001001.001" lid="N.00012804.0001001.001"><unlist bulltype="NDASH" code="00012804.0001001.008" layer="1" lid="N.00012804.0001001.014"><para layer="1" lid="N.00012804.0001001.016">This <abb>MMEL</abb> has four
+sections:</para><item layer="1"><equal code="00012804.0001001.003" layer="1" lid="N.00012804.0001001.003" sepchar="DEF" width="20"><equ-l>General Information (GEN)</equ-l><equ-r><para layer="1" lid="N.00012804.0001001.004">This section contains general
+information and describes the organization of the manual.</para></equ-r></equal></item><item layer="1"><equal code="00012804.0001001.004" layer="1" lid="N.00012804.0001001.005" sepchar="DEF" width="20"><equ-l><abb>MMEL</abb> Entries (ME)</equ-l><equ-r><para layer="1" lid="N.00012804.0001001.006">This section lists all the <abb>ECAM</abb> alerts and indicates the associated <abb>MMEL</abb> item
+(if any) to apply for dispatching the aircraft. This section is a
+user-friendly entry point for the flight crew and the maintenance
+personnel when an <abb>ECAM</abb> alert reports a system failure.</para></equ-r></equal></item><item layer="1"><equal code="00012804.0001001.005" layer="1" lid="N.00012804.0001001.007" sepchar="DEF" width="20"><equ-l><abb>MMEL</abb> Items (MI)</equ-l><equ-r><para layer="1" lid="N.00012804.0001001.008">This section is approved by
+the <abb>EASA</abb> and lists all the <abb>MMEL</abb> items with the
+associated dispatch conditions.</para></equ-r></equal></item><item layer="1"><equal code="00012804.0001001.006" layer="1" lid="N.00012804.0001001.009" sepchar="DEF" width="20"><equ-l><abb>MMEL</abb> Operational Procedures (MO)</equ-l><equ-r><para layer="1" lid="N.00012804.0001001.010">This section gives the operational
+procedures that are associated with the <abb>MMEL</abb> items.</para></equ-r></equal></item></unlist><note code="00012804.0001001.007" layer="1" lid="N.00012804.0001001.011"><para layer="1" lid="N.00012804.0001001.012">The <abb>MMEL</abb> Maintenance
+Procedures are published in the <abb>AMM</abb>.</para></note></descbody></description>

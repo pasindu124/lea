@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00007751.0001001" func-code="32-47-01" item-list-nbr="01" revdate="2019-05-22T00:00:00"><title>Brake Temperature Monitoring Unit (<abb>BTMU</abb>)</title><ditembody nb-installed="2"><dispcond code="00007751.0001001.001" dispcond-id="D05780" dispcond-label="A" lid="N.00007751.0001001.001"><normal-dispcond nb-required="0" rectification-interval="C"><remark><requirement lid="N.00007751.0001001.002" req-id="R05781"><opsproc-ref><duref product="MMEL" ref="00009008"/></opsproc-ref><qualifiers><qualifier value="CREW_OPS"/><qualifier value="GND_OPS"/></qualifiers><para code="00007751.0001001.002" layer="1" lid="N.00007751.0001001.003">One or
+both may be inoperative provided that the ground brake
+cooling time is applied.</para></requirement></remark></normal-dispcond></dispcond></ditembody></dispatchitem>

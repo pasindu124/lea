@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012810.0001001" revdate="2011-06-29T21:09:38"><title>How to Use the <abb>MMEL</abb> Entries Section?</title><descbody code="00012810.0001001.001" lid="N.00012810.0001001.001"><para code="00012810.0001001.002" layer="1" lid="N.00012810.0001001.002">This section lists all the <abb>ECAM</abb> alerts. The <abb>ECAM</abb> monitors the condition of some systems.
+In the case of malfunction of one or more systems, the <abb>ECAM</abb> provides the flight crew with an associated <abb>ECAM</abb> alert. <duref product="MMEL" ref="00012623"/>.</para><para code="00012810.0001001.003" layer="1" lid="N.00012810.0001001.003">For each <abb>ECAM</abb> alert, this
+section indicates the associated <abb>MMEL</abb> item (if any) to
+be applied for the dispatch.</para><para code="00012810.0001001.004" layer="1" lid="N.00012810.0001001.004">When an <abb>ECAM</abb> alert reports a system failure, the flight crew and the
+maintenance personnel should refer to this section as a user-friendly
+entry point in the <abb>MEL</abb>. </para></descbody><descitem code="00012810.0001001.005" layer="1" lid="N.00012810.0001001.005"><title>AIRCRAFT STATUS Column</title><descbody code="00012810.0001001.006" lid="N.00012810.0001001.006"><para code="00012810.0001001.020" layer="1" lid="N.00012810.0001001.036">An <abb>ECAM</abb> alert may cover one or several failure modes of
+the monitored system.</para><unlist bulltype="NDASH" code="00012810.0001001.018" layer="1" lid="N.00012810.0001001.026"><para layer="1" lid="N.00012810.0001001.027">For each failure mode, the AIRCRAFT
+STATUS column may indicate the following status:</para><item layer="1"><equal code="00012810.0001001.008" layer="1" lid="N.00012810.0001001.008" sepchar="DEF" width="20"><equ-l><emph bold="false" italic="true" overline="false" sub="false" sup="false" underline="false">NIL</emph></equ-l><equ-r><para layer="1" lid="N.00012810.0001001.009">When there is only one failure
+mode, the AIRCRAFT STATUS column indicates <emph bold="false" italic="true" overline="false" sub="false" sup="false" underline="false">NIL</emph>.</para><para layer="1" lid="N.00012810.0001001.010">When there are several
+failure modes, the AIRCRAFT STATUS column might give a short description
+of each failure mode and/or a simple way to identify each failure
+mode. If the <abb>MMEL</abb> does not give this information, the column
+displays <emph bold="false" italic="true" overline="false" sub="false" sup="false" underline="false">NIL</emph>.</para></equ-r></equal></item><item layer="1"><equal code="00012810.0001001.009" layer="1" lid="N.00012810.0001001.011" sepchar="DEF" width="20"><equ-l>Actual alert</equ-l><equ-r><para layer="1" lid="N.00012810.0001001.012">This indicates that the monitored
+system is inoperative. The failure mode is the failure of the monitored
+system.</para></equ-r></equal></item><item layer="1"><equal code="00012810.0001001.010" layer="1" lid="N.00012810.0001001.013" sepchar="DEF" width="20"><equ-l>False alert</equ-l><equ-r><para layer="1" lid="N.00012810.0001001.014">This indicates that the monitoring
+system is inoperative. The failure mode is the failure of the monitoring
+system. The monitored system remains fully operative.</para></equ-r></equal></item></unlist><para code="00012810.0001001.011" layer="1" lid="N.00012810.0001001.015">The Operator
+is responsible for identifying the failure mode.</para></descbody></descitem><descitem code="00012810.0001001.012" layer="1" lid="N.00012810.0001001.016"><title>CONDITION OF DISPATCH Column</title><descbody code="00012810.0001001.013" lid="N.00012810.0001001.017"><para code="00012810.0001001.014" layer="1" lid="N.00012810.0001001.018">For each failure mode, the CONDITION
+OF DISPATCH column gives the applicable <abb>MMEL</abb> item(s) for
+dispatch. <emph bold="true" italic="false" overline="false" sub="false" sup="false" underline="false">But the flight crew is responsible for checking
+that the condition of the aircraft systems/components complies with
+the MMEL requirements. If not, the dispatch of the aircraft is not
+permitted.</emph></para><unlist bulltype="NDASH" code="00012810.0001001.019" layer="1" lid="N.00012810.0001001.032"><para layer="1" lid="N.00012810.0001001.034">The CONDITION OF DISPATCH column
+may also give the following alternate possibilities:</para><item layer="1"><equal code="00012810.0001001.016" layer="1" lid="N.00012810.0001001.020" sepchar="DEF" width="20"><equ-l>NO DISPATCH</equ-l><equ-r><para layer="1" lid="N.00012810.0001001.021">It is not permitted to dispatch
+the aircraft when the <abb>ECAM</abb> displays this alert.</para></equ-r></equal></item><item layer="1"><equal code="00012810.0001001.017" layer="1" lid="N.00012810.0001001.022" sepchar="DEF" width="20"><equ-l>Not related to <abb>MEL</abb></equ-l><equ-r><para layer="1" lid="N.00012810.0001001.023">The <abb>ECAM</abb> alert does
+not report a system failure but a reversible abnormal condition such
+as the state of a system or an aircraft configuration or an external
+condition. This condition is not a system failure and is not related
+to <abb>MEL</abb>. The <abb>MEL</abb> shall not be used.</para><para layer="1" lid="N.00012810.0001001.024">This is not a NO-GO
+situation. The corrective action to revert to normal condition is
+immediate, obvious or well known by flight crew and/or maintenance
+personnel.</para></equ-r></equal></item></unlist></descbody></descitem></description>

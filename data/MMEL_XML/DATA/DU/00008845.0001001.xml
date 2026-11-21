@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00008845.0001001" revdate="2010-03-11T14:19:44"><title><abb>CDLS</abb> Keypad</title><procitem layer="1" lid="N.00008845.0001001.021"><title>Procedure to be developed in the Operator's MEL</title><procbody lid="N.00008845.0001001.022"><inform layer="1" lid="N.00008845.0001001.023"><para code="00008845.0001001.006" layer="1" lid="N.00008845.0001001.024">Alternate normal procedures
+must be established before departure in order to remind the cabin
+crew to use the cabin interphone to communicate with cockpit crew
+to request access to the cockpit.</para></inform><inform layer="1" lid="N.00008845.0001001.025"><para code="00008845.0001001.007" layer="1" lid="N.00008845.0001001.026">The cockpit crew must brief
+the cabin crew that the <abb>CDLS</abb> keypad is inoperative. </para></inform></procbody></procitem><procitem layer="1" lid="N.00008845.0001001.027"><title>In flight</title><procbody lid="N.00008845.0001001.028"><inform layer="1" lid="N.00008845.0001001.029"><para code="00008845.0001001.008" layer="1" lid="N.00008845.0001001.030">At least two people must always
+be present in the cockpit throughout the entire flight.</para></inform></procbody></procitem></opsproc>

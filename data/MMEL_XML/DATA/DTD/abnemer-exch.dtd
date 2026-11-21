@@ -1,0 +1,362 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Abnemer library                       -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!--  Rev Date      : October 2011                            	   -->
+<!--  Parsed Date   : October 2011                            	   -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Attribute fault-code is added to the list attribute of     -->
+<!--    associated-proc element                                    -->
+<!-- 2) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Add operating standards attributes in procitem element     -->
+<!-- 2) Add action attributes list with Operating Standards        -->
+<!-- 3) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- VER 9.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Added supplementaryProc attributegroup to abnemer.att      -->
+<!-- 2) Define not-avail element and add to procbody.Grp           -->
+<!-- 3) Add ecaminopsys and otherinopsys elements and notavail     -->
+<!-- attribute to status element		                           -->
+<!-- 4) Increased the version number to 9.0                        -->
+<!-- VER 10.0:                                                     -->
+<!--   Context: global modification                                -->
+<!-- 1) Added comment element to fwspage     					   -->
+<!-- 2) Add possibility to mix duref and xxxphase-sys     		   -->
+<!-- 3) Increased the version number to 10.0                       -->
+<!-- ============================================================= -->
+
+<!-- ============================================================= -->
+<!-- ENTITIES                                                      -->
+<!-- ============================================================= -->
+
+<!ENTITY % actionType "((cr-action|command|land),comment?)">
+
+<!ENTITY % procbody.Grp '((action|action-block|limit|inform|
+    ecam-info|condition|ex-conditions|table|associated-procs|
+    secondary-failures|not-avail|starting-point)+)'>
+
+<!ENTITY % proc-exch SYSTEM "proc-exch.dtd">
+%proc-exch;
+
+<!ENTITY % xtitle-exch SYSTEM "xtitle-exch.dtd">
+%xtitle-exch;
+
+<!ENTITY % annunciation-exch SYSTEM "annunciation-exch.dtd">
+%annunciation-exch;
+
+<!ENTITY % saep-exch SYSTEM "saep-exch.dtd">
+%saep-exch;
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT land EMPTY>
+<!ATTLIST land
+    type (landasap|landansa) #REQUIRED 
+    %do.AttGrp;
+    %ecam.AttGrp;
+    cmdmode (true|false) #IMPLIED>
+
+<!ENTITY % abnemer.AttGrp '
+    memory (true|false) "false"
+    smoke  (true|false) "false"
+    land (landasap|landansa) #IMPLIED
+    priority CDATA #IMPLIED
+    synthesis-voice (true|false) "false"
+    type (primary|secondary|independent|supplementary|memo) #IMPLIED
+    class CDATA #IMPLIED
+    fault-code CDATA #IMPLIED'>
+
+<!ENTITY % entryType 'role|(para|unlist|numlist|warning|caution|note|graphref|
+    launcher|equal|desc-cond|ex-desc-cond|row-header|measure|
+    %synthesisentry.Grp;)*'>
+
+<!ELEMENT entry (%entryType;)>
+
+<!ENTITY % abnemerType   '(reason?,xtitle,annunciation?,procdesc?,
+    procbody?,procitem*,fwspage?)'>
+ 
+<!ENTITY % abnemer.att '
+    %duIdent.AttGrp;
+    %abnemer.AttGrp;
+    %context.AttGrp;
+    %supplementaryProc.AttGrp;
+    ecam (true|false) #IMPLIED'>
+	
+<!ATTLIST title
+    %ecam.AttGrp;>
+
+<!ELEMENT triggering-conditions (para|unlist|numlist|note|graphref)+>
+<!ATTLIST triggering-conditions
+    %do.AttGrp;
+    %linktargetid.AttGrp;>
+  
+<!ENTITY % procbodyType '(%procbody.Grp;)+'>
+
+<!ELEMENT procbody (%procbodyType;)>
+<!ATTLIST procbody %linktargetid.AttGrp;>
+
+<!ELEMENT fwspage (limitations?,deferredproc?,status?,moreinfopage?,memopage?,comment?)>
+<!ATTLIST fwspage
+    %linktargetid.AttGrp;>
+    
+<!ELEMENT status (ecaminopsys?,otherinopsys?,info?,comment?)>
+<!ATTLIST status
+	notavail (true|false) #IMPLIED
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ENTITY % sysType '((duref|allphase-sys|flightphase-sys)+,comment?)'>
+
+<!ELEMENT ecaminopsys (%sysType;)>
+<!ATTLIST ecaminopsys
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+  
+<!ELEMENT otherinopsys (%sysType;)>
+<!ATTLIST otherinopsys
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ENTITY % pofsysType '((sys|condsys),comment?)+'>
+
+<!ELEMENT allphase-sys (%pofsysType;)>
+<!ATTLIST allphase-sys
+    %do.AttGrp;
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ELEMENT flightphase-sys (%pofsysType;)>
+<!ATTLIST flightphase-sys
+    pof CDATA #REQUIRED
+    %do.AttGrp;
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ELEMENT sys %contentAndLinksType;>
+<!ATTLIST sys
+    %ecam.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ELEMENT condsys ((intro|introblock),condsysbody)>
+<!ATTLIST condsys
+    %layer.AttGrp;
+    %ecam.AttGrp;
+    type (cond|phase|cond-phase) "cond" 
+    %context.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ELEMENT condsysbody (sys+)>
+
+<!ELEMENT infobody (para|unlist|numlist|table)+>
+<!ATTLIST infobody
+    %ecam.AttGrp;>
+
+<!ENTITY % complexinfoType '((infobody|info-cond),comment?)+'>
+
+<!ENTITY % infoType '(infobody+,comment?)'>
+
+<!ELEMENT info (%complexinfoType;)>
+<!ATTLIST info
+    %do.AttGrp;
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ELEMENT moreinfopage (redund-loss?,moreinfo?)>
+<!ATTLIST moreinfopage
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ELEMENT redund-loss (%complexinfoType;)>
+<!ATTLIST redund-loss
+    %do.AttGrp;
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ELEMENT moreinfo (%complexinfoType;)>
+<!ATTLIST moreinfo
+    %do.AttGrp;
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ELEMENT limitations (ecamlimit?,pfdlimit?,comment?)>
+<!ATTLIST limitations
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ENTITY % syslimitType '((allphase-limit|flightphase-limit)+,comment?)'>
+<!ELEMENT ecamlimit (%syslimitType;)>
+<!ATTLIST ecamlimit
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ELEMENT pfdlimit (%syslimitType;)>
+<!ATTLIST pfdlimit
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ENTITY % poflimitType '((limit|condlimit),comment?)+'>
+
+<!ELEMENT allphase-limit (%poflimitType;)>
+<!ATTLIST allphase-limit
+    %do.AttGrp;
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ELEMENT flightphase-limit (%poflimitType;)>
+<!ATTLIST flightphase-limit
+    %do.AttGrp;
+    %layer.AttGrp;
+    %linktargetid.AttGrp;
+    pof CDATA #REQUIRED>
+
+<!ELEMENT condlimit ((intro|introblock),condlimitbody)>
+<!ATTLIST condlimit
+    %layer.AttGrp;
+    %ecam.AttGrp;
+    %linktargetid.AttGrp;
+    type (cond|phase|cond-phase) "cond" 
+    %context.AttGrp;>
+
+<!ELEMENT condlimitbody (limit|lit-limit)+>
+
+<!ELEMENT memopage ((ecammemo,ecammemo?)?,pfdmemo?,comment?)>
+<!ATTLIST memopage
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ENTITY % memoType '((memo|condmemo),comment?)+'>
+
+<!ELEMENT ecammemo (%memoType;)>
+<!ATTLIST ecammemo
+    %do.AttGrp;
+    %layer.AttGrp;
+    %linktargetid.AttGrp;
+    type (right|left) #IMPLIED>
+
+<!ELEMENT pfdmemo (%memoType;)>
+<!ATTLIST pfdmemo
+    %do.AttGrp;
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ELEMENT memo %emphcontentType;>
+<!ATTLIST memo
+    %layer.AttGrp;
+    %linktargetid.AttGrp;
+    %ecam.AttGrp;>
+
+<!ELEMENT condmemo ((intro|introblock),condmemobody)>
+<!ATTLIST condmemo
+    %layer.AttGrp;
+    %ecam.AttGrp;
+    %linktargetid.AttGrp;
+    type (cond|phase|cond-phase) "cond" 
+    %context.AttGrp;>
+
+<!ELEMENT condmemobody (memo+)>
+
+<!ELEMENT deferredproc ((allphase-proc|flightphase-proc)+,comment?)>
+<!ATTLIST deferredproc
+    %do.AttGrp;
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ENTITY % deferredprocType '(procbody+,comment?)'>
+
+<!ELEMENT allphase-proc (%deferredprocType;)>
+<!ATTLIST allphase-proc
+    %do.AttGrp;
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ELEMENT flightphase-proc (%deferredprocType;)>
+<!ATTLIST flightphase-proc
+    %do.AttGrp;
+    %layer.AttGrp;
+    %linktargetid.AttGrp;
+    pof CDATA #REQUIRED>
+
+<!ELEMENT associated-procs (associated-proc+,comment?)>
+<!ATTLIST associated-procs
+    %do.AttGrp;
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ELEMENT associated-proc (xtitle,duref?,comment?)>
+<!ATTLIST associated-proc
+    %layer.AttGrp;
+    %linktargetid.AttGrp;
+	type (independent|primary) #REQUIRED 
+	fault-code CDATA #IMPLIED
+>
+<!ELEMENT secondary-failures (ecampage+,comment?)>
+<!ATTLIST secondary-failures
+    %do.AttGrp;
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+	
+<!ELEMENT not-avail (ecampage+,comment?)>
+<!ATTLIST not-avail
+    %do.AttGrp;
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>	
+	
+<!ELEMENT ecampage (ecamsyspage+,duref?,comment?)>
+<!ATTLIST ecampage
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ELEMENT ecamsyspage (#PCDATA)>
+<!ATTLIST ecamsyspage
+    %ecam.AttGrp;>
+
+<!ELEMENT procitem (title,procdesc?,(procbody|procitem),procitem*)>
+<!ATTLIST procitem
+    %layer.AttGrp;
+    %context.AttGrp;
+    %linktargetid.AttGrp;
+    sub-proc (true|false) "false"
+    %opStand.AttGrp;
+>
+
+<!ELEMENT info-cond ((intro|introblock), info-condbody)>
+
+<!ATTLIST info-cond
+    %layer.AttGrp;
+    %ecam.AttGrp;
+    type (cond|phase|cond-phase) "cond"
+    %context.AttGrp;
+    %linktargetid.AttGrp;
+>
+
+<!ELEMENT info-condbody (%infoType;)>
+
+<!ATTLIST info-condbody
+    %layer.AttGrp;
+    %linktargetid.AttGrp;>
+
+<!ATTLIST action
+	%action.AttGrp; 
+	%layer.AttGrp; 
+	%linktargetid.AttGrp;
+	%opStand.AttGrp;
+>

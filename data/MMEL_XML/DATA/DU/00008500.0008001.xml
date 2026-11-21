@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00008500.0008001" func-code="26-23-04" item-list-nbr="04" revdate="2020-11-17T00:00:00"><title>Squib of the FWD Cargo Bottle 2</title><ditembody nb-installed="1"><dispcond code="00008500.0008001.001" dispcond-id="D10367" dispcond-label="A" lid="N.00008500.0008001.001"><normal-dispcond nb-required="0" rectification-interval="D"><placard/><remark><requirement lid="N.00008500.0008001.002" req-id="R10368"><qualifiers><qualifier value="CARGO_OPS"/></qualifiers><para code="00008500.0008001.002" layer="1" lid="N.00008500.0008001.003">May be inoperative provided that the
+FWD cargo compartment is empty or does not contain flammable or combustible
+materials.</para></requirement></remark></normal-dispcond></dispcond></ditembody></dispatchitem>

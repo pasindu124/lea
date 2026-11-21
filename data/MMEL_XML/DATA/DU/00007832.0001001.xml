@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00007832.0001001" func-code="31-06-01" item-list-nbr="01" revdate="2010-03-22T00:00:00"><title>Ground Speed Indication on the <abb>ND</abb></title><ditembody nb-installed="-"><dispcond code="00007832.0001001.003" dispcond-id="D01278" dispcond-label="A" lid="N.00007832.0001001.003"><dispatch-redirection><duref product="MMEL" ref="00008720"/></dispatch-redirection></dispcond></ditembody></dispatchitem>

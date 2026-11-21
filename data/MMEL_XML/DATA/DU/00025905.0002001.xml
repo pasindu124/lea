@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00025905.0002001" revdate="2022-08-17T16:49:07"><title>Cockpit Door Latch Mechanism (Mechanical Latches) </title><procitem layer="1" lid="N.00025905.0002001.003"><title>General Information</title><procbody lid="N.00025905.0002001.007"><inform layer="1" lid="N.00025905.0002001.008"><para code="00025905.0002001.005" layer="1" lid="N.00025905.0002001.009">When one or more door latches
+are inoperative in engaged/locked position, the flight crew cannot
+open the cockpit door via the handle from the cockpit side.</para><para code="00025905.0002001.006" layer="1" lid="N.00025905.0002001.010">In order
+to unlock the cockpit door, the flight crew has to open the cockpit
+door by using the <tech-label type="sw">COCKPIT DOOR</tech-label> that is located on the <tech-label type="panel">COCKPIT DOOR</tech-label> panel (central pedestal).</para></inform></procbody></procitem></opsproc>

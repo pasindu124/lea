@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00008883.0001001" revdate="2011-06-28T16:59:31"><title>AFT Cargo Compartment Heating (Inoperative valve secured in
+the closed position)</title><procitem layer="1" lid="N.00008883.0001001.004"><title>Flight preparation/limitations</title><procbody lid="N.00008883.0001001.001"><inform layer="1" lid="N.00008883.0001001.002"><para code="00008883.0001001.001" layer="1" lid="N.00008883.0001001.003">For live
+animal transportation, use the Live Animal Transportation Calculation
+Tool.</para></inform></procbody></procitem></opsproc>

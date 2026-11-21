@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00009005.0001001" revdate="2021-11-22T16:58:21"><title>Green System Brake</title><procbody lid="N.00009005.0001001.001"><action layer="1" lid="N.00009005.0001001.005" memory="false"><command code="00009005.0001001.003"><para layer="1" lid="N.00009005.0001001.006"><duref product="MMEL" ref="00022743"/></para></command></action></procbody></opsproc>

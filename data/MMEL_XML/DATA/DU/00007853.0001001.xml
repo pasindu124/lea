@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00007853.0001001" func-code="31-08-03" item-list-nbr="03" revdate="2020-05-13T00:00:00"><title>MEMO Messages on the <abb>EWD</abb></title><ditembody nb-installed="-"><dispcond code="00007853.0001001.001" dispcond-id="D01318" dispcond-label="A" lid="N.00007853.0001001.001"><normal-dispcond nb-required="0" rectification-interval="C"><remark><requirement lid="N.00007853.0001001.002" req-id="R01319"><para code="00007853.0001001.002" layer="1" lid="N.00007853.0001001.003">One or more may be inoperative provided
+that the affected MEMO message is confirmed to be false or missing
+by troubleshooting.</para></requirement></remark></normal-dispcond></dispcond></ditembody></dispatchitem>

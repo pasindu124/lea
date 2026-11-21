@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00023964.0001001" revdate="2020-05-13T11:42:39"><title>Passenger Seat Armrest (Affected Armrest Inoperative in the
+Required Position for Taxi, Takeoff, and Landing)</title><procitem layer="1" lid="N.00023964.0001001.002"><title>General information</title><procbody lid="N.00023964.0001001.003"><inform layer="1" lid="N.00023964.0001001.004"><para code="00023964.0001001.001" layer="1" lid="N.00023964.0001001.005">The required position by default
+for Taxi, Takeoff and Landing is the horizontal position. The seats
+for which the armrest must be in a different position for Taxi, Takeoff
+and Landing are identified with a placard visible from the associated
+seat.</para></inform></procbody></procitem></opsproc>

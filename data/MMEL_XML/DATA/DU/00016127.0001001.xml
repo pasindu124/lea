@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00016127.0001001" revdate="2015-11-27T19:55:17"><title><ecam-data ecamimportance="A" type="alert"><ecamsys>ENG 1(2)</ecamsys><ecamtitle>FAN COWL NOT CLSD</ecamtitle></ecam-data> Alert</title><procitem layer="1" lid="N.00016127.0001001.005"><title>Exterior Walkaround</title><procbody lid="N.00016127.0001001.001"><inform layer="1" lid="N.00016127.0001001.003"><para code="00016127.0001001.002" layer="1" lid="N.00016127.0001001.004">During
+the exterior walkaround, the flight crew must check carefully on both
+sides of each engine that all the fan cowl door latches are correctly
+closed.</para><para code="00016127.0001001.003" layer="1" lid="N.00016127.0001001.007">If necessary, the flight crew
+should use a torch and crouch to perform the check.</para></inform></procbody></procitem></opsproc>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00007836.0001001" func-code="31-06-04" item-list-nbr="04" revdate="2010-03-22T00:00:00"><title>Heading Indication on the <abb>ND</abb></title><ditembody nb-installed="-"><dispcond code="00007836.0001001.001" dispcond-id="D01281" dispcond-label="A" lid="N.00007836.0001001.001"><dispatch-redirection><duref product="MMEL" ref="00008723"/></dispatch-redirection></dispcond></ditembody></dispatchitem>

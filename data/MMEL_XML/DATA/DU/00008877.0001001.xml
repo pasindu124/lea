@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00008877.0001001" revdate="2010-03-11T15:12:28"><title>Landing Elevation Selection <abb>MAN</abb> Function</title><procitem layer="1" lid="N.00008877.0001001.015"><title>During cockpit preparation</title><procbody lid="N.00008877.0001001.001"><action layer="1" lid="N.00008877.0001001.009" memory="false"><command code="00008877.0001001.006"><para layer="1" lid="N.00008877.0001001.010">On the <tech-label type="s-page">CAB PRESS</tech-label>, check that the <emph bold="false" color="Green" italic="false" overline="false" sub="false" sup="false" underline="false">LDG ELEV AUTO</emph> message
+is displayed to confirm correct position of the <tech-label type="sel">LDG ELEV</tech-label>.</para></command></action><inform layer="1" lid="N.00008877.0001001.011"><noteproc code="00008877.0001001.007" layer="1" lid="N.00008877.0001001.012"><inform layer="1" lid="N.00008877.0001001.013"><para code="00008877.0001001.008" layer="1" lid="N.00008877.0001001.014">The landing
+field elevation of the destination airport may not be correctly displayed
+on the <tech-label type="s-page">CAB PRESS</tech-label>. It is automatically
+corrected after first engine start.</para></inform></noteproc></inform></procbody></procitem></opsproc>

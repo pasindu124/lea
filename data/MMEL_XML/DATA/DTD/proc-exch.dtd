@@ -1,0 +1,166 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Proc library                          -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!--  Rev Date      : October 2011                                 -->
+<!--  Parsed Date   : October 2011                                 -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Add operating standards attributes to ecam-info, inform    -->
+<!--    condition, ex-conditions, action-block and limit elements  -->
+<!-- 2) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Add %links.Grp to lit-limit element. It contains refint,   -->
+<!--    duref, liminary-ref and context-link elements              -->
+<!-- 2) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- V9.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 9.0                        -->
+<!-- V10.0                                                         -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 10.0                       -->
+<!-- 2) Add inform possibility in action-block       			   -->
+<!-- ============================================================= -->
+
+<!-- The following set of declarations may be referred to  using 
+     the public entity as follows:
+     <!DOCTYPE aat PUBLIC
+     "-//AIB-TEXT//DTD proc-exch-VER6-REV0-LEVEL1//EN" [ ]>        -->
+
+<!-- ============================================================= -->
+<!-- ENTITIES                                                      -->
+<!-- ============================================================= -->
+
+<!ENTITY % ecam-exch SYSTEM "ecam-exch.dtd">
+%ecam-exch;
+<!ENTITY % procshared-exch SYSTEM "procshared-exch.dtd">
+%procshared-exch;
+
+<!ENTITY % wcnProc.Grp '(warningproc|cautionproc|noteproc)'>
+
+<!ENTITY % wcnprocType '((%interBasicStructType;|desc-cond)+|%procbody.Grp;)'>
+
+<!ENTITY % noteprocType '((%interBasicStructType;|graphref|desc-cond)+|%procbody.Grp;)'>
+
+<!ENTITY % descbodyType '(%fullBasicStructType;|desc-cond|ex-desc-cond|whatif)+'>
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT procdesc   (%procdescType;) >
+<!ATTLIST procdesc
+	%do.AttGrp;
+	%linktargetid.AttGrp;
+>
+
+<!ELEMENT warningproc %wcnprocType; >
+
+<!ATTLIST warningproc
+	%layer.AttGrp;
+	%do.AttGrp;
+	%linktargetid.AttGrp;
+>
+
+<!ELEMENT cautionproc %wcnprocType; >
+
+<!ATTLIST cautionproc
+	%layer.AttGrp;
+	%do.AttGrp;
+	%linktargetid.AttGrp;
+>
+
+<!ELEMENT noteproc %noteprocType; >
+
+<!ATTLIST noteproc
+	%layer.AttGrp;
+	%do.AttGrp;
+	%linktargetid.AttGrp;
+>
+
+<!ELEMENT ecam-info (para+, comment?)>
+<!ATTLIST ecam-info
+	%do.AttGrp;
+	%layer.AttGrp;
+	%ecam.AttGrp;
+	%linktargetid.AttGrp;
+	%opStand.AttGrp;	
+>
+
+<!ELEMENT inform   (%interBasicStructType;|table|graphref|launcher|whatif|%wcnProc.Grp;)+ >
+<!ATTLIST inform
+	%layer.AttGrp;
+	%linktargetid.AttGrp;
+	%opStand.AttGrp;
+>
+
+<!ELEMENT endofproc EMPTY >
+
+<!ELEMENT condition   ((intro|introblock),procdesc?,procbody %extensionCondition.Grp;,endofproc?) >
+<!ATTLIST condition
+	type (cond|phase|alinfo|cond-phase) "cond" 
+	%do.AttGrp;
+	%layer.AttGrp;
+	subtitle (true|false) "false" 
+	%linktargetid.AttGrp;
+	%ecam.AttGrp; 
+	%context.AttGrp;
+	direct  (true|false) "false" 
+	at-any-time (true|false) "false"
+	%opStand.AttGrp;
+>
+
+<!ELEMENT introblock   (intro,intro+) >
+<!ATTLIST introblock
+	operator (AND|OR) #REQUIRED >
+
+<!ELEMENT ex-conditions   (condition,condition+) >
+<!ATTLIST ex-conditions
+	%ecam.AttGrp; 
+	%linktargetid.AttGrp; 
+	%opStand.AttGrp; 
+>
+
+<!ELEMENT action-block   (title?, inform?, (action,action+)) >
+<!ATTLIST action-block
+	%linktargetid.AttGrp;
+	%context.AttGrp;
+	%opStand.AttGrp;
+>
+
+<!ELEMENT limit ((lit-limit|perf-value),comment?) >
+<!ATTLIST limit
+	%ecam.AttGrp;
+	%layer.AttGrp;
+	%linktargetid.AttGrp;
+	impact (perfo|other) #IMPLIED
+	%opStand.AttGrp;
+>
+
+<!ELEMENT lit-limit %contentAndLinksType;>
+<!ATTLIST lit-limit
+	%ecam.AttGrp;
+	%linktargetid.AttGrp;
+>
+
+<!ELEMENT perf-value (perf,value) >
+<!ATTLIST perf-value
+	%doopt.AttGrp;
+>
+
+<!ELEMENT starting-point EMPTY>

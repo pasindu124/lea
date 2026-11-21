@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00024284.0001001" func-code="29-10-10" item-list-nbr="10" revdate="2021-02-24T00:00:00"><title>Hydraulic Reservoir Drain Valve</title><functional-notes><note code="00024284.0001001.005" layer="1" lid="N.00024284.0001001.007"><para layer="1" lid="N.00024284.0001001.008">Apply the Hydraulic
+Reservoir Drain Valve <abb>MMEL</abb> item only in the case of hydraulic
+fluid leak at the Hydraulic Reservoir Drain Valve without any other
+structural leaks. For other cases, Operator must request technical
+support and assistance from AIRBUS.</para></note></functional-notes><ditembody nb-installed="3"><dispcond code="00024284.0001001.002" dispcond-id="D11258" dispcond-label="A" lid="N.00024284.0001001.002"><normal-dispcond nb-required="0" rectification-interval="C"><remark><requirement lid="N.00024284.0001001.003" req-id="R11259"><maintenance-ref><taskref chap-nbr="29" func="040" product="AMM Task" sect-nbr="10" seq="007" subj-nbr="00"/></maintenance-ref><para code="00024284.0001001.003" layer="1" lid="N.00024284.0001001.004">One or more may be inoperative provided
+that the associated reservoir drain circuit is secured with a cap.</para></requirement></remark></normal-dispcond></dispcond></ditembody></dispatchitem>

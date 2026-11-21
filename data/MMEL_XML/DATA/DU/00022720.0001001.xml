@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00022720.0001001" revdate="2018-11-15T11:14:15"><title>Floor Proximity Emergency Escape Path Marking System in the
+Main Aisle</title><procbody lid="N.00022720.0001001.002"><inform layer="1" lid="N.00022720.0001001.003"><para code="00022720.0001001.001" layer="1" lid="N.00022720.0001001.004">The acceptable level of lighting
+in the case of an emergency is demonstrated in the Airbus Fuselage
+Separation analysis.</para></inform><inform layer="1" lid="N.00022720.0001001.010"><noteproc code="00022720.0001001.004" layer="1" lid="N.00022720.0001001.011"><para layer="1" lid="N.00022720.0001001.012">ISI article reference 33.50.00007,
+available on Airbus World, provides guidelines to define the acceptable
+level of lighting.</para></noteproc></inform></procbody></opsproc>

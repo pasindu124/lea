@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012619.0001001" revdate="2010-09-15T00:00:00"><title>Maintenance Action</title><descbody code="00012619.0001001.006" lid="N.00012619.0001001.012"><para code="00012619.0001001.007" layer="1" lid="N.00012619.0001001.013">Every effort shall be made by
+the maintenance to correct all technical defects as early as practicable
+and that the aircraft be released from a maintenance station in fully
+operational condition. The Commander must be informed by the maintenance
+as soon as practicable, should it be impossible to rectify the inoperative
+item before the dispatch. </para><unlist bulltype="NDASH" code="00012619.0001001.008" layer="1" lid="N.00012619.0001001.014"><para layer="1" lid="N.00012619.0001001.015">Whenever an aircraft is released
+by the maintenance for dispatch with items inoperative, the following
+is required:</para><item layer="1"><para layer="1" lid="N.00012619.0001001.016">The technical
+logbook aboard the aircraft must contain a detailed description of
+the inoperative item(s), special advice to the flight crew, if necessary,
+and information about corrective action taken.</para></item><item layer="1"><para layer="1" lid="N.00012619.0001001.017">When they are
+accessible to the crew in flight, the control(s), and/or indicator(s)
+related to inoperative system(s), function(s) or component(s) must
+be clearly placarded.</para></item></unlist><note code="00012619.0001001.009" layer="1" lid="N.00012619.0001001.018"><numlist code="00012619.0001001.010" format="NNP" layer="1" lid="N.00012619.0001001.019"><item layer="1"><para layer="1" lid="N.00012619.0001001.020">To the extent
+practical, placards should be located adjacent to the control or indicator
+for the item affected. However, unless otherwise specified, placard
+wording and location should be determined by the operator. </para></item><item layer="1"><para layer="1" lid="N.00012619.0001001.021">If inadvertent
+operation could produce a hazard, such equipment must be rendered
+inoperative (physically) as given in the appropriate Maintenance Procedure. </para></item><item layer="1"><para layer="1" lid="N.00012619.0001001.022">The relevant
+Operational Procedures are contained in the <abb>MEL</abb>. </para></item><item layer="1"><para layer="1" lid="N.00012619.0001001.023">The
+relevant Maintenance Procedures are contained in the Aircraft Maintenance
+Manual.</para></item></numlist></note></descbody></description>

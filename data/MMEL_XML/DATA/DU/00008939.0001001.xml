@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00008939.0001001" revdate="2011-06-28T17:11:32"><title><abb>F/O</abb> Total Air Temperature (<abb>TAT</abb>) Sensor
+Element Connected to the <abb>ADR</abb> 2</title><procbody lid="N.00008939.0001001.001"><inform layer="1" lid="N.00008939.0001001.002"><para code="00008939.0001001.001" layer="1" lid="N.00008939.0001001.003"><duref product="MMEL" ref="00009041"/></para></inform></procbody></opsproc>

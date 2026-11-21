@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021930.0001001" revdate="2018-02-15T10:51:49"><title>Cabin Overwing Exit</title><procitem layer="1" lid="N.00021930.0001001.001"><title>PROCEDURE TO BE DEVELOPED IN THE OPERATOR'S MEL</title><procbody lid="N.00021930.0001001.002"><inform layer="1" lid="N.00021930.0001001.003"><unlist bulltype="NDASH" code="00021930.0001001.001" layer="1" lid="N.00021930.0001001.004"><para layer="1" lid="N.00021930.0001001.005">A procedure must be established
+and used to ensure that:</para><item layer="1"><para layer="1" lid="N.00021930.0001001.006">All crewmembers
+are briefed on the location and condition of the affected exit, passenger
+distribution and modified cabin safety procedures</para></item><item layer="1"><para layer="1" lid="N.00021930.0001001.007">The affected
+exit, escape paths, and blocked seating layout are checked before
+each takeoff and landing</para></item><item layer="1"><para layer="1" lid="N.00021930.0001001.008">All the concerned
+passengers are informed that an exit is inoperative and displays an
+appropriate placard.</para></item></unlist></inform></procbody></procitem><procitem layer="1" lid="N.00021930.0001001.009"><title>FLIGHT PREPARATION</title><procitem><title>CALCULATION OF MAXIMUM PASSENGER CAPACITY (MPC) TABLES</title><procbody lid="N.00021930.0001001.010"><inform layer="1" lid="N.00021930.0001001.011"><para code="00021930.0001001.002" layer="1" lid="N.00021930.0001001.012">The CS-MMEL
+methodology must be used to compute the reduced number of passengers
+and their distribution in the cabin.</para><noteproc code="00021930.0001001.003" layer="1" lid="N.00021930.0001001.013"><para layer="1" lid="N.00021930.0001001.014">ISI article reference 52.10.00040,
+available on Airbus World, provides guidelines to use the CS-MMEL
+methodology.</para></noteproc></inform></procbody></procitem></procitem></opsproc>

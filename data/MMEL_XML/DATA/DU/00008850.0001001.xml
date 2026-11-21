@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00008850.0001001" revdate="2018-04-05T16:26:17"><title>Cabin Overwing Exit Permanently Indicated Closed on the <tech-label type="s-page">DOOR/OXY</tech-label></title><procitem layer="1" lid="N.00008850.0001001.005"><title>General information</title><procbody lid="N.00008850.0001001.006"><inform layer="1" lid="N.00008850.0001001.007"><para code="00008850.0001001.003" layer="1" lid="N.00008850.0001001.011">Indications
+on the <abb>PTP</abb> or the <abb>FAP</abb><if-installed/> may be affected.</para></inform></procbody></procitem></opsproc>

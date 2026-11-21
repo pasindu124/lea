@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012811.0001001" revdate="2022-05-18T16:10:20"><title>How to Use the <abb>MMEL</abb> Items Section?</title><descbody code="00012811.0001001.001" lid="N.00012811.0001001.001"><para code="00012811.0001001.002" layer="1" lid="N.00012811.0001001.002">This section lists the equipment, components,
+systems or functions that are safety-related and that are temporarily
+permitted to be inoperative at departure provided that the Operator
+complies with the associated <abb>MMEL</abb> requirements.</para><note code="00012811.0001001.003" layer="1" lid="N.00012811.0001001.003"><unlist bulltype="NDASH" code="00012811.0001001.004" layer="1" lid="N.00012811.0001001.004"><para layer="1" lid="N.00012811.0001001.005">One single computer may include
+several functions. The corresponding <abb>MMEL</abb> item is either:</para><item layer="1"><para layer="1" lid="N.00012811.0001001.006">The computer:
+The <abb>MMEL</abb> does not consider the loss of a single function.
+In this case, when one function is inoperative, the Operator must
+consider that the computer is inoperative.</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.007">Each function
+separately. In this case, if several functions are inoperative, the
+Operator must apply all the related <abb>MMEL</abb> items.</para></item></unlist></note></descbody><descitem code="00012811.0001001.005" layer="1" lid="N.00012811.0001001.008"><title>Item numbering</title><descbody code="00012811.0001001.006" lid="N.00012811.0001001.009"><para code="00012811.0001001.007" layer="1" lid="N.00012811.0001001.010">A code of three pairs of digits or four
+pairs of digits identifies each <abb>MMEL</abb> item.</para><para code="00012811.0001001.008" layer="1" lid="N.00012811.0001001.011">The three first digits of this numbering
+system follow the <abb>ATA</abb> Spec 2200.</para><unlist bulltype="NDASH" code="00012811.0001001.009" layer="1" lid="N.00012811.0001001.012"><para layer="1" lid="N.00012811.0001001.013">For practical reasons, the second
+pair of digits also follows the below Airbus organization:</para><item layer="1"><para layer="1" lid="N.00012811.0001001.118"><emph bold="true" italic="false" overline="false" sub="false" sup="false" underline="false">00 </emph>refers to maintenance messages on the <tech-label type="s-page">STATUS</tech-label>,</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.014"><emph bold="true" italic="false" overline="false" sub="false" sup="false" underline="false">01</emph> refers to items located on the overhead
+panels,</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.015"><emph bold="true" italic="false" overline="false" sub="false" sup="false" underline="false">05</emph> refers to indications on the <abb>PFD</abb>,</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.016"><emph bold="true" italic="false" overline="false" sub="false" sup="false" underline="false">06</emph> refers to indications on the <abb>ND</abb>,</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.017"><emph bold="true" italic="false" overline="false" sub="false" sup="false" underline="false">07</emph> refers to indications on the <abb>SD</abb> pages,</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.018"><emph bold="true" italic="false" overline="false" sub="false" sup="false" underline="false">08</emph> refers to indications on the <abb>EWD</abb>,</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.019"><emph bold="true" italic="false" overline="false" sub="false" sup="false" underline="false">09</emph> refers to <abb>ECAM</abb> alerts,</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.020"><emph bold="true" italic="false" overline="false" sub="false" sup="false" underline="false">10</emph> to <emph bold="true" italic="false" overline="false" sub="false" sup="false" underline="false">95</emph> follows the <abb>ATA</abb> Spec 2200 (first digit only).</para></item></unlist><unlist bulltype="NDASH" code="00012811.0001001.010" layer="1" lid="N.00012811.0001001.021"><para layer="1" lid="N.00012811.0001001.022">The last pair of digits is the
+item rank. The item rank complies with the following Airbus organization
+rules:</para><item layer="1"><para layer="1" lid="N.00012811.0001001.023">Item ranks from
+01 to 49 are for Airbus <abb>MMEL</abb> items.</para><unlist bulltype="BULLET" code="00012811.0001001.011" layer="1" lid="N.00012811.0001001.024"><para layer="1" lid="N.00012811.0001001.119">For items on the overhead panels:</para><item layer="1"><para layer="1" lid="N.00012811.0001001.025">Item ranks from
+01 to 29 refer to lights,</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.026">Item ranks from
+31 to 49 refer to pushbutton switches and selectors.</para></item></unlist></item><item layer="1"><para layer="1" lid="N.00012811.0001001.027">Item ranks from
+50 to 99 are for Operator's <abb>MEL</abb> items.</para></item></unlist></descbody></descitem><descitem code="00012811.0001001.012" layer="1" lid="N.00012811.0001001.028"><title>Dispatch Conditions</title><descbody code="00012811.0001001.013" lid="N.00012811.0001001.029"><para code="00012811.0001001.014" layer="1" lid="N.00012811.0001001.030">The dispatch conditions indicate (for
+each applicable item) the suitable conditions, limitations (placards,
+operational procedures, maintenance procedures) necessary to ensure
+that an acceptable level of safety is maintained.</para><para code="00012811.0001001.015" layer="1" lid="N.00012811.0001001.031">Some <abb>MMEL</abb> items may have several
+dispatch conditions. Each dispatch condition offers a different option
+to dispatch the aircraft.</para><para code="00012811.0001001.016" layer="1" lid="N.00012811.0001001.032">A reference
+identifies each dispatch condition.</para><example code="00012811.0001001.017" layer="1" lid="N.00012811.0001001.033"><unlist bulltype="NDASH" code="00012811.0001001.018" layer="1" lid="N.00012811.0001001.034"><para layer="1" lid="N.00012811.0001001.035">Dispatch condition reference
+27-10-01C:</para><item layer="1"><para layer="1" lid="N.00012811.0001001.036">27-10-01 corresponds
+to the item number,</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.037">The letter "C"
+identifies the dispatch condition within the item 27-10-01.</para><note code="00012811.0001001.019" layer="1" lid="N.00012811.0001001.038"><para layer="1" lid="N.00012811.0001001.039">If an Operator receives only
+the dispatch conditions 27-10-01B and 27-10-01D, this means that the
+dispatch conditions 27-10-01A and 27-10-01C do not apply to the Operator’s
+fleet (this does not mean that the dispatch conditions 27-10-01A and
+27-10-01C are missing from the <abb>MMEL</abb>).</para></note></item></unlist></example><unlist bulltype="NDASH" code="00012811.0001001.020" layer="1" lid="N.00012811.0001001.040"><para layer="1" lid="N.00012811.0001001.041">The dispatch condition reference
+is used:</para><item layer="1"><para layer="1" lid="N.00012811.0001001.042">To identify
+the open <abb>MEL</abb> items in the logbook,</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.043">To refer to
+the associated operational procedure (if any),</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.044">To refer to
+the associated maintenance procedure (if any),</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.045">To provide the
+Operator’s engineering and maintenance personnel with a unique reference
+at fleet level for each option of dispatch for tracking and reporting
+purposes.</para></item></unlist><para code="00012811.0001001.021" layer="1" lid="N.00012811.0001001.046">When an <abb>MMEL</abb> item has several dispatch conditions, the Operator must
+select and apply only one dispatch condition at a time. An optional
+operational title is provided for each of the dispatch condition reference.
+The aim of an operational title is to help the Operator to better
+understand the operational differences between multiple dispatch conditions.
+In the frame of the <abb>MEL</abb> customization, this operational
+title may be modified at Operator’s convenience provided that the
+customized operational title still ensure the correct identification,
+the content and the intent of the associated dispatch condition. When
+necessary, the Operator may successively apply other dispatch conditions
+of the same item provided that the Operator complies with the <abb>MMEL</abb> requirements and provided that the starting point of the
+repair interval countdown is not modified.</para></descbody></descitem><descitem code="00012811.0001001.022" layer="1" lid="N.00012811.0001001.047"><title>Proviso</title><descbody code="00012811.0001001.023" lid="N.00012811.0001001.048"><para code="00012811.0001001.024" layer="1" lid="N.00012811.0001001.049">Each dispatch condition has one or several
+requirements, called provisos. Provisos are numbered 1), 2), 3)...</para><para code="00012811.0001001.025" layer="1" lid="N.00012811.0001001.050">The Operator must comply with all the
+provisos of the selected dispatch condition.</para></descbody></descitem><descitem code="00012811.0001001.026" layer="1" lid="N.00012811.0001001.051"><title>Repair Interval</title><descbody code="00012811.0001001.027" lid="N.00012811.0001001.052"><para code="00012811.0001001.028" layer="1" lid="N.00012811.0001001.053">Each dispatch condition has an associated
+repair interval. The preamble of this MMEL defines the repair interval
+categories. <duref product="MMEL" ref="00012620"/>.</para><unlist bulltype="NDASH" code="00012811.0001001.029" layer="1" lid="N.00012811.0001001.054"><para layer="1" lid="N.00012811.0001001.055">A dash symbol replaces the repair
+interval in the following cases:</para><item layer="1"><para layer="1" lid="N.00012811.0001001.057">For dispatch
+conditions that refer to another manual (Weight and Balance, <abb>CDL</abb>…). The <abb>MMEL</abb> is not the appropriate manual for
+this dispatch condition.</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.133">For dispatch
+conditions that refer to one or more item(s) for which there are several
+dispatch conditions with different repair intervals. In this case,
+the initial repair interval is left with a dash symbol as it will
+be driven by the repair interval of the referred <abb>MMEL</abb> item
+dispatch condition(s).</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.058">For NO-GO items.</para></item></unlist></descbody></descitem><descitem code="00012811.0001001.030" layer="1" lid="N.00012811.0001001.059"><title>Nbr installed</title><descbody code="00012811.0001001.031" lid="N.00012811.0001001.060"><para code="00012811.0001001.032" layer="1" lid="N.00012811.0001001.061">Each dispatch condition has a “number
+installed” that specifies the quantity of equipment, components, systems
+or functions installed on the aircraft.</para><para code="00012811.0001001.033" layer="1" lid="N.00012811.0001001.062">This quantity corresponds to the aircraft
+type certified configuration and, therefore required for all flight
+conditions, unless otherwise indicated in the “number required” in
+conjunction with the provisos of the dispatch condition.</para><para code="00012811.0001001.034" layer="1" lid="N.00012811.0001001.063">A dash symbol indicates that a variable
+quantity is installed. When possible, the Operator may replace the
+dash symbol by the quantity installed on the aircraft.</para></descbody></descitem><descitem code="00012811.0001001.035" layer="1" lid="N.00012811.0001001.064"><title>Nbr required</title><descbody code="00012811.0001001.036" lid="N.00012811.0001001.065"><para code="00012811.0001001.037" layer="1" lid="N.00012811.0001001.066">Each dispatch condition has a “number
+required” that specifies the minimum quantity of equipment, components,
+systems or functions that must be operative for dispatch in accordance
+with the provisos of the dispatch condition.</para><para code="00012811.0001001.038" layer="1" lid="N.00012811.0001001.067">A dash symbol indicates that a variable
+quantity is required for dispatch. When possible, the Operator may
+replace the dash symbol by the quantity required. </para><para code="00012811.0001001.078" layer="1" lid="N.00012811.0001001.132">When the "number required" is the same as the “number installed”
+and the repair interval is defined, this means that the dispatch condition
+covers the partial failure of the item. The dispatch is permitted
+provided that the associated requirements are satisfied.</para></descbody></descitem><descitem code="00012811.0001001.039" layer="1" lid="N.00012811.0001001.068"><title>Placard</title><descbody code="00012811.0001001.040" lid="N.00012811.0001001.069"><para code="00012811.0001001.042" layer="1" lid="N.00012811.0001001.071">In the <abb>PDF</abb> format, the "YES"
+in the "Placard" column indicates the request for a placard.
+In the electronic format, the "PLACARD" symbol indicates
+the request for a placard.</para><para code="00012811.0001001.041" layer="1" lid="N.00012811.0001001.070">The control(s),
+and/or indicator(s) related to inoperative equipment, component, system
+or function should be clearly placarded to inform the flight crew,
+cabin crew or ground crew members of the equipment condition.</para><para code="00012811.0001001.043" layer="1" lid="N.00012811.0001001.072">However, the absence of placard request
+in the <abb>MMEL</abb> does not prevent the Operator from placarding.</para><unlist bulltype="NDASH" code="00012811.0001001.077" layer="1" lid="N.00012811.0001001.127"><para layer="1" lid="N.00012811.0001001.131">The Operator should determine:</para><item layer="1"><para layer="1" lid="N.00012811.0001001.128">The placard
+wording and location unless the <abb>MMEL</abb> dispatch condition
+requires a specific wording and location.</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.130">The personnel
+(maintenance and/or flight crew) authorized to placard items.</para></item></unlist></descbody></descitem><descitem code="00012811.0001001.046" layer="1" lid="N.00012811.0001001.075"><title>Operational and maintenance procedures</title><descbody code="00012811.0001001.047" lid="N.00012811.0001001.076"><para code="00012811.0001001.048" layer="1" lid="N.00012811.0001001.077">The dispatch condition may require an
+operational or maintenance procedure to ensure an acceptable level
+of safety.</para><para code="00012811.0001001.049" layer="1" lid="N.00012811.0001001.078">The (o)
+symbol identifies an operational procedure.</para><para code="00012811.0001001.050" layer="1" lid="N.00012811.0001001.079">The (m) symbol identifies a maintenance
+procedure.</para><para code="00012811.0001001.051" layer="1" lid="N.00012811.0001001.080">The (o)(m)
+symbol means that the dispatch condition requires both an operational
+procedure and a maintenance procedure.</para><para code="00012811.0001001.052" layer="1" lid="N.00012811.0001001.081">The Operator is responsible to ensure
+that all operational and maintenance procedures are appropriately
+performed regardless of who performs the procedures.</para></descbody><descitem code="00012811.0001001.053" layer="1" lid="N.00012811.0001001.082"><title>Operational procedure</title><descbody code="00012811.0001001.054" lid="N.00012811.0001001.083"><para code="00012811.0001001.055" layer="1" lid="N.00012811.0001001.084">The (o) symbol indicates that the dispatch
+condition requires a specific operational procedure to permit operation
+of the aircraft with the inoperative item.</para><unlist bulltype="NDASH" code="00012811.0001001.056" layer="1" lid="N.00012811.0001001.085"><para layer="1" lid="N.00012811.0001001.086">Purpose of the operational procedure
+may be:</para><item layer="1"><para layer="1" lid="N.00012811.0001001.087">To require the
+flight crew or cabin crew to perform action(s),</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.088">To provide limitations
+or performance penalties,</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.089">To provide useful
+information to the crew.</para></item></unlist><para code="00012811.0001001.057" layer="1" lid="N.00012811.0001001.090">The flight
+crew must read the content of the operational procedure before each
+flight.</para><para code="00012811.0001001.058" layer="1" lid="N.00012811.0001001.091">The operational
+procedure must be applied before each flight. However, the dispatch
+condition might specify a different periodicity. In this case this
+operational procedure must be applied before the first <abb>MMEL</abb> dispatch and must be repeated at the defined periodicity.</para><para code="00012811.0001001.059" layer="1" lid="N.00012811.0001001.092">The operational procedures are split
+and organized into specific flight phases. The flight crew has to
+apply the part of the operational procedure related to the relevant
+flight phase.</para><para code="00012811.0001001.060" layer="1" lid="N.00012811.0001001.093">Qualified
+flight crew or qualified cabin crew usually performs the operational
+procedures. However other qualified personnel can also perform the
+operational procedures. But the flight crew must read the content
+of the operational procedure before each flight.</para></descbody></descitem><descitem code="00012811.0001001.061" layer="1" lid="N.00012811.0001001.094"><title>Maintenance procedure</title><descbody code="00012811.0001001.062" lid="N.00012811.0001001.095"><para code="00012811.0001001.063" layer="1" lid="N.00012811.0001001.096">The (m) symbol indicates that the dispatch
+condition requires a specific maintenance procedure to permit operation
+of the aircraft with the inoperative item.</para><unlist bulltype="NDASH" code="00012811.0001001.064" layer="1" lid="N.00012811.0001001.097"><para layer="1" lid="N.00012811.0001001.098">Purpose of the maintenance procedure
+may be:</para><item layer="1"><para layer="1" lid="N.00012811.0001001.099">To deactivate
+a system,</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.100">To check a system.</para></item></unlist><para code="00012811.0001001.065" layer="1" lid="N.00012811.0001001.101">The maintenance
+procedure is normally a one-time action that must be applied before
+the first <abb>MMEL</abb> dispatch. However the dispatch condition
+may specify a periodicity for repetitive actions. In this case the
+maintenance procedure must be applied before the first <abb>MMEL</abb> dispatch and must be repeated at the defined periodicity.</para><para code="00012811.0001001.066" layer="1" lid="N.00012811.0001001.102">Qualified maintenance personnel usually
+perform the maintenance procedures. However other qualified and authorized
+personnel can also perform some actions if approved by the Operator’s
+National Authority. But only qualified maintenance personnel can perform
+procedures that require specialized knowledge or skill, or that require
+the use of tools or test equipment.</para><para code="00012811.0001001.074" layer="1" lid="N.00012811.0001001.120">The <abb>MMEL</abb> maintenance procedures
+are published in the <abb>AMM</abb>. The <abb>MMEL</abb> item dispatch
+condition reference, including the letter (e.g. 27-10-01C), should
+be used to find the associated <abb>AMM</abb> task.</para><note code="00012811.0001001.075" layer="1" lid="N.00012811.0001001.121"><numlist code="00012811.0001001.076" format="NNP" layer="1" lid="N.00012811.0001001.123"><item layer="1"><para layer="1" lid="N.00012811.0001001.124">The <abb>MMEL</abb> item indicates the associated <abb>AMM</abb> task reference. However
+using the <abb>AMM</abb> task reference is not the recommended method
+to find the task in the <abb>AMM</abb>. The <abb>MMEL</abb> item number
+should be used instead.</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.125">The <abb>MMEL</abb> item might indicate “Refer to <abb>AMM</abb> task” instead of the <abb>AMM</abb> task reference. This indicates that the <abb>MMEL</abb> item is associated with several <abb>AMM</abb> tasks. The maintenance
+personnel should consult the <abb>AMM</abb> to find the applicable <abb>AMM</abb> task.</para></item></numlist></note></descbody></descitem></descitem><descitem code="00012811.0001001.067" layer="1" lid="N.00012811.0001001.103"><title>Notes</title><descbody code="00012811.0001001.068" lid="N.00012811.0001001.104"><unlist bulltype="NDASH" code="00012811.0001001.069" layer="1" lid="N.00012811.0001001.105"><para layer="1" lid="N.00012811.0001001.106">There are three levels of notes:</para><item layer="1"><para layer="1" lid="N.00012811.0001001.107">Notes at the
+level of the item: these notes appear below the item title and before
+the first dispatch condition of this item. These notes apply to all
+the dispatch conditions of the item. </para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.108">Notes at the
+level of the dispatch condition: these notes appear at the end of
+the dispatch condition. These notes apply only to this dispatch condition. </para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.109">Notes at the
+level of the proviso: these notes appear within a proviso. These notes
+apply only to this proviso. </para></item></unlist></descbody></descitem><descitem code="00012811.0001001.070" layer="1" lid="N.00012811.0001001.110"><title>References</title><descbody code="00012811.0001001.071" lid="N.00012811.0001001.111"><para code="00012811.0001001.072" layer="1" lid="N.00012811.0001001.112">The references assist the Operator in
+complying with <abb>MMEL</abb> requirements. However, as indicated
+in the preamble of this <abb>MMEL</abb> (<duref product="MMEL" ref="00012617"/>), the Operator is still responsible for determining
+the applicable interrelationships and associated requirements.</para><unlist bulltype="NDASH" code="00012811.0001001.073" layer="1" lid="N.00012811.0001001.113"><para layer="1" lid="N.00012811.0001001.114">References are used in the following
+cases: </para><item layer="1"><para layer="1" lid="N.00012811.0001001.115">To permit the
+aircraft dispatch, another item has to be considered inoperative,
+or</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.116">Another source
+of information has to be reviewed and associated restrictions, and/or
+procedures must be applied (e.g. ″Refer to <abb>FCOM</abb>″, or ″Refer
+to Weight and Balance Manual″), or</para></item><item layer="1"><para layer="1" lid="N.00012811.0001001.117">To redirect
+to the applicable <abb>MMEL</abb> item. In that case, the referred
+relevant <abb>MMEL</abb> item must be entered and the associated dispatch
+conditions must be applied, including the respective (o) and (m) procedures
+if any.</para></item></unlist></descbody></descitem></description>

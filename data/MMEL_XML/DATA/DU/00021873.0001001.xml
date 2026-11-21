@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021873.0001001" revdate="2017-08-23T19:10:43"><title>Engine Fire Detection Loop A on the Engine 2 or Loop B on the
+Engine 1</title><procitem layer="1" lid="N.00021873.0001001.001"><title>Cockpit Preparation</title><procbody lid="N.00021873.0001001.002"><action layer="1" lid="N.00021873.0001001.003" memory="false"><command code="00021873.0001001.001"><para layer="1" lid="N.00021873.0001001.004">The engine fire test is made
+before each flight.</para></command></action></procbody></procitem></opsproc>

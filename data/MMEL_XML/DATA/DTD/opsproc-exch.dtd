@@ -1,0 +1,113 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the opsproc module                        -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Exchange Models                               -->
+<!-- AIRBUS Reference :                                            -->
+<!--    "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN"               -->
+<!--  Rev Date      : October 2011                                 -->
+<!--  Parsed Date   : October 2011                                 -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Deletion of the 'func-code' attribute:                     -->
+<!-- 	Func-code from the Dispatch Item or the Milops Item        -->
+<!--    shall be provided in the dulinktable file	           -->
+<!-- 2) Deletion of the 'list-item-nbr' attribute: List-item-nbr   -->
+<!--	from the Dispatch Item or the Milops Item shall be         -->
+<!--    provided in the dulinktable file.                          -->
+<!-- 3) Deletion of the 'dispcond-ref' attribute:                  -->
+<!--    Dispatch Condition/requirement reference or                -->
+<!--    Impacted-milops/consequence from the Dispatch Item or      -->
+<!--    the Milops Item shall be provided in the dulinktable file. -->
+<!-- 4) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Add operating standards attributes to opsproc and procitem -->
+<!--    elements                                                   -->
+<!-- 2) Add action attributes list with Operating Standards        -->
+<!-- 3) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Add optional title element in relevant-sub-proc element    -->
+<!-- 2) improve the procitem model as in normalproc. several       -->
+<!--    procitem levels                                            -->
+<!-- 3) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- V9.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 9.0                        -->
+<!-- VER 10.0:                                                     -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 10.0                       -->
+<!-- ============================================================  -->
+
+<!-- The following set of declarations may be referred to  using 
+     the public entity as follows:
+     <!DOCTYPE opsproc PUBLIC
+     "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN"   [ ]>           -->
+
+<!-- ============================================================= -->
+<!-- ENTITIES                                                      -->
+<!-- ============================================================= -->
+
+<!ENTITY % extensionContent.Grp "">
+<!ENTITY % ftnoteType "">
+<!ENTITY % ops-exch SYSTEM "ops-exch.dtd">
+%ops-exch;
+<!ENTITY % entryType '(para|unlist|numlist|warning|caution|note|graphref|launcher|equal|desc-cond|ex-desc-cond|row-header|measure)*'>
+
+<!ENTITY % procbody.Grp "((action | action-block | limit | inform | condition | ex-conditions | relevant-sub-proc)+)">
+
+<!ENTITY % actionType "((cr-action | command), comment?)">
+<!ENTITY % extensionCondition.Grp "">
+<!ENTITY % proc-exch SYSTEM "proc-exch.dtd">
+%proc-exch;
+<!ENTITY % sl-exch SYSTEM "sl-exch.dtd">
+%sl-exch;
+<!ENTITY % func-code.GlobalAttr "
+	func-code	CDATA	#REQUIRED ">
+	
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT entry (%entryType;)>
+
+<!ELEMENT procbody ((%procbody.Grp;)+)>
+<!ATTLIST procbody
+	%linktargetid.AttGrp; 
+>
+<!ELEMENT relevant-sub-proc (title?,(%procbody.Grp;)+)>
+<!ATTLIST relevant-sub-proc
+	%linktargetid.AttGrp; 
+>
+
+<!ELEMENT opsproc (reason?, title, procdesc?, (procbody | procitem), procitem*)>
+<!ATTLIST opsproc
+	%duIdent.AttGrp; 
+	%context.AttGrp; 
+	%opStand.AttGrp;
+>
+<!ELEMENT procitem (title, procdesc?, (procbody | procitem), procitem*)>
+<!ATTLIST procitem
+	%layer.AttGrp; 
+	%context.AttGrp; 
+	%linktargetid.AttGrp;
+	%opStand.AttGrp;
+>
+
+<!ATTLIST action
+	%action.AttGrp; 
+	%layer.AttGrp; 
+	%linktargetid.AttGrp;
+	%opStand.AttGrp;
+>

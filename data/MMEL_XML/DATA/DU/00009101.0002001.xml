@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00009101.0002001" revdate="2018-08-01T16:29:02"><title><abb>ACT</abb> Air Shutoff Valve</title><procitem layer="1" lid="N.00009101.0002001.001"><title>During cockpit preparation</title><procbody lid="N.00009101.0002001.002"><inform layer="1" lid="N.00009101.0002001.003"><numlist code="00009101.0002001.001" format="NNP" layer="1" lid="N.00009101.0002001.004"><item layer="1"><para layer="1" lid="N.00009101.0002001.005">The refuel panel
+door must be open to check the operation of the manual transfer on
+the ground using the <tech-label type="s-page">FUEL</tech-label>. Establish ground communications
+and ensure that the refuel panel door is open during following check
+and closed after the check is done.</para></item><item layer="1"><para layer="1" lid="N.00009101.0002001.006">The manual transfer
+may be performed only if the center tank is not full (center tank
+high level sensor dry). If the center tank is full, the high level
+sensor may be overridden by keeping pressed in the <tech-label type="pb">HI LVL</tech-label> test of the refuel panel. When the high level sensor is overridden,
+take care to not overfill the center tank. Otherwise, fuel may spill
+out from the surge tanks. </para></item></numlist></inform><action-block lid="N.00009101.0002001.007"><action layer="1" lid="N.00009101.0002001.015" memory="false"><cr-action code="00009101.0002001.008"><challenge><tech-label type="pb">ALL ACT</tech-label></challenge><response>CHECK NOT ISOL</response></cr-action></action><action layer="1" lid="N.00009101.0002001.009" memory="false"><cr-action code="00009101.0002001.003"><challenge><tech-label type="sel">ACT XFR rotary</tech-label></challenge><response>APPROPRIATE ACT</response></cr-action><comment code="00009101.0002001.009"><para layer="1" lid="N.00009101.0002001.016">Select the ACT to
+be transferred in sequence FWD - AFT2 - AFT1. On the FUEL SD page,
+disregard any pulsing indication of the fuel quantity during the application
+of the procedure.</para></comment></action><action layer="1" lid="N.00009101.0002001.008" memory="false"><cr-action code="00009101.0002001.002"><challenge><tech-label type="pb-sw">ACT XFR MODE
+SEL</tech-label></challenge><response>MAN</response></cr-action></action><action layer="1" lid="N.00009101.0002001.010" memory="false"><command code="00009101.0002001.004"><para layer="1" lid="N.00009101.0002001.011">On the <tech-label type="s-page">FUEL</tech-label>, check that the fuel is transferred from the selected <abb>ACT</abb> to the center tank. </para></command></action><action layer="1" lid="N.00009101.0002001.017" memory="false"><cr-action code="00009101.0002001.010"><challenge><tech-label type="sel">ACT XFR rotary</tech-label></challenge><response>OFF</response></cr-action></action><action layer="1" lid="N.00009101.0002001.012" memory="false"><cr-action code="00009101.0002001.005"><challenge><tech-label type="pb-sw">ACT XFR MODE
+SEL</tech-label></challenge><response>AUTO</response></cr-action></action></action-block></procbody></procitem></opsproc>

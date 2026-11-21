@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00007624.0001001" func-code="23-73-05-01" item-list-nbr="01" revdate="2019-05-22T00:00:00"><title>Cabin Loudspeaker</title><ditembody nb-installed="-"><dispcond code="00007624.0001001.001" dispcond-id="D03014" dispcond-label="A" lid="N.00007624.0001001.001"><normal-dispcond nb-required="-" rectification-interval="C"><remark><requirement lid="N.00007624.0001001.002" req-id="R03015"><opsproc-ref><duref product="MMEL" ref="00021662"/></opsproc-ref><qualifiers><qualifier value="COMMERCIAL"/></qualifiers><para code="00007624.0001001.002" layer="1" lid="N.00007624.0001001.003">One or more may be inoperative provided
+that no seat is occupied from which a passenger cannot hear
+a passenger announcement.</para></requirement></remark></normal-dispcond></dispcond></ditembody></dispatchitem>

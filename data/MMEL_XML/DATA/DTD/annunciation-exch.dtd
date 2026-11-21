@@ -1,0 +1,137 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Annunciation library                  -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!--  Rev Date      : October 2011                            	   -->
+<!--  Parsed Date   : October 2011                            	   -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- V6.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.0                        -->
+<!-- V6.1                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- V7.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0                        -->
+<!-- V7.0.1                                                        -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- V8.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0                        -->
+<!-- V8.0.1                                                        -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- V9.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 9.0                        -->
+<!--                                                               -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) other-inhib element is added to annunciations element      -->
+<!-- 2) ohter-inhib is added                                       -->
+<!-- 3) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- VER 9.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Defined simultaneousdisplay element and added              -->
+<!--    to annunciations element                                   -->
+<!-- 2) Increased the version number to 9.0                        -->
+<!-- VER 10.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) flight-phase-inhib/flight-phase element can be optionnal      -->
+<!-- 2) Increased the version number to 10.0                        -->
+<!-- ============================================================  -->
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT annunciation  (triggering-conditions?,annunciations) >
+<!ATTLIST annunciation
+	%layer.AttGrp;
+	%linktargetid.AttGrp;
+>
+
+<!ELEMENT cockpit-announcement %contentAndLinksType;>
+
+<!ATTLIST cockpit-announcement 
+	%linktargetid.AttGrp;
+>
+
+<!ELEMENT localisation-overview (graphref) >
+
+<!ELEMENT cabin-announcement %contentAndLinksType; >
+<!ATTLIST cabin-announcement
+	%linktargetid.AttGrp;
+>
+
+<!ELEMENT annunciations   (localisation-overview?,auralwarning?,masterlight?,locallights?,systempagecall?,simultaneousdisplay?,flight-phase-inhib?,other-inhib?,cockpit-announcement?,cabin-announcement?) >
+<!ATTLIST annunciations
+	%do.AttGrp;
+	%layer.AttGrp;
+	%linktargetid.AttGrp;
+>
+
+<!ELEMENT masterlight (symbol) >
+<!ATTLIST masterlight
+	type (warning|caution|fap-caution) #REQUIRED
+	%do.AttGrp;
+	%layer.AttGrp;
+	%linktargetid.AttGrp;
+	%ecam.AttGrp;
+>
+
+<!ELEMENT locallights   (locallight+) >
+
+<!ELEMENT systempagecall   (systempage+) >
+<!ATTLIST systempagecall
+	%do.AttGrp;
+	%layer.AttGrp;
+	%linktargetid.AttGrp;
+	type (fap-page|sd-page) #IMPLIED
+>
+
+<!ELEMENT simultaneousdisplay ((%links.Grp; | symbol), para?)>
+<!ATTLIST simultaneousdisplay
+	%do.AttGrp; 
+	%linktargetid.AttGrp;
+	%layer.AttGrp;
+	type (CargoAlert | CockpitAlert) #IMPLIED
+	%ecam.AttGrp; 
+>
+
+<!ELEMENT flight-phase-inhib   (flight-phase*,graphref) >
+<!ATTLIST flight-phase-inhib
+	%do.AttGrp;
+	%linktargetid.AttGrp;
+>
+
+<!ELEMENT other-inhib   (para | unlist)+ >
+<!ATTLIST other-inhib
+	%do.AttGrp;
+	%linktargetid.AttGrp;
+>
+
+<!ELEMENT flight-phase   EMPTY >
+<!ATTLIST flight-phase
+	pof CDATA #REQUIRED
+	%ecam.AttGrp;
+>
+

@@ -1,0 +1,60 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Saep library                          -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!--  Rev Date      : October 2011                            	   -->
+<!--  Parsed Date   : October 2011                            	   -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- VER 9.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 9.0                        -->
+<!-- VER 10.0:                                                     -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 10.0                       -->
+<!-- ============================================================  -->
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT locallight ((%links.Grp; | symbol), para?)>
+
+<!ATTLIST locallight
+	%do.AttGrp; 
+	%layer.AttGrp; 
+	%linktargetid.AttGrp; 
+	%ecam.AttGrp; 
+>
+
+<!ELEMENT auralwarning (extobject, para?)>
+<!ATTLIST auralwarning
+	type (SC | CRC | specific) #REQUIRED
+	%do.AttGrp; 
+	%layer.AttGrp; 
+	%linktargetid.AttGrp; 
+	%ecam.AttGrp; 
+>
+<!ELEMENT systempage ((%links.Grp; | symbol), para?)>
+<!ATTLIST systempage
+	%layer.AttGrp; 
+	%ecam.AttGrp; 
+>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012814.0001001" revdate="2017-05-03T18:19:12"><title>Reduced Vertical Separation Minimum (<abb>RVSM</abb>)</title><descbody code="00012814.0001001.001" lid="N.00012814.0001001.001"><para code="00012814.0001001.002" layer="1" lid="N.00012814.0001001.002">When the <abb>RVSM</abb> capability
+of the aircraft is impacted by an inoperative item, the associated <abb>MMEL</abb> operational procedure provides the <abb>RVSM</abb> limitations.</para><para code="00012814.0001001.003" layer="1" lid="N.00012814.0001001.003">The minimum equipment/functions required
+to begin <abb>RVSM</abb> operations are listed in the Flight Manual
+(<duref product="AFM" ref="00009175"/>) and <abb>FCOM</abb> (<duref product="FCOM" ref="00020955"><linktext>PRO-SPO-50 Reduced
+Vertical Separation Minimum - RVSM</linktext></duref>).</para></descbody></description>

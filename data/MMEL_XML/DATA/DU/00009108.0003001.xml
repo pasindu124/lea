@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00009108.0003001" revdate="2010-03-11T14:33:48"><title>Fuel Quantity Indicating Computer (FQIC) Channel</title><procitem layer="1" lid="N.00009108.0003001.004"><title>Flight preparation/Limitations</title><procbody lid="N.00009108.0003001.005"><inform layer="1" lid="N.00009108.0003001.006"><numlist code="00009108.0003001.005" format="NNP" layer="1" lid="N.00009108.0003001.013"><item layer="1"><para layer="1" lid="N.00009108.0003001.014">Ensure that
+correct weights are entered in the <abb>FMGC</abb> associated
+with the affected <abb>FQIC</abb> channel.</para></item><item layer="1"><para layer="1" lid="N.00009108.0003001.015">In the case
+of failure in-flight of the remaining <abb>FQIC</abb> channel, all
+fuel quantities indications on the <abb>EWD</abb> are lost.</para></item></numlist></inform></procbody></procitem></opsproc>

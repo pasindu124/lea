@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00016377.0001001" revdate="2026-08-19T11:00:24"><title>Required Cabin Attendant Seat(s)</title><procitem layer="1" lid="N.00016377.0001001.005"><title>GENERAL INFORMATION</title><procbody lid="N.00016377.0001001.006"><inform layer="1" lid="N.00016377.0001001.007"><para code="00016377.0001001.002" layer="1" lid="N.00016377.0001001.008">The direct
+view of passenger cabin by cabin attendants pertains to direct visual
+contact between the cabin attendants and the passenger cabin. The
+following conditions should not apply to each cabin attendant, but
+each condition must be ensured by one or several cabin attendants:</para><unlist bulltype="NDASH" code="00016377.0001001.003" layer="1" lid="N.00016377.0001001.010"><item layer="1"><para layer="1" lid="N.00016377.0001001.011">At least two
+cabin attendants, one at each end of the cabin, must participate in
+meeting direct view,</para></item><item layer="1"><para layer="1" lid="N.00016377.0001001.012">At least <measure category="Percent" show-unit="true" system="Other" unit="%">80</measure> of the total number of passenger seats installed must be visible
+to cabin attendants,</para></item><item layer="1"><para layer="1" lid="N.00016377.0001001.013">At least <measure category="Percent" show-unit="true" system="Other" unit="%">50</measure> of the seats in each passenger zone must be visible to cabin attendants.</para><note code="00016377.0001001.004" layer="1" lid="N.00016377.0001001.016"><para layer="1" lid="N.00016377.0001001.017">A passenger zone is
+a portion of the passenger cabin that is separated by interior features.
+These features may be class dividers, galleys, cabin doors or other
+items that interrupt continuous passenger seating, or line of sight.</para></note></item><item layer="1"><para layer="1" lid="N.00016377.0001001.014">The total length
+of the main aisle must be visible to cabin attendants,</para></item><item layer="1"><para layer="1" lid="N.00016377.0001001.015">Cabin doors
+(or as a minimum, the access from the passenger zone to the cabin
+door) must be visible to the cabin attendant assigned to the pair
+of doors.</para></item></unlist></inform></procbody></procitem><procitem layer="1" lid="N.00016377.0001001.001"><title>Procedure to be developed in the Operator's <abb>MEL</abb></title><procbody lid="N.00016377.0001001.002"><inform layer="1" lid="N.00016377.0001001.003"><para code="00016377.0001001.001" layer="1" lid="N.00016377.0001001.004">Alternate
+procedures must be established before departure for displaced cabin
+attendant(s) according to national regulations.</para></inform></procbody></procitem></opsproc>

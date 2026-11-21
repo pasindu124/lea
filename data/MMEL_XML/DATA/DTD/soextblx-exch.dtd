@@ -1,0 +1,126 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Soextblx library	                   -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!--  Rev Date      : October 2011                            	   -->
+<!--  Parsed Date   : October 2011                            	   -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) attribute cell-emphasis is added to the list attribute of  -->
+<!--    entry element                                              -->
+<!-- 2) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- VER 9.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Define and add wbd and wbd-data element to colspec element -->
+<!-- 2) Increased the version number to 9.0                        -->
+<!-- VER 10.0:                                                     -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 10.0                       -->
+<!-- ============================================================  -->
+
+<!-- ============================================================= -->
+<!-- ENTITIES                                                      -->
+<!-- ============================================================= -->
+
+<!ENTITY % yesorno 'NMTOKEN'>
+<!ENTITY % titles 'title?'>
+<!ENTITY % pcd "#PCDATA">
+<!ENTITY % paracon '%pcd;'>
+<!ENTITY % tbl.table.name "table">
+<!ENTITY % tbl.table-titles.mdl "%titles;,">
+<!ENTITY % tbl.table-main.mdl "tgroup+">
+<!ENTITY % tbl.table.att "
+    pgwide      %yesorno;       #IMPLIED ">
+<!ENTITY % bodyatt "">
+<!ENTITY % tbl.tgroup.mdl "colspec*,thead?, tbody">
+<!ENTITY % tbl.tgroup.att "
+     tabstyle     CDATA         #IMPLIED">
+<!ENTITY % tbl.thead.att "">
+<!ENTITY % tbl.tbody.att "">
+<!ENTITY % tbl.colspec.att "">
+<!ENTITY % tbl.row.mdl 'entry+'>
+<!ENTITY % tbl.row.att "%linktargetid.AttGrp;">
+<!ENTITY % tbl.entry.att "%linktargetid.AttGrp;">
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT tgroup (%tbl.tgroup.mdl;)>
+<!ATTLIST tgroup
+	cols NMTOKEN #REQUIRED
+	colsep %yesorno; #IMPLIED
+	rowsep %yesorno; #IMPLIED
+	align (left | right | center | justify | char) #IMPLIED
+	%tbl.tgroup.att; 
+>
+
+<!ELEMENT wbd (wbd-data+)>
+<!ATTLIST wbd
+	hidden (yes | no) #IMPLIED
+>	
+<!ELEMENT wbd-data EMPTY>
+<!ATTLIST wbd-data
+	data CDATA #REQUIRED
+	id CDATA #REQUIRED
+	value CDATA #IMPLIED
+>
+
+<!ELEMENT colspec (wbd?)>
+<!ATTLIST colspec
+	colnum NMTOKEN #IMPLIED
+	colname NMTOKEN #IMPLIED
+	colwidth CDATA #IMPLIED
+	colsep %yesorno; #IMPLIED
+	rowsep %yesorno; #IMPLIED
+	align (left | right | center | justify | char) #IMPLIED
+	char CDATA #IMPLIED
+	charoff NMTOKEN #IMPLIED
+	%tbl.colspec.att; 
+>
+<!ELEMENT thead (row+)>
+<!ATTLIST thead
+	valign (top | middle | bottom) #IMPLIED
+	%tbl.thead.att; 
+>
+<!ELEMENT tbody (row+)>
+<!ATTLIST tbody
+	valign (top | middle | bottom) #IMPLIED
+	%tbl.tbody.att; 
+>
+<!ELEMENT row (%tbl.row.mdl;)>
+<!ATTLIST row
+	rowsep %yesorno; #IMPLIED
+	valign (top | middle | bottom) #IMPLIED
+	%tbl.row.att; 
+>
+<!ATTLIST entry
+	colname NMTOKEN #IMPLIED
+	namest NMTOKEN #IMPLIED
+	nameend NMTOKEN #IMPLIED
+	morerows NMTOKEN #IMPLIED
+	colsep %yesorno; #IMPLIED
+	rowsep %yesorno; #IMPLIED
+	align (left | right | center | justify | char) #IMPLIED
+	char CDATA #IMPLIED
+	charoff NMTOKEN #IMPLIED
+	valign (top | middle | bottom) #IMPLIED
+	cell-emphasis %yesorno; #IMPLIED
+>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00008946.0001001" revdate="2010-09-17T10:36:01"><title>Radio Altimeter Automatic Callout</title><procitem layer="1" lid="N.00008946.0001001.004"><title>Flight preparation/limitations</title><procbody lid="N.00008946.0001001.005"><limit layer="1" lid="N.00008946.0001001.006"><lit-limit lid="N.00008946.0001001.007">Maximum landing capability is CAT 2 without autoland.</lit-limit></limit></procbody></procitem></opsproc>

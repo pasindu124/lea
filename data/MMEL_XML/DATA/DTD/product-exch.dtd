@@ -1,0 +1,130 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Product module                        -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!-- AIRBUS Reference :                                            -->
+<!--    "-//AIRBUS OPS//DTD PRODUCT_EXCH-VER10.0//EN"               -->
+<!--  Rev Date      : October 2011                                 -->
+<!--  Parsed Date   : October 2011                                 -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Procedures in QRH may have a procedure number authored:    -->
+<!--    attribute proc-nbr is added to du-inv  element             -->
+<!-- 2) attribute revdate-closed is added to psl element           -->
+<!-- 3) attribute revdate-open is added to psl element             -->
+<!-- 4) remarks : the regular expressions for attributes are not   -->
+<!--    translated in this DTD                                     -->
+<!-- 5) remarks: the date format for attributes are not translated -->
+<!--    in this DTD                                                -->
+<!-- 6) Pattern for codes correction                               -->
+<!-- 7) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Add prod-type attrbute in product element (civil|military) -->
+<!-- 2) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- VER 9.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 9.0                        -->
+<!-- VER 10.0:                                                     -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 10.0                       -->
+<!-- ============================================================  -->
+
+<!-- The following set of declarations may be referred to  using 
+     the public entity as follows:
+     <!DOCTYPE product PUBLIC
+        "-//AIRBUS OPS//DTD PRODUCT_EXCH-VER10.0//EN"   [ ]>        -->
+
+<!-- ============================================================= -->
+<!-- ENTITIES                                                      -->
+<!-- ============================================================= -->
+
+<!ENTITY % filerefType '
+	href CDATA #REQUIRED'>
+
+<!ENTITY % pslType '(title, (psl+ | (du-inv | group)+))'>
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT product-mdata-ref EMPTY>
+<!ATTLIST product-mdata-ref
+	%filerefType;
+>
+
+<!ELEMENT package-title (#PCDATA)>
+
+<!ELEMENT product (title, package-title?, product-mdata-ref, psl+)>
+<!ATTLIST product
+	manual CDATA #REQUIRED
+	code CDATA #REQUIRED
+	revdate CDATA #REQUIRED
+	doc-id CDATA #REQUIRED
+	doc-type CDATA #REQUIRED
+	issue CDATA #IMPLIED
+	ac-set-type CDATA #REQUIRED
+	ac-set-value CDATA #REQUIRED
+	ac-set-designation CDATA #REQUIRED
+	ac-program CDATA #IMPLIED
+	norm CDATA #IMPLIED
+	spl CDATA #REQUIRED
+	cus-code CDATA #IMPLIED
+	cus-name CDATA #IMPLIED
+	lang CDATA #IMPLIED
+	prod-type (civil|military) #IMPLIED
+>
+
+<!ELEMENT psl %pslType;>
+<!ATTLIST psl
+	id ID #REQUIRED
+	pslcode CDATA #REQUIRED
+	pslcodetype (structural|functional) "structural"
+	revdate-closed CDATA #IMPLIED
+	revdate-open CDATA #IMPLIED
+>
+
+<!ELEMENT group (title, du-inv+)>
+<!ATTLIST group
+	id ID #REQUIRED
+	groupcode CDATA #REQUIRED
+>
+
+<!ELEMENT du-inv (title, du-sol+)>
+<!ATTLIST du-inv
+	code CDATA #REQUIRED
+	func-code CDATA #IMPLIED
+	proc-nbr CDATA #IMPLIED
+>
+
+<!ELEMENT sol-content-ref EMPTY>
+<!ATTLIST sol-content-ref
+	%filerefType;
+	revdate CDATA #REQUIRED>
+
+<!ELEMENT sol-mdata-ref EMPTY>
+<!ATTLIST sol-mdata-ref
+	%filerefType;
+	revdate CDATA #REQUIRED>
+
+<!ELEMENT du-sol (title, sol-content-ref?, sol-mdata-ref)>
+<!ATTLIST du-sol
+	code CDATA #REQUIRED
+>
+
+<!ELEMENT title (#PCDATA)>
+

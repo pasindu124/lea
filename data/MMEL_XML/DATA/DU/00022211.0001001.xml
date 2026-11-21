@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00022211.0001001" revdate="2018-02-15T10:40:50"><title>CDLS Buzzer</title><procitem layer="1" lid="N.00022211.0001001.006"><title>PROCEDURE TO BE DEVELOPED IN THE OPERATOR'S <abb>MEL</abb></title><procbody lid="N.00022211.0001001.007"><inform layer="1" lid="N.00022211.0001001.008"><para code="00022211.0001001.004" layer="1" lid="N.00022211.0001001.009">Alternate normal procedures
+must be established before departure in order to remind the cabin
+crew to use the cabin interphone to communicate with cockpit crew
+to request access to the cockpit.</para></inform></procbody></procitem></opsproc>

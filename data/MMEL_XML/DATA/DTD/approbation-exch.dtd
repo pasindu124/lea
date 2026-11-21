@@ -1,0 +1,147 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the Approbation library                   -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!-- AIRBUS Reference :                                            -->
+<!--    "-//AIRBUS OPS//DTD APPROBATION_EXCH-VER10.0//EN"           -->
+<!--  Rev Date      : October 2011                                 -->
+<!--  Parsed Date   : October 2011                                 -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- V6.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.0                        -->
+<!-- V6.1                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- V7.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0                        -->
+<!-- V7.0.1                                                        -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- V8.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0                        -->
+<!-- V8.0.1                                                        -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- V9.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 9.0                        -->
+<!--                                                               -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) New heading-image element in heading-data: choice between  -->
+<!--    heading data and graphic object (fileref element)          -->
+<!-- 2) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- V9.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 9.0                        -->
+<!-- V10.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 9.0                        -->
+<!-- 1) Add reason-for-revision element in env-data and tr-data   -->
+<!-- ============================================================  -->
+
+<!-- The following set of declarations may be referred to  using 
+     the public entity as follows:
+     <!DOCTYPE approbation PUBLIC
+        "-//AIRBUS OPS//DTD APPROBATION_EXCH-VER10.0//EN"   [ ]>    -->
+        
+<!-- ============================================================= -->
+<!-- ENTITIES                                                      -->
+<!-- ============================================================= -->
+
+<!ENTITY % extensionContent.Grp "">
+<!ENTITY % ftnoteType "">
+<!ENTITY % ops-exch SYSTEM "ops-exch.dtd">
+%ops-exch;
+<!ENTITY % entryType '(para|unlist|numlist|measure)*'>
+
+<!ENTITY % descbodyType 'EMPTY'>
+
+<!ENTITY % entryType "">
+<!ENTITY % itemType '(para|unlist|numlist)+'>
+
+<!ENTITY % row.att ''>
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT entry (%entryType;)>
+<!ELEMENT approbation-authority (#PCDATA)>
+<!ELEMENT subject %contentAndLinksType;>
+<!ELEMENT norm (#PCDATA)>
+<!ELEMENT reason-for-issue (para | unlist | numlist)+>
+<!ATTLIST reason-for-issue
+	%linktargetid.AttGrp; 
+>
+<!ELEMENT reason-for-revision (para | unlist | numlist)+>
+<!ATTLIST reason-for-revision
+	%linktargetid.AttGrp; 
+>
+<!ELEMENT applicable-to (para | unlist | numlist)+>
+<!ATTLIST applicable-to
+	%linktargetid.AttGrp; 
+>
+<!ELEMENT information (para+)>
+<!ATTLIST information
+	%linktargetid.AttGrp; 
+>
+<!ELEMENT approbation-frame (para+)>
+<!ELEMENT ac-set-value (#PCDATA)>
+<!ATTLIST ac-set-value
+	ac-set-type (TF | MODEL | STANDARD | TA | SERIE) #REQUIRED
+>
+<!ELEMENT documentation-type (#PCDATA)>
+<!ELEMENT env-data (ac-set-value, norm?, documentation-type?)>
+<!ATTLIST env-data
+	rev-num CDATA #REQUIRED
+>
+<!ELEMENT manual-title (#PCDATA)>
+<!ELEMENT regulatory-directive (para+)>
+<!ELEMENT supplier (para+)>
+<!ELEMENT ref-ai (#PCDATA)>
+<!ELEMENT heading-data ((manual-title, norm, ac-set-value, regulatory-directive, supplier, ref-ai) | heading-image)>
+<!ELEMENT bul-cancelled-by (para | unlist | numlist)+>
+<!ELEMENT bulletin-data (reason-for-revision?,reason-for-issue, applicable-to?, bul-cancelled-by?)>
+
+<!ELEMENT condbody %descbodyType;>
+<!ELEMENT approval-date (#PCDATA)>
+<!ELEMENT approval-reference (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT job-title (#PCDATA)>
+<!ELEMENT approval-comment (#PCDATA)>
+<!ELEMENT approved-by (name?, job-title?, approval-comment?)>
+<!ELEMENT approbation-area (approbation-authority?, approval-date, approval-reference, approved-by?)>
+<!ELEMENT cancelled-by (#PCDATA)>
+<!ELEMENT tr-data (subject?, norm?, reason-for-revision?, reason-for-issue, applicable-to?, information?, cancelled-by?)>
+<!ELEMENT approbation (reason?, title, (tr-data | env-data | heading-data | bulletin-data), approbation-frame?, approbation-area?)>
+<!ATTLIST approbation
+	code CDATA #REQUIRED
+	revdate CDATA #REQUIRED
+	%context.AttGrp; 
+>
+<!ELEMENT heading-image (fileref)>
+<!ATTLIST heading-image
+	mime-type CDATA #REQUIRED
+	insert-date CDATA #IMPLIED
+>
+<!ELEMENT item (%itemType;)>

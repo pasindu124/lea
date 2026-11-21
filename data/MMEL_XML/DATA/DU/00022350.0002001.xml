@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00022350.0002001" revdate="2018-06-15T09:28:18"><title>Flight Lock Actuator (Deactivated)</title><procitem layer="1" lid="N.00022350.0002001.001"><title>PROCEDURE TO BE DEVELOPED IN THE OPERATOR'S MEL</title><procbody lid="N.00022350.0002001.002"><inform layer="1" lid="N.00022350.0002001.003"><para code="00022350.0002001.001" layer="1" lid="N.00022350.0002001.004">Alternate
+procedures must be established and used to designate a cabin attendant
+or other suitability trained person employed by the operator in excess
+of the minimum required number of cabin attendants to remain seated
+in the passenger seat nearest the affected exit when the cabin differential
+pressure is below <measure category="Pressure" show-unit="true" system="US" unit="PSI">4</measure>.</para></inform></procbody></procitem><procitem layer="1" lid="N.00022350.0002001.005"><title>GENERAL INFORMATION</title><procbody lid="N.00022350.0002001.006"><inform layer="1" lid="N.00022350.0002001.007"><para code="00022350.0002001.002" layer="1" lid="N.00022350.0002001.008">If displayed, disregard the
+associated <ecam-data ecamimportance="A" type="alert"><ecamsys>DOOR</ecamsys><ecamtitle>L(R) OVERWNG FAULT</ecamtitle></ecam-data> alert with the <ecam-data ecamimportance="A" type="alert"><ecamsubtitle>FLIGHT LOCK ENGAGED</ecamsubtitle></ecam-data> subtitle on the <abb>EWD</abb>.</para></inform></procbody></procitem></opsproc>

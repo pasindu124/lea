@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021766.0011001" revdate="2017-11-21T11:38:38"><title>GND HF DATALINK pb-sw</title><procitem layer="1" lid="N.00021766.0011001.001"><title>Before Refuel, Defuel or Ground Fuel Transfer</title><procbody lid="N.00021766.0011001.002"><action layer="1" lid="N.00021766.0011001.003" memory="false"><cr-action code="00021766.0011001.001"><challenge>HF1</challenge><response>Set
+to VOICE mode</response></cr-action></action><action layer="1" lid="N.00021766.0011001.004" memory="false"><cr-action code="00021766.0011001.002"><challenge>HF1</challenge><response>Do
+not use until refuel is completed</response></cr-action></action></procbody></procitem></opsproc>

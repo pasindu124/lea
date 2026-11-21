@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021893.0002001" revdate="2018-05-17T19:16:55"><title><abb>CDLS</abb> Normal System</title><procitem layer="1" lid="N.00021893.0002001.001"><title>Procedure to be developed in the Operator's MEL</title><procbody lid="N.00021893.0002001.002"><inform layer="1" lid="N.00021893.0002001.003"><para code="00021893.0002001.001" layer="1" lid="N.00021893.0002001.004">Alternate
+procedure must be established and used to secure the cockpit and to
+access to the cockpit in accordance with the Operator’s security policy.</para></inform><inform layer="1" lid="N.00021893.0002001.005"><para code="00021893.0002001.002" layer="1" lid="N.00021893.0002001.006">This alternate procedure may consider
+the use of deadbolt or any other acceptable means approved by the
+National Aviation Authority.</para></inform><inform layer="1" lid="N.00021893.0002001.019"><noteproc code="00021893.0002001.012" layer="1" lid="N.00021893.0002001.022"><inform layer="1" lid="N.00021893.0002001.024"><para code="00021893.0002001.008" layer="1" lid="N.00021893.0002001.020">In the case of rapid decompression
+in the cockpit, the use of the deadbolt prevents the automatic opening
+of the cockpit door.</para></inform></noteproc></inform></procbody></procitem><procitem layer="1" lid="N.00021893.0002001.007"><title>General information</title><procbody lid="N.00021893.0002001.008"><inform layer="1" lid="N.00021893.0002001.009"><para code="00021893.0002001.003" layer="1" lid="N.00021893.0002001.010">Since
+the <abb>CDLS</abb> Normal system is deactivated, the keypad becomes
+inoperative.</para></inform><inform layer="1" lid="N.00021893.0002001.011"><para code="00021893.0002001.004" layer="1" lid="N.00021893.0002001.012">The flight
+crew must brief the cabin crew that the <abb>CDLS</abb> keypad is
+inoperative.</para></inform><inform layer="1" lid="N.00021893.0002001.013"><para code="00021893.0002001.005" layer="1" lid="N.00021893.0002001.014">For a request access to the
+cockpit, use the cabin interphone.</para></inform></procbody></procitem><procitem layer="1" lid="N.00021893.0002001.015"><title>In flight</title><procbody lid="N.00021893.0002001.016"><inform layer="1" lid="N.00021893.0002001.017"><para code="00021893.0002001.006" layer="1" lid="N.00021893.0002001.018">At least
+two crewmembers must be present in the cockpit at all times during
+the flight.</para></inform><condition at-any-time="false" code="00021893.0002001.017" direct="false" layer="1" lid="N.00021893.0002001.029" subtitle="false" type="cond"><intro> If the deadbolt is used:</intro><procbody lid="N.00021893.0002001.032"><inform layer="1" lid="N.00021893.0002001.033"><para code="00021893.0002001.019" layer="1" lid="N.00021893.0002001.031">The flight crew has to manually open
+the cockpit door. Therefore, the access to the cockpit should be limited
+to the minimum necessary.</para></inform></procbody></condition></procbody></procitem></opsproc>

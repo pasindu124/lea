@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021899.0001001" revdate="2020-05-13T11:45:50"><title>Portable Oxygen Unit (non-required units inoperative or missing)</title><procitem layer="1" lid="N.00021899.0001001.002"><title>PROCEDURE TO BE DEVELOPED IN THE OPERATOR'S <abb>MEL</abb></title><procbody lid="N.00021899.0001001.003"><inform layer="1" lid="N.00021899.0001001.011"><unlist bulltype="BULLET" code="00021899.0001001.003" layer="1" lid="N.00021899.0001001.007"><para layer="1" lid="N.00021899.0001001.009">A procedure must be established
+to:</para><item layer="1"><para layer="1" lid="N.00021899.0001001.008">Ensure that
+the required distribution of the oxygen units is maintained (portable
+oxygen units must be evenly distributed in the cabin), and</para></item><item layer="1"><para layer="1" lid="N.00021899.0001001.010">Inform the cabin
+crew on the location of the operative oxygen units.</para></item></unlist></inform></procbody></procitem></opsproc>

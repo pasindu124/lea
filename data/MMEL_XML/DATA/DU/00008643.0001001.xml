@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00008643.0001001" func-code="77-08-03" item-list-nbr="03" revdate="2011-06-27T00:00:00"><title>Fuel Flow Indication on the <abb>EWD</abb></title><ditembody nb-installed="-"><dispcond code="00008643.0001001.001" dispcond-id="D00816" dispcond-label="A" lid="N.00008643.0001001.001"><dispatch-redirection><duref product="MMEL" ref="00008666"/></dispatch-redirection></dispcond></ditembody></dispatchitem>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00008794.0001001" func-code="36-11-04" item-list-nbr="04" revdate="2011-06-27T00:00:00"><title>Engine Bleed Fan Air Valve</title><ditembody nb-installed="2"><dispcond code="00008794.0001001.001" dispcond-id="D01166" dispcond-label="A" lid="N.00008794.0001001.001"><normal-dispcond nb-required="1" rectification-interval="C"><placard/><remark><requirement lid="N.00008794.0001001.002" req-id="R01167"><para code="00008794.0001001.002" layer="1" lid="N.00008794.0001001.003">One may be inoperative provided that
+the associated engine bleed air supply system is considered
+inoperative.</para><para code="00008794.0001001.005" layer="1" lid="N.00008794.0001001.006"><duref product="MMEL" ref="00008788"/></para></requirement></remark></normal-dispcond></dispcond></ditembody></dispatchitem>

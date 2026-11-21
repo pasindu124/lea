@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE approbation PUBLIC "-//AIRBUS OPS//DTD APPROBATION_EXCH-VER10.0//EN" "../DTD/approbation-exch.dtd">
+<approbation code="00010655.0001001" revdate="2026-08-19T00:00:00"><title><abb>MMEL</abb> Approval Reference</title><env-data rev-num="19 AUGUST 2026"><ac-set-value ac-set-type="TF">A320 Family</ac-set-value></env-data><approbation-frame><para code="00010655.0001001.001" layer="1" lid="N.00010655.0001001.001">This Master
+Minimum Equipment List (<abb>MMEL</abb>) is approved by the European
+Aviation Safety Agency (<abb>EASA</abb>) at the above revision date
+under the Type Certificate (<abb>EASA</abb> TC No. A.064) as part
+of the Operational Suitability Data (OSD) as per Regulation (EU) 748/2012
+as amended by Regulation (EU) No. 69/2014.</para><para code="00010655.0001001.006" layer="1" lid="N.00010655.0001001.006">The technical content of this document
+is approved under the authority of the Design Organisation Approval
+(DOA) No. EASA.21J.031. </para><para code="00010655.0001001.007" layer="1" lid="N.00010655.0001001.007"><emph bold="false" italic="true" overline="false" sub="false" sup="false" underline="true">Note:</emph> <emph bold="false" italic="true" overline="false" sub="false" sup="false" underline="false">The present
+document includes OSD data approved either by EASA for major changes
+or by Airbus under DOA privilege for minor changes.</emph></para><para code="00010655.0001001.002" layer="1" lid="N.00010655.0001001.002">The applicability date of this <abb>MMEL</abb> starts at the issue date + 30 calendar days.</para><para code="00010655.0001001.003" layer="1" lid="N.00010655.0001001.003"><emph bold="false" italic="true" overline="false" sub="false" sup="false" underline="true">Note:</emph> <emph bold="false" italic="true" overline="false" sub="false" sup="false" underline="false">The issue date is different from the
+EASA approval date. The issue date corresponds to the date of initiation
+of the publication of the Operator's MMEL by Airbus. The issue
+date may vary from Operator to Operator. The issue date appears in
+the Transmittal Letter (for the PDF format) and in the LIBRARY panel
+of the OPS LIBRARY Browser (for the electronic consultation).</emph></para><para code="00010655.0001001.004" layer="1" lid="N.00010655.0001001.004"><emph bold="false" italic="true" overline="false" sub="false" sup="false" underline="false">The EASA approval date appears in the MMEL Approval
+Reference of the MMEL Preamble.</emph></para><para code="00010655.0001001.005" layer="1" lid="N.00010655.0001001.005"><emph bold="false" italic="true" overline="false" sub="false" sup="false" underline="false">The 90
+days limit as referred to in PART ORO.MLR.105(c) is recommended to
+start from the applicability date.</emph></para></approbation-frame><approbation-area><approbation-authority>EASA</approbation-authority><approval-date>2026-08-19T00:00:00</approval-date><approval-reference>SA01D26032780</approval-reference><approved-by><name>Airbus under EASA Design Organisation Approval number EASA.21J.031</name></approved-by></approbation-area></approbation>

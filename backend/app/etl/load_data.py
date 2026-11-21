@@ -3,6 +3,7 @@
     python -m app.etl.load_data                 # everything found in ./data
     python -m app.etl.load_data --only parts,tools
     python -m app.etl.load_data --data-dir D:\\hackathon\\data
+    python -m app.etl.load_data --if-empty      # only datasets whose table is still empty (used by deploy.sh)
 
 Safe to re-run: the data tables are emptied and re-filled. The audit log,
 roster and settings tables are never touched.
@@ -192,6 +193,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--data-dir", type=Path, default=config.DATA_DIR)
     ap.add_argument("--only", default="", help="comma list of: " + ", ".join(LOADERS))
+    ap.add_argument("--if-empty", action="store_true",
+                    help="skip datasets that already have rows (safe to run on every deploy)")
     args = ap.parse_args()
 
     wanted = [k.strip() for k in args.only.split(",") if k.strip()] or list(LOADERS)
@@ -201,7 +204,11 @@ def main() -> None:
 
     print(f"Data folder: {args.data_dir}")
     db.apply_schema()
+    loaded = 0
     for key in wanted:
+        if args.if_empty and db.query_one(f"SELECT EXISTS (SELECT 1 FROM {TABLES[key]}) AS has_rows")["has_rows"]:
+            print(f"  [keep] {key}: already loaded")
+            continue
         files = find_files(args.data_dir, key)
         if not files:
             print(f"  [skip] {key}: no file matching {PATTERNS[key]}")
@@ -210,7 +217,12 @@ def main() -> None:
         print(f"  [load] {key}: {', '.join(f.name for f in files)}")
         db.execute(f"TRUNCATE {TABLES[key]} RESTART IDENTITY" + (" CASCADE" if key == "amm" else ""))
         n = LOADERS[key](files)
+        loaded += 1
         print(f"         {n:,} rows in {time.time() - start:.1f}s")
+
+    if args.if_empty and not loaded:
+        print("\nNothing to load.")
+        return
 
     info = update_meta()
     print("\nDone.")

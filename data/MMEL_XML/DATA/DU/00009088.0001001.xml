@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00009088.0001001" revdate="2019-05-22T10:35:21"><title><abb>LH</abb> Wing Transfer Valve (At least one transfer valve
+open)</title><procitem layer="1" lid="N.00009088.0001001.004"><title>General information</title><procbody lid="N.00009088.0001001.005"><ex-conditions lid="N.00009088.0001001.009"><condition at-any-time="false" code="00009088.0001001.011" direct="false" layer="1" lid="N.00009088.0001001.019" subtitle="false" type="cond"><intro>If one or both wing transfer valves are inoperative in the
+open position:</intro><procbody lid="N.00009088.0001001.020"><inform layer="1" lid="N.00009088.0001001.021"><para code="00009088.0001001.007" layer="1" lid="N.00009088.0001001.015">The dispatch condition results in an
+unusual distribution of the fuel quantity: the fuel in the outer tank
+on the affected side will transfer to the inner tank even when the
+inner tank is not empty. The FCOM Maximum Fuel Imbalance does not
+apply if one or both wing transfer valves are inoperative in the open
+position.</para></inform></procbody></condition><condition at-any-time="false" code="00009088.0001001.013" direct="false" layer="1" lid="N.00009088.0001001.022" subtitle="false" type="cond"><intro>If one wing transfer valve is secured in the open position:</intro><procbody lid="N.00009088.0001001.023"><inform layer="1" lid="N.00009088.0001001.024"><para code="00009088.0001001.014" layer="1" lid="N.00009088.0001001.025">The dispatch condition results in an
+unusual distribution of the fuel quantity: the fuel in both outer
+tanks will transfer to the inner tanks even when the inner tanks are
+not empty. The FCOM Maximum Fuel Imbalance does not apply if one wing
+transfer valve is secured in the open position.</para></inform></procbody></condition></ex-conditions></procbody></procitem><procitem layer="1" lid="N.00009088.0001001.026"><title>On Ground</title><procbody lid="N.00009088.0001001.027"><condition at-any-time="false" code="00009088.0001001.015" direct="false" layer="1" lid="N.00009088.0001001.028" subtitle="false" type="cond"><intro>If one wing transfer valve is secured in the open position:</intro><procbody lid="N.00009088.0001001.029"><action layer="1" lid="N.00009088.0001001.030" memory="false"><command code="00009088.0001001.016"><para layer="1" lid="N.00009088.0001001.031">Check that the wing
+transfer valve is indicated open on the <tech-label type="s-page">Fuel</tech-label>.</para></command></action></procbody></condition></procbody></procitem></opsproc>

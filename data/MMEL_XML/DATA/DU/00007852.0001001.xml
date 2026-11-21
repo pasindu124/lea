@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00007852.0001001" func-code="31-08-02" item-list-nbr="02" revdate="2010-03-22T00:00:00"><title>Fuel On Board (<abb>FOB</abb>) Indication on
+the <abb>EWD</abb></title><ditembody nb-installed="-"><dispcond code="00007852.0001001.001" dispcond-id="D01315" dispcond-label="A" lid="N.00007852.0001001.001"><dispatch-redirection><duref product="MMEL" ref="00008270"/></dispatch-redirection></dispcond></ditembody></dispatchitem>

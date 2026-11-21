@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00009614.0001001" revdate="2010-03-11T14:19:29"><title><tech-label type="light">Cargo Door Open/Locked Indicator</tech-label></title><procitem layer="1" lid="N.00009614.0001001.006"><title>On ground</title><procbody lid="N.00009614.0001001.007"><condition at-any-time="false" code="00009614.0001001.004" direct="false" layer="1" lid="N.00009614.0001001.008" subtitle="false" type="cond"><intro>When the <tech-label type="light">Cargo Door Open/Locked Indicator</tech-label> is
+inoperative, it is necessary to inform the ground personnel:</intro><procbody lid="N.00009614.0001001.009"><action-block lid="N.00009614.0001001.012"><action layer="1" lid="N.00009614.0001001.013" memory="false"><command code="00009614.0001001.006"><para layer="1" lid="N.00009614.0001001.014">To visually check
+that the affected cargo door is in the fully open position, with no
+downward movement after releasing the lever of the manual selector
+valve.</para></command></action><action layer="1" lid="N.00009614.0001001.015" memory="false"><command code="00009614.0001001.007"><para layer="1" lid="N.00009614.0001001.016">To visually check
+that the lever of the manual selector valve stays in
+the neutral position.</para></command></action></action-block></procbody></condition></procbody></procitem></opsproc>

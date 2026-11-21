@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012806.0001001" revdate="2011-06-29T21:05:08"><title>Documentary Unit (DU)</title><descbody code="00012806.0001001.001" lid="N.00012806.0001001.001"><para code="00012806.0001001.002" layer="1" lid="N.00012806.0001001.002">This <abb>MMEL</abb> is made of Documentary
+Units (DU). The DUs contain the technical data.</para><unlist bulltype="NDASH" code="00012806.0001001.003" layer="1" lid="N.00012806.0001001.003"><para layer="1" lid="N.00012806.0001001.004">In the <abb>MMEL</abb>, a DU
+can be:</para><item layer="1"><para layer="1" lid="N.00012806.0001001.005">An <abb>ECAM</abb> alert,</para></item><item layer="1"><para layer="1" lid="N.00012806.0001001.006">An <abb>MMEL</abb> item,</para></item><item layer="1"><para layer="1" lid="N.00012806.0001001.007">An <abb>MMEL</abb> operational procedure.</para></item></unlist><para code="00012806.0001001.004" layer="1" lid="N.00012806.0001001.008">The List
+of Effective Documentary Units (<abb>LEDU</abb>) lists all the DUs
+that constitute this <abb>MMEL</abb>.</para><para code="00012806.0001001.014" layer="1" lid="N.00012806.0001001.030">The DUs are arranged into sections and
+subsections (also called <abb>PSL</abb>). The List of Effective Sections/Subsections
+(<abb>LESS</abb>) lists all the subsections that constitute this <abb>MMEL</abb>. The subsections contain the DUs.</para></descbody><descitem code="00012806.0001001.005" layer="1" lid="N.00012806.0001001.009"><title>DU Identification Strip</title><descbody code="00012806.0001001.006" lid="N.00012806.0001001.010"><unlist bulltype="NDASH" code="00012806.0001001.007" layer="1" lid="N.00012806.0001001.011"><para layer="1" lid="N.00012806.0001001.012">In the <abb>PDF</abb> format,
+below the title of the DU, the grey identification strip indicates
+for each DU: </para><item layer="1"><para layer="1" lid="N.00012806.0001001.013">The DU identification
+(Ident.). Each DU is identified by its unique identification number.
+This DU identification is used to cross-refer to the <abb>LEDU</abb>.</para></item><item layer="1"><para layer="1" lid="N.00012806.0001001.014">The DU date.
+For approved DUs (<abb>MMEL</abb> items DU), this date corresponds
+to the approval date by the <abb>EASA</abb> of the <abb>MMEL</abb> revision. For non-approved DUs, this date corresponds to the date
+of release of the DU by Airbus.</para></item><item layer="1"><para layer="1" lid="N.00012806.0001001.015">The "Applicable
+to" field that lists the aircraft to which the DU applies.</para><note code="00012806.0001001.008" layer="1" lid="N.00012806.0001001.016"><para layer="1" lid="N.00012806.0001001.017">0012-0220 means that the DU
+applies to all <abb>MSN</abb>s (listed in the <abb>AAT</abb>) from <abb>MSN</abb> 0012 up to and including <abb>MSN</abb> 0220.</para></note></item></unlist><para code="00012806.0001001.009" layer="1" lid="N.00012806.0001001.018">In the
+electronic format, the same information is available by selecting
+the “DOC REF” option in the INFO drop down list. The electronic format
+also displays the “Criteria” field that indicates the aircraft configuration
+to which the DU applies.</para></descbody></descitem><descitem code="00012806.0001001.010" layer="1" lid="N.00012806.0001001.019"><title>List of Effective Documentary Units (<abb>LEDU</abb>)</title><descbody code="00012806.0001001.011" lid="N.00012806.0001001.020"><unlist bulltype="NDASH" code="00012806.0001001.012" layer="1" lid="N.00012806.0001001.021"><para layer="1" lid="N.00012806.0001001.022">For each DU, the <abb>LEDU</abb> indicates the following information:</para><item layer="1"><unlist bulltype="BULLET" code="00012806.0001001.013" layer="1" lid="N.00012806.0001001.024"><para layer="1" lid="N.00012806.0001001.025">The “M” field that may indicate
+the following Evolution Code:</para><item layer="1"><para layer="1" lid="N.00012806.0001001.026">The “E” letter
+indicates an aircraft validity change of the DU. The list of aircraft
+to which the DU applies has changed compared to the previous <abb>MMEL</abb> revision, by addition or deletion of one or several aircraft.</para></item><item layer="1"><para layer="1" lid="N.00012806.0001001.027">The “N” letter
+indicates a new DU added by this <abb>MMEL</abb> revision.</para></item><item layer="1"><para layer="1" lid="N.00012806.0001001.028">The “R” letter
+indicates a revised DU. The content of the DU is updated by this <abb>MMEL</abb> revision. </para></item></unlist></item><item layer="1"><para layer="1" lid="N.00012806.0001001.031">The "Localization"
+field that is the identification of the subsection that contains the
+DU. In the <abb>PDF</abb> format, this cross-refers to the page footer,
+which permits the user to localize the DU within the manual.</para></item><item layer="1"><para layer="1" lid="N.00012806.0001001.032">The DU title.</para></item><item layer="1"><para layer="1" lid="N.00012806.0001001.033">The DU identification
+(Ident.). Each DU is identified by its unique identification number.
+This DU identification is used to cross-refer to the <abb>LEDU</abb>.</para></item><item layer="1"><para layer="1" lid="N.00012806.0001001.034">The DU date.
+For approved DUs (<abb>MMEL</abb> items DU), this date corresponds
+to the approval date by the <abb>EASA</abb> of the <abb>MMEL</abb> revision. For non-approved DUs, this date corresponds to the date
+of release of the DU by Airbus.</para></item><item layer="1"><para layer="1" lid="N.00012806.0001001.023">The criteria:
+This field indicates the aircraft configuration to which the DU applies.</para></item><item layer="1"><para layer="1" lid="N.00012806.0001001.035">The "Applicable
+to" field that lists the aircraft to which the DU applies.</para><note code="00012806.0001001.015" layer="1" lid="N.00012806.0001001.036"><para layer="1" lid="N.00012806.0001001.037">0012-0220 means that the DU
+applies to all <abb>MSN</abb>s (listed in the <abb>AAT</abb>) from <abb>MSN</abb> 0012 up to and including <abb>MSN</abb> 0220.</para></note></item></unlist></descbody></descitem></description>

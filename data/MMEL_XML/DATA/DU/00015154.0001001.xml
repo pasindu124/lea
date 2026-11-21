@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00015154.0001001" func-code="34-40-10" item-list-nbr="10" revdate="2017-11-21T00:00:00"><title><abb>ROW</abb>/<abb>ROP</abb></title><ditembody nb-installed="1"><dispcond code="00015154.0001001.001" dispcond-id="D07401" dispcond-label="A" lid="N.00015154.0001001.001"><normal-dispcond nb-required="0" rectification-interval="D"><no-remark/></normal-dispcond></dispcond></ditembody></dispatchitem>

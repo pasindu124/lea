@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00007619.0002001" func-code="23-73-01-01" item-list-nbr="01" revdate="2019-11-19T00:00:00"><title>Cabin Intercommunication Data System (<abb>CIDS</abb>) Function</title><ditembody nb-installed="1"><dispcond code="00007619.0002001.001" dispcond-id="D05893" dispcond-label="A" lid="N.00007619.0002001.001"><normal-dispcond nb-required="1" rectification-interval="-"><remark><requirement lid="N.00007619.0002001.002" req-id="R05894"><para code="00007619.0002001.002" layer="1" lid="N.00007619.0002001.003">The <abb>CIDS</abb> function must be
+operative.</para></requirement><note code="00007619.0002001.003" layer="1" lid="N.00007619.0002001.004"><numlist code="00007619.0002001.007" format="NNP" layer="1" lid="N.00007619.0002001.016"><item layer="1"><para layer="1" lid="N.00007619.0002001.018">This MEL item
+relates to complete failure of the <abb>CIDS</abb> function (Complete
+failure of both <abb>CIDS</abb> Directors). </para></item><item layer="1"><para layer="1" lid="N.00007619.0002001.012">Partial failure
+of one or both <abb>CIDS</abb> Directors is indicated by one or both <abb>CIDS</abb> 1(2) <emph bold="false" italic="false" overline="false" sub="false" sup="false" underline="true">MAINTENANCE</emph> messages
+on the <tech-label type="s-page">STATUS</tech-label> only (ECAM alert <ecam-data ecamimportance="A" type="alert"><ecamsys>COM</ecamsys><ecamtitle>CIDS 1+2 FAULT</ecamtitle></ecam-data> is not displayed).</para><para layer="1" lid="N.00007619.0002001.013"><duref product="MMEL" ref="00007581"/>.</para></item><item layer="1"><para layer="1" lid="N.00007619.0002001.014">In the case
+of disturbance of the <abb>CIDS</abb> function, deactivation of the
+affected <abb>CIDS</abb> Director may recover normal operation of
+the <abb>CIDS</abb> function.</para><para layer="1" lid="N.00007619.0002001.015">Refer to <abb>AMM</abb> TASK 23-73-00-040-001.</para></item></numlist></note></remark></normal-dispcond></dispcond></ditembody></dispatchitem>

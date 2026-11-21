@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE malfunctionassessment PUBLIC "-//AIRBUS OPS//DTD MALFUNCTIONASSESSMENT_EXCH-VER10.0//EN" "../DTD/malfunctionassessment-exch.dtd">
+<malfunctionassessment code="00014550.0002001" fault-code="FUEL IDG 1 COOL FAULT;FUEL IDG 2 COOL FAULT" revdate="2020-11-12T13:44:30" type="ecamcaution"><xtitle><ecamsystem ecam="true" ecamimportance="A">FUEL</ecamsystem><title ecam="true" ecamimportance="A">IDG 1(2) COOL FAULT</title></xtitle><assessment lid="N.00014550.0002001.001"><routing code="00014550.0002001.002" lid="N.00014550.0002001.003"><cond-routing><intro>When the alert FUEL IDG 1(2) COOL FAULT is triggered, the Fuel
+Return Valve is inhibited in the closed position. As a consequence,
+it must be considered as inoperative in the closed position.</intro></cond-routing></routing><dispatch-assessment code="00014550.0002001.001" lid="N.00014550.0002001.002"><dispatchitemref><duref product="MMEL" ref="00008653"><linktext>Item
+73-10-01A Fuel Return Valve - Inoperative in closed position</linktext></duref></dispatchitemref></dispatch-assessment></assessment></malfunctionassessment>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012815.0001001" revdate="2018-02-15T15:58:32"><title>ATC Datalink Communication</title><descbody code="00012815.0001001.001" lid="N.00012815.0001001.001"><para code="00012815.0001001.004" layer="1" lid="N.00012815.0001001.004">When an inoperative item affects the performance and operations supported
+by datalink, the associated <abb>MMEL</abb> operational procedure
+provides this limitation.</para><unlist bulltype="NDASH" code="00012815.0001001.006" layer="1" lid="N.00012815.0001001.008"><para layer="1" lid="N.00012815.0001001.010">The different applications and
+required performance of <abb>ATC</abb> datalink communication are
+described in <abb>FCOM</abb>:</para><item layer="1"><para layer="1" lid="N.00012815.0001001.011"><duref product="FCOM" ref="00020333"><linktext>DSC-46-10-Datalink-10-Overview</linktext></duref></para></item><item layer="1"><para layer="1" lid="N.00012815.0001001.009"><duref product="FCOM" ref="00022125"><linktext>PRO-SPO-52-PBCS</linktext></duref></para></item></unlist></descbody></description>

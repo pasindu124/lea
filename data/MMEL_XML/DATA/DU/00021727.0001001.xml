@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021727.0001001" revdate="2017-11-21T11:38:48"><title><if-installed>Electronic Flight Bag (EFB)</if-installed></title><procitem layer="1" lid="N.00021727.0001001.006"><title>PROCEDURES TO BE DEVELOPED IN THE OPERATOR’S <abb>MEL</abb></title><procbody lid="N.00021727.0001001.007"><inform layer="1" lid="N.00021727.0001001.008"><para code="00021727.0001001.002" layer="1" lid="N.00021727.0001001.009">Alternate procedures must be
+established and used for the unavailability of the affected <abb>EFB</abb>.</para></inform></procbody></procitem></opsproc>

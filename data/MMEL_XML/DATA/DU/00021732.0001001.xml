@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021732.0001001" revdate="2017-11-21T11:37:48"><title><if-installed><abb>EFB</abb> Flight Crew Application</if-installed></title><procitem layer="1" lid="N.00021732.0001001.001"><title>PROCEDURE TO BE DEVELOPED IN THE OPERATOR'S <abb>MEL</abb></title><procbody lid="N.00021732.0001001.002"><inform layer="1" lid="N.00021732.0001001.003"><para code="00021732.0001001.001" layer="1" lid="N.00021732.0001001.004">One or several applications
+hosted on the <abb>EFB</abb> may be lost.</para><para code="00021732.0001001.002" layer="1" lid="N.00021732.0001001.005">Alternate procedures must be established and used for the unavailability
+of the affected flight crew application.</para></inform></procbody></procitem></opsproc>

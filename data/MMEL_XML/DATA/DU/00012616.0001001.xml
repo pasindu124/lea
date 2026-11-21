@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012616.0001001" revdate="2010-09-15T00:00:00"><title>Introduction to the <abb>MEL</abb></title><descbody code="00012616.0001001.012" lid="N.00012616.0001001.012"><para code="00012616.0001001.013" layer="1" lid="N.00012616.0001001.013">The Minimum Equipment List (<abb>MEL</abb>) is based on the Master Minimum Equipment List (<abb>MMEL</abb>).  </para><para code="00012616.0001001.014" layer="1" lid="N.00012616.0001001.014">An Operator's <abb>MEL</abb> may differ in format from the <abb>MMEL</abb>, but cannot
+be less restrictive than the <abb>MMEL</abb>. </para><para code="00012616.0001001.015" layer="1" lid="N.00012616.0001001.015">The <abb>MEL</abb> shall not deviate from any applicable Airworthiness
+Directive or any other Mandatory Requirement.  </para><para code="00012616.0001001.016" layer="1" lid="N.00012616.0001001.016">The <abb>MEL</abb> is intended to permit operation with inoperative
+items of system, function, or equipment for a period of time until
+repairs can be accomplished. It is important that repairs be accomplished
+at the earliest opportunity.  </para><para code="00012616.0001001.017" layer="1" lid="N.00012616.0001001.017">Suitable conditions and limitations
+in the form of placards, maintenance procedures, crew operational
+procedures, and other restrictions are necessary in the <abb>MEL</abb> to ensure that an acceptable level of safety is maintained.  </para><para code="00012616.0001001.018" layer="1" lid="N.00012616.0001001.018">The <abb>MEL</abb> takes into consideration the Operator's particular
+aircraft equipment, configuration and operational conditions, routes
+being flown, and requirements set by the appropriate Authority.  </para><para code="00012616.0001001.019" layer="1" lid="N.00012616.0001001.019">When an item is discovered to be inoperative, it is reported by making
+an entry in the technical logbook. The item is then either rectified
+or may be deferred per the <abb>MEL</abb> before further operation. <abb>MEL</abb> conditions and limitations do not relieve the operator
+from determining that the aircraft is in a fit condition for safe
+operation with items inoperative.</para><para code="00012616.0001001.020" layer="1" lid="N.00012616.0001001.020">The provisions of the <abb>MEL</abb> are applicable until the aircraft commences the flight.  Any decision
+to continue a flight following a failure or unserviceability which
+becomes apparent after the commencement of a flight must be subject
+to pilot judgment and good airmanship. The Commander may continue
+to make reference to and use the <abb>MEL</abb> as appropriate.  </para><para code="00012616.0001001.021" layer="1" lid="N.00012616.0001001.021">By approval of the <abb>MEL</abb>, the Authority permits dispatch
+of the aircraft for revenue, ferry, or training flights with certain
+items inoperative provided an acceptable level of safety is maintained
+by use of appropriate operational or maintenance procedures, by transfer
+of the function to another operating system, or by reference to other
+instruments or system providing the required information.  </para><para code="00012616.0001001.022" layer="1" lid="N.00012616.0001001.022">Operators are to establish a controlled and sound repair programme
+including the parts, personnel, facilities, procedures, and schedules
+to ensure timely repair. This programme should identify the actions
+required for Maintenance discrepancy messages. </para></descbody></description>

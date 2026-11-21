@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00024241.0001001" revdate="2025-11-19T15:24:40"><title><if-installed>E-Direct View System</if-installed></title><procitem layer="1" lid="N.00024241.0001001.001"><title>General Information</title><procbody lid="N.00024241.0001001.002"><inform layer="1" lid="N.00024241.0001001.003"><para code="00024241.0001001.001" layer="1" lid="N.00024241.0001001.004">The direct view of passenger
+cabin by flight attendants pertains to direct visual contact between
+the flight attendants and the passenger cabin. It is considered that
+at least 80 % of the total number of passenger seats installed, 50
+% of the seats in each divided zone, should be visible to flight attendants.</para></inform></procbody></procitem><procitem layer="1" lid="N.00024241.0001001.005"><title>Procedure to be Developed in the Operator's MEL</title><procbody lid="N.00024241.0001001.006"><inform layer="1" lid="N.00024241.0001001.007"><para code="00024241.0001001.002" layer="1" lid="N.00024241.0001001.008">Alternate procedures must be
+established before departure to ensure that at least 80 % of the total
+number of passenger seats installed and 50 % of the seats in each
+divided zone, is visible to flight attendants.</para></inform></procbody></procitem></opsproc>

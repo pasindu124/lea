@@ -1,0 +1,166 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the DU metadata module                    -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!-- AIRBUS Reference :                                            -->
+<!--    "-//AIRBUS OPS//DTD DUMDATA_EXCH-VER10.0//EN"               -->
+<!--  Rev Date      : October 2011                                 -->
+<!--  Parsed Date   : October 2011                                 -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Add the management of effectivity expressed in open range: -->
+<!--    open-effact element                                        -->
+<!-- 2) New structure for the highlight element                    -->
+<!-- 3) New structure for an automatic deletion highlight:         -->
+<!--    hl-del element                                             -->
+<!-- 4) New structure for an automatic effectivity change          -->
+<!--    highlight:                                                 -->
+<!--    hl-effect element                                          -->
+<!-- 5) New structure for an automatic 'move' highlight:           -->
+<!--    hl-move element                                            -->
+<!-- 6) New structure for an automatic minor highlight:            -->
+<!--    hl-minor element                                           -->
+<!-- 7) New structure for an authored highlight:                   -->
+<!--    authoring element                                          -->
+<!-- 8) Add new values to the group type in structured formula:    -->
+<!--    military, operational attribute                            -->
+<!-- 9) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Add new origin attribute in dumdata element: "airbus" or   -->
+<!--    "operator"                                                 -->
+<!-- 2) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Add optional ecam-impact attribute in pack-data element.   -->
+<!--    pack-type, pac-id and pack-issue attributes are required   -->
+<!-- 2) New associated-pack element in pack-data element           -->
+<!--    Empty element with required product, pack-type, pack-id    -->
+<!--    and pack-issue attributes                                  -->
+<!-- 3) Add optional restricted attribute in dumadata element      -->
+<!-- 4) Add optional major-event attribute in dumadata element     -->
+<!-- 5) Add optional lang attribute in dumadata element            -->
+<!-- 6) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- VER 9.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 9.0                        -->
+<!-- 2) Add optional approbation-type attribute in dumdata element -->
+<!-- VER 10.0:                                                     -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 10.0                       -->
+<!-- 2) Add softwareParameters structure						   -->
+<!-- ============================================================  -->
+
+<!-- The following set of declarations may be referred to  using 
+     the public entity as follows:
+     <!DOCTYPE dumdata PUBLIC
+        "-//AIRBUS OPS//DTD DUMDATA_EXCH-VER10.0//EN"   [ ]>        -->
+
+<!-- ============================================================= -->
+<!-- ENTITIES                                                      -->
+<!-- ============================================================= -->
+
+<!ENTITY % semprop-exch SYSTEM "semprop-exch.dtd">
+%semprop-exch;
+
+<!ENTITY % effect-exch SYSTEM "effect-exch.dtd">
+%effect-exch;
+
+<!ENTITY % hlType.AttGrp '
+	type (major|minor|metadata|effect|move|del) #REQUIRED'>
+
+<!ENTITY % revision-exch SYSTEM "revision-exch.dtd">
+%revision-exch;
+
+<!ENTITY % tdu.AttGrp '
+	tdu (true|false) "false" 
+	linked-du-ident CDATA #IMPLIED'>
+	
+<!ENTITY % pack.AttGrp '
+	pack-type CDATA #REQUIRED
+	pack-id CDATA #REQUIRED
+	pack-issue CDATA #REQUIRED'
+>	
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT title (#PCDATA)>
+
+<!ELEMENT effect-revisions (%revisionsType;)>
+
+<!ELEMENT revisions (mdata-revisions?, effect-revisions?, content-revisions?)>
+
+<!ELEMENT pack-data (associated-pack?)>
+<!ATTLIST pack-data
+	%pack.AttGrp;
+	pack-importance CDATA #IMPLIED
+	ecam-impact (true|false) #IMPLIED
+>
+
+<!ELEMENT associated-pack EMPTY>
+<!ATTLIST associated-pack
+	product CDATA #REQUIRED
+	%pack.AttGrp;
+>
+
+<!ELEMENT dumdata (semantic-properties, effect, revisions?, pack-data?, softwareInterfaces?)>
+<!ATTLIST dumdata
+	code CDATA #REQUIRED
+	revdate CDATA #REQUIRED
+	prev-revdate CDATA #IMPLIED
+	du-revdate CDATA #REQUIRED
+	du-prev-revdate CDATA #IMPLIED
+	status-date CDATA #IMPLIED
+	must-be-approved CDATA #REQUIRED
+	approbation-type CDATA #IMPLIED
+	status CDATA #IMPLIED
+	%tdu.AttGrp;
+	linear (true|false) #REQUIRED
+	origin (airbus|operator) "operator"
+	restricted (true|false) #IMPLIED
+	major-event (true|false) #IMPLIED
+	lang CDATA #IMPLIED
+>
+
+<!ELEMENT softwareInterfaces ((softwareParameters)+)>
+<!--A Set of parameters definitions for a software, using values in the DM Content fragment.-->
+<!ELEMENT softwareParameters (simpleParameter | tableParameter)+>
+<!ATTLIST softwareParameters
+	softwareName CDATA #REQUIRED
+>
+<!--Definition of a  simple parameter (adressing an element as a measure in the content).-->
+<!ELEMENT simpleParameter ((paramContext)*, (name, label))>
+<!ATTLIST simpleParameter
+	path CDATA #REQUIRED
+>
+<!--Definition of parameters using a table (or specific columns in the table).-->
+<!ELEMENT tableParameter ((paramContext)*, (columnParameter | simpleParameter)+)>
+<!ATTLIST tableParameter
+	path CDATA #REQUIRED
+>
+<!--Condition giving the context to affect the parameter.-->
+<!ELEMENT paramContext (name, label, value)>
+<!--Parameter context name-->
+<!ELEMENT name (#PCDATA)>
+<!--Parameter context label (for GUI)-->
+<!ELEMENT label (#PCDATA)>
+<!--Parameter context value -->
+<!ELEMENT value (#PCDATA)>
+<!--Specification of a parameter using a column in the table-->
+<!ELEMENT columnParameter (name, label)>
+<!ATTLIST columnParameter
+	colname NMTOKEN #REQUIRED
+>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00009011.0001001" revdate="2010-09-17T10:34:48"><title><tech-label type="light">PARKING BRAKE</tech-label> on the <abb>NWS</abb> Electrical
+Deactivation Box</title><procitem layer="1" lid="N.00009011.0001001.006"><title>Before pushback</title><procbody lid="N.00009011.0001001.001"><action layer="1" lid="N.00009011.0001001.004" memory="false"><command code="00009011.0001001.002"><para layer="1" lid="N.00009011.0001001.005">The parking brake setting must
+be verbally confirmed between the flight crew and the ground personnel.</para></command></action></procbody></procitem></opsproc>

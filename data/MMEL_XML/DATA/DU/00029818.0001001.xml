@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00029818.0001001" revdate="2026-08-19T11:00:22"><title>Aft cabin attendant seat required for direct view inoperative,
+requiring  an additional cabin attendant</title><procitem layer="1" lid="N.00029818.0001001.001"><title>General information</title><procbody lid="N.00029818.0001001.003"><inform layer="1" lid="N.00029818.0001001.004"><para code="00029818.0001001.001" layer="1" lid="N.00029818.0001001.005">The number of cabin attendants
+required by the operational requirements is 1 cabin attendant per
+50 passenger seats or fraction of 50 passenger seats. They are seated
+on operative <abb>CAS</abb>. The additional cabin attendant seated
+on a passenger seat cannot be counted in the required cabin attendants.</para></inform></procbody></procitem><procitem layer="1" lid="N.00029818.0001001.013"><title>Procedure to be developed in the operator's <abb>MEL</abb></title><procbody lid="N.00029818.0001001.006"><inform layer="1" lid="N.00029818.0001001.007"><para code="00029818.0001001.002" layer="1" lid="N.00029818.0001001.008">Alternate procedures must be
+established before departure according to regulations:</para><unlist bulltype="NDASH" code="00029818.0001001.003" layer="1" lid="N.00029818.0001001.010"><item layer="1"><para layer="1" lid="N.00029818.0001001.011">for the cabin
+attendant displaced in a non-required Cabin Attendant Seat,</para></item><item layer="1"><para layer="1" lid="N.00029818.0001001.012">for the additional
+cabin attendant assigned to a passenger seat to ensure direct view.</para></item></unlist></inform></procbody></procitem></opsproc>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00025081.0001001" revdate="2021-11-18T14:48:46"><title>First Aid Kit Additional Equipment</title><procitem layer="1" lid="N.00025081.0001001.001"><title>General Information</title><procbody lid="N.00025081.0001001.002"><inform layer="1" lid="N.00025081.0001001.003"><para code="00025081.0001001.001" layer="1" lid="N.00025081.0001001.004">As per
+AMC1 CAT.IDE.A.220 First Aid Kit (<abb>FAK</abb>), at least one set
+of required <abb>FAK</abb> additional equipment must be installed.</para><para code="00025081.0001001.005" layer="1" lid="N.00025081.0001001.035">However, additional equipment
+may be required to be installed depending on Operator's risk
+assessment.</para></inform></procbody></procitem></opsproc>

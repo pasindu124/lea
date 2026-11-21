@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00028263.0001001" revdate="2025-11-19T15:19:51"><title><if-installed>Cabin Crew Station/Galley Loudspeaker</if-installed> (Announcements audible)</title><procitem layer="1" lid="N.00028263.0001001.001"><title>Procedure to be developed in the Operator's <abb>MEL</abb></title><procbody lid="N.00028263.0001001.002"><inform layer="1" lid="N.00028263.0001001.003"><para code="00028263.0001001.001" layer="1" lid="N.00028263.0001001.004">Check
+that passenger address announcements can be clearly heard in the affected
+galley or the affected cabin crew station.</para></inform></procbody></procitem></opsproc>

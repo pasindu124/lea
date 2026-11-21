@@ -1,0 +1,73 @@
+<!-- ============================================================= -->
+<!-- This is the DTD for the List of Modification library          -->
+<!-- ============================================================= -->
+<!-- Project: AIRBUS Flight Ops Exchange Models                    -->
+<!--  Rev Date      : October 2011                                 -->
+<!--  Parsed Date   : October 2011                                 -->
+<!--  Version       : 10.0                                          -->
+<!-- HIGHLIGHTS:                                                   -->
+<!-- VER 6.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.0                        -->
+<!-- VER 6.1:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 6.1                        -->
+<!-- VER 7.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0                        -->
+<!-- VER 7.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 7.0.1                      -->
+<!-- VER 8.0:                                                      -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0                        -->
+<!-- VER 8.0.1:                                                    -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 8.0.1                      -->
+<!-- V9.0                                                          -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 9.0                        -->
+<!-- VER 10.0:                                                     -->
+<!--   Context: global modification                                -->
+<!-- 1) Increased the version number to 10.0                       -->
+<!-- ============================================================= -->
+<!-- ENTITIES                                                      -->
+<!-- ============================================================= -->
+
+<!ENTITY % acranges-exch SYSTEM "acranges-exch.dtd">
+%acranges-exch;
+
+<!-- ============================================================= -->
+<!-- ELEMENTS                                                      -->
+<!-- ============================================================= -->
+
+<!ELEMENT lom (lom-item*)>
+
+<!ELEMENT mpm EMPTY>
+<!ATTLIST mpm 
+      crit-id CDATA #REQUIRED
+>
+
+<!ELEMENT lom-item  ((mod|(mp,linked-sb?,linked-mod?)|(mpm,linked-sb?)|sb), title, aircraft-ranges?) >
+<!ATTLIST   lom-item
+      incorporation-date  CDATA #REQUIRED>
+
+<!ELEMENT mod   EMPTY>
+<!ATTLIST mod
+    crit-id CDATA #REQUIRED
+>
+
+<!ELEMENT mp   EMPTY>
+<!ATTLIST mp
+      crit-id CDATA #REQUIRED
+>
+
+<!ELEMENT sb EMPTY>
+<!ATTLIST sb
+      crit-id CDATA #REQUIRED
+      crit-rev CDATA #REQUIRED
+>
+
+<!ELEMENT linked-sb (sb+)>
+
+<!ELEMENT linked-mod (mod+)>

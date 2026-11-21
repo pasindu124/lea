@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00008571.0001001" func-code="25-64-03" item-list-nbr="03" revdate="2021-11-22T00:00:00"><title>First Aid Kit Additional Equipment</title><functional-notes><note code="00008571.0001001.009" layer="1" lid="N.00008571.0001001.013"><para layer="1" lid="N.00008571.0001001.014">First Aid Kit Additional Equipment,
+as required by AMC1 CAT.IDE.A.220 First Aid Kit (<abb>FAK</abb>),
+may be partly or totally included in the <abb>FAK</abb>.</para></note></functional-notes><ditembody nb-installed="-"><dispcond code="00008571.0001001.003" dispcond-id="D11928" dispcond-label="A" lid="N.00008571.0001001.004"><title>Non-required sets of <abb>FAK</abb> Additional Equipment inoperative,
+incomplete, or missing</title><normal-dispcond nb-required="-" rectification-interval="D"><remark><requirement lid="N.00008571.0001001.005" req-id="R11929"><opsproc-ref><duref product="MMEL" ref="00025081"/></opsproc-ref><para code="00008571.0001001.004" layer="1" lid="N.00008571.0001001.006">One or
+more sets of non-required <abb>FAK</abb> additional equipment may
+be Inoperative, incomplete, or missing.</para></requirement></remark></normal-dispcond></dispcond><dispcond code="00008571.0001001.005" dispcond-id="D11930" dispcond-label="B" lid="N.00008571.0001001.007"><title>One set of required <abb>FAK</abb> Additional Equipment inoperative,
+incomplete, or missing</title><normal-dispcond nb-required="-" rectification-interval="A"><remark><requirement lid="N.00008571.0001001.008" req-id="R11931"><opsproc-ref><duref product="MMEL" ref="00025081"/></opsproc-ref><para code="00008571.0001001.006" layer="1" lid="N.00008571.0001001.009">One set
+of required <abb>FAK</abb> additional equipment may be inoperative,
+incomplete, or missing for two consecutive calendar days.</para></requirement></remark></normal-dispcond></dispcond></ditembody></dispatchitem>

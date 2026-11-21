@@ -35,7 +35,7 @@ Frontend check: `cd frontend && npm run build`.
 
 ## Domain glossary
 - MEL: list of items an aircraft may fly without for a limited time. Deferral: using it to postpone a fix.
-  Categories (standard MMEL practice, ASSUMED): A = per item, B = 3 days, C = 10, D = 120 calendar days,
+  Categories (MMEL page MI-00-05): A = per item, B = 3 days, C = 10, D = 120 calendar days,
   not counting the day of discovery. NSI = a deferral not on the MEL, approved by MCC, usually "FOR 120 DAYS".
   DD / ADD = deferred defect (acceptable deferred defect).
 - PHA / AVIATAR: predictive health analytics; early warnings from flight data (read only).
@@ -57,8 +57,12 @@ Frontend check: `cd frontend && npm run build`.
   `rules/tools.py` detects this automatically (>= 90% same date).
 - Inventory: only condition code `US` ASSUMED unserviceable; Owner vs Entity differ for some rows (Owner is used).
 - AVIATAR: 375k messages, heavy repeats (group them). PHA: 199 cases, mostly "Ambiguous".
-- MMEL PDFs are only index/highlight pages (the "LEDU" file is plain text). No item text, no repair intervals.
-- Missing from the pack: flight schedule, engineer roster, handover notes, full MMEL. Roster is auto-split
+- The full Airbus MMEL (issue 19 AUG 26) IS in the pack, as PDF (1,822 pages) and as XML (`XML_C_Ops_MMEL` zip). The
+  GSOH/LEDU PDFs are only index pages. Repair intervals are defined on MMEL page MI-00-05 (B 3, C 10, D 120 days).
+- "CAT B/C" is often a structural repair (SRM) damage class, not MEL: 24 of 34 open faults with "CAT" are SRM.
+  `rules/deadlines.py` skips a "CAT x" with SRM / allowable-damage words within 200 characters before it.
+- Only 7 of 428 open faults write an MEL item number; 138 are NSI (not on the MEL).
+- Missing from the pack: flight schedule, engineer roster, handover notes, operator MEL (only the Airbus MMEL is there). Roster is auto-split
   (placeholder), handover notes are derived from the last two days of work-log entries and labelled "Derived".
 - "As of" date = newest record (20 Nov 2026) unless AS_OF_DATE or the date picker overrides it.
 
@@ -75,6 +79,14 @@ Frontend check: `cd frontend && npm run build`.
 `rules/amm.py` finds task numbers (26-23-41-000-004) in work-order text; `GET /api/faults/{wo}/amm` returns the tasks;
 the "Parts used (AMM)" button on a fault shows them (`AmmPanel.jsx`). Reference only: the IPC (part catalogue) is not in
 the pack, so expendable parts show the IPC chapter-section-number, not a stock part number.
+
+## MMEL reference (minimum equipment list)
+Unpack `Part_1 (4)/XML_000043031700.tar` into `data/MMEL_XML/` (committed like the rest of `data/`; Airbus confidential, keep the repo private), then
+`load_data --only mmel` (`etl/extract_mmel.py`). `deploy.sh` runs `load_data --if-empty`, which loads any dataset
+whose table is empty, so a new machine fills itself once the files are in its `data/`. Tables: `mmel_items` (one row per dispatch condition and item version:
+category, installed/required, placard, (o)/(m), conditions text, AMM tasks, applicable MSNs), `mmel_ecam` (ECAM warning
+-> item / no dispatch), `fleet_msn` (registration -> MSN). `rules/mmel.py`: MSN applicability, item-number finder.
+It is the manufacturer's MASTER list; the operator MEL is not in the pack, so label it "MMEL". Not yet used by the brief.
 
 ## Not built yet (good next steps, in rough order)
 1. AI-assisted reading of deferral wording the rules cannot parse (79 items), as a suggestion with the source quote.

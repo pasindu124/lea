@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012622.0001001" revdate="2020-05-13T00:00:00"><title>Definitions</title><descbody code="00012622.0001001.006" lid="N.00012622.0001001.028"><equal code="00012622.0001001.022" layer="1" lid="N.00012622.0001001.066" sepchar="DEF" width="25"><equ-l>Calendar day</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.087">Is a 24-hour period from 00:00:01
+to 23:59:59 based on either <abb>UTC</abb> or local time, as selected
+by the Operator.</para></equ-r></equal><equal code="00012622.0001001.008" layer="1" lid="N.00012622.0001001.031" sepchar="DEF" width="25"><equ-l>Centralized Fault Display System (<abb>CFDS</abb>)</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.032">It identifies the
+faulty system for maintenance purpose and is not required for dispatch
+of the aircraft.</para></equ-r></equal><equal code="00012622.0001001.033" layer="1" lid="N.00012622.0001001.098" sepchar="DEF" width="25"><equ-l>Commencement of flight</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.099">Means the point when an aircraft
+begins to move under its own power for the purpose of preparing for
+takeoff.</para></equ-r></equal><equal code="00012622.0001001.023" layer="1" lid="N.00012622.0001001.068" sepchar="DEF" width="25"><equ-l>Considered inoperative</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.069">The listed item of equipment
+must be treated as inoperative.</para><para layer="1" lid="N.00012622.0001001.070">For example, <abb>MMEL</abb> item 36-11-05 Bleed Air Precooler indicates that associated
+bleed air supply system is considered inoperative and therefore <abb>MMEL</abb> item 36-11-01 Bleed Air Supply System must be applied. </para><para layer="1" lid="N.00012622.0001001.071">Therefore, the “considered
+inoperative” <abb>MMEL</abb> item must also be entered and the associated
+dispatch conditions must be applied, including the respective (o)
+and (m) procedures if any. </para><para layer="1" lid="N.00012622.0001001.073">The “considered inoperative”
+item shall not be used or operated until the original deferred item
+is repaired.</para><para layer="1" lid="N.00012622.0001001.072">The shorter rectification
+interval between the initial inoperative item and the “considered
+inoperative” item shall be applied.</para></equ-r></equal><equal code="00012622.0001001.025" layer="1" lid="N.00012622.0001001.074" sepchar="DEF" width="25"><equ-l>... provided that system X is not
+used</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.075">Crew members should not activate, actuate, or otherwise utilise the
+system X under normal operations. It is not necessary for the operator
+to accomplish the (m) procedure associated with the system X item.</para><para layer="1" lid="N.00012622.0001001.076">However, operations-related
+provisions, (o) procedures must be complied with. An additional placard
+must be affixed, to the extent practical, adjacent to the control
+or indicator for the system that is not used to inform crew members
+that the system is not to be used under normal operations.</para></equ-r></equal><equal code="00012622.0001001.009" layer="1" lid="N.00012622.0001001.033" sepchar="DEF" width="25"><equ-l>Daylight operations</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.034">Period between the beginning
+of the morning civil twilight and the end of the evening civil twilight
+relevant to the local aeronautical airspace; or such other period,
+as may be prescribed by the appropriate Authority.</para></equ-r></equal><equal code="00012622.0001001.028" layer="1" lid="N.00012622.0001001.081" sepchar="DEF" width="25"><equ-l>Extended overwater flight</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.082">A flight where the aeroplane
+is operated over water at a distance away from land greater than 400
+nautical miles.</para></equ-r></equal><equal code="00012622.0001001.012" layer="1" lid="N.00012622.0001001.039" sepchar="DEF" width="25"><equ-l>Flammable or combustible material</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.040">Material which is capable of
+catching fire and burning (baggages, livestock, …).  </para><numlist code="00012622.0001001.035" format="NNP" layer="1" lid="N.00012622.0001001.101"><para layer="1" lid="N.00012622.0001001.103">Where loading of flammable
+or combustible material is prohibited, no material may be loaded except
+the following:</para><item layer="1"><para layer="1" lid="N.00012622.0001001.102">Cargo handling
+equipment (ballast or empty <abb>ULD</abb>). <abb>ULD</abb> must not
+contain any energy supplied device of any kind (e.g. <abb>ULD</abb> integrated trackers/monitoring devices, cooled containers), must
+be without oxygen supply, or any other flammable or combustible material</para></item><item layer="1"><para layer="1" lid="N.00012622.0001001.104">Fly away kits
+(excluding e.g. cans of hydraulic fluid, cleaning solvents, batteries,
+capacitors, chemical generators, etc.)</para></item><item layer="1"><para layer="1" lid="N.00012622.0001001.105">In-flight service
+material (Return catering - only closed catering trolleys/boxes, no
+newspapers, no alcohol or duty free goods).</para></item></numlist><note code="00012622.0001001.013" layer="1" lid="N.00012622.0001001.042"><para layer="1" lid="N.00012622.0001001.043">If serviceable tires are included,
+they should only be inflated to a minimum pressure that preserves
+their serviceability.</para></note></equ-r></equal><equal code="00012622.0001001.010" layer="1" lid="N.00012622.0001001.035" sepchar="DEF" width="25"><equ-l>Flight</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.036">For the purpose of an <abb>MEL</abb>, one “flight” is defined as
+the period of time that begins the moment at which an aircraft begins
+to move by its own means in preparation for takeoff, continues during
+takeoff and the applicable flight phases, and ends when the aircraft
+lands and comes to a complete stop in its parking area.</para></equ-r></equal><equal code="00012622.0001001.026" layer="1" lid="N.00012622.0001001.077" sepchar="DEF" width="25"><equ-l>Flight Hours</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.078">For the purpose of an <abb>MEL</abb>, the Flight Hours (<abb>FH</abb>s) are to be counted based on the
+definition of a Flight, i.e. the period of time that begins the moment
+at which an aircraft begins to move by its own means in preparation
+for takeoff, continues during takeoff and the applicable flight phases,
+and ends when the aircraft lands and comes to a complete stop in its
+parking area.</para><note code="00012622.0001001.027" layer="1" lid="N.00012622.0001001.079"><para layer="1" lid="N.00012622.0001001.080">Flight hours as here
+defined are synonymous with the term “block to block” time or “chock
+to chock” time in general usage which is measured from the time an
+aeroplane first moves for the purpose of taking off until it finally
+stops at the end of the flight.</para></note></equ-r></equal><equal code="00012622.0001001.011" layer="1" lid="N.00012622.0001001.037" sepchar="DEF" width="25"><equ-l>Icing Conditions</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.038"><duref product="AFM" ref="00009165"/>.</para></equ-r></equal><equal code="00012622.0001001.014" layer="1" lid="N.00012622.0001001.044" sepchar="DEF" width="25"><equ-l>Inoperative</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.045">The listed item of equipment
+is unserviceable or malfunctioning to the extent that it does not
+accomplish its intended purpose, or is not consistently functioning
+within its designed operating limits or tolerances. </para><para layer="1" lid="N.00012622.0001001.046">Some systems have
+been designed to be fault tolerant and are monitored by digital computers
+which transmit fault messages to the <abb>CFDS</abb>. The presence
+of this category of fault messages does not mean that the system is
+inoperative.</para></equ-r></equal><equal code="00012622.0001001.016" layer="1" lid="N.00012622.0001001.052" sepchar="DEF" width="25"><equ-l>... provided that system X is operative</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.053">The system X must not be reported
+to be inoperative in the logbook.</para></equ-r></equal><equal code="00012622.0001001.017" layer="1" lid="N.00012622.0001001.054" sepchar="DEF" width="25"><equ-l>... provided that system X is checked operative</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.055">The system X must
+be checked and confirmed operative via either an (o) and/or an (m)
+procedure.</para></equ-r></equal><equal code="00012622.0001001.030" layer="1" lid="N.00012622.0001001.085" sepchar="DEF" width="25"><equ-l>Polar area</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.086">The polar area corresponds to
+the entire area north of 78 ° N latitude and the entire area south
+of 60 ° S latitude.</para></equ-r></equal><equal code="00012622.0001001.029" layer="1" lid="N.00012622.0001001.083" sepchar="DEF" width="25"><equ-l>Remote areas</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.084">Areas in which search and rescue
+would be especially difficult.</para><numlist code="00012622.0001001.031" format="NNP" layer="1" lid="N.00012622.0001001.089"><para layer="1" lid="N.00012622.0001001.091">The expression "areas
+in which search and rescue would be especially difficult" should
+be interpreted, in this context, as meaning:</para><item layer="1"><para layer="1" lid="N.00012622.0001001.090">Areas so designated
+by the Authority responsible for managing search and rescue, or</para></item><item layer="1"><unlist bulltype="NDASH" code="00012622.0001001.032" layer="1" lid="N.00012622.0001001.094"><para layer="1" lid="N.00012622.0001001.096">Areas that are largely uninhabited
+and where:</para><item layer="1"><para layer="1" lid="N.00012622.0001001.095">The Authority
+referred to in 1 has not published any information to confirm whether
+search and rescue would be or would not be specially difficult, and</para></item><item layer="1"><para layer="1" lid="N.00012622.0001001.097">The Authority
+referred to in 1 does not, as a matter of policy, designate areas
+as being especially difficult for search and rescue.</para></item></unlist></item></numlist></equ-r></equal><equal code="00012622.0001001.018" layer="1" lid="N.00012622.0001001.056" sepchar="DEF" width="25"><equ-l>Required cabin attendant seat</equ-l><equ-r><unlist bulltype="NDASH" code="00012622.0001001.019" layer="1" lid="N.00012622.0001001.057"><para layer="1" lid="N.00012622.0001001.058">A seat in the aeroplane cabin
+which meets the following conditions:   </para><item layer="1"><para layer="1" lid="N.00012622.0001001.059">Where the certification
+of the cabin requires this seat to be occupied by a qualified cabin
+crew member as specified in the Operations Manual, and</para></item><item layer="1"><para layer="1" lid="N.00012622.0001001.060">This seat is
+a part of the station to which a qualified cabin crew member is to
+be assigned for the flight, and </para></item><item layer="1"><para layer="1" lid="N.00012622.0001001.061">The qualified
+cabin crew member assigned to the station is a member of the minimum
+cabin crew designated for the flight.</para></item></unlist></equ-r></equal><equal code="00012622.0001001.020" layer="1" lid="N.00012622.0001001.062" sepchar="DEF" width="25"><equ-l><abb>VMC</abb> (Visual Meteorological Conditions)</equ-l><equ-r><para layer="1" lid="N.00012622.0001001.063">Means that the atmospheric
+environment would allow a flight to proceed under the Visual Flight
+Rules (<abb>VFR</abb>) and that the flight is conducted during the
+period from sunrise to sunset. This does not preclude operating under
+Instrument Flight Rules (<abb>IFR</abb>).</para></equ-r></equal><note code="00012622.0001001.021" layer="1" lid="N.00012622.0001001.064"><para layer="1" lid="N.00012622.0001001.065">This list is not exhaustive
+and the Operator should include in their <abb>MEL</abb> any definition
+which is considered to be relevant.</para></note></descbody></description>

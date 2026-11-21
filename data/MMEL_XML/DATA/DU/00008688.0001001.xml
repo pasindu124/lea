@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00008688.0001001" func-code="52-01-03-34" item-list-nbr="34" revdate="2010-03-22T00:00:00"><title>OFF Function of the <tech-label type="sw">LKG SYS</tech-label> on the CKPT DOOR BK UP
+Overhead Panel</title><ditembody nb-installed="1"><dispcond code="00008688.0001001.001" dispcond-id="D00522" dispcond-label="A" lid="N.00008688.0001001.001"><normal-dispcond nb-required="0" rectification-interval="D"><remark><requirement lid="N.00008688.0001001.002" req-id="R00523"><maintenance-ref><taskref chap-nbr="52" func="040" product="AMM" sect-nbr="51" seq="008" subj-nbr="00"/></maintenance-ref><para code="00008688.0001001.002" layer="1" lid="N.00008688.0001001.003">May be inoperative.</para></requirement><note code="00008688.0001001.003" layer="1" lid="N.00008688.0001001.004"><para layer="1" lid="N.00008688.0001001.005">For maintenance purpose only,
+the <abb>CDLS</abb> normal and the <abb>CDLS</abb> back-up
+systems can be deactivated by performing the associated maintenance
+procedure.</para></note></remark></normal-dispcond></dispcond></ditembody></dispatchitem>

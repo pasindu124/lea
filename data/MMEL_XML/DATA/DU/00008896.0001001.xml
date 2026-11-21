@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00008896.0001001" revdate="2010-03-11T15:59:20"><title><tech-label type="ecamsys"><emph bold="false" color="Amber" italic="false" overline="false" sub="false" sup="false" underline="false">VENT</emph></tech-label> <emph bold="false" color="Amber" italic="false" overline="false" sub="false" sup="false" underline="false">EXTRACT FAULT</emph> Alert</title><procitem layer="1" lid="N.00008896.0001001.004"><title>During cockpit preparation</title><procbody lid="N.00008896.0001001.001"><inform layer="1" lid="N.00008896.0001001.002"><para code="00008896.0001001.001" layer="1" lid="N.00008896.0001001.003">Disregard
+the <ecam-data ecamimportance="A" type="alert"><ecamsys>VENT</ecamsys><ecamtitle>EXTRACT FAULT</ecamtitle></ecam-data> alert displayed on
+the <abb>EWD</abb>.</para></inform></procbody></procitem></opsproc>

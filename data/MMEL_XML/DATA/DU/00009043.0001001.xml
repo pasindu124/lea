@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00009043.0001001" revdate="2010-03-11T15:40:14"><title>Rudder Trim System</title><procitem layer="1" lid="N.00009043.0001001.004"><title>Flight preparation/limitations</title><procbody lid="N.00009043.0001001.001"><limit layer="1" lid="N.00009043.0001001.005"><lit-limit lid="N.00009043.0001001.006">Maximum landing capability is CAT 3 SINGLE.</lit-limit></limit></procbody></procitem></opsproc>

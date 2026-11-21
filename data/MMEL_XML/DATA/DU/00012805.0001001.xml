@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE description PUBLIC "-//AIRBUS OPS//DTD DESCRIPTION_EXCH-VER10.0//EN" "../DTD/description-exch.dtd">
+<description code="00012805.0001001" revdate="2010-09-17T11:01:30"><title>How to get the MMEL updated?</title><descbody code="00012805.0001001.001" lid="N.00012805.0001001.001"><para code="00012805.0001001.002" layer="1" lid="N.00012805.0001001.002">Airbus provides the Operator with an <abb>MMEL</abb> which reflects
+the aircraft configuration at delivery, and the necessary revisions
+to reflect configuration changes due to Airbus approved modifications.</para><para code="00012805.0001001.003" layer="1" lid="N.00012805.0001001.003">The Operator must inform Airbus without delay of the effective changes
+to the aircraft delivery configuration made through Airbus Service
+Bulletin (<abb>SB</abb>). This permits Airbus to provide the Operator
+with the <abb>MMEL</abb> revisions/updates.</para><para code="00012805.0001001.004" layer="1" lid="N.00012805.0001001.004">The Operator must timely report any <abb>SB</abb> embodiment to the
+following address:</para><equal code="00012805.0001001.005" layer="1" lid="N.00012805.0001001.005" sepchar="DEF" width="20"><equ-l>E.MAIL</equ-l><equ-r><para layer="1" lid="N.00012805.0001001.006">sb.reporting@airbus.com</para></equ-r></equal><unlist bulltype="NDASH" code="00012805.0001001.006" layer="1" lid="N.00012805.0001001.007"><para layer="1" lid="N.00012805.0001001.008">Airbus will not provide revisions,
+and will not take responsibility for any effect on the <abb>MMEL</abb>:</para><item layer="1"><para layer="1" lid="N.00012805.0001001.009">Due to modifications
+installed by third parties without an Airbus <abb>SB</abb>, and/or</para></item><item layer="1"><para layer="1" lid="N.00012805.0001001.010">Due to modifications
+installed through an Airbus <abb>SB</abb>, if Airbus is not informed
+of the <abb>SB</abb> embodiment.</para></item></unlist></descbody></description>

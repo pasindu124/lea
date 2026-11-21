@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dispatchitem PUBLIC "-//AIRBUS OPS//DTD DISPATCHITEM_EXCH-VER10.0//EN" "../DTD/dispatchitem-exch.dtd">
+<dispatchitem code="00008206.0003001" func-code="28-21-03" item-list-nbr="03" revdate="2019-05-22T00:00:00"><title>Wing Tank Pump Sequence Valve</title><ditembody nb-installed="4"><dispcond code="00008206.0003001.001" dispcond-id="D01464" dispcond-label="A" lid="N.00008206.0003001.001"><normal-dispcond nb-required="3" rectification-interval="C"><remark><requirement lid="N.00008206.0003001.002" req-id="R01465"><qualifiers><qualifier value="CREW_OPS"/></qualifiers><para code="00008206.0003001.002" layer="1" lid="N.00008206.0003001.003">One may be inoperative provided that
+the associated pump is set to OFF when the center tank
+is feeding.</para></requirement></remark></normal-dispcond></dispcond></ditembody></dispatchitem>

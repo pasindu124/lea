@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021777.0004001" revdate="2017-11-21T11:37:57"><title>HF Voice</title><procitem layer="1" lid="N.00021777.0004001.001"><title>Procedure to Be Developed in the Operator's MEL</title><procbody lid="N.00021777.0004001.002"><inform layer="1" lid="N.00021777.0004001.003"><unlist bulltype="NDASH" code="00021777.0004001.001" layer="1" lid="N.00021777.0004001.004"><para layer="1" lid="N.00021777.0004001.005">A procedure must be established
+and used to ensure that:</para><item layer="1"><para layer="1" lid="N.00021777.0004001.006"><abb>SATCOM</abb> is authorized by <abb>ATC</abb>, and</para></item><item layer="1"><para layer="1" lid="N.00021777.0004001.007"><abb>SATCOM</abb> Voice or <abb>SATCOM</abb> Datalink will be available for the entire
+route.</para></item></unlist></inform></procbody></procitem></opsproc>

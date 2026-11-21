@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE opsproc PUBLIC "-//AIRBUS OPS//DTD OPSPROC_EXCH-VER10.0//EN" "../DTD/opsproc-exch.dtd">
+<opsproc code="00021669.0001001" revdate="2017-11-21T10:58:46"><title>Reactive Windshear Detection Function</title><procitem layer="1" lid="N.00021669.0001001.001"><title>Flight Preparation/Limitations</title><procbody lid="N.00021669.0001001.002"><inform layer="1" lid="N.00021669.0001001.003"><para code="00021669.0001001.001" layer="1" lid="N.00021669.0001001.004">The flight
+crew must ensure that windshear conditions are not likely to be encountered
+at departure, destination or alternate airfields, having regard to
+actual and forecast weather conditions.</para></inform></procbody></procitem><procitem layer="1" lid="N.00021669.0001001.005"><title>In Flight</title><procbody lid="N.00021669.0001001.006"><action layer="1" lid="N.00021669.0001001.007" memory="false"><command code="00021669.0001001.002"><para layer="1" lid="N.00021669.0001001.008">In the case of perceivable windshear:</para><para layer="1" lid="N.00021669.0001001.009">Apply memory actions
+associated to a windshear event. <duref product="FCOM" ref="00012271"/>.</para></command></action></procbody></procitem></opsproc>
