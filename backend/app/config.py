@@ -22,6 +22,9 @@ FRONTEND_DIST = PROJECT_DIR / "frontend" / "dist"
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
+# Optional shared password for a public demo (HTTP Basic, any user name). Empty = no password.
+DEMO_PASSWORD = os.getenv("DEMO_PASSWORD", "")
+
 # Optional manual override of "today" (YYYY-MM-DD). Normally the app uses the
 # date of the newest record, so a demo on old data still tells a sensible story.
 AS_OF_DATE = os.getenv("AS_OF_DATE", "")

@@ -1,13 +1,15 @@
-# PostgreSQL for the Line Engineer Agent.   Start:  docker compose up -d     Stop:  docker compose down
+# Start / update everything:  docker compose up -d --build     Stop:  docker compose down
+# Settings (OPENAI_API_KEY, DEMO_PASSWORD) are read from the .env file next to this one.
 services:
   db:
     image: postgres:16
+    restart: unless-stopped
     environment:
       POSTGRES_USER: lea
       POSTGRES_PASSWORD: lea
       POSTGRES_DB: lea
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"   # this machine only (use an SSH tunnel from your laptop); NOT open to the internet
     volumes:
       - lea_pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -15,5 +17,23 @@ services:
       interval: 5s
       timeout: 3s
       retries: 10
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://lea:lea@db:5432/lea
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
+      DEMO_PASSWORD: ${DEMO_PASSWORD:-}
+      AS_OF_DATE: ${AS_OF_DATE:-}
+    volumes:
+      - ./data:/app/data:ro     # only used by the data loader
+    ports:
+      - "8080:8000"             # demo link: http://<server-ip>:8080
+
 volumes:
   lea_pgdata:
