@@ -81,3 +81,25 @@ CREATE TABLE IF NOT EXISTS meta (
     key TEXT PRIMARY KEY,
     value JSONB NOT NULL
 );
+
+-- ------------------------------------------------------------------ AMM (maintenance manual) reference data
+CREATE TABLE IF NOT EXISTS amm_tasks (
+    task_no TEXT PRIMARY KEY,                -- 26-23-41-000-004-A (configuration letter last)
+    base_task TEXT NOT NULL,                 -- 26-23-41-000-004
+    title TEXT, ata TEXT, function_code TEXT, function_label TEXT, config TEXT, rev_date TEXT,
+    fins TEXT[], zones TEXT[], identical_task_note TEXT, source_file TEXT
+);
+CREATE INDEX IF NOT EXISTS amm_tasks_base ON amm_tasks (base_task);
+CREATE TABLE IF NOT EXISTS amm_task_items (
+    id BIGSERIAL PRIMARY KEY,
+    task_no TEXT NOT NULL REFERENCES amm_tasks (task_no) ON DELETE CASCADE,
+    pos INT NOT NULL, kind TEXT NOT NULL,    -- tool | consumable | part | reference
+    ref TEXT, qty TEXT, designation TEXT, extra TEXT
+);
+CREATE INDEX IF NOT EXISTS amm_items_task ON amm_task_items (task_no, pos);
+CREATE TABLE IF NOT EXISTS amm_task_notes (
+    id BIGSERIAL PRIMARY KEY,
+    task_no TEXT NOT NULL REFERENCES amm_tasks (task_no) ON DELETE CASCADE,
+    pos INT NOT NULL, kind TEXT NOT NULL, code TEXT, text TEXT
+);
+CREATE INDEX IF NOT EXISTS amm_notes_task ON amm_task_notes (task_no, pos);

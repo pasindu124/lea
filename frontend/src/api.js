@@ -40,6 +40,7 @@ export const api = {
   aircraftList: (asOf) => request(`/aircraft${qs({ as_of: asOf })}`),
   aircraft: (reg, asOf) => request(`/aircraft/${encodeURIComponent(reg)}${qs({ as_of: asOf })}`),
   workOrder: (wo) => request(`/workorders/${wo}`),
+  amm: (wo) => request(`/faults/${wo}/amm`),
   keywords: (wo) => request(`/faults/${wo}/keywords`),
   partsSearch: (q, opts = {}) => request(`/parts/search${qs({ q, stores: opts.stores, own_only: opts.ownOnly, include_unserviceable: opts.includeUnserviceable })}`),
   toolsSearch: (q, where, asOf) => request(`/tools/search${qs({ q, where, as_of: asOf })}`),

@@ -57,7 +57,7 @@ export default function App() {
   switch (page) {
     case 'aircraft': view = <Aircraft selected={param} />; break
     case 'parts': view = <Parts key={param} initialQuery={param} />; break
-    case 'tools': view = <Tools />; break
+    case 'tools': view = <Tools key={param} initialQuery={param} />; break
     case 'shift': view = <Shift />; break
     case 'audit': view = <Audit />; break
     default: view = <Brief />

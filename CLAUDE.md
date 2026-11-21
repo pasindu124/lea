@@ -69,6 +69,13 @@ Frontend check: `cd frontend && npm run build`.
   Sentence case, no all-caps labels, no "→" in buttons. Dark mode through CSS variables.
 - Never put the API key in code or commit `.env` or `data/`. Ask the organisers before sending real data to OpenAI.
 
+## AMM reference (maintenance manual)
+`python -m app.etl.extract_amm` (or `load_data --only amm`) reads `data/Part_1/*/SGML/AMM.SGM` (Airbus AMM, 300 MB) into
+`amm_tasks`, `amm_task_items` (tool / consumable / part / reference) and `amm_task_notes` (warnings, cautions).
+`rules/amm.py` finds task numbers (26-23-41-000-004) in work-order text; `GET /api/faults/{wo}/amm` returns the tasks;
+the "Parts used (AMM)" button on a fault shows them (`AmmPanel.jsx`). Reference only: the IPC (part catalogue) is not in
+the pack, so expendable parts show the IPC chapter-section-number, not a stock part number.
+
 ## Not built yet (good next steps, in rough order)
 1. AI-assisted reading of deferral wording the rules cannot parse (79 items), as a suggestion with the source quote.
 2. Logbook-entry checker (stretch goal) with CAR-145 / CAR-M citations.

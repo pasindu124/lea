@@ -4,10 +4,10 @@ import { useApp } from '../context'
 import { Empty, ErrorBox, Guard, Loading } from '../ui'
 import { CALIBRATION, fmtDate } from '../util'
 
-export default function Tools() {
+export default function Tools({ initialQuery = '' }) {
   const { asOf } = useApp()
-  const [input, setInput] = useState('')
-  const [query, setQuery] = useState('')
+  const [input, setInput] = useState(initialQuery)
+  const [query, setQuery] = useState(initialQuery)
   const [where, setWhere] = useState('')
   const [state, setState] = useState({ loading: false, error: null, data: null })
 

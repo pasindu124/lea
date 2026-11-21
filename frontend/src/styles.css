@@ -253,3 +253,23 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .assumptions li { margin-bottom: 10px; }
 
 .reg-inline { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-right: 4px; }
+
+/* ---- AMM panel: parts and materials a maintenance task uses */
+.amm-task { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 10px; }
+.amm-task > header { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; margin-bottom: 4px; }
+.amm-title { font-weight: 600; flex: 1 1 240px; min-width: 0; overflow-wrap: anywhere; }
+.amm-section { margin-top: 12px; }
+.amm-section h4 { font-size: 14px; font-weight: 600; margin: 0 0 2px; color: var(--ink); }
+.amm-list { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.amm-row { display: flex; flex-wrap: wrap; gap: 4px 12px; justify-content: space-between; align-items: center; background: var(--surface-2); padding: 7px 10px; }
+.amm-main { display: flex; flex-direction: column; min-width: 0; flex: 1 1 260px; }
+.amm-name { font-size: 14px; overflow-wrap: anywhere; }
+.amm-pn { font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace; font-size: 12.5px; color: var(--ink-soft); }
+.amm-side { display: flex; gap: 8px; align-items: center; }
+.amm-note { display: flex; gap: 10px; align-items: baseline; padding: 8px 10px; background: var(--surface-2); border-left: 4px solid var(--line-strong); font-size: 13px; }
+.amm-note.danger { border-left-color: var(--danger); }
+.amm-note.caution { border-left-color: var(--caution); }
+.amm-note b { flex: 0 0 64px; }
+.amm-tabs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 8px 0 0; }
+.amm-tabs button { border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 3px 12px; font: inherit; font-size: 13px; cursor: pointer; }
+.amm-tabs button.on { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }

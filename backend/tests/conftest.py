@@ -26,7 +26,7 @@ def database():
     from app import db
     db.reset_pool()
     db.apply_schema()
-    db.execute("TRUNCATE parts_stock, tools, work_orders, aviatar_faults, pha_cases, audit_log, roster, meta RESTART IDENTITY")
+    db.execute("TRUNCATE parts_stock, tools, work_orders, aviatar_faults, pha_cases, amm_tasks, amm_task_items, amm_task_notes, audit_log, roster, meta RESTART IDENTITY")
     seed(db)
     yield db
     db.reset_pool()

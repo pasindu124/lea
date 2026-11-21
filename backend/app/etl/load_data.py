@@ -20,6 +20,7 @@ import pandas as pd
 
 from .. import config, db
 from ..rules import tools as tool_rules
+from .extract_amm import load_amm
 
 # Patterns tolerate both "Inventory_List.xlsx" and "Inventory List.xlsx".
 PATTERNS = {
@@ -28,9 +29,10 @@ PATTERNS = {
     "work_orders": ["*Maintenance*History*.xlsx"],
     "pha": ["*PHA*Case*Tracking*.csv"],
     "aviatar": ["*AVIATAR*Faults*.csv"],
+    "amm": ["**/SGML/AMM.SGM"],
 }
 TABLES = {"parts": "parts_stock", "tools": "tools", "work_orders": "work_orders",
-          "pha": "pha_cases", "aviatar": "aviatar_faults"}
+          "pha": "pha_cases", "aviatar": "aviatar_faults", "amm": "amm_tasks"}
 
 
 def find_files(data_dir: Path, key: str) -> list[Path]:
@@ -162,7 +164,7 @@ def load_aviatar(files: list[Path]) -> int:
 
 LOADERS: dict[str, Callable[[list[Path]], int]] = {
     "parts": load_parts, "tools": load_tools, "work_orders": load_work_orders,
-    "pha": load_pha, "aviatar": load_aviatar,
+    "pha": load_pha, "aviatar": load_aviatar, "amm": load_amm,
 }
 
 
@@ -203,7 +205,7 @@ def main() -> None:
             continue
         start = time.time()
         print(f"  [load] {key}: {', '.join(f.name for f in files)}")
-        db.execute(f"TRUNCATE {TABLES[key]} RESTART IDENTITY")
+        db.execute(f"TRUNCATE {TABLES[key]} RESTART IDENTITY" + (" CASCADE" if key == "amm" else ""))
         n = LOADERS[key](files)
         print(f"         {n:,} rows in {time.time() - start:.1f}s")
 

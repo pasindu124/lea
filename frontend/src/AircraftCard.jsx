@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { api } from './api'
+import AmmPanel from './AmmPanel'
 import { useApp } from './context'
 import { SourceTag, StatusChip, WhyDeferral, ErrorBox, Loading } from './ui'
 import { KIND, STATUS, deadlineLine, fmtDate, fmtDateTime, num } from './util'
@@ -98,9 +99,26 @@ function FullRecord({ woNumber }) {
   )
 }
 
+/* ------------------------------------------------------------------ one recent work-log entry */
+function NoteItem({ note: n }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="item">
+      <div className="title">{n.text}</div>
+      <div className="meta">{fmtDate(n.date)}, {n.wo_type}. <SourceTag source={n.source} /></div>
+      {n.has_amm_ref && (
+        <div className="actions">
+          <button className="btn small" aria-expanded={open} onClick={() => setOpen(!open)}>AMM details: parts and tools</button>
+        </div>
+      )}
+      {open && n.has_amm_ref && <AmmPanel woNumber={n.wo_number} />}
+    </div>
+  )
+}
+
 /* ------------------------------------------------------------------ one fault or deferral */
 export function FaultItem({ item, onChanged }) {
-  const [panel, setPanel] = useState(null) // 'parts' | 'record' | 'seen'
+  const [panel, setPanel] = useState(null) // 'amm' | 'parts' | 'record' | 'seen'
   const [note, setNote] = useState('')
   const [error, setError] = useState(null)
   const d = item.deferral
@@ -128,10 +146,12 @@ export function FaultItem({ item, onChanged }) {
       {item.ack && <div className="meta"><span className="chip brand">Seen</span> by {item.ack.actor} on {fmtDateTime(item.ack.ts)}{item.ack.note ? `: ${item.ack.note}` : ''}</div>}
       {d && <WhyDeferral item={item} />}
       <div className="actions">
+        {item.has_amm_ref && <button className="btn small" aria-expanded={panel === 'amm'} onClick={() => toggle('amm')}>Parts used (AMM)</button>}
         <button className="btn small" aria-expanded={panel === 'parts'} onClick={() => toggle('parts')}>Check parts</button>
         <button className="btn small" aria-expanded={panel === 'record'} onClick={() => toggle('record')}>Full record</button>
         {flagged && <button className="btn small" aria-expanded={panel === 'seen'} onClick={() => toggle('seen')}>Mark as seen</button>}
       </div>
+      {panel === 'amm' && item.has_amm_ref && <AmmPanel woNumber={item.wo_number} />}
       {panel === 'parts' && <PartsCheck woNumber={item.wo_number} />}
       {panel === 'record' && <FullRecord woNumber={item.wo_number} />}
       {panel === 'seen' && (
@@ -277,12 +297,7 @@ export default function AircraftCard({ detail, defaultOpen = false, onChanged })
               No handover records were provided, so these are work-log entries from the last two days. They are not formal handover notes.
             </p>
             {detail.notes.length === 0 && <p className="muted small">No entries in the last two days.</p>}
-            {detail.notes.map((n, i) => (
-              <div key={i} className="item">
-                <div className="title">{n.text}</div>
-                <div className="meta">{fmtDate(n.date)}, {n.wo_type}. <SourceTag source={n.source} /></div>
-              </div>
-            ))}
+            {detail.notes.map((n, i) => <NoteItem key={i} note={n} />)}
           </div>
         </>
       )}

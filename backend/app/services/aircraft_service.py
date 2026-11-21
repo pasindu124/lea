@@ -7,6 +7,7 @@ from typing import Any
 
 from .. import config, db
 from ..rules import deadlines
+from ..rules.amm import extract_task_refs
 
 MAX_DESC = 600
 MAX_ACTIONS = 900
@@ -44,6 +45,7 @@ def fault_item(row: dict, as_of: date) -> dict[str, Any]:
         "date_opened": row["date_opened"], "ata": row["ata"], "title": _title(row["wo_description"]),
         "description": desc, "actions": acts, "text_truncated": desc_cut or acts_cut,
         "deferral": deferral,
+        "has_amm_ref": bool(extract_task_refs(f"{row['wo_description'] or ''} {row['wo_actions'] or ''}")),
         "source": {"file": "Maintenance_History.xlsx", "row": row["source_row"], "wo_number": row["wo_number"]},
     }
 
@@ -109,7 +111,7 @@ def aviatar_groups(reg: str, as_of: date, days: int = 3) -> dict:
 def recent_notes(reg: str, as_of: date, limit: int = 8) -> list[dict]:
     """Derived handover notes: dated work-log entries from the last two days."""
     rows = db.query(
-        "SELECT wo_number, wo_type, wo_state, wo_actions, source_row FROM work_orders "
+        "SELECT wo_number, wo_type, wo_state, wo_description, wo_actions, source_row FROM work_orders "
         "WHERE aircraft_reg = %s AND wo_actions IS NOT NULL AND (wo_state = 'Open' OR date_closed >= %s "
         "OR date_opened >= %s) ORDER BY wo_number DESC LIMIT 400",
         (reg, as_of - timedelta(days=2), as_of - timedelta(days=2)))
@@ -118,6 +120,7 @@ def recent_notes(reg: str, as_of: date, limit: int = 8) -> list[dict]:
         for e in deadlines.recent_entries(r["wo_actions"], as_of):
             text = e["text"][:300] + ("…" if len(e["text"]) > 300 else "")
             notes.append({"date": e["date"], "text": text, "wo_number": r["wo_number"], "wo_type": r["wo_type"],
+                          "has_amm_ref": bool(extract_task_refs(f"{r['wo_description'] or ''} {r['wo_actions'] or ''}")),
                           "source": {"file": "Maintenance_History.xlsx", "row": r["source_row"],
                                      "wo_number": r["wo_number"]}})
     notes.sort(key=lambda n: (n["date"], n["wo_number"]), reverse=True)

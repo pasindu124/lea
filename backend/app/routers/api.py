@@ -10,7 +10,7 @@ from .. import config, db
 from ..ai import client as ai
 from ..rules import citations  # noqa: F401  (re-exported for tests)
 from ..rules.text import heuristic_keywords
-from ..services import aircraft_service, brief_service, context, parts_service, tools_service
+from ..services import aircraft_service, amm_service, brief_service, context, parts_service, tools_service
 
 router = APIRouter(prefix="/api")
 
@@ -117,6 +117,23 @@ def fault_keywords(wo_number: int):
         words, method = heuristic_keywords(text), "simple"
     return {"wo_number": wo_number, "fault": text[:300], "keywords": words, "method": method,
             "note": "A suggestion only. Change the words if they are wrong."}
+
+
+@router.get("/faults/{wo_number}/amm")
+def fault_amm(wo_number: int):
+    """AMM tasks named in the work order text, with the tools, consumables and parts each one uses."""
+    res = amm_service.for_work_order(wo_number)
+    if res is None:
+        raise HTTPException(404, f"Work order {wo_number} not found")
+    return res
+
+
+@router.get("/amm/tasks/{base_task}")
+def amm_task(base_task: str):
+    res = amm_service.get_task(base_task)
+    if res is None:
+        raise HTTPException(404, f"AMM task {base_task} not found")
+    return res
 
 
 # --------------------------------------------------------------- roster, brief

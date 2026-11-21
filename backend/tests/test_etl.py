@@ -31,12 +31,16 @@ def test_all_loaders_accept_the_real_layouts(tmp_path):
     pd.DataFrame(av).to_csv(tmp_path / "AVIATAR Faults TIME 1.csv", index=False)
     pd.DataFrame(av).to_csv(tmp_path / "AVIATAR Faults TIME 2.csv", index=False)   # exact duplicate file
 
+    from tests.test_amm import SAMPLE
+    (tmp_path / "SGML").mkdir()
+    (tmp_path / "SGML" / "AMM.SGM").write_text(SAMPLE, encoding="latin1")
+
     saved = {t: db.query_one(f"SELECT count(*) AS n FROM {t}")["n"] for t in etl.TABLES.values()}
     try:
         for key, loader in etl.LOADERS.items():
             files = etl.find_files(tmp_path, key)
             assert files, f"no file found for {key}"
-            db.execute(f"TRUNCATE {etl.TABLES[key]} RESTART IDENTITY")
+            db.execute(f"TRUNCATE {etl.TABLES[key]} RESTART IDENTITY" + (" CASCADE" if key == "amm" else ""))
             expected = 2 if key == "tools" else 1       # tools come from two files; aviatar drops the duplicate file
             assert loader(files) == expected, key
         row = db.query_one("SELECT * FROM pha_cases")
@@ -46,6 +50,6 @@ def test_all_loaders_accept_the_real_layouts(tmp_path):
         info = etl.update_meta()
         assert info["as_of"] == date(2026, 11, 20) and info["tools_placeholder_expiry"] == date(2026, 11, 20)
     finally:                                                             # put the seeded test data back
-        db.execute("TRUNCATE parts_stock, tools, work_orders, aviatar_faults, pha_cases RESTART IDENTITY")
+        db.execute("TRUNCATE parts_stock, tools, work_orders, aviatar_faults, pha_cases, amm_tasks CASCADE")
         from tests import conftest
         conftest.seed(db)
