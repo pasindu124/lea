@@ -34,6 +34,8 @@ def test_all_loaders_accept_the_real_layouts(tmp_path):
     from tests.test_amm import SAMPLE
     (tmp_path / "SGML").mkdir()
     (tmp_path / "SGML" / "AMM.SGM").write_text(SAMPLE, encoding="latin1")
+    from tests.test_mmel import write_sample
+    write_sample(tmp_path)
 
     saved = {t: db.query_one(f"SELECT count(*) AS n FROM {t}")["n"] for t in etl.TABLES.values()}
     try:
@@ -41,15 +43,17 @@ def test_all_loaders_accept_the_real_layouts(tmp_path):
             files = etl.find_files(tmp_path, key)
             assert files, f"no file found for {key}"
             db.execute(f"TRUNCATE {etl.TABLES[key]} RESTART IDENTITY" + (" CASCADE" if key == "amm" else ""))
-            expected = 2 if key == "tools" else 1       # tools come from two files; aviatar drops the duplicate file
+            expected = 2 if key in ("tools", "mmel") else 1   # tools: two files; mmel: two conditions; aviatar drops the duplicate
             assert loader(files) == expected, key
         row = db.query_one("SELECT * FROM pha_cases")
         assert row["opened"].day == 13 and row["opened"].month == 11     # dd-mm-yyyy read correctly
         assert db.query_one("SELECT source_row FROM parts_stock")["source_row"] == 2
         assert db.query_one("SELECT search_norm FROM parts_stock")["search_norm"].startswith("P1")
+        assert db.query_one("SELECT msn FROM fleet_msn WHERE aircraft_reg = 'A6-ANS'")["msn"] == "05772"
+        assert db.query_one("SELECT count(*) AS n FROM mmel_ecam WHERE item_code = '36-11-07B'")["n"] == 2
         info = etl.update_meta()
         assert info["as_of"] == date(2026, 11, 20) and info["tools_placeholder_expiry"] == date(2026, 11, 20)
     finally:                                                             # put the seeded test data back
-        db.execute("TRUNCATE parts_stock, tools, work_orders, aviatar_faults, pha_cases, amm_tasks CASCADE")
+        db.execute("TRUNCATE parts_stock, tools, work_orders, aviatar_faults, pha_cases, amm_tasks, mmel_items, mmel_ecam, fleet_msn CASCADE")
         from tests import conftest
         conftest.seed(db)

@@ -103,3 +103,35 @@ CREATE TABLE IF NOT EXISTS amm_task_notes (
     pos INT NOT NULL, kind TEXT NOT NULL, code TEXT, text TEXT
 );
 CREATE INDEX IF NOT EXISTS amm_notes_task ON amm_task_notes (task_no, pos);
+
+-- ------------------------------------------------------------------ MMEL (Master Minimum Equipment List) reference data
+-- Airbus MMEL XML for the ABY fleet. Manufacturer's master list; the operator MEL is not in the data pack.
+CREATE TABLE IF NOT EXISTS mmel_items (
+    id BIGSERIAL PRIMARY KEY,
+    item_code TEXT NOT NULL,                 -- 36-11-07B (item + dispatch condition letter)
+    base_item TEXT NOT NULL,                 -- 36-11-07
+    du_code TEXT NOT NULL,                   -- Airbus document version, e.g. 00008798.0001001
+    item_title TEXT, condition_title TEXT,
+    repair_interval TEXT,                    -- A/B/C/D (MMEL MI-00-05); NULL = "-" (set by the referred item)
+    nb_installed TEXT, nb_required TEXT,
+    placard BOOLEAN, ops_proc BOOLEAN, maint_proc BOOLEAN,   -- (o) and (m) in the MMEL
+    requirements TEXT,                       -- the "provided that" conditions, one per line
+    amm_tasks TEXT[], qualifiers TEXT[],
+    msn_ranges TEXT[],                       -- applicable serial numbers: '05772', '07225-07226' or 'ALL'
+    rev_date DATE, issue_date DATE, source_file TEXT
+);
+CREATE INDEX IF NOT EXISTS mmel_items_code ON mmel_items (item_code);
+CREATE INDEX IF NOT EXISTS mmel_items_base ON mmel_items (base_item);
+CREATE TABLE IF NOT EXISTS mmel_ecam (
+    id BIGSERIAL PRIMARY KEY,
+    fault_code TEXT NOT NULL,                -- ECAM text, e.g. 'AIR ENG 1 BLEED FAULT'
+    warning_title TEXT, condition TEXT,
+    outcome TEXT NOT NULL,                   -- ITEM | NO_DISPATCH | NOT_APPLICABLE | SEE_CONDITIONS | OTHER
+    item_code TEXT,                          -- 36-11-07B, or just 36-11-07 when the letter is not given
+    du_code TEXT, source_file TEXT
+);
+CREATE INDEX IF NOT EXISTS mmel_ecam_code ON mmel_ecam (fault_code);
+CREATE TABLE IF NOT EXISTS fleet_msn (
+    aircraft_reg TEXT PRIMARY KEY,           -- A6-ANS
+    msn TEXT NOT NULL, model TEXT, source_file TEXT
+);

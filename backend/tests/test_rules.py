@@ -34,6 +34,24 @@ def test_category_a_has_no_date():
     assert d.kind == "CATEGORY_A" and d.expires_on is None
 
 
+@pytest.mark.parametrize("actions", [   # real wording from open work orders
+    "DD RAISED. DAMAGES ARE CONSIDERED AS PERMANENT ALLOWABLE DAMAGE (CAT B ) WITH FURTHER INSPECTIONS IAW SRI SRM 57-40-00-205-070",
+    "DD RAISED AS PER UPDATED RDAF 81700441/051/2026#B UNDER TEMPORARY REPAIR CAT B AT THRESHOLD 111800FC (FH NOT RELEVANT)",
+    "ADD RAISED. DENT IS CONSIDERED AS TEMPORARY ALLOWABLE DAMAGE CAT C, WITH LIFE LIMIT 5000 FC/10000FH",
+    "DD TO BE RAISED - AS PER SRM 53-21-29-300-002 THIS REPAIR IS CATEGORY B AND MUST BE INSPECTED",
+])
+def test_structural_repair_category_is_not_an_mel_category(actions):
+    d = parse(actions)
+    assert d.kind != "CATEGORY" and d.category is None
+    assert "structural repair (SRM)" in d.rule
+
+
+def test_structural_category_does_not_hide_a_real_mel_category():
+    d = parse("SRM 53-11-11 DENT WITHIN LIMITS, REPAIR CAT B. " + "X" * 250 + " MDD RAISED IAW MEL 33-40-01B CAT C.")
+    assert d.kind == "CATEGORY" and d.category == "C" and d.expires_on == date(2026, 11, 11)
+    assert "structural" not in d.rule
+
+
 def test_nsi_stated_days():
     d = parse("DD RAISED NSI 444.26 FOR 120 DAYS")
     assert d.kind == "STATED_DAYS" and d.days == 120 and d.expires_on == date(2027, 3, 1)

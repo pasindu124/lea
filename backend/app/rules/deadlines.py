@@ -18,6 +18,10 @@ itself states how long the deferral may last:
 
 The trailing letter of an item number such as 36-11-07B is an item variant,
 NOT the repair category, so it is never used.
+
+"CAT B" is also used by the Structural Repair Manual (SRM) for dents and repairs
+("permanent allowable damage (CAT B)", "repair category B"). That is a damage
+class, not an MEL repair interval, so it never gives a 3/10/120-day deadline.
 """
 from __future__ import annotations
 
@@ -35,6 +39,12 @@ _DEFERRAL_RE = re.compile(
     re.IGNORECASE,
 )
 _CAT_RE = re.compile(r"\bCAT(?:EGORY|\.)?\s*([ABCD])\b", re.IGNORECASE)
+# Words near "CAT x" that show it is an SRM structural damage/repair category.
+_STRUCTURAL_RE = re.compile(
+    r"\bSRM\b|\bSRI\b|ALLOWABLE\s+DAMAGE|REPAIR\s+CAT|\bRDAF\b|DAMAGE\s+SIZE|\bADL\b|\bDENT\b",
+    re.IGNORECASE,
+)
+_STRUCTURAL_BEFORE, _STRUCTURAL_AFTER = 200, 60   # characters looked at around "CAT x"
 _FOR_DAYS_RE = re.compile(r"\b(?:FOR|WITHIN)\s+(\d{1,3})\s*DAYS?\b", re.IGNORECASE)
 _EVERY_DAYS_RE = re.compile(r"\bEVERY\s+(\d{1,3})\s*DAYS?\b", re.IGNORECASE)
 _NEXT_CHECK_RE = re.compile(r"\bNEXT\s+(?:MAINT(?:ENANCE)?\s+)?(?:CHECK|C-?CHECK|A-?CHECK)\b", re.IGNORECASE)
@@ -85,6 +95,22 @@ def _snippet(text: str, start: int, end: int, pad: int = 70) -> str:
     return ("…" if left else "") + text[left:right].strip() + ("…" if right < len(text) else "")
 
 
+def is_structural_category(text: str, match: re.Match) -> bool:
+    """True when this "CAT x" sits next to SRM / allowable-damage wording (a damage class, not MEL)."""
+    window = text[max(0, match.start() - _STRUCTURAL_BEFORE): match.end() + _STRUCTURAL_AFTER]
+    return bool(_STRUCTURAL_RE.search(window))
+
+
+def mel_category(text: str) -> tuple[re.Match | None, re.Match | None]:
+    """(first MEL "CAT x" match, first structural "CAT x" match that was skipped)."""
+    skipped = None
+    for match in _CAT_RE.finditer(text):
+        if not is_structural_category(text, match):
+            return match, skipped
+        skipped = skipped or match
+    return None, skipped
+
+
 def parse_deferral(description: str | None, actions: str | None, date_opened: Any) -> Deferral | None:
     """Return a Deferral if the record shows one, else None."""
     description, actions = description or "", actions or ""
@@ -99,11 +125,17 @@ def parse_deferral(description: str | None, actions: str | None, date_opened: An
     evidence = _snippet(text, match.start(), match.end())
     scan = actions + " " + description  # numbers may sit in either field
 
+    cat, structural = mel_category(scan)
+    structural_note = (
+        f" Note: '{structural.group(0).strip()}' in this record is a structural repair (SRM) damage "
+        f"category, not an MEL repair interval, so it is not used for a deadline."
+        if structural and not cat else ""
+    )
+
     def build(kind, category, days, rule, assumption):
         expires = basis + timedelta(days=days) if (basis and days) else None
-        return Deferral(kind, category, days, basis, expires, evidence, where, rule, assumption)
+        return Deferral(kind, category, days, basis, expires, evidence, where, rule + structural_note, assumption)
 
-    cat = _CAT_RE.search(scan)
     stated = _FOR_DAYS_RE.search(scan)
     flight = _FLIGHT_RE.search(scan)
 

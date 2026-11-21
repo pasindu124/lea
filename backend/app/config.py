@@ -46,8 +46,8 @@ TOOL_MAIN_STORE = "SHJMAINW"  # tools at the main workshop
 UNSERVICEABLE_CODES = {"US"}
 
 # ------------------------------------------------------------- deferral rules
-# ASSUMPTION: standard Airbus/EASA MMEL repair intervals, counted in calendar days
-# and not counting the day the fault was found. The MMEL pages that define them
-# (MI-00-05) are NOT in the data pack: confirm before operational use.
+# MMEL repair intervals in calendar days, not counting the day the fault was found.
+# Source: Airbus MMEL page MI-00-05 (ABY fleet MMEL, issue 19 AUG 26, in the data pack).
+# ASSUMPTION still: Air Arabia's own MEL uses the same intervals (the operator MEL is not in the pack).
 CATEGORY_DAYS = {"B": 3, "C": 10, "D": 120}
 SOON_DAYS = 3                 # "expires soon" threshold, in days
