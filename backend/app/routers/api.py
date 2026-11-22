@@ -245,8 +245,6 @@ def work_order_done(body: Done, x_user: str | None = Header(None)):
     if row["wo_state"] != "Open":
         raise HTTPException(409, f"Work order {body.wo_number} is already {row['wo_state']} in the data")
     actor = _actor(x_user)
-    if actor == "unknown":
-        raise HTTPException(400, "Type your name in the top bar first: completions must show who did the work")
     on = context.resolve_as_of(body.as_of)
     done = aircraft_service.complete_work_order(body.wo_number, body.note.strip(), actor, on)
     context.log(actor, "work_done", {"wo_number": body.wo_number, "aircraft": row["aircraft_reg"],
